@@ -14,7 +14,7 @@ const Hero = () => {
               Hello, I&apos;m
             </span>
             <h1 className='mt-2 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl'>
-              Shir <br />
+              Shir
               <span className='text-blue-600 underline decoration-blue-400 decoration-4'>
                 Ali
               </span>
