@@ -1,12 +1,14 @@
 {
-  "name": "netxjs-portfolio",
+  "homepage": "http://Shir47.github.io/shir",
+  "name": "shir",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -40,6 +42,7 @@
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "gh-pages": "^6.2.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.6.1",
