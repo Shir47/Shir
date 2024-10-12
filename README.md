@@ -2,6 +2,7 @@ Welcome to the Shir1 web app! This project is a modern, responsive web applicati
 
 
 Features
+
 ⚡️ Next.js for optimized performance and server-side rendering
 
 💻 Responsive Design for a seamless experience across devices
