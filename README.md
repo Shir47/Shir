@@ -1,4 +1,3 @@
-Shir1 Web App
 Welcome to the Shir1 web app! This project is a modern, responsive web application built using Next.js. It showcases my skills in front-end development and UI/UX design. You can view the live project here.
 
 Features
