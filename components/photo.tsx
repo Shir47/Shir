@@ -33,7 +33,7 @@ const Photo = () => {
               repeatType: 'reverse',
               delay: 1
             }}
-            className='h-[300px] w-[300px] lg:h-[580px] lg:w-[580px]'  // Updated to match the image size
+            className='h-[300px] w-[300px] lg:h-[580px] lg:w-[580px]'  
             viewBox='0 0 537 537'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'

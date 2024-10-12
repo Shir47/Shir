@@ -13,7 +13,7 @@ const Footer = () => {
         {/* Logo Section */}
         <div className='flex items-center'>
           <Link to='home' spy={true} smooth={true} className='cursor-pointer'>
-            <Image src='/logo.png' width={60} height={40} alt='Logo' className='rounded-lg shadow-md' />
+            <Image src='/hero/logo.svg' width={60} height={40} alt='Logo' className='rounded-lg shadow-md' />
           </Link>
         </div>
 

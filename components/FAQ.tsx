@@ -27,18 +27,18 @@ const slideVariant: Variants = {
 };
 
 export const tech = [
-  { src: '/tech/wordpress.svg', width: 101.2, height: 29.99, alt: 'Wordpress' },
+  { src: '/tech/wordpress.svg', width: 46.14, height: 45.24, alt: 'Wordpress' },
   { src: '/tech/node.svg', width: 106.2, height: 31, alt: 'Node.js' },
   { src: '/tech/ts.svg', width: 46.14, height: 45.24, alt: 'TypeScript' },
-  { src: '/tech/shopify.svg', width: 89.96, height: 32.49, alt: 'Shopify' },
+  { src: '/tech/shopify.svg', width: 54.98, height: 48.73, alt: 'Shopify' },
   { src: '/tech/framer.svg', width: 47.48, height: 52.48, alt: 'Framer' },
   { src: '/tech/figma.svg', width: 47.48, height: 52.48, alt: 'Figma' },
   { src: '/tech/react.svg', width: 54.98, height: 48.73, alt: 'React' },
   { src: '/tech/angular.svg', width: 47.48, height: 51.23, alt: 'Angular' },
-  { src: '/tech/css.svg', width: 128.94, height: 19.99, alt: 'Css' },
-  { src: '/tech/js.svg', width: 43.73, height: 51.23, alt: 'Js' },
-  { src: '/tech/html.svg', width: 43.73, height: 51.23, alt: 'Html' },
-  { src: '/tech/elementor.svg', width: 43.73, height: 51.23, alt: 'elementor' },
+  { src: '/tech/css.svg', width: 54.98, height: 45.24, alt: 'Css' },
+  { src: '/tech/js.svg', width: 54.98, height: 51.23, alt: 'Js' },
+  { src: '/tech/html.svg', width: 54.98, height: 51.23, alt: 'Html' },
+  { src: '/tech/elementor.svg', width: 54.98, height: 51.23, alt: 'elementor' },
   { src: '/tech/git.svg', width: 43.73, height: 51.23, alt: 'Git' },
   { src: '/tech/github.svg', width: 43.73, height: 51.23, alt: 'Github' },
 ];
