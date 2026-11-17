@@ -3,7 +3,7 @@
 import os
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '4'
+V = '5'
 
 ICON = {
  'phone': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>',
@@ -16,6 +16,13 @@ ICON = {
  'wall': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z M3 9.700h18M3 14.300h18M9 5v4.700M15 5v4.700M6 9.700v4.600M12 9.700v4.600M18 9.700v4.600M9 14.300V19M15 14.300V19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
  'check': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 }
+
+ICON.update({
+ 'garage': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-6 9 6v9H3z M7 20v-6h10v6 M7 17h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+ 'fence': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V8l2-3 2 3v13 M10 21V8l2-3 2 3v13 M16 21V8l2-3 2 3v13 M3 12h18 M3 17h18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+ 'hammer': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6z M12.5 8.5L4 17l3 3 8.5-8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+})
+SVC_ICON = {'repairs': 'tool', 'garages': 'garage', 'fences': 'fence', 'retaining': 'wall', 'removal': 'hammer', 'maintenance': 'shield'}
 
 NAV = [('Home', '/', 'home'), ('Services', '/services/', 'services'), ('Projects', '/projects/', 'projects'), ('About', '/about/', 'about'), ('Contact', '/contact/', 'contact')]
 
@@ -86,11 +93,11 @@ def head(title, desc):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/crew.jpg">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#1d2125">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
@@ -99,21 +106,27 @@ def head(title, desc):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="veil" aria-hidden="true"><img src="assets/img/logo.png" alt="" width="360" height="181"></div>
 '''
 
 
 def header(active):
     links = ''.join(f'<a href="{u}"{" aria-current=\"page\"" if k == active else ""}>{n}</a>' for n, u, k in NAV)
-    return f'''<header class="header">
+    return f'''<div class="topbar">
+  <div class="wrap topbar-in">
+    <p class="tb-item">{ICON['clock']}Mon to Sat, 8:00 am to 5:30 pm</p>
+    <p class="tb-item tb-hide">{ICON['pin']}Adelaide, South Australia</p>
+    <a class="tb-item tb-right" href="mailto:bababricklayer@gmail.com">{ICON['mail']}bababricklayer@gmail.com</a>
+    <a class="tb-item" href="tel:+61449824153">{ICON['phone']}0449 824 153</a>
+  </div>
+</div>
+<header class="header">
   <div class="wrap header-in">
     <a class="brand" href="/" aria-label="Baba Bricklayer, home">
       <img src="assets/img/logo.png" alt="" width="360" height="181">
-      <span><strong>Baba Bricklayer</strong><small>Adelaide</small></span>
+      <span><strong>Baba Bricklayer</strong><small>Bricklaying, Adelaide</small></span>
     </a>
     <nav class="nav" id="nav" aria-label="Main">{links}</nav>
-    <a class="header-tel" href="tel:+61449824153">0449 824 153</a>
-    <a class="btn btn-dark header-cta" href="/contact/">Get a quote</a>
+    <a class="btn btn-primary header-cta" href="/contact/">Get a quote</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -179,17 +192,15 @@ def banner(title, crumb, img):
     <h1>{title}</h1>
     <p class="crumb"><a href="/">Home</a><span aria-hidden="true">/</span>{crumb}</p>
   </div>
+  <div class="stripe" aria-hidden="true"></div>
 </section>'''
 
 
 def cta():
     return f'''<section class="cta">
-  <div class="cta-bg"><img src="assets/img/svc-fences.jpg" alt="" width="1400" height="1050" loading="lazy"></div>
   <div class="wrap cta-in">
-    <p class="tag">Start your project</p>
-    <h2>Have a wall in mind?</h2>
-    <p>Tell us what you need built, repaired or removed and we will get back to you with a quote.</p>
-    <div class="cta-btns"><a class="btn btn-white" href="/contact/">Request a quote</a><a class="link link-light" href="tel:+61449824153">Call 0449 824 153</a></div>
+    <div><h2>Ready to start your project?</h2><p>Tell us what you need built, repaired or removed and we will get back to you with a quote.</p></div>
+    <div class="cta-btns"><a class="cta-tel" href="tel:+61449824153">{ICON['phone']}<span><small>Call us now</small>0449 824 153</span></a><a class="btn btn-dark" href="/contact/">Request a quote</a></div>
   </div>
 </section>'''
 
@@ -224,8 +235,8 @@ def stats():
 
 
 def page_home():
-    cards = ''.join(f'''<li class="card"><a href="/services/#{i}"><div class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"></div><div class="card-body"><h3>{t}</h3><p>{d}</p><span class="more">Learn more</span></div></a></li>''' for i, t, img, alt, d, _ in SERVICES)
-    shots = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><span>{cap}</span></button></li>' for f, alt, cap, w, h in PROJECTS[:9])
+    cards = ''.join(f'''<li class="card"><a href="/services/#{i}"><div class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"></div><div class="card-body"><span class="card-ico">{ICON[SVC_ICON[i]]}</span><h3>{t}</h3><p>{d}</p><span class="more">Learn more</span></div></a></li>''' for i, t, img, alt, d, _ in SERVICES)
+    shots = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><span>{cap}</span></button></li>' for f, alt, cap, w, h in PROJECTS[:8])
     checks = ''.join(f'<li>{ICON["check"]}{t}</li>' for t in ['Residential, commercial and industrial work', 'New brickwork, repairs and restoration', 'Clear estimates and timelines up front', 'Strict safety standards on every site'])
     steps = ''.join(f'<li><span class="num">{n}</span><h3>{t}</h3><p>{p}</p></li>' for n, t, p in [
         ('1', 'Get in touch', 'Call us or send the quote form with a few details about your job.'),
@@ -235,26 +246,31 @@ def page_home():
     return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f'''<main id="main">
 <section class="hero">
   <div class="slides">
-    <div class="slide on"><img src="assets/img/hero.jpg" alt="" width="1400" height="1050" fetchpriority="high"></div>
+    <div class="slide on"><img src="assets/img/crew.jpg" alt="" width="1280" height="720" fetchpriority="high"></div>
+    <div class="slide"><img src="assets/img/hero.jpg" alt="" width="1400" height="1050"></div>
     <div class="slide"><img src="assets/img/svc-fences.jpg" alt="" width="1400" height="1050"></div>
-    <div class="slide"><img src="assets/img/crew.jpg" alt="" width="1280" height="720"></div>
   </div>
   <div class="wrap hero-in">
-    <p class="tag">Adelaide's bricklaying specialists</p>
-    <h1><span class="mask"><span>Brickwork,</span></span><span class="mask"><span><em>beautifully</em> built</span></span></h1>
-    <p class="hero-lede">For more than 25 years Baba Bricklayer has built, repaired and restored brickwork for homes and businesses across Adelaide.</p>
-    <div class="hero-btns">
-      <a class="btn btn-white" href="/contact/">Request a quote</a>
-      <a class="link link-light" href="/projects/">View our work</a>
+    <div class="hero-copy">
+      <p class="tag">Adelaide's bricklaying specialists</p>
+      <h1><span class="mask"><span>Quality brickwork</span></span><span class="mask"><span><em>built to last</em></span></span></h1>
+      <p class="hero-lede">For more than 25 years Baba Bricklayer has built, repaired and restored brickwork for homes and businesses across Adelaide.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="/contact/">Get a quote</a>
+        <a class="btn btn-outline" href="tel:+61449824153">{ICON['phone']}0449 824 153</a>
+      </div>
+      <ul class="trust"><li>{ICON['check']}25+ years experience</li><li>{ICON['check']}800+ projects completed</li><li>{ICON['check']}Homes and businesses</li></ul>
+    </div>
+    <div class="hero-form">
+      <h2>Request a quote</h2>
+      <p>Send us a few details and we will be in touch.</p>
+      {form('h', True)}
     </div>
   </div>
-  <div class="wrap hero-bar">
-    <div class="dots" role="group" aria-label="Hero photos"><button type="button" class="on" aria-label="Photo 1">01</button><button type="button" aria-label="Photo 2">02</button><button type="button" aria-label="Photo 3">03</button></div>
-    <p class="hero-note">Monday to Saturday, 8:00 am to 5:30 pm</p>
-  </div>
+  <div class="stripe" aria-hidden="true"></div>
 </section>
-<div class="wrap stats-wrap">{stats()}</div>
-<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span><span>Repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span></div></div>
+<section class="statband"><div class="wrap">{stats()}</div></section>
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Brick repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span><span>Brick repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span></div></div>
 
 <section class="sec intro">
   <div class="wrap intro-grid">
@@ -267,7 +283,7 @@ def page_home():
       <div class="sec-head"><p class="tag">About us</p><h2>Your trusted partner for quality brickwork</h2></div>
       <p>At Baba Bricklayer we turn plans into solid brick. With decades of experience in the craft, we take pride in workmanship that stands the test of time, from detailed face brickwork to essential structural repairs.</p>
       <ul class="checks">{checks}</ul>
-      <a class="link" href="/about/">More about us</a>
+      <a class="btn btn-dark" href="/about/">More about us</a>
     </div>
   </div>
 </section>
@@ -283,10 +299,9 @@ def page_home():
 
 <section class="sec projects">
   <div class="wrap">
-    <div class="sec-head split"><div><p class="tag">Our projects</p><h2>Recent work</h2></div><div class="rail-nav"><button type="button" class="rail-prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="rail-next" aria-label="Next projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+    <div class="sec-head split"><div><p class="tag">Our projects</p><h2>Recent work</h2></div><a class="btn btn-dark" href="/projects/">View all projects</a></div>
+    <ul class="shots four">{shots}</ul>
   </div>
-  <ul class="shots rail">{shots}</ul>
-  <div class="wrap rail-foot"><a class="link" href="/projects/">View all projects</a></div>
 </section>
 
 <section class="sec process grey">
@@ -354,7 +369,7 @@ def page_about():
     </div>
   </div>
 </section>
-<div class="wrap stats-wrap flat">{stats()}</div>
+<section class="statband"><div class="wrap">{stats()}</div></section>
 <section class="sec safety">
   <div class="wrap safety-grid">
     <div>
