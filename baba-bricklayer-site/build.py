@@ -3,7 +3,7 @@
 import os
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '3'
+V = '4'
 
 ICON = {
  'phone': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>',
@@ -86,11 +86,11 @@ def head(title, desc):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/crew.jpg">
-<meta name="theme-color" content="#1d2125">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
@@ -99,27 +99,21 @@ def head(title, desc):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="veil" aria-hidden="true"><img src="assets/img/logo.png" alt="" width="360" height="181"></div>
 '''
 
 
 def header(active):
     links = ''.join(f'<a href="{u}"{" aria-current=\"page\"" if k == active else ""}>{n}</a>' for n, u, k in NAV)
-    return f'''<div class="topbar">
-  <div class="wrap topbar-in">
-    <p class="tb-item">{ICON['clock']}Monday to Saturday, 8:00 am to 5:30 pm</p>
-    <p class="tb-item tb-hide">{ICON['pin']}Adelaide, South Australia</p>
-    <a class="tb-item tb-right" href="mailto:bababricklayer@gmail.com">{ICON['mail']}bababricklayer@gmail.com</a>
-    <a class="tb-item" href="tel:+61449824153">{ICON['phone']}0449 824 153</a>
-  </div>
-</div>
-<header class="header">
+    return f'''<header class="header">
   <div class="wrap header-in">
     <a class="brand" href="/" aria-label="Baba Bricklayer, home">
       <img src="assets/img/logo.png" alt="" width="360" height="181">
-      <span><strong>Baba Bricklayer</strong><small>Bricklaying, Adelaide</small></span>
+      <span><strong>Baba Bricklayer</strong><small>Adelaide</small></span>
     </a>
     <nav class="nav" id="nav" aria-label="Main">{links}</nav>
-    <a class="btn btn-primary header-cta" href="/contact/">Get a quote</a>
+    <a class="header-tel" href="tel:+61449824153">0449 824 153</a>
+    <a class="btn btn-dark header-cta" href="/contact/">Get a quote</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -190,9 +184,12 @@ def banner(title, crumb, img):
 
 def cta():
     return f'''<section class="cta">
+  <div class="cta-bg"><img src="assets/img/svc-fences.jpg" alt="" width="1400" height="1050" loading="lazy"></div>
   <div class="wrap cta-in">
-    <div><h2>Ready to start your project?</h2><p>Tell us what you need built, repaired or removed and we will get back to you with a quote.</p></div>
-    <div class="cta-btns"><a class="btn btn-dark" href="tel:+61449824153">{ICON['phone']}0449 824 153</a><a class="btn btn-white" href="/contact/">Request a quote</a></div>
+    <p class="tag">Start your project</p>
+    <h2>Have a wall in mind?</h2>
+    <p>Tell us what you need built, repaired or removed and we will get back to you with a quote.</p>
+    <div class="cta-btns"><a class="btn btn-white" href="/contact/">Request a quote</a><a class="link link-light" href="tel:+61449824153">Call 0449 824 153</a></div>
   </div>
 </section>'''
 
@@ -228,7 +225,7 @@ def stats():
 
 def page_home():
     cards = ''.join(f'''<li class="card"><a href="/services/#{i}"><div class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"></div><div class="card-body"><h3>{t}</h3><p>{d}</p><span class="more">Learn more</span></div></a></li>''' for i, t, img, alt, d, _ in SERVICES)
-    shots = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><span>{cap}</span></button></li>' for f, alt, cap, w, h in PROJECTS[:6])
+    shots = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><span>{cap}</span></button></li>' for f, alt, cap, w, h in PROJECTS[:9])
     checks = ''.join(f'<li>{ICON["check"]}{t}</li>' for t in ['Residential, commercial and industrial work', 'New brickwork, repairs and restoration', 'Clear estimates and timelines up front', 'Strict safety standards on every site'])
     steps = ''.join(f'<li><span class="num">{n}</span><h3>{t}</h3><p>{p}</p></li>' for n, t, p in [
         ('1', 'Get in touch', 'Call us or send the quote form with a few details about your job.'),
@@ -237,25 +234,27 @@ def page_home():
         ('4', 'Job complete', 'Solid, tidy brickwork, finished on time and built to last.')])
     return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f'''<main id="main">
 <section class="hero">
-  <div class="hero-bg"><img src="assets/img/crew.jpg" alt="" width="1280" height="720" fetchpriority="high"></div>
+  <div class="slides">
+    <div class="slide on"><img src="assets/img/hero.jpg" alt="" width="1400" height="1050" fetchpriority="high"></div>
+    <div class="slide"><img src="assets/img/svc-fences.jpg" alt="" width="1400" height="1050"></div>
+    <div class="slide"><img src="assets/img/crew.jpg" alt="" width="1280" height="720"></div>
+  </div>
   <div class="wrap hero-in">
-    <div class="hero-copy">
-      <p class="tag">Adelaide's bricklaying specialists</p>
-      <h1>Quality brickwork, built to last</h1>
-      <p class="hero-lede">For more than 25 years Baba Bricklayer has built, repaired and restored brickwork for homes and businesses across Adelaide.</p>
-      <div class="hero-btns">
-        <a class="btn btn-primary" href="/contact/">Get a quote</a>
-        <a class="btn btn-outline" href="tel:+61449824153">{ICON['phone']}0449 824 153</a>
-      </div>
+    <p class="tag">Adelaide's bricklaying specialists</p>
+    <h1><span class="mask"><span>Brickwork,</span></span><span class="mask"><span><em>beautifully</em> built</span></span></h1>
+    <p class="hero-lede">For more than 25 years Baba Bricklayer has built, repaired and restored brickwork for homes and businesses across Adelaide.</p>
+    <div class="hero-btns">
+      <a class="btn btn-white" href="/contact/">Request a quote</a>
+      <a class="link link-light" href="/projects/">View our work</a>
     </div>
-    <div class="hero-form">
-      <h2>Request a quote</h2>
-      <p>Send us a few details and we will be in touch.</p>
-      {form('h', True)}
-    </div>
+  </div>
+  <div class="wrap hero-bar">
+    <div class="dots" role="group" aria-label="Hero photos"><button type="button" class="on" aria-label="Photo 1">01</button><button type="button" aria-label="Photo 2">02</button><button type="button" aria-label="Photo 3">03</button></div>
+    <p class="hero-note">Monday to Saturday, 8:00 am to 5:30 pm</p>
   </div>
 </section>
 <div class="wrap stats-wrap">{stats()}</div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span><span>Repairs</span><span>Restoration</span><span>Garages</span><span>Fences</span><span>Retaining walls</span><span>Brick removal</span><span>Maintenance</span></div></div>
 
 <section class="sec intro">
   <div class="wrap intro-grid">
@@ -268,7 +267,7 @@ def page_home():
       <div class="sec-head"><p class="tag">About us</p><h2>Your trusted partner for quality brickwork</h2></div>
       <p>At Baba Bricklayer we turn plans into solid brick. With decades of experience in the craft, we take pride in workmanship that stands the test of time, from detailed face brickwork to essential structural repairs.</p>
       <ul class="checks">{checks}</ul>
-      <a class="btn btn-dark" href="/about/">More about us</a>
+      <a class="link" href="/about/">More about us</a>
     </div>
   </div>
 </section>
@@ -284,9 +283,10 @@ def page_home():
 
 <section class="sec projects">
   <div class="wrap">
-    <div class="sec-head split"><div><p class="tag">Our projects</p><h2>Recent work</h2></div><a class="btn btn-dark" href="/projects/">View all projects</a></div>
-    <ul class="shots">{shots}</ul>
+    <div class="sec-head split"><div><p class="tag">Our projects</p><h2>Recent work</h2></div><div class="rail-nav"><button type="button" class="rail-prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="rail-next" aria-label="Next projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   </div>
+  <ul class="shots rail">{shots}</ul>
+  <div class="wrap rail-foot"><a class="link" href="/projects/">View all projects</a></div>
 </section>
 
 <section class="sec process grey">
