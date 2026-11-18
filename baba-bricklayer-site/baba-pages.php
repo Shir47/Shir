@@ -1,14 +1,15 @@
 <?php
 /**
- * Baba Bricklayer: serves the inner pages (services, projects, about, contact)
- * from the theme's site/ folder, the same way front-page.php serves the home page.
+ * Baba Bricklayer: serves the inner pages from the theme's site/ folder,
+ * the same way front-page.php serves the home page.
+ * /about/ -> site/about.html, /services/brick-fences/ -> site/services-brick-fences.html
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 add_action( 'template_redirect', function () {
 	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' );
-	if ( ! in_array( $path, array( 'services', 'projects', 'about', 'contact' ), true ) ) { return; }
-	$file = get_theme_file_path( 'site/' . $path . '.html' );
+	if ( '' === $path || 'index' === $path || ! preg_match( '#^[a-z0-9-]+(?:/[a-z0-9-]+)?$#', $path ) ) { return; }
+	$file = get_theme_file_path( 'site/' . str_replace( '/', '-', $path ) . '.html' );
 	if ( ! file_exists( $file ) ) { return; }
 	$html = file_get_contents( $file );
 	$base = trailingslashit( get_theme_file_uri( 'site' ) );

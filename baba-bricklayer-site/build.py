@@ -4,7 +4,7 @@ import os
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '10'
+V = '11'
 
 LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"17:30"}]}'
 
@@ -92,6 +92,49 @@ SIGNS = [('Cracks in the bricks or mortar', 'Hairline or stepped cracks let wate
 CATS = {'repairs': 'Repairs', 'garages': 'New builds', 'fences': 'Outdoor', 'retaining': 'Landscaping', 'removal': 'Demolition', 'maintenance': 'Upkeep'}
 
 
+SLUG = {'repairs': 'brick-repairs', 'garages': 'brick-garages', 'fences': 'brick-fences', 'retaining': 'retaining-walls', 'removal': 'brick-removal', 'maintenance': 'brickwork-maintenance'}
+
+# id: (headline a, headline b, second paragraph, included, when to call, faqs, photos)
+MORE = {
+ 'repairs': ('Brick repairs', 'and restoration.',
+  'Most damaged brickwork can be repaired without rebuilding the wall. We cut out what has failed, replace it with matching brick and mortar, and leave the repair as hard to spot as we can make it.',
+  ['Cracked, broken and loose bricks cut out and replaced', 'Worn mortar raked out and repointed', 'Brick and mortar colour matched to the existing wall', 'Damaged corners, sills and window heads rebuilt', 'Older and heritage-style brickwork restored with care'],
+  [('Cracks have appeared', 'Hairline or stepped cracks in the bricks or along the mortar joints.'), ('Mortar is falling out', 'Joints have worn back, or mortar is turning to sand when you touch it.'), ('Bricks are loose or flaking', 'Faces are breaking away, or bricks move in the wall.')],
+  [('Can you match my existing bricks?', 'We match the brick and the mortar colour as closely as we can. With older bricks an exact match is not always possible, so we show you the options before we start.'), ('Does the whole wall need rebuilding?', 'Usually not. In most cases only the damaged section needs to be cut out and replaced. We will tell you honestly if a repair will not last.'), ('What causes brickwork to crack?', 'Common causes are ground movement, moisture and age. We look at the wall and tell you what we think is behind it, so the repair deals with the cause and not only the crack.')],
+  [('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('svc-maintenance.jpg', 'Gloved hands laying a course of red bricks'), ('p7.jpg', 'Red brick home with grey rendered portico')]),
+ 'garages': ('Brick garages', 'built to match your home.',
+  'A brick garage should look like it was always part of the house. We build to your plans, in a brick and bond that sits comfortably beside what is already there.',
+  ['Single and double garages', 'Attached to the house or freestanding', 'Brick and mortar chosen to suit your home', 'Piers, door openings and lintels built to plan', 'Work for homeowners and for builders'],
+  [('You are building new', 'A garage as part of a new home, with a builder or as an owner builder.'), ('You are adding on', 'An extra garage, or one to replace a carport or shed.'), ('You want it to match', 'Brickwork that ties in with the house instead of standing out.')],
+  [('Do you build from my plans?', 'Yes. We work from your approved plans, whether they come from your builder, your designer or your engineer.'), ('Can the brick match my house?', 'We help you choose a brick and mortar as close as possible to the existing house, or one that deliberately contrasts if you prefer that.'), ('Do you organise council approval?', 'Approval is normally arranged by you or your builder before work starts. We can tell you what we need from the plans to give you a quote.')],
+  [('svc-garages.jpg', 'Brick home with a wide double garage'), ('hero.jpg', 'Single-storey brick home with a built-in garage at dusk'), ('p12.jpg', 'Single-storey home with brick front and double garage')]),
+ 'fences': ('Brick fences', 'that frame the home.',
+  'A brick front fence gives you privacy and security, and it is the first thing people see from the street. We build fences, piers and letterboxes that suit the house behind them.',
+  ['Front and boundary fences in brick', 'Brick piers with steel or timber infill panels', 'Letterboxes and gate piers', 'Capping and finishes to suit the house', 'Repairs to existing brick fences and piers'],
+  [('You want more privacy', 'A solid or part-solid fence between the house and the street.'), ('You want street appeal', 'A fence that finishes off a new home or lifts an older one.'), ('Your old fence is failing', 'Leaning piers, cracked panels or missing capping.')],
+  [('Can you combine brick with steel or timber?', 'Yes. Brick piers with steel or timber infill panels are one of the most common fences we build.'), ('Can the fence match my house?', 'We choose brick and mortar to suit the house, so the fence looks like part of the home.'), ('Do I need council approval?', 'It depends on the height and where the fence sits. Check with your council before work starts. We can tell you the fence height and details they are likely to ask about.')],
+  [('svc-fences.jpg', 'Dark brick front fence with piers and steel infill panels'), ('p6.jpg', 'Two-storey home behind a limestone and steel front fence'), ('p1.jpg', 'Home with dark brick piers and a timber deck')]),
+ 'retaining': ('Retaining walls', 'in brick and block.',
+  'A retaining wall has a job to do: hold the ground back for decades. We build reinforced brick and block walls that turn a sloping block into level, usable space.',
+  ['Brick and concrete block retaining walls', 'Reinforced, core-filled construction', 'Garden beds, terraces and level changes', 'Walls built to your engineer\'s design where one is needed', 'Face brick or block ready for render'],
+  [('Your block slopes', 'You want level lawn, parking or building space.'), ('You are landscaping', 'Raised garden beds, terraces and steps.'), ('An old wall is moving', 'A leaning, cracked or bulging retaining wall.')],
+  [('Does my retaining wall need an engineer?', 'Taller walls and walls carrying extra load usually need an engineer\'s design and council approval. We will tell you early if we think yours does.'), ('Brick or block: which is better?', 'Concrete block is the usual choice for strength and cost. Brick, or block with a brick or render finish, suits walls that are on show.'), ('Can you replace a wall that is failing?', 'Yes. We take down the old wall and rebuild it properly, with the reinforcement it needs.')],
+  [('svc-retaining.jpg', 'Concrete block retaining wall under construction with steel reinforcing'), ('p9.jpg', 'Grey brick wall and corner of a new home'), ('p8.jpg', 'Two-storey home in light grey brick')]),
+ 'removal': ('Brick removal', 'done carefully.',
+  'Taking brickwork down is a job for people who know how it was put up. We remove walls and brickwork cleanly, with care for everything that is staying.',
+  ['Brick walls, fences and piers taken down', 'Openings cut for new doors and windows', 'Damaged sections removed ahead of repairs', 'Care around the rest of the structure', 'The area left ready for the next stage'],
+  [('You are renovating', 'A wall has to come out, or a new opening has to go in.'), ('A wall is unsafe', 'Brickwork that is leaning, loose or beyond repair.'), ('You are starting again', 'An old fence or wall is making way for a new one.')],
+  [('Can you remove part of a wall?', 'Yes. We often take out a section for a new opening or ahead of a repair, and leave the rest of the wall sound.'), ('Is the wall load-bearing?', 'It needs to be checked before anything is removed. If a wall is structural it needs proper support and usually an engineer\'s advice first.'), ('Can you rebuild after removing?', 'Yes. We can take down the old brickwork and build the new work, so one team handles the whole job.')],
+  [('svc-removal.jpg', 'Bricklayer in hi-vis working on a low brick wall'), ('crew.jpg', 'Three bricklayers in hi-vis laying a red brick wall'), ('p2.jpg', 'Entry of a home with brown brick and rendered piers')]),
+ 'maintenance': ('Brickwork maintenance', 'that prevents bigger jobs.',
+  'Brickwork lasts for generations when small problems are fixed early. A regular check and a few minor repairs cost far less than rebuilding a wall later.',
+  ['Brickwork and mortar joints checked over', 'Small cracks and loose bricks fixed early', 'Worn joints repointed', 'Problem areas found before they spread', 'Homes, commercial and industrial buildings'],
+  [('Your building is ageing', 'Older brickwork that has not been looked at for years.'), ('You manage a property', 'Commercial or rental buildings that need to be kept sound.'), ('You have spotted something small', 'A crack or a patch of worn mortar you would rather fix now.')],
+  [('How often should brickwork be checked?', 'It depends on the age and exposure of the building. A look every few years, or whenever you notice a change, is a sensible rule.'), ('What does maintenance involve?', 'We look over the brickwork and joints, tell you what we find, and fix the small things before they grow.'), ('Do you look after commercial buildings?', 'Yes. We maintain brickwork on homes and on commercial and industrial properties.')],
+  [('svc-maintenance.jpg', 'Gloved hands laying a course of red bricks'), ('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('p5.jpg', 'Two-storey townhouses in red brick with cream panels')]),
+}
+
+
 def head(title, desc):
     return f"""<!doctype html>
 <html lang="en-AU">
@@ -103,9 +146,16 @@ def head(title, desc):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:image" content="assets/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Baba Bricklayer">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="icon" href="assets/img/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -122,7 +172,7 @@ def header(active):
     links = ''.join(f'<a href="{u}"{" aria-current=\"page\"" if k == active else ""}>{n}</a>' for n, u, k in NAV)
     return f"""<header class="hd">
   <div class="wrap hd-in">
-    <a class="brand" href="/" aria-label="Baba Bricklayer, home"><img src="assets/img/logo.png" alt="" width="360" height="181"><span>Baba Bricklayer<small>Adelaide</small></span></a>
+    <a class="brand" href="/" aria-label="Baba Bricklayer, home"><img src="assets/img/logo.svg" alt="" width="360" height="181"><span>Baba Bricklayer<small>Adelaide</small></span></a>
     <nav class="nav" id="nav" aria-label="Main">{links}</nav>
     <a class="hd-tel" href="tel:+61449824153">{I_PHONE}0449 824 153</a>
     <a class="btn btn-pri btn-sm" href="/contact/">Get a quote</a>
@@ -133,11 +183,11 @@ def header(active):
 
 
 def footer():
-    svc = ''.join(f'<li><a href="/services/#{i}">{t}</a></li>' for i, _, t, *_ in SERVICES)
+    svc = ''.join(f'<li><a href="/services/{SLUG[i]}/">{t}</a></li>' for i, _, t, *_ in SERVICES)
     return f"""<footer class="ft">
   <div class="wrap ft-grid">
     <div class="ft-about">
-      <a class="ft-brand" href="/"><span><img src="assets/img/logo.png" alt="" width="360" height="181" loading="lazy"></span>Baba Bricklayer</a>
+      <a class="ft-brand" href="/"><span><img src="assets/img/logo.svg" alt="" width="360" height="181" loading="lazy"></span>Baba Bricklayer</a>
       <p>Bricklaying, brick repairs and restoration for Adelaide homes and businesses.</p>
     </div>
     <div><h2>Services</h2><ul>{svc}</ul></div>
@@ -150,7 +200,7 @@ def footer():
       <li>Mon to Sat, 7:00 am to 5:30 pm</li>
     </ul></div>
   </div>
-  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklaying Pty Ltd, trading as Baba Bricklayer. ABN {ABN}</p><p>Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
+  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklaying Pty Ltd, trading as Baba Bricklayer. ABN {ABN}</p><p><a href="/privacy/">Privacy policy</a> · Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
 </footer>
 <a class="float-call" href="tel:+61449824153" aria-label="Call 0449 824 153">{I_PHONE}</a>
 <dialog class="lightbox" aria-label="Photo"><form method="dialog"><button class="lb-close">Close</button></form><img alt=""></dialog>
@@ -160,8 +210,8 @@ def footer():
 """
 
 
-def form(pid):
-    opts = ''.join(f'<option>{j}</option>' for j in JOBS)
+def form(pid, job=None):
+    opts = ''.join(f'<option{" selected" if j == job else ""}>{j}</option>' for j in JOBS)
     return f"""<form class="qform" novalidate>
   <div class="field"><label for="{pid}-name">Name</label><input id="{pid}-name" name="name" type="text" autocomplete="name" required></div>
   <div class="pair">
@@ -175,6 +225,7 @@ def form(pid):
   <div class="field"><label for="{pid}-msg">Tell us about the job</label><textarea id="{pid}-msg" name="message" rows="4" required></textarea></div>
   <div class="hp" aria-hidden="true"><label for="{pid}-web">Website</label><input id="{pid}-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
   <button class="btn btn-pri btn-block" type="submit">Request a quote {I_ARROW}</button>
+  <p class="form-note">We only use your details to reply to your request. See our <a href="/privacy/">privacy policy</a>.</p>
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>"""
 
@@ -183,7 +234,7 @@ def h2(a, b, tag='h2'):
     return f'<{tag} class="h">{a}<span>{b}</span></{tag}>'
 
 
-def quote_section(pid, a='Tell us about', b='your job.', tag='h2'):
+def quote_section(pid, a='Tell us about', b='your job.', tag='h2', job=None):
     return f"""<section class="quote" id="quote">
   <div class="wrap">
     <div class="quote-box">
@@ -199,7 +250,7 @@ def quote_section(pid, a='Tell us about', b='your job.', tag='h2'):
           <li>{I_CHECK}<span><small>ABN</small>{ABN}</span></li>
         </ul>
       </div>
-      <div class="quote-r">{form(pid)}</div>
+      <div class="quote-r">{form(pid, job)}</div>
     </div>
   </div>
 </section>"""
@@ -310,7 +361,7 @@ def about_block(link=True):
 
 
 def page_home():
-    cards = ''.join(f"""<li class="card"><a href="/services/#{i}"><span class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n:02d}</b></span><small>{CATS[i]}</small><strong>{short}</strong><em>Explore service {I_ARROW}</em></a></li>""" for n, (i, short, t, img, alt, d, _) in enumerate(SERVICES, 1))
+    cards = ''.join(f"""<li class="card"><a href="/services/{SLUG[i]}/"><span class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n:02d}</b></span><small>{CATS[i]}</small><strong>{short}</strong><em>Explore service {I_ARROW}</em></a></li>""" for n, (i, short, t, img, alt, d, _) in enumerate(SERVICES, 1))
     signs = ''.join(f'<li><span class="n">{n:02d}</span><div><h3>{t}</h3><p>{p}</p></div></li>' for n, (t, p) in enumerate(SIGNS, 1))
     shots = ''.join(shot(*PROJECTS[n]) for n in (0, 1, 2, 3, 5, 7))
     return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f"""<main id="main">
@@ -379,7 +430,7 @@ def page_home():
 def page_services():
     rows = ''.join(f"""<article class="svc" id="{i}">
   <div class="svc-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n + 1:02d}</b></div>
-  <div><p class="label">{CATS[i]}</p><h2 class="h sm">{t}</h2><p>{d}</p><ul class="ticks">{''.join(f'<li>{I_CHECK}{b}</li>' for b in bl)}</ul><a class="btn btn-pri" href="/contact/?job={quote(JOBS[n])}">Request a quote {I_ARROW}</a></div>
+  <div><p class="label">{CATS[i]}</p><h2 class="h sm">{t}</h2><p>{d}</p><ul class="ticks">{''.join(f'<li>{I_CHECK}{b}</li>' for b in bl)}</ul><div class="svc-btns"><a class="btn btn-pri" href="/services/{SLUG[i]}/">More about {short.lower()} {I_ARROW}</a><a class="tlink" href="/contact/?job={quote(JOBS[n])}">Request a quote {I_ARROW}</a></div></div>
 </article>""" for n, (i, short, t, img, alt, d, bl) in enumerate(SERVICES))
     return head('Bricklaying Services in Adelaide | Baba Bricklayer', 'Brick repairs and restoration, brick garages, fences, retaining walls, brick removal and brickwork maintenance across Adelaide.') + header('services') + f"""<main id="main">
 {page_head('Brickwork for', 'every kind of job.', 'New construction, renovations, repairs and restoration for residential, commercial and industrial properties across Adelaide.', 'Services', 'svc-fences.jpg')}
@@ -429,7 +480,92 @@ def page_contact():
 """ + footer()
 
 
-PAGES = {'index.html': page_home, 'services.html': page_services, 'projects.html': page_projects, 'about.html': page_about, 'contact.html': page_contact}
+def page_service(n):
+    i, short, t, img, alt, d, bl = SERVICES[n]
+    a, b, p2, inc, when, faqs, photos = MORE[i]
+    crumb = f'<a href="/services/">Services</a><span aria-hidden="true">/</span>{short}'
+    incl = ''.join(f'<li>{I_CHECK}{x}</li>' for x in inc)
+    whens = ''.join(f'<li><span class="n">{k:02d}</span><h3>{h}</h3><p>{x}</p></li>' for k, (h, x) in enumerate(when, 1))
+    fq = ''.join(f'<details{" open" if k == 0 else ""}><summary>{q}</summary><p>{x}</p></details>' for k, (q, x) in enumerate(faqs))
+    ph = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{al}" loading="lazy"></button></li>' for f, al in photos)
+    others = ''.join(f"""<li class="card"><a href="/services/{SLUG[oi]}/"><span class="card-img"><img src="assets/img/{oimg}" alt="{oalt}" loading="lazy"><b>{k + 1:02d}</b></span><small>{CATS[oi]}</small><strong>{oshort}</strong><em>Explore service {I_ARROW}</em></a></li>""" for k, (oi, oshort, ot, oimg, oalt, od, _) in enumerate(SERVICES) if oi != i)
+    return head(f'{t} in Adelaide | Baba Bricklayer', f'{d} Call Baba Bricklayer on 0449 824 153 for a quote.') + header('services') + f"""<main id="main">
+{page_head(a, b, d, crumb, img)}
+<section class="sec">
+  <div class="wrap inc-grid">
+    <div class="inc-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"></div>
+    <div>
+      <p class="label">What is included</p>
+      <h2 class="h sm">{t}, done properly.</h2>
+      <p>{p2}</p>
+      <ul class="ticks">{incl}</ul>
+      <a class="btn btn-pri" href="#quote">Request a quote {I_ARROW}</a>
+    </div>
+  </div>
+</section>
+<section class="sec stone">
+  <div class="wrap">
+    <div class="head"><div><p class="label">When to call us</p>{h2('Three good reasons', 'to pick up the phone.')}</div></div>
+    <ol class="steps three">{whens}</ol>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="head"><div><p class="label">Our work</p>{h2('A closer look', 'at the brickwork.')}</div><a class="tlink" href="/projects/">View all projects {I_ARROW}</a></div>
+    <ul class="shots light bare">{ph}</ul>
+  </div>
+</section>
+<section class="sec stone">
+  <div class="wrap faq-grid">
+    <div><p class="label">Questions</p>{h2(f'About {short.lower()},', 'answered.')}<p class="lede">Something else on your mind? Call us on <a href="tel:+61449824153">0449 824 153</a>.</p></div>
+    <div class="faq">{fq}</div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap"><div class="head"><div><p class="label">More services</p>{h2('Other brickwork', 'we can help with.')}</div></div></div>
+  <ul class="rail">{others}</ul>
+</section>
+{quote_section('v', 'Tell us about', 'your job.', 'h2', JOBS[n])}
+</main>
+""" + footer()
+
+
+def page_privacy():
+    return head('Privacy Policy | Baba Bricklayer', 'How Baba Bricklayer collects, uses and protects the personal information you send through this website.') + header('') + f"""<main id="main">
+<section class="sec prose-sec">
+  <div class="wrap prose">
+    <p class="crumb on-light"><a href="/">Home</a><span aria-hidden="true">/</span>Privacy policy</p>
+    <h1 class="h">Privacy policy</h1>
+    <p class="fine">Last updated 18 November 2026</p>
+    <p>This policy explains what personal information Baba Bricklaying Pty Ltd, trading as Baba Bricklayer (ABN {ABN}), collects through this website, why we collect it and what we do with it. We handle personal information in line with the Australian Privacy Principles.</p>
+    <h2>What we collect</h2>
+    <p>When you send a quote request we collect the details you type into the form: your name, phone number, email address, and, if you give them, your suburb, the type of job and a description of the work. If you phone or email us, we keep the details you give us so we can reply.</p>
+    <h2>Why we collect it</h2>
+    <p>We use your details to reply to your enquiry, prepare a quote, arrange and carry out the work, and contact you about that job. We do not use your details for advertising, and we do not sell or rent them to anyone.</p>
+    <h2>Where it is kept</h2>
+    <p>Quote requests are stored in this website's database and sent to our email inbox. The website is hosted by a third-party hosting company, and our email is provided by a third-party email service, so your details are held on their systems on our behalf. Some of these systems may be located outside Australia.</p>
+    <h2>Who we share it with</h2>
+    <p>We only share your details when it is needed to do the job, for example with a builder or supplier involved in your project, or when the law requires it.</p>
+    <h2>Cookies and other services</h2>
+    <p>This website does not use advertising or analytics cookies. The fonts on the site are loaded from Google Fonts, which means your browser contacts Google's servers when a page loads and Google receives your IP address. Links to other websites, including our Google reviews page, are covered by those sites' own privacy policies.</p>
+    <h2>How long we keep it</h2>
+    <p>We keep enquiry and job details for as long as we need them to do the work and to meet our legal and tax record-keeping obligations. You can ask us to delete an enquiry that did not go ahead.</p>
+    <h2>Seeing or correcting your details</h2>
+    <p>You can ask to see the personal information we hold about you, or ask us to correct or delete it. Contact us using the details below and we will respond within a reasonable time.</p>
+    <h2>Complaints</h2>
+    <p>If you are unhappy with how we have handled your information, please contact us first so we can put it right. If you are still not satisfied, you can contact the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au/" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
+    <h2>Contact us</h2>
+    <p>Baba Bricklayer, Adelaide, South Australia<br>Phone <a href="tel:+61449824153">0449 824 153</a><br>Email <a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></p>
+    <p>We may update this policy from time to time. The latest version is always on this page.</p>
+  </div>
+</section>
+</main>
+""" + footer()
+
+
+PAGES = {'index.html': page_home, 'services.html': page_services, 'projects.html': page_projects, 'about.html': page_about, 'contact.html': page_contact, 'privacy.html': page_privacy}
+for _n, _svc in enumerate(SERVICES):
+    PAGES['services-' + SLUG[_svc[0]] + '.html'] = (lambda k: (lambda: page_service(k)))(_n)
 for name, fn in PAGES.items():
     with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
         f.write(fn())
