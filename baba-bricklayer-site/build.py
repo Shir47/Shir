@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '18'
+V = '19'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -439,12 +439,11 @@ def page_home():
     cards = ''.join(f"""<li class="card"><a href="/services/{SLUG[i]}/"><span class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n:02d}</b></span><small>{CATS[i]}</small><strong>{short}</strong><em>Explore service {I_ARROW}</em></a></li>""" for n, (i, short, t, img, alt, d, _) in enumerate(SERVICES, 1))
     signs = ''.join(f'<li><span class="n">{n:02d}</span><div><h3>{t}</h3><p>{p}</p></div></li>' for n, (t, p) in enumerate(SIGNS, 1))
     shots = ''.join(shot(*PROJECTS[n]) for n in (0, 1, 2, 3, 5, 7))
-    return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f"""<main id="main">
+    return head('Bricklayer Adelaide | Brick Repairs, Fences &amp; Walls | Baba Bricklayer', 'Adelaide bricklayers with 25+ years of experience. Brick repairs, fences, garages and retaining walls across Adelaide and the northern suburbs. Call 0449 824 153 for a quote.') + header('home') + f"""<main id="main">
 <section class="hero">
   <div class="hero-bg"><img src="assets/img/hero.jpg" alt="" width="1400" height="1050" fetchpriority="high"></div>
   <div class="wrap hero-in">
-    <p class="label">Adelaide · Bricklaying and brick repairs</p>
-    <h1 class="h">Quality brickwork,<span>built to last.</span></h1>
+    <h1 class="h"><small class="label">Bricklayer in Adelaide · Brick repairs and new brickwork</small>Quality brickwork,<span>built to last.</span></h1>
     <p class="hero-lede">New brickwork, repairs and restoration for Adelaide homes and businesses, from a team with more than 25 years on the trowel.</p>
     <div class="hero-btns"><a class="btn btn-pri" href="/contact/">Request a quote {I_ARROW}</a><a class="tlink light" href="/projects/">See our work {I_ARROW}</a></div>
   </div>
@@ -509,7 +508,7 @@ def page_services():
   <div class="svc-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n + 1:02d}</b></div>
   <div><p class="label">{CATS[i]}</p><h2 class="h sm">{t}</h2><p>{d}</p><ul class="ticks">{''.join(f'<li>{I_CHECK}{b}</li>' for b in bl)}</ul><div class="svc-btns"><a class="btn btn-pri" href="/services/{SLUG[i]}/">More about {short.lower()} {I_ARROW}</a><a class="tlink" href="/contact/?job={quote(JOBS[n])}">Request a quote {I_ARROW}</a></div></div>
 </article>""" for n, (i, short, t, img, alt, d, bl) in enumerate(SERVICES))
-    return head('Bricklaying Services in Adelaide | Baba Bricklayer', 'Brick repairs and restoration, brick garages, fences, retaining walls, brick removal and brickwork maintenance across Adelaide.') + header('services') + f"""<main id="main">
+    return head('Bricklaying Services Adelaide | Repairs, Fences, Garages | Baba Bricklayer', 'Brick repairs and restoration, brick garages, fences, retaining walls, brick removal and brickwork maintenance across Adelaide and the northern suburbs.') + header('services') + f"""<main id="main">
 {page_head('Brickwork for', 'every kind of job.', 'New construction, renovations, repairs and restoration for residential, commercial and industrial properties across Adelaide.', 'Services', 'svc-fences.jpg')}
 <section class="sec"><div class="wrap svc-list">{rows}</div></section>
 {process_section()}
@@ -520,7 +519,7 @@ def page_services():
 
 def page_projects():
     shots = ''.join(shot(*p) for p in PROJECTS)
-    return head('Our Work | Baba Bricklayer, Adelaide', 'Photos of residential brickwork in face brick, block and rendered finishes by Baba Bricklayer, Adelaide.') + header('projects') + f"""<main id="main">
+    return head('Bricklaying Projects in Adelaide | Baba Bricklayer', 'Photos of brick homes, fences, garages and face brickwork by Baba Bricklayer, Adelaide.') + header('projects') + f"""<main id="main">
 {page_head('Brickwork worth', 'a second look.', 'Residential brickwork in face brick, block and rendered finishes. Select a photo to see it larger.', 'Our work', 'p5.jpg')}
 <section class="sec"><div class="wrap">
   <div class="filter" role="group" aria-label="Filter projects"><button type="button" class="on" data-f="">All work</button><button type="button" data-f="Face brickwork">Face brickwork</button><button type="button" data-f="Brick and render">Brick and render</button><button type="button" data-f="Garages">Garages</button><button type="button" data-f="Fences and piers">Fences and piers</button></div>
@@ -533,7 +532,7 @@ def page_projects():
 
 
 def page_about():
-    return head('About Us | Baba Bricklayer, Adelaide', 'Baba Bricklayer has more than 25 years of bricklaying experience and over 800 completed projects across Adelaide.') + header('about') + f"""<main id="main">
+    return head('About Baba Bricklayer | Adelaide Bricklayers for 25+ Years', 'Baba Bricklayer has more than 25 years of bricklaying experience, over 800 completed projects and 7 years working with Fairmont Homes in Adelaide.') + header('about') + f"""<main id="main">
 {page_head("Adelaide's bricklayers", 'for more than 25 years.', 'Skill, reliability and a team that takes your project as seriously as you do.', 'About', 'crew.jpg')}
 {about_block(False)}
 {builders_section()}
@@ -551,7 +550,7 @@ def page_about():
 
 
 def page_contact():
-    return head('Contact Us | Baba Bricklayer, Adelaide', 'Request a bricklaying quote in Adelaide. Call 0449 824 153 or send the quote form.') + header('contact') + f"""<main id="main">
+    return head('Get a Bricklaying Quote in Adelaide | Contact Baba Bricklayer', 'Request a bricklaying quote in Adelaide and the northern suburbs. Call 0449 824 153 or send the quote form. Open Monday to Saturday.') + header('contact') + f"""<main id="main">
 {quote_section('c', 'Tell us about', 'your job.', 'h1').replace('<section class="quote" id="quote">', '<section class="quote first" id="quote">')}
 {faq_section()}
 </main>
@@ -567,7 +566,11 @@ def page_service(n):
     fq = ''.join(f'<details{" open" if k == 0 else ""}><summary>{q}</summary><p>{x}</p></details>' for k, (q, x) in enumerate(faqs))
     ph = ''.join(f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{al}" loading="lazy"></button></li>' for f, al in photos)
     others = ''.join(f"""<li class="card"><a href="/services/{SLUG[oi]}/"><span class="card-img"><img src="assets/img/{oimg}" alt="{oalt}" loading="lazy"><b>{k + 1:02d}</b></span><small>{CATS[oi]}</small><strong>{oshort}</strong><em>Explore service {I_ARROW}</em></a></li>""" for k, (oi, oshort, ot, oimg, oalt, od, _) in enumerate(SERVICES) if oi != i)
-    return head(f'{t} in Adelaide | Baba Bricklayer', f'{d} Call Baba Bricklayer on 0449 824 153 for a quote.') + header('services') + f"""<main id="main">
+    svc_ld = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": [
+        {"@type": "Service", "name": t, "serviceType": t, "description": d, "url": "{{home}}/services/" + SLUG[i] + "/", "areaServed": [{"@type": "City", "name": "Adelaide"}, {"@type": "AdministrativeArea", "name": "Northern suburbs of Adelaide"}], "provider": {"@id": "{{home}}/#business"}},
+        {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "{{home}}/"}, {"@type": "ListItem", "position": 2, "name": "Services", "item": "{{home}}/services/"}, {"@type": "ListItem", "position": 3, "name": short, "item": "{{home}}/services/" + SLUG[i] + "/"}]},
+    ]}, separators=(',', ':')) + '</script>'
+    return head(f'{t} Adelaide | Baba Bricklayer', f'{d} Adelaide and northern suburbs. Call Baba Bricklayer on 0449 824 153 for a quote.') + header('services') + f"""<main id="main">
 {page_head(a, b, d, crumb, img)}
 <section class="sec">
   <div class="wrap inc-grid">
@@ -605,6 +608,7 @@ def page_service(n):
 </section>
 {quote_section('v', 'Tell us about', 'your job.', 'h2', JOBS[n])}
 </main>
+{svc_ld}
 """ + footer()
 
 

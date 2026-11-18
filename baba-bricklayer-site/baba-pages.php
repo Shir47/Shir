@@ -50,7 +50,25 @@ add_action( 'template_redirect', function () {
 	if ( is_admin() || is_feed() || is_preview() || ( function_exists( 'is_customize_preview' ) && is_customize_preview() ) ) { return; }
 	if ( isset( $_GET['elementor-preview'] ) || isset( $_GET['p'] ) || isset( $_GET['page_id'] ) ) { return; } // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' );
+	$uri      = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+	$raw_path = (string) wp_parse_url( $uri, PHP_URL_PATH );
+	$query    = (string) wp_parse_url( $uri, PHP_URL_QUERY );
+	$path     = trim( $raw_path, '/' );
+	$is_get   = isset( $_SERVER['REQUEST_METHOD'] ) && in_array( $_SERVER['REQUEST_METHOD'], array( 'GET', 'HEAD' ), true );
+
+	// One address per page: no "www." copy.
+	$host      = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) ) : '';
+	$home_host = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+	if ( $is_get && $home_host && 'www.' . $home_host === $host ) {
+		wp_redirect( untrailingslashit( home_url() ) . $uri, 301 ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
+		exit;
+	}
+
+	// Yoast's sitemaps list the previous site's pages; send them to ours.
+	if ( $is_get && ( 'sitemap_index.xml' === $path || preg_match( '#^[a-z0-9_-]+-sitemap[0-9]*\\.xml$#', $path ) ) ) {
+		wp_safe_redirect( home_url( '/sitemap.xml' ), 301 );
+		exit;
+	}
 
 	// Addresses from the previous site.
 	$moved = array( 'contact-us' => 'contact/', 'home' => '' );
@@ -79,7 +97,14 @@ add_action( 'template_redirect', function () {
 	}
 	if ( 'index' === $path || '404' === $path || ! preg_match( '#^[a-z0-9-]+(?:/[a-z0-9-]+)?$#', $path ) ) { return; }
 	$file = baba_site_dir() . '/' . str_replace( '/', '-', $path ) . '.html';
-	if ( file_exists( $file ) ) { baba_send_page( $file ); }
+	if ( file_exists( $file ) ) {
+		// One address per page: always with the closing slash.
+		if ( $is_get && '/' !== substr( $raw_path, -1 ) ) {
+			wp_safe_redirect( home_url( '/' . $path . '/' ) . ( '' !== $query ? '?' . $query : '' ), 301 );
+			exit;
+		}
+		baba_send_page( $file );
+	}
 }, 0 );
 
 // Friendly "page not found" page.
@@ -93,6 +118,7 @@ add_action( 'template_redirect', function () {
 add_filter( 'wp_sitemaps_enabled', '__return_false' );
 add_filter( 'wpseo_sitemap_index_links', '__return_empty_array' );
 add_filter( 'robots_txt', function ( $output, $public ) {
+	$output = preg_replace( '#^Sitemap:.*sitemap_index\\.xml\\s*$#mi', '', $output );
 	if ( $public && false === strpos( $output, '/sitemap.xml' ) ) { $output .= "\nSitemap: " . home_url( '/sitemap.xml' ) . "\n"; }
 	return $output;
-}, 10, 2 );
+}, 99999, 2 );
