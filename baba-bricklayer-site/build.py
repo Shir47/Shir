@@ -1,12 +1,30 @@
 #!/usr/bin/env python3
 """Builds the five static pages into site/. Built by AFG Web."""
-import os
+import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '11'
+V = '12'
 
-LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"17:30"}]}'
+LD = json.dumps({
+ "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
+ "name": "Baba Bricklayer", "legalName": "Baba Bricklaying Pty Ltd", "taxID": "32649863838",
+ "description": "Bricklaying, brick repairs and restoration for homes and businesses in Adelaide, South Australia.",
+ "url": "{{home}}/", "image": "assets/img/share.jpg", "logo": "assets/img/icon-512.png",
+ "telephone": "+61449824153", "email": "bababricklayer@gmail.com",
+ "areaServed": {"@type": "City", "name": "Adelaide"},
+ "address": {"@type": "PostalAddress", "addressLocality": "Adelaide", "addressRegion": "SA", "addressCountry": "AU"},
+ "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "17:30"}],
+ "sameAs": ["https://share.google/AZMJVZAH3gTjqLBHK"],
+ "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Bricklaying services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in ["Brick repairs and restorations", "Brick garages", "Brick fences", "Brick and block retaining walls", "Brick removal", "Brickwork maintenance"]]},
+}, separators=(',', ':'))
+
+
+def faq_ld(items):
+    plain = lambda t: re.sub(r'<[^>]+>', '', t)
+    data = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in items]}
+    return '<script type="application/ld+json">' + json.dumps(data, separators=(',', ':')) + '</script>'
+
 
 GOOGLE = 'https://share.google/AZMJVZAH3gTjqLBHK'
 ABN = '32 649 863 838'
@@ -146,6 +164,8 @@ def head(title, desc):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="{{{{home}}}}{{{{path}}}}">
+<link rel="canonical" href="{{{{home}}}}{{{{path}}}}">
 <meta property="og:image" content="assets/img/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -156,9 +176,8 @@ def head(title, desc):
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{LD}</script>
@@ -294,7 +313,7 @@ def faq_section():
     <div><p class="label">Questions</p>{h2('Good to know', 'before we start.')}<p class="lede">Can't see your question? Call us on <a href="tel:+61449824153">0449 824 153</a>.</p></div>
     <div class="faq">{items}</div>
   </div>
-</section>"""
+</section>{faq_ld(FAQS)}"""
 
 
 def process_section():
@@ -520,7 +539,7 @@ def page_service(n):
     <div><p class="label">Questions</p>{h2(f'About {short.lower()},', 'answered.')}<p class="lede">Something else on your mind? Call us on <a href="tel:+61449824153">0449 824 153</a>.</p></div>
     <div class="faq">{fq}</div>
   </div>
-</section>
+</section>{faq_ld(faqs)}
 <section class="sec">
   <div class="wrap"><div class="head"><div><p class="label">More services</p>{h2('Other brickwork', 'we can help with.')}</div></div></div>
   <ul class="rail">{others}</ul>
@@ -547,7 +566,7 @@ def page_privacy():
     <h2>Who we share it with</h2>
     <p>We only share your details when it is needed to do the job, for example with a builder or supplier involved in your project, or when the law requires it.</p>
     <h2>Cookies and other services</h2>
-    <p>This website does not use advertising or analytics cookies. The fonts on the site are loaded from Google Fonts, which means your browser contacts Google's servers when a page loads and Google receives your IP address. Links to other websites, including our Google reviews page, are covered by those sites' own privacy policies.</p>
+    <p>This website does not use advertising or analytics cookies, and it does not load fonts or scripts from other companies. Links to other websites, including our Google reviews page, are covered by those sites' own privacy policies.</p>
     <h2>How long we keep it</h2>
     <p>We keep enquiry and job details for as long as we need them to do the work and to meet our legal and tax record-keeping obligations. You can ask us to delete an enquiry that did not go ahead.</p>
     <h2>Seeing or correcting your details</h2>
@@ -563,10 +582,39 @@ def page_privacy():
 """ + footer()
 
 
-PAGES = {'index.html': page_home, 'services.html': page_services, 'projects.html': page_projects, 'about.html': page_about, 'contact.html': page_contact, 'privacy.html': page_privacy}
+def page_404():
+    return head('Page not found | Baba Bricklayer', 'That page could not be found.').replace('<meta name="viewport"', '<meta name="robots" content="noindex">\n<meta name="viewport"') + header('') + f"""<main id="main">
+<section class="sec nf">
+  <div class="wrap">
+    <p class="label">Page not found</p>
+    {h2('That page has moved', 'or was never built.', 'h1')}
+    <p class="lede">The link you followed does not lead anywhere. These will get you back on track.</p>
+    <div class="nf-btns"><a class="btn btn-pri" href="/">Back to home {I_ARROW}</a><a class="tlink" href="/services/">Our services {I_ARROW}</a><a class="tlink" href="/contact/">Request a quote {I_ARROW}</a></div>
+  </div>
+</section>
+</main>
+""" + footer()
+
+
+PAGES = {'index.html': page_home, 'services.html': page_services, 'projects.html': page_projects, 'about.html': page_about, 'contact.html': page_contact, 'privacy.html': page_privacy, '404.html': page_404}
 for _n, _svc in enumerate(SERVICES):
     PAGES['services-' + SLUG[_svc[0]] + '.html'] = (lambda k: (lambda: page_service(k)))(_n)
+BIG = dict(l.split() for l in open(os.path.join(OUT, 'assets', 'img', 'sizes.txt')).read().split('\n') if l.strip())
+
+
+def responsive(m):
+    tag, f = m.group(0), m.group(1)
+    if f not in BIG or 'srcset' in tag:
+        return tag
+    sizes = '100vw' if 'fetchpriority' in tag else '(max-width: 900px) 92vw, 46vw'
+    return tag.replace(f'src="assets/img/{f}"', f'src="assets/img/{f}" srcset="assets/img/{f[:-4]}-800.jpg 800w, assets/img/{f} {BIG[f]}w" sizes="{sizes}"')
+
+
 for name, fn in PAGES.items():
+    stem = name[:-5]
+    path = '/' if stem == 'index' else '/services/' + stem[9:] + '/' if stem.startswith('services-') else '/' + stem + '/'
+    html = fn().replace('{{path}}', path)
+    html = re.sub(r'<img src="assets/img/([a-z0-9-]+\.jpg)"[^>]*>', responsive, html)
     with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
-        f.write(fn())
+        f.write(html)
     print('built', name)
