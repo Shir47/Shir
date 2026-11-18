@@ -6,12 +6,12 @@
   --char:#1f252b;
   --char-2:#2a3138;
   --body:#515a63;
-  --mute:#7b848d;
+  --mute:#687079;
   --line:#e3e1dc;
   --stone:#f5f2ec;
   --white:#fff;
   --orange:#f47b20;
-  --clay:#c4560c;
+  --clay:#b44d08;
   --head:"Archivo","Helvetica Neue",Arial,sans-serif;
   --text:"Inter","Helvetica Neue",Arial,sans-serif;
   --ease:cubic-bezier(.2,.8,.2,1);
@@ -419,7 +419,8 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .ft-grid{grid-template-columns:1fr 1fr;gap:32px 18px}
   .ft-about,.ft-grid>div:last-child{grid-column:1/-1}
   .ft-bot{padding-bottom:86px}
-  .float-call{display:grid;place-items:center;position:fixed;right:16px;bottom:16px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--orange);color:#1b0f04;font-size:1.4rem;box-shadow:0 10px 26px rgba(244,123,32,.45)}
+  .float-call{display:grid;place-items:center;position:fixed;right:16px;bottom:16px;z-index:90;width:58px;height:58px;border-radius:50%;background:var(--orange);color:#1b0f04;font-size:1.4rem;box-shadow:0 10px 26px rgba(244,123,32,.45);opacity:0;pointer-events:none;transform:translateY(12px) scale(.9);transition:opacity .3s,transform .3s var(--ease)}
+  .float-call.show{opacity:1;pointer-events:auto;transform:none}
 }
 @media (prefers-reduced-motion:reduce){
   .btn,.card-img img,.shot img{transition:none}

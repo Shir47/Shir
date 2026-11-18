@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '16'
+V = '17'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -121,37 +121,37 @@ MORE = {
   ['Cracked, broken and loose bricks cut out and replaced', 'Worn mortar raked out and repointed', 'Brick and mortar colour matched to the existing wall', 'Damaged corners, sills and window heads rebuilt', 'Older and heritage-style brickwork restored with care'],
   [('Cracks have appeared', 'Hairline or stepped cracks in the bricks or along the mortar joints.'), ('Mortar is falling out', 'Joints have worn back, or mortar is turning to sand when you touch it.'), ('Bricks are loose or flaking', 'Faces are breaking away, or bricks move in the wall.')],
   [('Can you match my existing bricks?', 'We match the brick and the mortar colour as closely as we can. With older bricks an exact match is not always possible, so we show you the options before we start.'), ('Does the whole wall need rebuilding?', 'Usually not. In most cases only the damaged section needs to be cut out and replaced. We will tell you honestly if a repair will not last.'), ('What causes brickwork to crack?', 'Common causes are ground movement, moisture and age. We look at the wall and tell you what we think is behind it, so the repair deals with the cause and not only the crack.')],
-  [('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('svc-maintenance.jpg', 'Gloved hands laying a course of red bricks'), ('p7.jpg', 'Red brick home with grey rendered portico')]),
+  [('p3.jpg', 'Brick home with rendered entry and garage'), ('svc-maintenance.jpg', 'Gloved hands laying a course of red bricks'), ('p7.jpg', 'Red brick home with grey rendered portico')]),
  'garages': ('Brick garages', 'built to match your home.',
   'A brick garage should look like it was always part of the house. We build to your plans, in a brick and bond that sits comfortably beside what is already there.',
   ['Single and double garages', 'Attached to the house or freestanding', 'Brick and mortar chosen to suit your home', 'Piers, door openings and lintels built to plan', 'Work for homeowners and for builders'],
   [('You are building new', 'A garage as part of a new home, with a builder or as an owner builder.'), ('You are adding on', 'An extra garage, or one to replace a carport or shed.'), ('You want it to match', 'Brickwork that ties in with the house instead of standing out.')],
   [('Do you build from my plans?', 'Yes. We work from your approved plans, whether they come from your builder, your designer or your engineer.'), ('Can the brick match my house?', 'We help you choose a brick and mortar as close as possible to the existing house, or one that deliberately contrasts if you prefer that.'), ('Do you organise council approval?', 'Approval is normally arranged by you or your builder before work starts. We can tell you what we need from the plans to give you a quote.')],
-  [('svc-garages.jpg', 'Brick home with a wide double garage'), ('hero.jpg', 'Single-storey brick home with a built-in garage at dusk'), ('p12.jpg', 'Single-storey home with brick front and double garage')]),
+  [('p7.jpg', 'Red brick home with grey rendered portico'), ('hero.jpg', 'Single-storey brick home with a built-in garage at dusk'), ('p12.jpg', 'Single-storey home with brick front and double garage')]),
  'fences': ('Brick fences', 'that frame the home.',
   'A brick front fence gives you privacy and security, and it is the first thing people see from the street. We build fences, piers and letterboxes that suit the house behind them.',
   ['Front and boundary fences in brick', 'Brick piers with steel or timber infill panels', 'Letterboxes and gate piers', 'Capping and finishes to suit the house', 'Repairs to existing brick fences and piers'],
   [('You want more privacy', 'A solid or part-solid fence between the house and the street.'), ('You want street appeal', 'A fence that finishes off a new home or lifts an older one.'), ('Your old fence is failing', 'Leaning piers, cracked panels or missing capping.')],
   [('Can you combine brick with steel or timber?', 'Yes. Brick piers with steel or timber infill panels are one of the most common fences we build.'), ('Can the fence match my house?', 'We choose brick and mortar to suit the house, so the fence looks like part of the home.'), ('Do I need council approval?', 'It depends on the height and where the fence sits. Check with your council before work starts. We can tell you the fence height and details they are likely to ask about.')],
-  [('svc-fences.jpg', 'Dark brick front fence with piers and steel infill panels'), ('p6.jpg', 'Two-storey home behind a limestone and steel front fence'), ('p1.jpg', 'Home with dark brick piers and a timber deck')]),
+  [('p2.jpg', 'Entry of a home with brown brick and rendered piers'), ('p6.jpg', 'Two-storey home behind a limestone and steel front fence'), ('p1.jpg', 'Home with dark brick piers and a timber deck')]),
  'retaining': ('Retaining walls', 'in brick and block.',
   'A retaining wall has a job to do: hold the ground back for decades. We build reinforced brick and block walls that turn a sloping block into level, usable space.',
   ['Brick and concrete block retaining walls', 'Reinforced, core-filled construction', 'Garden beds, terraces and level changes', 'Walls built to your engineer\'s design where one is needed', 'Face brick or block ready for render'],
   [('Your block slopes', 'You want level lawn, parking or building space.'), ('You are landscaping', 'Raised garden beds, terraces and steps.'), ('An old wall is moving', 'A leaning, cracked or bulging retaining wall.')],
   [('Does my retaining wall need an engineer?', 'Taller walls and walls carrying extra load usually need an engineer\'s design and council approval. We will tell you early if we think yours does.'), ('Brick or block: which is better?', 'Concrete block is the usual choice for strength and cost. Brick, or block with a brick or render finish, suits walls that are on show.'), ('Can you replace a wall that is failing?', 'Yes. We take down the old wall and rebuild it properly, with the reinforcement it needs.')],
-  [('svc-retaining.jpg', 'Concrete block retaining wall under construction with steel reinforcing'), ('p9.jpg', 'Grey brick wall and corner of a new home'), ('p8.jpg', 'Two-storey home in light grey brick')]),
+  [('p10.jpg', 'Charcoal brick home with a brick garden edge'), ('p9.jpg', 'Grey brick wall and corner of a new home'), ('p8.jpg', 'Two-storey home in light grey brick')]),
  'removal': ('Brick removal', 'done carefully.',
   'Taking brickwork down is a job for people who know how it was put up. We remove walls and brickwork cleanly, with care for everything that is staying.',
   ['Brick walls, fences and piers taken down', 'Openings cut for new doors and windows', 'Damaged sections removed ahead of repairs', 'Care around the rest of the structure', 'The area left ready for the next stage'],
   [('You are renovating', 'A wall has to come out, or a new opening has to go in.'), ('A wall is unsafe', 'Brickwork that is leaning, loose or beyond repair.'), ('You are starting again', 'An old fence or wall is making way for a new one.')],
   [('Can you remove part of a wall?', 'Yes. We often take out a section for a new opening or ahead of a repair, and leave the rest of the wall sound.'), ('Is the wall load-bearing?', 'It needs to be checked before anything is removed. If a wall is structural it needs proper support and usually an engineer\'s advice first.'), ('Can you rebuild after removing?', 'Yes. We can take down the old brickwork and build the new work, so one team handles the whole job.')],
-  [('svc-removal.jpg', 'Bricklayer in hi-vis working on a low brick wall'), ('crew.jpg', 'Three bricklayers in hi-vis laying a red brick wall'), ('p2.jpg', 'Entry of a home with brown brick and rendered piers')]),
+  [('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('crew.jpg', 'Three bricklayers in hi-vis laying a red brick wall'), ('p2.jpg', 'Entry of a home with brown brick and rendered piers')]),
  'maintenance': ('Brickwork maintenance', 'that prevents bigger jobs.',
   'Brickwork lasts for generations when small problems are fixed early. A regular check and a few minor repairs cost far less than rebuilding a wall later.',
   ['Brickwork and mortar joints checked over', 'Small cracks and loose bricks fixed early', 'Worn joints repointed', 'Problem areas found before they spread', 'Homes, commercial and industrial buildings'],
   [('Your building is ageing', 'Older brickwork that has not been looked at for years.'), ('You manage a property', 'Commercial or rental buildings that need to be kept sound.'), ('You have spotted something small', 'A crack or a patch of worn mortar you would rather fix now.')],
   [('How often should brickwork be checked?', 'It depends on the age and exposure of the building. A look every few years, or whenever you notice a change, is a sensible rule.'), ('What does maintenance involve?', 'We look over the brickwork and joints, tell you what we find, and fix the small things before they grow.'), ('Do you look after commercial buildings?', 'Yes. We maintain brickwork on homes and on commercial and industrial properties.')],
-  [('svc-maintenance.jpg', 'Gloved hands laying a course of red bricks'), ('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('p5.jpg', 'Two-storey townhouses in red brick with cream panels')]),
+  [('p4.jpg', 'Two-storey home in dark face brick with white upper level'), ('svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall'), ('p5.jpg', 'Two-storey townhouses in red brick with cream panels')]),
 }
 
 
@@ -399,7 +399,7 @@ def about_block(link=True):
   <div class="wrap about-grid">
     <div class="about-imgs">
       <img class="a1" src="assets/img/crew.jpg" alt="Three bricklayers in hi-vis laying a red brick wall" loading="lazy">
-      <img class="a2" src="assets/img/svc-repairs.jpg" alt="Trowel repointing mortar joints in a red brick wall" loading="lazy">
+      <img class="a2" src="assets/img/svc-maintenance.jpg" alt="Gloved hands laying a course of red bricks" loading="lazy">
     </div>
     <div>
       <p class="label">About us</p>
