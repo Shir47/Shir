@@ -4,10 +4,12 @@ import os
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '7'
+V = '8'
 
-LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:30"}]}'
+LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:30"}]}'
 
+GOOGLE = 'https://share.google/AZMJVZAH3gTjqLBHK'
+ABN = '32 649 863 838'
 I_ARROW = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 I_PHONE = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
 I_MAIL = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
@@ -138,7 +140,7 @@ def footer():
       <p>Bricklaying, brick repairs and restoration for Adelaide homes and businesses.</p>
     </div>
     <div><h2>Services</h2><ul>{svc}</ul></div>
-    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="{GOOGLE}" target="_blank" rel="noopener">Google reviews</a></li></ul></div>
     <div><h2>Contact</h2><ul class="ft-contact">
       <li><a href="tel:+61449824153">0449 824 153</a></li>
       <li><a href="tel:+61424767153">0424 767 153</a></li>
@@ -147,7 +149,7 @@ def footer():
       <li>Mon to Sat, 8:00 am to 5:30 pm</li>
     </ul></div>
   </div>
-  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklayer. All rights reserved.</p><p>Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
+  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklaying Pty Ltd, trading as Baba Bricklayer. ABN {ABN}</p><p>Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
 </footer>
 <a class="float-call" href="tel:+61449824153" aria-label="Call 0449 824 153">{I_PHONE}</a>
 <dialog class="lightbox" aria-label="Photo"><form method="dialog"><button class="lb-close">Close</button></form><img alt=""></dialog>
@@ -193,9 +195,22 @@ def quote_section(pid, a='Tell us about', b='your job.', tag='h2'):
           <li>{I_MAIL}<span><small>Email</small><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></span></li>
           <li>{I_CLOCK}<span><small>Hours</small>Monday to Saturday, 8:00 am to 5:30 pm</span></li>
           <li>{I_PIN}<span><small>Service area</small>Adelaide, South Australia</span></li>
+          <li>{I_CHECK}<span><small>ABN</small>{ABN}</span></li>
         </ul>
       </div>
       <div class="quote-r">{form(pid)}</div>
+    </div>
+  </div>
+</section>"""
+
+
+def reviews_section():
+    return f"""<section class="reviews">
+  <div class="wrap reviews-in">
+    <div><p class="label">Reviews</p>{h2("Don't take our word for it.", 'Read what our customers say.')}</div>
+    <div class="reviews-r">
+      <p>Our reviews are on Google, written by the people we have worked for. Have a read before you get in touch, and if we have done a job for you, we would love to hear how it went.</p>
+      <div class="reviews-btns"><a class="btn btn-dark" href="{GOOGLE}" target="_blank" rel="noopener">Read our Google reviews {I_ARROW}</a><a class="tlink" href="{GOOGLE}" target="_blank" rel="noopener">Leave a review {I_ARROW}</a></div>
     </div>
   </div>
 </section>"""
@@ -243,8 +258,11 @@ def page_head(a, b, lede, crumb, img):
 </section>"""
 
 
+GROUP = {'Face brickwork': 'Face brickwork', 'Brick and render': 'Brick and render', 'Brick garages': 'Garages', 'Brick fences': 'Fences and piers', 'Front fences': 'Fences and piers', 'Brick piers': 'Fences and piers'}
+
+
 def shot(f, alt, cap, kind):
-    return f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" loading="lazy"><span><small>{kind}</small>{cap}</span></button></li>'
+    return f'<li data-g="{GROUP[kind]}"><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" loading="lazy"><span><small>{kind}</small>{cap}</span></button></li>'
 
 
 def about_block(link=True):
@@ -328,6 +346,7 @@ def page_home():
 </section>
 
 {about_block()}
+{reviews_section()}
 {process_section()}
 {why_section()}
 {faq_section().replace('<section class="sec" id="faq">', '<section class="sec stone" id="faq">')}
@@ -354,7 +373,10 @@ def page_projects():
     shots = ''.join(shot(*p) for p in PROJECTS)
     return head('Our Work | Baba Bricklayer, Adelaide', 'Photos of residential brickwork in face brick, block and rendered finishes by Baba Bricklayer, Adelaide.') + header('projects') + f"""<main id="main">
 {page_head('Brickwork worth', 'a second look.', 'Residential brickwork in face brick, block and rendered finishes. Select a photo to see it larger.', 'Our work', 'p5.jpg')}
-<section class="sec"><div class="wrap"><ul class="shots light">{shots}</ul></div></section>
+<section class="sec"><div class="wrap">
+  <div class="filter" role="group" aria-label="Filter projects"><button type="button" class="on" data-f="">All work</button><button type="button" data-f="Face brickwork">Face brickwork</button><button type="button" data-f="Brick and render">Brick and render</button><button type="button" data-f="Garages">Garages</button><button type="button" data-f="Fences and piers">Fences and piers</button></div>
+  <ul class="shots light">{shots}</ul>
+</div></section>
 {quote_section('p', 'Have a job like', 'one of these?')}
 </main>
 """ + footer()
@@ -364,6 +386,7 @@ def page_about():
     return head('About Us | Baba Bricklayer, Adelaide', 'Baba Bricklayer has more than 25 years of bricklaying experience and over 800 completed projects across Adelaide.') + header('about') + f"""<main id="main">
 {page_head("Adelaide's bricklayers", 'for more than 25 years.', 'Skill, reliability and a team that takes your project as seriously as you do.', 'About', 'crew.jpg')}
 {about_block(False)}
+{reviews_section()}
 <section class="sec stone">
   <div class="wrap two-col">
     <div><p class="label">Health and safety</p><h2 class="h sm">Committed to keeping people safe.</h2><p>The wellbeing of our team and our clients comes first. We keep rigorous safety standards and procedures on every project, so your property is protected and the site stays secure at every stage of the work.</p></div>
