@@ -4,9 +4,9 @@ import os
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '8'
+V = '9'
 
-LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:30"}]}'
+LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"17:30"}]}'
 
 GOOGLE = 'https://share.google/AZMJVZAH3gTjqLBHK'
 ABN = '32 649 863 838'
@@ -146,7 +146,7 @@ def footer():
       <li><a href="tel:+61424767153">0424 767 153</a></li>
       <li><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></li>
       <li>Adelaide, South Australia</li>
-      <li>Mon to Sat, 8:00 am to 5:30 pm</li>
+      <li>Mon to Sat, 7:00 am to 5:30 pm</li>
     </ul></div>
   </div>
   <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklaying Pty Ltd, trading as Baba Bricklayer. ABN {ABN}</p><p>Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
@@ -193,7 +193,7 @@ def quote_section(pid, a='Tell us about', b='your job.', tag='h2'):
         <ul class="q-list">
           <li>{I_PHONE}<span><small>Call us</small><a href="tel:+61449824153">0449 824 153</a><a href="tel:+61424767153">0424 767 153</a></span></li>
           <li>{I_MAIL}<span><small>Email</small><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></span></li>
-          <li>{I_CLOCK}<span><small>Hours</small>Monday to Saturday, 8:00 am to 5:30 pm</span></li>
+          <li>{I_CLOCK}<span><small>Hours</small>Monday to Saturday, 7:00 am to 5:30 pm</span></li>
           <li>{I_PIN}<span><small>Service area</small>Adelaide, South Australia</span></li>
           <li>{I_CHECK}<span><small>ABN</small>{ABN}</span></li>
         </ul>
