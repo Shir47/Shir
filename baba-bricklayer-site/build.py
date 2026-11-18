@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Builds the five static pages into site/. Design language follows afgweb.com.au."""
+"""Builds the five static pages into site/. Built by AFG Web."""
 import os
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '6'
+V = '7'
 
 LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:30"}]}'
 
@@ -21,7 +21,7 @@ H_UNDER = '<svg class="scribble" viewBox="0 0 300 16" preserveAspectRatio="none"
 H_ARROW = '<svg class="harrow" viewBox="0 0 44 44" aria-hidden="true"><path d="M38 6 C 20 7, 9 18, 8 36 M8 36 L3 26 M8 36 L17 30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 H_LINE = '<svg class="hline" viewBox="0 0 1200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 200 2, 420 18, 640 9 S 1040 4, 1196 11" pathLength="1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>'
 
-NAV = [('Services', '/services/', 'services'), ('Our work', '/projects/', 'projects'), ('About', '/about/', 'about'), ('How we work', '/#process', ''), ('Questions', '/#faq', ''), ('Contact', '/contact/', 'contact')]
+NAV = [('Services', '/services/', 'services'), ('Our work', '/projects/', 'projects'), ('About', '/about/', 'about'), ('Contact', '/contact/', 'contact')]
 
 SERVICES = [
  ('repairs', 'Brick repairs', 'Brick repairs and restorations', 'svc-repairs.jpg', 'Trowel repointing mortar joints in a red brick wall',
@@ -81,8 +81,16 @@ WHY = [('Safety on every site', 'Strict safety standards protect our team, your 
 JOBS = ['Brick repairs and restoration', 'Brick garage', 'Brick fence', 'Retaining wall', 'Brick removal', 'Brickwork maintenance', 'New construction or renovation', 'Something else']
 
 
+SIGNS = [('Cracks in the bricks or mortar', 'Hairline or stepped cracks let water in and tend to grow over time.'),
+         ('Crumbling or missing mortar', 'Joints that have worn back leave the bricks without proper support.'),
+         ('Loose or shifting bricks', 'Bricks that move when touched are no longer bonded to the wall.'),
+         ('A wall that leans or bulges', 'Movement in the wall itself should be looked at sooner rather than later.'),
+         ('Damp patches or white salt stains', 'Moisture is getting into the brickwork and bringing salts to the surface.')]
+CATS = {'repairs': 'Repairs', 'garages': 'New builds', 'fences': 'Outdoor', 'retaining': 'Landscaping', 'removal': 'Demolition', 'maintenance': 'Upkeep'}
+
+
 def head(title, desc):
-    return f'''<!doctype html>
+    return f"""<!doctype html>
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
@@ -93,317 +101,287 @@ def head(title, desc):
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/hero.jpg">
-<meta name="theme-color" content="#060913">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Caveat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v={V}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{LD}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-'''
+"""
 
 
 def header(active):
-    links = ''.join(f'<a href="{u}"{" aria-current=\"page\"" if k and k == active else ""}>{n}</a>' for n, u, k in NAV)
-    return f'''<header class="hd">
+    links = ''.join(f'<a href="{u}"{" aria-current=\"page\"" if k == active else ""}>{n}</a>' for n, u, k in NAV)
+    return f"""<header class="hd">
   <div class="wrap hd-in">
-    <a class="brand" href="/" aria-label="Baba Bricklayer, home"><img src="assets/img/logo-light.png" alt="" width="360" height="181"><span>Baba <b>Bricklayer</b></span></a>
+    <a class="brand" href="/" aria-label="Baba Bricklayer, home"><img src="assets/img/logo.png" alt="" width="360" height="181"><span>Baba Bricklayer<small>Adelaide</small></span></a>
     <nav class="nav" id="nav" aria-label="Main">{links}</nav>
     <a class="hd-tel" href="tel:+61449824153">{I_PHONE}0449 824 153</a>
-    <a class="btn btn-pri btn-sm" href="/contact/">Request a quote</a>
+    <a class="btn btn-pri btn-sm" href="/contact/">Get a quote</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="progress" aria-hidden="true"><i></i></div>
 </header>
-'''
+"""
 
 
 def footer():
     svc = ''.join(f'<li><a href="/services/#{i}">{t}</a></li>' for i, _, t, *_ in SERVICES)
-    return f'''<footer class="ft">
+    return f"""<footer class="ft">
   <div class="wrap ft-grid">
     <div class="ft-about">
-      <a class="brand" href="/"><img src="assets/img/logo-light.png" alt="" width="360" height="181" loading="lazy"><span>Baba <b>Bricklayer</b></span></a>
+      <a class="ft-brand" href="/"><span><img src="assets/img/logo.png" alt="" width="360" height="181" loading="lazy"></span>Baba Bricklayer</a>
       <p>Bricklaying, brick repairs and restoration for Adelaide homes and businesses.</p>
     </div>
     <div><h2>Services</h2><ul>{svc}</ul></div>
-    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/#process">How we work</a></li><li><a href="/#faq">Questions</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></div>
     <div><h2>Contact</h2><ul class="ft-contact">
-      <li>{I_PIN}Adelaide, South Australia</li>
-      <li>{I_PHONE}<a href="tel:+61449824153">0449 824 153</a></li>
-      <li>{I_PHONE}<a href="tel:+61424767153">0424 767 153</a></li>
-      <li>{I_MAIL}<a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></li>
-      <li>{I_CLOCK}Mon to Sat, 8:00 am to 5:30 pm</li>
+      <li><a href="tel:+61449824153">0449 824 153</a></li>
+      <li><a href="tel:+61424767153">0424 767 153</a></li>
+      <li><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></li>
+      <li>Adelaide, South Australia</li>
+      <li>Mon to Sat, 8:00 am to 5:30 pm</li>
     </ul></div>
   </div>
-  <div class="wrap"><p class="hand ft-sign">Built straight. Built to last. <span>Baba Bricklayer</span></p></div>
-  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklayer</p><p>Bricklaying in Adelaide, South Australia</p></div>
+  <div class="wrap ft-bot"><p>© <span id="yr">2026</span> Baba Bricklayer. All rights reserved.</p><p>Website by <a href="https://afgweb.com.au/" rel="noopener">AFG Web</a></p></div>
 </footer>
-<div class="float">
-  <a class="float-call" href="tel:+61449824153">{I_PHONE}<span>Call us</span></a>
-  <a class="float-quote" href="/contact/">Request a quote</a>
-  <button class="float-top" type="button" aria-label="Back to top">{I_UP}</button>
-</div>
+<a class="float-call" href="tel:+61449824153" aria-label="Call 0449 824 153">{I_PHONE}</a>
 <dialog class="lightbox" aria-label="Photo"><form method="dialog"><button class="lb-close">Close</button></form><img alt=""></dialog>
 <script src="assets/site.js?v={V}" defer></script>
 </body>
 </html>
-'''
+"""
 
 
 def form(pid):
     opts = ''.join(f'<option>{j}</option>' for j in JOBS)
-    return f'''<form class="qform paper" novalidate>
-  <div class="field"><label for="{pid}-name">Name <i>*</i></label><input id="{pid}-name" name="name" type="text" autocomplete="name" required></div>
+    return f"""<form class="qform" novalidate>
+  <div class="field"><label for="{pid}-name">Name</label><input id="{pid}-name" name="name" type="text" autocomplete="name" required></div>
   <div class="pair">
-    <div class="field"><label for="{pid}-phone">Phone <i>*</i></label><input id="{pid}-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
-    <div class="field"><label for="{pid}-email">Email <i>*</i></label><input id="{pid}-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="{pid}-phone">Phone</label><input id="{pid}-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+    <div class="field"><label for="{pid}-email">Email</label><input id="{pid}-email" name="email" type="email" autocomplete="email" required></div>
   </div>
   <div class="pair">
-    <div class="field"><label for="{pid}-suburb">Suburb</label><input id="{pid}-suburb" name="suburb" type="text" autocomplete="address-level2"></div>
-    <div class="field"><label for="{pid}-job">Type of job</label><select id="{pid}-job" name="job"><option value="">Choose one</option>{opts}</select></div>
+    <div class="field"><label for="{pid}-suburb">Suburb <i>(optional)</i></label><input id="{pid}-suburb" name="suburb" type="text" autocomplete="address-level2"></div>
+    <div class="field"><label for="{pid}-job">Type of job <i>(optional)</i></label><select id="{pid}-job" name="job"><option value="">Choose one</option>{opts}</select></div>
   </div>
-  <div class="field"><label for="{pid}-msg">Job details <i>*</i></label><textarea id="{pid}-msg" name="message" rows="4" required></textarea></div>
+  <div class="field"><label for="{pid}-msg">Tell us about the job</label><textarea id="{pid}-msg" name="message" rows="4" required></textarea></div>
   <div class="hp" aria-hidden="true"><label for="{pid}-web">Website</label><input id="{pid}-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-  <button class="btn btn-ink btn-block" type="submit">Request a quote</button>
+  <button class="btn btn-pri btn-block" type="submit">Request a quote {I_ARROW}</button>
   <p class="form-msg" role="status" aria-live="polite"></p>
-</form>'''
+</form>"""
 
 
-def quote_section(pid, h='What would you like built?'):
-    return f'''<section class="sec quote" id="quote">
-  <div class="wrap quote-grid">
-    <div>
-      <h2>{h}</h2>
-      <p class="lede">Tell us what you need built, repaired or removed. A rough size and a suburb is enough to get started.</p>
-      <ul class="q-list">
-        <li>{I_CHECK}<span>First we talk the job through. Then you get an estimate and a timeline.</span></li>
-        <li>{I_PIN}<span>Adelaide, South Australia</span></li>
-        <li>{I_PHONE}<span><a href="tel:+61449824153">0449 824 153</a> or <a href="tel:+61424767153">0424 767 153</a></span></li>
-        <li>{I_MAIL}<span><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></span></li>
-        <li>{I_CLOCK}<span>Monday to Saturday, 8:00 am to 5:30 pm</span></li>
-      </ul>
+def h2(a, b, tag='h2'):
+    return f'<{tag} class="h">{a}<span>{b}</span></{tag}>'
+
+
+def quote_section(pid, a='Tell us about', b='your job.', tag='h2'):
+    return f"""<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="quote-box">
+      <div class="quote-l">
+        <p class="label">Request a quote</p>
+        {h2(a, b, tag)}
+        <p>Tell us what you need built, repaired or removed. A rough size and a suburb is enough to get started.</p>
+        <ul class="q-list">
+          <li>{I_PHONE}<span><small>Call us</small><a href="tel:+61449824153">0449 824 153</a><a href="tel:+61424767153">0424 767 153</a></span></li>
+          <li>{I_MAIL}<span><small>Email</small><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></span></li>
+          <li>{I_CLOCK}<span><small>Hours</small>Monday to Saturday, 8:00 am to 5:30 pm</span></li>
+          <li>{I_PIN}<span><small>Service area</small>Adelaide, South Australia</span></li>
+        </ul>
+      </div>
+      <div class="quote-r">{form(pid)}</div>
     </div>
-    {form(pid)}
   </div>
-</section>'''
+</section>"""
 
 
 def faq_section():
     items = ''.join(f'<details{" open" if n == 0 else ""}><summary>{q}</summary><p>{a}</p></details>' for n, (q, a) in enumerate(FAQS))
-    return f'''<section class="sec" id="faq">
-  <div class="wrap narrow">
-    <h2>Before you get in touch.</h2>
+    return f"""<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div><p class="label">Questions</p>{h2('Good to know', 'before we start.')}<p class="lede">Can't see your question? Call us on <a href="tel:+61449824153">0449 824 153</a>.</p></div>
     <div class="faq">{items}</div>
   </div>
-</section>'''
+</section>"""
 
 
 def process_section():
-    steps = ''.join(f'<li><span class="hand num">{n}</span><h3>{t}</h3><p>{p}</p></li>' for n, (t, p) in enumerate(STEPS, 1))
-    return f'''<section class="sec" id="process">
+    steps = ''.join(f'<li><span class="n">{n:02d}</span><h3>{t}</h3><p>{p}</p></li>' for n, (t, p) in enumerate(STEPS, 1))
+    return f"""<section class="sec stone" id="process">
   <div class="wrap">
-    <h2>From the first call<br>to the finished wall.</h2>
-    <p class="lede">You will know what we are doing, and when, at every stage.</p>
-    {H_LINE}
+    <div class="head"><div><p class="label">How it works</p>{h2('A clear path', 'to a finished wall.')}</div><p class="lede">From the first call to the last brick, you will know what we are doing and when.</p></div>
     <ol class="steps">{steps}</ol>
   </div>
-</section>'''
-
-
-def page_head(title, lede, crumb):
-    return f'''<section class="ph">
-  <div class="wrap">
-    <p class="crumb"><a href="/">Home</a><span aria-hidden="true">/</span>{crumb}</p>
-    <h1>{title}</h1>
-    <p class="lede">{lede}</p>
-  </div>
-</section>'''
-
-
-def tile(f, alt, cap, kind, big=False):
-    return f'<li><button type="button" class="tile"><span class="panel"><img src="assets/img/{f}" alt="{alt}" loading="lazy"></span><small>{kind}, Adelaide</small><strong>{cap}</strong></button></li>'
-
-
-def cream_about(more=True):
-    btn = f'<a class="btn btn-ink" href="/about/">More about us {I_ARROW}</a>' if more else f'<a class="btn btn-ink" href="/contact/">Request a quote {I_ARROW}</a>'
-    return f'''<section class="cream" id="about">
-  <div class="wrap cream-grid">
-    <div>
-      <h2>Every wall gets the same care, whatever the size of the job.</h2>
-      <p>With decades of experience and real pride in the craft, Baba Bricklayer is a trusted choice for bricklaying across Adelaide. From detailed face brickwork to essential structural repairs, we deliver work that is plumb, level and built to last.</p>
-      <p>More than 800 finished projects later, most of our work still comes from clients who were happy with the last job.</p>
-      {btn}
-    </div>
-    <div class="pols">
-      <figure class="pol p-a"><img src="assets/img/crew.jpg" alt="Three bricklayers in hi-vis laying a red brick wall" loading="lazy"><figcaption class="hand">On site</figcaption></figure>
-      <figure class="pol p-b"><img src="assets/img/svc-repairs.jpg" alt="Trowel repointing mortar joints in a red brick wall" loading="lazy"><figcaption class="hand">Repointing</figcaption></figure>
-      <figure class="pol p-c"><img src="assets/img/svc-maintenance.jpg" alt="Gloved hands laying a course of red bricks" loading="lazy"><figcaption class="hand">Laying</figcaption></figure>
-    </div>
-  </div>
-  <div class="wrap cream-low">
-    <div class="sticky"><p class="hand">Safety comes first on every job. For our team, for your family and for your property. A good wall means nothing if someone gets hurt building it.</p><p class="sticky-by"><b>Baba Bricklayer</b><span>Adelaide bricklayers, 25+ years</span></p></div>
-    <ul class="stats">
-      <li><strong><span data-count="25">25</span>+</strong><span>years of experience</span></li>
-      <li><strong><span data-count="800">800</span>+</strong><span>projects completed</span></li>
-      <li><strong>6</strong><span>days a week, Monday to Saturday</span></li>
-    </ul>
-  </div>
-</section>'''
+</section>"""
 
 
 def why_section():
-    items = ''.join(f'<li><h3>{t}</h3><p>{p}</p></li>' for t, p in WHY)
-    return f'''<section class="sec">
+    icons = [I_CHECK, I_CLOCK, I_BRICK, I_PIN]
+    items = ''.join(f'<li><span class="ic">{icons[n]}</span><h3>{t}</h3><p>{p}</p></li>' for n, (t, p) in enumerate(WHY))
+    return f"""<section class="sec">
   <div class="wrap">
-    <h2>Safe. On time. Done properly.</h2>
-    <p class="lede">Four things you can count on when we take on your job.</p>
+    <div class="head"><div><p class="label">Why Baba Bricklayer</p>{h2('Safe. On time.', 'Done properly.')}</div><p class="lede">Four things you can count on when we take on your job.</p></div>
     <ul class="why">{items}</ul>
   </div>
-</section>'''
+</section>"""
+
+
+def page_head(a, b, lede, crumb, img):
+    return f"""<section class="ph">
+  <img src="assets/img/{img}" alt="" fetchpriority="high">
+  <div class="wrap">
+    <p class="crumb"><a href="/">Home</a><span aria-hidden="true">/</span>{crumb}</p>
+    {h2(a, b, 'h1')}
+    <p class="lede">{lede}</p>
+  </div>
+</section>"""
+
+
+def shot(f, alt, cap, kind):
+    return f'<li><button type="button" class="shot"><img src="assets/img/{f}" alt="{alt}" loading="lazy"><span><small>{kind}</small>{cap}</span></button></li>'
+
+
+def about_block(link=True):
+    btn = f'<a class="btn btn-dark" href="/about/">More about us {I_ARROW}</a>' if link else f'<a class="btn btn-pri" href="/contact/">Request a quote {I_ARROW}</a>'
+    return f"""<section class="sec" id="about">
+  <div class="wrap about-grid">
+    <div class="about-imgs">
+      <img class="a1" src="assets/img/crew.jpg" alt="Three bricklayers in hi-vis laying a red brick wall" loading="lazy">
+      <img class="a2" src="assets/img/svc-repairs.jpg" alt="Trowel repointing mortar joints in a red brick wall" loading="lazy">
+    </div>
+    <div>
+      <p class="label">About us</p>
+      {h2('25 years on the trowel.', 'More than 800 jobs behind us.')}
+      <p>With decades of experience and real pride in the craft, Baba Bricklayer is a trusted choice for bricklaying across Adelaide. From detailed face brickwork to essential structural repairs, we deliver work that is plumb, level and built to last.</p>
+      <p>Most of our work still comes from clients who were happy with the last job.</p>
+      <ul class="stats">
+        <li><strong><span data-count="25">25</span>+</strong>years of experience</li>
+        <li><strong><span data-count="800">800</span>+</strong>projects completed</li>
+        <li><strong>6</strong>days a week on site</li>
+      </ul>
+      {btn}
+    </div>
+  </div>
+</section>"""
 
 
 def page_home():
-    rows = ''.join(f'<li><h3>{short}</h3><p>{d}</p><a class="more" href="/services/#{i}">More about {short.lower()} {I_ARROW}</a></li>' for i, short, t, img, alt, d, _ in SERVICES)
-    chips = ''.join(f'<a class="chip" href="/contact/?job={quote(j)}">{t}</a>' for t, j in [('I need a wall repaired', 'Brick repairs and restoration'), ('I want a fence or garage', 'Brick fence'), ('I need a retaining wall', 'Retaining wall'), ('I need brick removed', 'Brick removal')])
-    slides = [('hero.jpg', 'Single-storey brick home with a built-in garage at dusk', 'Brick home with garage'), ('svc-fences.jpg', 'Dark brick front fence with piers and steel infill panels', 'Brick and steel front fence'), ('p5.jpg', 'Two-storey townhouses in red brick with cream panels', 'Red brick townhouses'), ('p4.jpg', 'Two-storey home in dark face brick with white upper level', 'Two-storey face brick home')]
-    sl = ''.join(f'<img src="assets/img/{f}" alt="{a}" data-cap="{c}"{" class=\"on\" fetchpriority=\"high\"" if n == 0 else " loading=\"lazy\""}>' for n, (f, a, c) in enumerate(slides))
-    dots = ''.join(f'<button type="button" aria-label="Photo {n + 1}"{" class=\"on\"" if n == 0 else ""}></button>' for n in range(len(slides)))
-    more = ''.join(tile(*PROJECTS[n]) for n in (1, 3, 5, 7))
-
-    def feat(f, alt, kind, title, desc, notes, glow):
-        ns = ''.join(f'<li>{H_ARROW}{n}</li>' for n in notes)
-        return f'''<article class="feat">
-      <button type="button" class="tile feat-shot"><span class="panel big {glow}"><span class="bar"><i></i><i></i><i></i><b>{title}</b></span><img src="assets/img/{f}" alt="{alt}" loading="lazy"></span></button>
-      <div class="feat-info">
-        <div><small>{kind}, Adelaide</small><h3>{title}</h3></div>
-        <div><p>{desc}</p><a class="tlink" href="/projects/">See all our work</a></div>
-        <ul class="hand notes">{ns}</ul>
-      </div>
-    </article>'''
-    return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f'''<main id="main">
+    cards = ''.join(f"""<li class="card"><a href="/services/#{i}"><span class="card-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n:02d}</b></span><small>{CATS[i]}</small><strong>{short}</strong><em>Explore service {I_ARROW}</em></a></li>""" for n, (i, short, t, img, alt, d, _) in enumerate(SERVICES, 1))
+    signs = ''.join(f'<li><span class="n">{n:02d}</span><div><h3>{t}</h3><p>{p}</p></div></li>' for n, (t, p) in enumerate(SIGNS, 1))
+    shots = ''.join(shot(*PROJECTS[n]) for n in (0, 1, 2, 3, 5, 7))
+    return head('Baba Bricklayer | Bricklaying Services in Adelaide', 'Adelaide bricklayers with 25+ years of experience. Brick repairs and restoration, garages, fences, retaining walls and brick removal. Call 0449 824 153 for a quote.') + header('home') + f"""<main id="main">
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-l">
-      <div class="hello"><span class="ava"><img src="assets/img/logo.png" alt="" width="360" height="181"></span><p class="hand"><span id="greet">G'day.</span> We're Baba Bricklayer. We've laid brick around Adelaide for 25+ years.</p></div>
-      <h1>Solid brickwork.<br><span class="ul">Built to last.{H_UNDER}</span></h1>
-      <p class="lede">Brick repairs, garages, fences and retaining walls for Adelaide homes and businesses.</p>
-      <div class="btns"><a class="btn btn-pri" href="/contact/">Request a quote {I_ARROW}</a><a class="btn btn-ghost" href="/projects/">See our work</a></div>
-      <p class="ask">What do you need done?</p>
-      <div class="chips">{chips}</div>
-    </div>
-    <div class="hero-r">
-      <p class="hand note-top">straight courses, tight joints {H_ARROW}</p>
-      <div class="panel big glow-o show">
-        <span class="bar"><i></i><i></i><i></i><b id="cap-top">Brick home with garage</b></span>
-        <div class="slides">{sl}</div>
-        <span class="pill">{I_BRICK}<span><b id="cap">Brick home with garage</b><small>Recent brickwork, Adelaide</small></span></span>
-      </div>
-      <figure class="pol hero-pol"><img src="assets/img/crew.jpg" alt="Three bricklayers in hi-vis laying a red brick wall"><figcaption class="hand">On site</figcaption></figure>
-      <div class="dots" role="group" aria-label="Choose a photo">{dots}</div>
-    </div>
+  <div class="hero-bg"><img src="assets/img/hero.jpg" alt="" width="1400" height="1050" fetchpriority="high"></div>
+  <div class="wrap hero-in">
+    <p class="label">Adelaide · Bricklaying and brick repairs</p>
+    <h1 class="h">Quality brickwork,<span>built to last.</span></h1>
+    <p class="hero-lede">New brickwork, repairs and restoration for Adelaide homes and businesses, from a team with more than 25 years on the trowel.</p>
+    <div class="hero-btns"><a class="btn btn-pri" href="/contact/">Request a quote {I_ARROW}</a><a class="tlink light" href="/projects/">See our work {I_ARROW}</a></div>
+  </div>
+  <div class="trust">
+    <ul class="wrap">
+      <li>{I_CHECK}25+ years of experience</li>
+      <li>{I_CHECK}800+ projects completed</li>
+      <li>{I_CHECK}Homes and businesses</li>
+      <li>{I_CHECK}Open Monday to Saturday</li>
+    </ul>
   </div>
 </section>
 
 <section class="sec" id="services">
   <div class="wrap">
-    <h2>Lay it. Repair it.<br>Remove it.</h2>
-    <p class="lede">If it is made of brick or block, we can help. Choose one job or combine several.</p>
-    <ul class="rows">{rows}</ul>
-    <p class="also-h">More ways we can help</p>
-    <p class="slash">New construction <i>/</i> Renovations and remodelling <i>/</i> Brick restoration <i>/</i> Residential <i>/</i> Commercial <i>/</i> Industrial</p>
+    <div class="head"><div><p class="label">What we do</p>{h2('Brickwork for', 'every kind of job.')}</div>
+      <div class="rail-nav"><button type="button" class="rail-prev" aria-label="Previous services">{I_ARROW}</button><button type="button" class="rail-next" aria-label="Next services">{I_ARROW}</button></div></div>
   </div>
+  <ul class="rail">{cards}</ul>
+  <div class="wrap"><p class="rail-foot">New construction, renovations and remodelling too. <a href="/services/">See all services</a></p></div>
 </section>
 
-<section class="sec" id="work">
-  <div class="wrap">
-    <h2>Brickwork that speaks<br>for itself.</h2>
-    <p class="lede">A few recent jobs. Select any photo to see it larger.</p>
-    {feat('svc-fences.jpg', 'Dark brick front fence with piers and steel infill panels', 'Brick fences', 'Brick and steel front fence', 'A front fence in dark brick with steel infill panels, giving the home privacy without closing it off from the street.', ['Piers set plumb and evenly spaced', 'Brick and steel working together', 'Privacy with street appeal'], 'glow-b')}
-    {feat('p5.jpg', 'Two-storey townhouses in red brick with cream panels', 'Face brickwork', 'Red brick townhouses', 'Two storeys of face brick with clean lines and consistent joints, from the ground to the roofline.', ['Straight courses over two storeys', 'Consistent mortar joints', 'Crisp corners and openings'], 'glow-o')}
-    <h3 class="sub-h">More recent work</h3>
-    <ul class="tiles two">{more}</ul>
-    <p class="center"><a class="btn btn-ghost" href="/projects/">See all our work {I_ARROW}</a></p>
-  </div>
-</section>
-
-{cream_about()}
-
-<section class="sec check">
-  <div class="wrap check-grid">
-    <div>
-      <h2>Five signs your brickwork needs attention.</h2>
-      <p class="lede">Tick the ones that sound familiar and see where you stand.</p>
-      <div class="score"><strong><span id="score">0</span><small>of 5</small></strong><p id="score-msg">Tick anything that sounds familiar.</p></div>
-      <a class="btn btn-pri" href="/contact/?job={quote('Brick repairs and restoration')}">Request a quote {I_ARROW}</a>
+<section class="sec stone">
+  <div class="wrap signs-grid">
+    <div class="signs-l">
+      <p class="label">Know the signs</p>
+      {h2('Small cracks.', 'Worth a closer look.')}
+      <p class="lede">Brickwork usually gives a warning before it becomes a bigger job. These are the common ones.</p>
+      <img src="assets/img/svc-repairs.jpg" alt="Trowel repointing mortar joints in a red brick wall" loading="lazy">
+      <p class="fine">A general guide only. Have a bricklayer look at the wall before deciding on repairs.</p>
     </div>
-    <ul class="ticks">
-      <li><label><input type="checkbox"><span>Cracks in the bricks or the mortar</span></label></li>
-      <li><label><input type="checkbox"><span>Mortar crumbling or missing from the joints</span></label></li>
-      <li><label><input type="checkbox"><span>Loose or shifting bricks</span></label></li>
-      <li><label><input type="checkbox"><span>A wall that leans or bulges</span></label></li>
-      <li><label><input type="checkbox"><span>Damp patches or white salt stains</span></label></li>
-    </ul>
+    <div>
+      <ol class="signs">{signs}</ol>
+      <a class="btn btn-dark" href="/contact/?job={quote('Brick repairs and restoration')}">Have it looked at {I_ARROW}</a>
+    </div>
   </div>
 </section>
 
+<section class="sec dark" id="work">
+  <div class="wrap">
+    <div class="head"><div><p class="label">Our work</p>{h2('Brickwork worth', 'a second look.')}</div><p class="lede">Residential brickwork in face brick, block and rendered finishes around Adelaide.</p></div>
+    <ul class="shots">{shots}</ul>
+    <p class="after"><a class="tlink light" href="/projects/">View all projects {I_ARROW}</a></p>
+  </div>
+</section>
+
+{about_block()}
 {process_section()}
-{faq_section()}
+{why_section()}
+{faq_section().replace('<section class="sec" id="faq">', '<section class="sec stone" id="faq">')}
 {quote_section('h')}
 </main>
-''' + footer()
+""" + footer()
 
 
 def page_services():
-    rows = ''.join(f'''<article class="svc" id="{i}">
-  <span class="panel big {'glow-o' if n % 2 == 0 else 'glow-b'}"><span class="bar"><i></i><i></i><i></i><b>{t}</b></span><img src="assets/img/{img}" alt="{alt}" loading="lazy"></span>
-  <div><h2>{t}.</h2><p>{d}</p><ul class="q-list">{''.join(f'<li>{I_CHECK}<span>{b}</span></li>' for b in bl)}</ul><a class="btn btn-pri" href="/contact/?job={quote(JOBS[n] if n < 6 else JOBS[-1])}">Request a quote {I_ARROW}</a></div>
-</article>''' for n, (i, short, t, img, alt, d, bl) in enumerate(SERVICES))
-    return head('Bricklaying Services in Adelaide | Baba Bricklayer', 'Brick repairs and restoration, brick garages, fences, retaining walls, brick removal and brickwork maintenance across Adelaide.') + header('services') + f'''<main id="main">
-{page_head('Lay it. Repair it. Remove it.', 'New construction, renovations, repairs and restoration for residential, commercial and industrial properties across Adelaide.', 'Services')}
-<section class="sec tight"><div class="wrap svc-list">{rows}</div></section>
-{why_section()}
-{quote_section('s', 'Tell us about your job.')}
+    rows = ''.join(f"""<article class="svc" id="{i}">
+  <div class="svc-img"><img src="assets/img/{img}" alt="{alt}" loading="lazy"><b>{n + 1:02d}</b></div>
+  <div><p class="label">{CATS[i]}</p><h2 class="h sm">{t}</h2><p>{d}</p><ul class="ticks">{''.join(f'<li>{I_CHECK}{b}</li>' for b in bl)}</ul><a class="btn btn-pri" href="/contact/?job={quote(JOBS[n])}">Request a quote {I_ARROW}</a></div>
+</article>""" for n, (i, short, t, img, alt, d, bl) in enumerate(SERVICES))
+    return head('Bricklaying Services in Adelaide | Baba Bricklayer', 'Brick repairs and restoration, brick garages, fences, retaining walls, brick removal and brickwork maintenance across Adelaide.') + header('services') + f"""<main id="main">
+{page_head('Brickwork for', 'every kind of job.', 'New construction, renovations, repairs and restoration for residential, commercial and industrial properties across Adelaide.', 'Services', 'svc-fences.jpg')}
+<section class="sec"><div class="wrap svc-list">{rows}</div></section>
+{process_section()}
+{quote_section('s')}
 </main>
-''' + footer()
+""" + footer()
 
 
 def page_projects():
-    tiles = ''.join(tile(*p) for p in PROJECTS)
-    return head('Our Work | Baba Bricklayer, Adelaide', 'Photos of residential brickwork in face brick, block and rendered finishes by Baba Bricklayer, Adelaide.') + header('projects') + f'''<main id="main">
-{page_head('Brickwork that speaks for itself.', 'Residential brickwork in face brick, block and rendered finishes. Select a photo to see it larger.', 'Our work')}
-<section class="sec tight"><div class="wrap"><ul class="tiles three">{tiles}</ul></div></section>
-{quote_section('p', 'Have a job like one of these?')}
+    shots = ''.join(shot(*p) for p in PROJECTS)
+    return head('Our Work | Baba Bricklayer, Adelaide', 'Photos of residential brickwork in face brick, block and rendered finishes by Baba Bricklayer, Adelaide.') + header('projects') + f"""<main id="main">
+{page_head('Brickwork worth', 'a second look.', 'Residential brickwork in face brick, block and rendered finishes. Select a photo to see it larger.', 'Our work', 'p5.jpg')}
+<section class="sec"><div class="wrap"><ul class="shots light">{shots}</ul></div></section>
+{quote_section('p', 'Have a job like', 'one of these?')}
 </main>
-''' + footer()
+""" + footer()
 
 
 def page_about():
-    return head('About Us | Baba Bricklayer, Adelaide', 'Baba Bricklayer has more than 25 years of bricklaying experience and over 800 completed projects across Adelaide.') + header('about') + f'''<main id="main">
-{page_head("Adelaide's bricklayers for 25+ years.", 'Skill, reliability and a team that takes your project as seriously as you do.', 'About')}
-{cream_about(False)}
-<section class="sec">
+    return head('About Us | Baba Bricklayer, Adelaide', 'Baba Bricklayer has more than 25 years of bricklaying experience and over 800 completed projects across Adelaide.') + header('about') + f"""<main id="main">
+{page_head("Adelaide's bricklayers", 'for more than 25 years.', 'Skill, reliability and a team that takes your project as seriously as you do.', 'About', 'crew.jpg')}
+{about_block(False)}
+<section class="sec stone">
   <div class="wrap two-col">
-    <div><h2>Committed to keeping people safe.</h2><p class="lede">The wellbeing of our team and our clients comes first. We keep rigorous safety standards and procedures on every project, so your property is protected and the site stays secure at every stage of the work.</p></div>
-    <div><h2>Careful planning, clean execution.</h2><p class="lede">We follow industry best practice with precision. From planning to the last course of bricks, every project reflects our commitment to quality, safety and professionalism.</p></div>
+    <div><p class="label">Health and safety</p><h2 class="h sm">Committed to keeping people safe.</h2><p>The wellbeing of our team and our clients comes first. We keep rigorous safety standards and procedures on every project, so your property is protected and the site stays secure at every stage of the work.</p></div>
+    <div><p class="label">Best practice</p><h2 class="h sm">Careful planning, clean execution.</h2><p>We follow industry best practice with precision. From planning to the last course of bricks, every project reflects our commitment to quality, safety and professionalism.</p></div>
   </div>
 </section>
 {why_section()}
 {quote_section('a')}
 </main>
-''' + footer()
+""" + footer()
 
 
 def page_contact():
-    return head('Contact Us | Baba Bricklayer, Adelaide', 'Request a bricklaying quote in Adelaide. Call 0449 824 153 or send the quote form.') + header('contact') + f'''<main id="main">
-{quote_section('c', 'What would you like built?').replace('<section class="sec quote" id="quote">', '<section class="sec quote first" id="quote">').replace('<h2>', '<h1>', 1).replace('</h2>', '</h1>', 1)}
+    return head('Contact Us | Baba Bricklayer, Adelaide', 'Request a bricklaying quote in Adelaide. Call 0449 824 153 or send the quote form.') + header('contact') + f"""<main id="main">
+{quote_section('c', 'Tell us about', 'your job.', 'h1').replace('<section class="quote" id="quote">', '<section class="quote first" id="quote">')}
 {faq_section()}
 </main>
-''' + footer()
+""" + footer()
 
 
 PAGES = {'index.html': page_home, 'services.html': page_services, 'projects.html': page_projects, 'about.html': page_about, 'contact.html': page_contact}
