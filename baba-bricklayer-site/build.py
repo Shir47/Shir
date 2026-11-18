@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '12'
+V = '13'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -15,7 +15,7 @@ LD = json.dumps({
  "areaServed": {"@type": "City", "name": "Adelaide"},
  "address": {"@type": "PostalAddress", "addressLocality": "Adelaide", "addressRegion": "SA", "addressCountry": "AU"},
  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "17:30"}],
- "sameAs": ["https://share.google/AZMJVZAH3gTjqLBHK"],
+ "sameAs": ["https://share.google/kLl9U1wGrtvDUYtTx"],
  "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Bricklaying services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in ["Brick repairs and restorations", "Brick garages", "Brick fences", "Brick and block retaining walls", "Brick removal", "Brickwork maintenance"]]},
 }, separators=(',', ':'))
 
@@ -26,7 +26,7 @@ def faq_ld(items):
     return '<script type="application/ld+json">' + json.dumps(data, separators=(',', ':')) + '</script>'
 
 
-GOOGLE = 'https://share.google/AZMJVZAH3gTjqLBHK'
+GOOGLE = 'https://share.google/kLl9U1wGrtvDUYtTx'
 ABN = '32 649 863 838'
 I_ARROW = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 I_PHONE = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
