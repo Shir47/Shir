@@ -211,6 +211,23 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
 .form-msg.err{color:#b3261e}
 .form-msg.ok{color:#166534}
 
+/* builders */
+.builders{background:var(--stone)}
+.builders-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,90px);align-items:center}
+.builders-grid .h+p{margin-top:20px}
+.builders-grid p+p{margin-top:14px}
+.builders-grid .btn{margin-top:28px}
+.b-cards{display:grid;gap:14px}
+.b-cards li{display:flex;gap:18px;align-items:flex-start;padding:24px;background:var(--white);border-radius:var(--r)}
+.b-cards li>.i{margin-top:3px;font-size:1.3rem;color:var(--clay)}
+.b-cards p{margin-top:6px;font-size:15px}
+.b-main{align-items:center;padding:28px 26px;border-left:4px solid var(--orange)}
+.b-main strong{flex:none;display:grid;place-items:center;width:104px;height:104px;border-radius:50%;background:var(--char);color:var(--white);font:800 3rem/.9 var(--head);letter-spacing:-.04em;text-align:center}
+.b-main strong span{font:inherit}
+.b-main strong small{display:block;margin-top:-18px;font:600 10.500px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:#ffb27a}
+.b-main h3{font-size:1.5rem}
+.b-main .tlink{margin-top:12px;font-size:14.500px}
+
 /* reviews band */
 .reviews{padding:clamp(48px,6vw,84px) 0;border-block:1px solid var(--line)}
 .reviews-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,90px);align-items:center}
@@ -299,7 +316,7 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .nav a::after{display:none}
   .hd-in{gap:10px;min-height:66px}
   .brand img{width:58px}
-  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.reviews-in{grid-template-columns:minmax(0,1fr)}
+  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.reviews-in,.builders-grid{grid-template-columns:minmax(0,1fr)}
   .svc:nth-child(even) .svc-img{order:0}
   .trust ul{grid-template-columns:1fr 1fr;justify-content:start}
   .about-imgs{max-width:520px}
@@ -332,6 +349,8 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .steps p,.why p{grid-column:2}
   .steps li{border-top:0;border-left:3px solid var(--orange)}
   .reviews-btns .btn{flex:1 1 100%}
+  .b-main{flex-direction:column;align-items:flex-start}
+  .b-main strong{width:88px;height:88px;font-size:2.6rem}
   .filter{flex-wrap:nowrap;overflow-x:auto;margin-inline:-18px;padding-inline:18px;scrollbar-width:none}
   .filter::-webkit-scrollbar{display:none}
   .filter button{flex:none}

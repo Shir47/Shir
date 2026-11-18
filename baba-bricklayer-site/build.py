@@ -4,7 +4,7 @@ import os
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '9'
+V = '10'
 
 LD = '{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Baba Bricklayer","description":"Bricklaying services in Adelaide, South Australia.","legalName":"Baba Bricklaying Pty Ltd","taxID":"32649863838","telephone":"+61449824153","email":"bababricklayer@gmail.com","areaServed":{"@type":"City","name":"Adelaide"},"address":{"@type":"PostalAddress","addressLocality":"Adelaide","addressRegion":"SA","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"17:30"}]}'
 
@@ -67,6 +67,7 @@ FAQS = [
  ('How do you keep the site safe?', 'We follow strict safety procedures, inspect the site regularly, keep the team trained and use well-maintained equipment, so the site stays safe for everyone on and around it.'),
  ('Can I see examples or references?', 'Yes. You can see photos on <a href="/projects/">our work page</a>, and we can provide references when you ask.'),
  ('How long will my job take?', 'It depends on the size and complexity of the job. We give you an estimate and a timeline at the first consultation, then work to finish on time without cutting corners.'),
+ ('Do you work with builders?', 'Yes. We have been bricklayers for Fairmont Homes for the past 7 years and we work with other Adelaide builders too. If you are a builder, <a href="/contact/">get in touch</a> and tell us about your next job.'),
  ('How do I get a quote?', 'Fill in the <a href="/contact/">quote form</a> or call us on 0449 824 153. We will talk the job through and answer any questions.'),
 ]
 
@@ -216,6 +217,25 @@ def reviews_section():
 </section>"""
 
 
+def builders_section():
+    return f"""<section class="sec builders" id="builders">
+  <div class="wrap builders-grid">
+    <div>
+      <p class="label">Builders we work with</p>
+      {h2('Trusted on site', "by Adelaide's home builders.")}
+      <p>Alongside our work for homeowners, we lay brick for home builders. For the past 7 years we have been bricklayers for Fairmont Homes, and we work with a range of other builders across Adelaide as well.</p>
+      <p>Builders come back to us for the same reasons homeowners do: we turn up when we say we will, we work safely, and the walls are straight.</p>
+      <a class="btn btn-dark" href="/contact/?job={quote('New construction or renovation')}">Builders, talk to us {I_ARROW}</a>
+    </div>
+    <ul class="b-cards">
+      <li class="b-main"><strong><span data-count="7">7</span><small>years</small></strong><div><h3>Fairmont Homes</h3><p>Bricklaying for one of South Australia's home builders, year after year.</p><a class="tlink" href="https://fairmonthomes.com.au/" target="_blank" rel="noopener">fairmonthomes.com.au {I_ARROW}</a></div></li>
+      <li>{I_CHECK}<div><h3>Other Adelaide builders</h3><p>We work with different builders on new homes and developments.</p></div></li>
+      <li>{I_CHECK}<div><h3>Homeowners and businesses</h3><p>The same team and the same standard on repairs, fences and one-off jobs.</p></div></li>
+    </ul>
+  </div>
+</section>"""
+
+
 def faq_section():
     items = ''.join(f'<details{" open" if n == 0 else ""}><summary>{q}</summary><p>{a}</p></details>' for n, (q, a) in enumerate(FAQS))
     return f"""<section class="sec" id="faq">
@@ -306,7 +326,7 @@ def page_home():
     <ul class="wrap">
       <li>{I_CHECK}25+ years of experience</li>
       <li>{I_CHECK}800+ projects completed</li>
-      <li>{I_CHECK}Homes and businesses</li>
+      <li>{I_CHECK}Trusted by home builders</li>
       <li>{I_CHECK}Open Monday to Saturday</li>
     </ul>
   </div>
@@ -346,6 +366,7 @@ def page_home():
 </section>
 
 {about_block()}
+{builders_section()}
 {reviews_section()}
 {process_section()}
 {why_section()}
@@ -386,6 +407,7 @@ def page_about():
     return head('About Us | Baba Bricklayer, Adelaide', 'Baba Bricklayer has more than 25 years of bricklaying experience and over 800 completed projects across Adelaide.') + header('about') + f"""<main id="main">
 {page_head("Adelaide's bricklayers", 'for more than 25 years.', 'Skill, reliability and a team that takes your project as seriously as you do.', 'About', 'crew.jpg')}
 {about_block(False)}
+{builders_section()}
 {reviews_section()}
 <section class="sec stone">
   <div class="wrap two-col">
