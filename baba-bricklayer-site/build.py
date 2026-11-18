@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '13'
+V = '14'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -275,14 +275,27 @@ def quote_section(pid, a='Tell us about', b='your job.', tag='h2', job=None):
 </section>"""
 
 
+STAR = '<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6l-5.900 3.200 1.200-6.600L2.500 9.600l6.600-.900z" fill="currentColor"/></svg>'
+# Copied word for word from the Google Business page (November 2026). True = Google showed more text behind "More".
+REVIEWS = [
+ ('Salman Akhtar', 'Excellent quality brickwork and very professional service. Great communication from start to finish. Highly recommend.', False),
+ ('Syed Arshad Ahmed', 'I was in contact with Ahmed, He and his team got the most professional work culture. They did their job in a very safe manner and no compromise on quality. The guys were efficient and completed the work as promised.', True),
+ ('A B', 'Ahmad was very informative, communicated promptly and very professional. He was quick and careful, which we appreciated it so much.', False),
+ ('Shaz Dave', 'Baba Bricklayer. Extremely happy with his communication, ethics and workmanship. He returned my call asap, organised quote and completed job within the week. He could have done it earlier but was done on Saturday to suits us.', True),
+]
+
+
 def reviews_section():
-    return f"""<section class="reviews">
-  <div class="wrap reviews-in">
-    <div><p class="label">Reviews</p>{h2("Don't take our word for it.", 'Read what our customers say.')}</div>
-    <div class="reviews-r">
-      <p>Our reviews are on Google, written by the people we have worked for. Have a read before you get in touch, and if we have done a job for you, we would love to hear how it went.</p>
-      <div class="reviews-btns"><a class="btn btn-dark" href="{GOOGLE}" target="_blank" rel="noopener">Read our Google reviews {I_ARROW}</a><a class="tlink" href="{GOOGLE}" target="_blank" rel="noopener">Leave a review {I_ARROW}</a></div>
+    stars = STAR * 5
+    cards = ''.join(f"""<li class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars">{stars}</span><blockquote>{t}{' …' if more else ''}</blockquote><p class="rev-by"><span class="rev-av" aria-hidden="true">{n[0]}</span><span><b>{n}</b><small>Google review</small></span></p></li>""" for n, t, more in REVIEWS)
+    return f"""<section class="sec reviews" id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="label">Reviews</p>{h2("Don't take our word for it.", 'Read what our customers say.')}</div>
+      <div class="score"><strong>5.0</strong><div><span class="stars" role="img" aria-label="5 out of 5 stars">{stars}</span><p>from 5 Google reviews</p></div></div>
     </div>
+    <ul class="revs">{cards}</ul>
+    <div class="reviews-btns"><a class="btn btn-dark" href="{GOOGLE}" target="_blank" rel="noopener">Read all reviews on Google {I_ARROW}</a><a class="tlink" href="{GOOGLE}" target="_blank" rel="noopener">Leave a review {I_ARROW}</a><p class="fine">Rating and reviews as shown on Google, November 2026.</p></div>
   </div>
 </section>"""
 
@@ -397,7 +410,7 @@ def page_home():
       <li>{I_CHECK}25+ years of experience</li>
       <li>{I_CHECK}800+ projects completed</li>
       <li>{I_CHECK}Trusted by home builders</li>
-      <li>{I_CHECK}Open Monday to Saturday</li>
+      <li>{I_CHECK}5.0 stars on Google</li>
     </ul>
   </div>
 </section>

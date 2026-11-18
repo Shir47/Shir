@@ -255,11 +255,23 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
 .b-main h3{font-size:1.5rem}
 .b-main .tlink{margin-top:12px;font-size:14.500px}
 
-/* reviews band */
-.reviews{padding:clamp(48px,6vw,84px) 0;border-block:1px solid var(--line)}
-.reviews-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,90px);align-items:center}
-.reviews .h{font-size:clamp(1.9rem,3.4vw,2.7rem)}
-.reviews-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:24px}
+/* reviews */
+.reviews{border-top:1px solid var(--line)}
+.stars{display:inline-flex;gap:2px;color:#f5a623;font-size:1.15rem}
+.star{width:1em;height:1em}
+.score{display:flex;align-items:center;gap:16px}
+.score strong{font:800 clamp(3rem,5vw,4.2rem)/1 var(--head);letter-spacing:-.04em;color:var(--ink)}
+.score .stars{font-size:1.5rem}
+.score p{margin-top:2px;font-size:14.500px;font-weight:500;color:var(--ink)}
+.revs{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,24px)}
+.rev{display:flex;flex-direction:column;padding:clamp(22px,2.6vw,32px);background:var(--stone);border-radius:var(--r)}
+.rev blockquote{margin:14px 0 22px;font-size:1.06rem;line-height:1.6;color:var(--ink)}
+.rev-by{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rev-av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--char);color:var(--white);font:700 1rem/1 var(--head)}
+.rev-by b{display:block;font:700 1rem/1.2 var(--head);color:var(--ink)}
+.rev-by small{font-size:13px;color:var(--mute)}
+.reviews-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(24px,3vw,36px)}
+.reviews-btns .fine{margin:0 0 0 auto}
 
 /* project filter */
 .filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(22px,3vw,34px)}
@@ -343,7 +355,7 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .nav a::after{display:none}
   .hd-in{gap:10px;min-height:66px}
   .brand img{width:58px}
-  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.reviews-in,.builders-grid,.inc-grid{grid-template-columns:minmax(0,1fr)}
+  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.builders-grid,.inc-grid{grid-template-columns:minmax(0,1fr)}
   .svc:nth-child(even) .svc-img{order:0}
   .trust ul{grid-template-columns:1fr 1fr;justify-content:start}
   .about-imgs{max-width:520px}
@@ -378,6 +390,10 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .steps p,.why p{grid-column:2}
   .steps li{border-top:0;border-left:3px solid var(--orange)}
   .reviews-btns .btn{flex:1 1 100%}
+  .revs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:0 18px 6px;scrollbar-width:none}
+  .revs::-webkit-scrollbar{display:none}
+  .rev{flex:none;width:82vw;scroll-snap-align:center}
+  .reviews-btns .fine{margin:0}
   .b-main{flex-direction:column;align-items:flex-start}
   .b-main strong{width:88px;height:88px;font-size:2.6rem}
   .filter{flex-wrap:nowrap;overflow-x:auto;margin-inline:-18px;padding-inline:18px;scrollbar-width:none}
