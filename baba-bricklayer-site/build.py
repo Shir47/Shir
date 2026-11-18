@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '15'
+V = '16'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -15,7 +15,7 @@ LD = json.dumps({
  "areaServed": [{"@type": "City", "name": "Adelaide"}, {"@type": "AdministrativeArea", "name": "Northern suburbs of Adelaide"}],
  "address": {"@type": "PostalAddress", "addressLocality": "Adelaide", "addressRegion": "SA", "addressCountry": "AU"},
  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "17:30"}],
- "sameAs": ["https://share.google/kLl9U1wGrtvDUYtTx"],
+ "sameAs": ["https://share.google/kLl9U1wGrtvDUYtTx", "https://www.tiktok.com/@_ahmad.313"],
  "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Bricklaying services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n}} for n in ["Brick repairs and restorations", "Brick garages", "Brick fences", "Brick and block retaining walls", "Brick removal", "Brickwork maintenance"]]},
 }, separators=(',', ':'))
 
@@ -28,6 +28,7 @@ def faq_ld(items):
 
 GOOGLE = 'https://share.google/kLl9U1wGrtvDUYtTx'
 ABN = '32 649 863 838'
+TIKTOK = 'https://www.tiktok.com/@_ahmad.313'
 I_ARROW = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 I_PHONE = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
 I_MAIL = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
@@ -211,7 +212,7 @@ def footer():
       <p>Bricklaying, brick repairs and restoration for Adelaide homes and businesses.</p>
     </div>
     <div><h2>Services</h2><ul>{svc}</ul></div>
-    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="{GOOGLE}" target="_blank" rel="noopener">Google reviews</a></li></ul></div>
+    <div><h2>Company</h2><ul><li><a href="/projects/">Our work</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="{GOOGLE}" target="_blank" rel="noopener">Google reviews</a></li><li><a href="{TIKTOK}" target="_blank" rel="noopener">TikTok</a></li></ul></div>
     <div><h2>Contact</h2><ul class="ft-contact">
       <li><a href="tel:+61449824153">0449 824 153</a></li>
       <li><a href="tel:+61424767153">0424 767 153</a></li>
