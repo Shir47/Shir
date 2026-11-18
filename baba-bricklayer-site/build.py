@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '17'
+V = '18'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -344,6 +344,24 @@ def areas_section():
 </section>"""
 
 
+I_TIKTOK = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8a4.300 4.300 0 0 1-1-2.800h-3.100v12.400a2.600 2.600 0 1 1-2.600-2.600c.3 0 .5 0 .8.100V9.700a5.700 5.700 0 1 0 4.900 5.700V9a7.300 7.300 0 0 0 4.300 1.400V7.300a4.300 4.300 0 0 1-3.300-1.500z" fill="currentColor"/></svg>'
+
+
+def tiktok_section():
+    return f"""<section class="tt">
+  <div class="wrap tt-in">
+    <span class="tt-ic">{I_TIKTOK}</span>
+    <div class="tt-text">
+      <p class="label">On TikTok</p>
+      <h2 class="h sm">See us on site.</h2>
+      <p>Baba Bricklayer is on TikTok as <b>@_ahmad.313</b>. Follow along for videos from the team.</p>
+    </div>
+    <ul class="tt-stats"><li><strong>40+</strong>videos</li><li><strong>500+</strong>followers</li></ul>
+    <a class="btn btn-dark" href="{TIKTOK}" target="_blank" rel="noopener">Watch on TikTok {I_ARROW}</a>
+  </div>
+</section>"""
+
+
 def faq_section():
     items = ''.join(f'<details{" open" if n == 0 else ""}><summary>{q}</summary><p>{a}</p></details>' for n, (q, a) in enumerate(FAQS))
     return f"""<section class="sec" id="faq">
@@ -472,6 +490,7 @@ def page_home():
     <p class="after"><a class="tlink light" href="/projects/">View all projects {I_ARROW}</a></p>
   </div>
 </section>
+{tiktok_section()}
 
 {about_block()}
 {builders_section()}
@@ -507,6 +526,7 @@ def page_projects():
   <div class="filter" role="group" aria-label="Filter projects"><button type="button" class="on" data-f="">All work</button><button type="button" data-f="Face brickwork">Face brickwork</button><button type="button" data-f="Brick and render">Brick and render</button><button type="button" data-f="Garages">Garages</button><button type="button" data-f="Fences and piers">Fences and piers</button></div>
   <ul class="shots light">{shots}</ul>
 </div></section>
+{tiktok_section()}
 {quote_section('p', 'Have a job like', 'one of these?')}
 </main>
 """ + footer()

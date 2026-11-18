@@ -255,6 +255,17 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
 .b-main h3{font-size:1.5rem}
 .b-main .tlink{margin-top:12px;font-size:14.500px}
 
+/* tiktok band */
+.tt{padding:clamp(34px,4.5vw,56px) 0;background:var(--stone);border-bottom:1px solid var(--line)}
+.tt-in{display:flex;align-items:center;gap:clamp(18px,3vw,40px)}
+.tt-ic{display:grid;place-items:center;flex:none;width:72px;height:72px;border-radius:50%;background:var(--char);color:var(--white);font-size:2rem}
+.tt-text{margin-right:auto}
+.tt-text .label{margin-bottom:8px}
+.tt-text>p:last-child{margin-top:8px;max-width:30em;font-size:15.500px}
+.tt-text b{color:var(--ink)}
+.tt-stats{display:flex;gap:clamp(18px,3vw,36px);font-size:14px;color:var(--mute)}
+.tt-stats strong{display:block;font:800 1.9rem/1 var(--head);letter-spacing:-.03em;color:var(--ink)}
+
 /* service area */
 .areas{border-top:1px solid var(--line)}
 .areas-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,90px);align-items:start}
@@ -403,6 +414,11 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .steps p,.why p{grid-column:2}
   .steps li{border-top:0;border-left:3px solid var(--orange)}
   .reviews-btns .btn{flex:1 1 100%}
+  .tt-in{flex-wrap:wrap;gap:16px 18px}
+  .tt-ic{width:56px;height:56px;font-size:1.6rem}
+  .tt-text{flex:1 1 60%;margin-right:0}
+  .tt-stats{flex:1 1 100%}
+  .tt .btn{flex:1 1 100%}
   .revs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:0 18px 6px;scrollbar-width:none}
   .revs::-webkit-scrollbar{display:none}
   .rev{flex:none;width:82vw;scroll-snap-align:center}
