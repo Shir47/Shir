@@ -30,7 +30,7 @@
   }
 
   /* reveal on scroll + counters */
-  $$('.head,.card,.signs-l,.signs li,.shots li,.about-grid>div,.steps li,.why li,.faq-grid>div,.quote-box,.svc>*,.two-col>div,.rail-foot,.after,.rev,.score,.builders-grid>div,.b-cards li,.inc-grid>div').forEach(function (el) { el.classList.add('rv'); });
+  $$('.head,.card,.signs-l,.signs li,.shots li,.about-grid>div,.steps li,.why li,.faq-grid>div,.quote-box,.svc>*,.two-col>div,.rail-foot,.after,.rev,.score,.areas-grid>div,.builders-grid>div,.b-cards li,.inc-grid>div').forEach(function (el) { el.classList.add('rv'); });
   var count = function (el) {
     var to = +el.getAttribute('data-count'), s = performance.now();
     (function f(t) { var p = Math.min(1, (t - s) / 1600); el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * to); if (p < 1) requestAnimationFrame(f); })(s);

@@ -4,7 +4,7 @@ import os, re, json
 from urllib.parse import quote
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
-V = '14'
+V = '15'
 
 LD = json.dumps({
  "@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "{{home}}/#business",
@@ -12,7 +12,7 @@ LD = json.dumps({
  "description": "Bricklaying, brick repairs and restoration for homes and businesses in Adelaide, South Australia.",
  "url": "{{home}}/", "image": "assets/img/share.jpg", "logo": "assets/img/icon-512.png",
  "telephone": "+61449824153", "email": "bababricklayer@gmail.com",
- "areaServed": {"@type": "City", "name": "Adelaide"},
+ "areaServed": [{"@type": "City", "name": "Adelaide"}, {"@type": "AdministrativeArea", "name": "Northern suburbs of Adelaide"}],
  "address": {"@type": "PostalAddress", "addressLocality": "Adelaide", "addressRegion": "SA", "addressCountry": "AU"},
  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "17:30"}],
  "sameAs": ["https://share.google/kLl9U1wGrtvDUYtTx"],
@@ -86,6 +86,7 @@ FAQS = [
  ('Can I see examples or references?', 'Yes. You can see photos on <a href="/projects/">our work page</a>, and we can provide references when you ask.'),
  ('How long will my job take?', 'It depends on the size and complexity of the job. We give you an estimate and a timeline at the first consultation, then work to finish on time without cutting corners.'),
  ('Do you work with builders?', 'Yes. We have been bricklayers for Fairmont Homes for the past 7 years and we work with other Adelaide builders too. If you are a builder, <a href="/contact/">get in touch</a> and tell us about your next job.'),
+ ('Which areas do you cover?', 'Every suburb within about 20 km of Adelaide, and all of the northern suburbs, including Salisbury, Elizabeth, Mawson Lakes, Modbury, Golden Grove and Gawler. If you are not sure, call us and ask.'),
  ('How do I get a quote?', 'Fill in the <a href="/contact/">quote form</a> or call us on 0449 824 153. We will talk the job through and answer any questions.'),
 ]
 
@@ -265,7 +266,7 @@ def quote_section(pid, a='Tell us about', b='your job.', tag='h2', job=None):
           <li>{I_PHONE}<span><small>Call us</small><a href="tel:+61449824153">0449 824 153</a><a href="tel:+61424767153">0424 767 153</a></span></li>
           <li>{I_MAIL}<span><small>Email</small><a href="mailto:bababricklayer@gmail.com">bababricklayer@gmail.com</a></span></li>
           <li>{I_CLOCK}<span><small>Hours</small>Monday to Saturday, 7:00 am to 5:30 pm</span></li>
-          <li>{I_PIN}<span><small>Service area</small>Adelaide, South Australia</span></li>
+          <li>{I_PIN}<span><small>Service area</small>Within about 20 km of Adelaide, and all northern suburbs</span></li>
           <li>{I_CHECK}<span><small>ABN</small>{ABN}</span></li>
         </ul>
       </div>
@@ -315,6 +316,29 @@ def builders_section():
       <li>{I_CHECK}<div><h3>Other Adelaide builders</h3><p>We work with different builders on new homes and developments.</p></div></li>
       <li>{I_CHECK}<div><h3>Homeowners and businesses</h3><p>The same team and the same standard on repairs, fences and one-off jobs.</p></div></li>
     </ul>
+  </div>
+</section>"""
+
+
+NORTH = ['Salisbury', 'Elizabeth', 'Mawson Lakes', 'Parafield Gardens', 'Paralowie', 'Para Hills', 'Ingle Farm', 'Pooraka', 'Modbury', 'Golden Grove', 'Tea Tree Gully', 'Munno Para', 'Smithfield', 'Craigmore', 'Angle Vale', 'Virginia', 'Gawler']
+METRO = ['Adelaide CBD', 'North Adelaide', 'Prospect', 'Enfield', 'Norwood', 'Campbelltown', 'Burnside', 'Unley', 'Mitcham', 'Marion', 'Glenelg', 'Henley Beach', 'West Lakes', 'Port Adelaide']
+
+
+def areas_section():
+    north = ''.join(f'<li>{x}</li>' for x in NORTH)
+    metro = ''.join(f'<li>{x}</li>' for x in METRO)
+    return f"""<section class="sec areas" id="areas">
+  <div class="wrap areas-grid">
+    <div>
+      <p class="label">Where we work</p>
+      {h2('Across Adelaide,', 'and all through the north.')}
+      <p>We work in every suburb within about 20 km of the city, and right across Adelaide's northern suburbs.</p>
+      <p class="areas-note">{I_PIN}<span>Not sure if we come to you? Call <a href="tel:+61449824153">0449 824 153</a> and ask.</span></p>
+    </div>
+    <div class="areas-lists">
+      <div><h3>Northern suburbs</h3><ul class="chips">{north}</ul><p class="fine">and every northern suburb in between.</p></div>
+      <div><h3>Around Adelaide</h3><ul class="chips">{metro}</ul><p class="fine">and all suburbs within about 20 km of the city.</p></div>
+    </div>
   </div>
 </section>"""
 
@@ -453,6 +477,7 @@ def page_home():
 {reviews_section()}
 {process_section()}
 {why_section()}
+{areas_section()}
 {faq_section().replace('<section class="sec" id="faq">', '<section class="sec stone" id="faq">')}
 {quote_section('h')}
 </main>

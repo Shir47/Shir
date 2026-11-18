@@ -255,6 +255,19 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
 .b-main h3{font-size:1.5rem}
 .b-main .tlink{margin-top:12px;font-size:14.500px}
 
+/* service area */
+.areas{border-top:1px solid var(--line)}
+.areas-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,90px);align-items:start}
+.areas-grid .h+p{margin-top:20px;max-width:28em}
+.areas-note{display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-weight:500;color:var(--ink)}
+.areas-note .i{margin-top:4px;color:var(--clay)}
+.areas-note a{color:var(--clay);font-weight:600;text-underline-offset:4px}
+.areas-lists{display:grid;gap:30px}
+.areas-lists h3{margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--stone);font-size:14.500px;font-weight:500;color:var(--ink)}
+.areas-lists .fine{margin-top:12px}
+
 /* reviews */
 .reviews{border-top:1px solid var(--line)}
 .stars{display:inline-flex;gap:2px;color:#f5a623;font-size:1.15rem}
@@ -355,7 +368,7 @@ h3{font:700 1.2rem/1.25 var(--head);letter-spacing:-.015em;color:var(--ink)}
   .nav a::after{display:none}
   .hd-in{gap:10px;min-height:66px}
   .brand img{width:58px}
-  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.builders-grid,.inc-grid{grid-template-columns:minmax(0,1fr)}
+  .signs-grid,.about-grid,.faq-grid,.quote-box,.svc,.two-col,.builders-grid,.inc-grid,.areas-grid{grid-template-columns:minmax(0,1fr)}
   .svc:nth-child(even) .svc-img{order:0}
   .trust ul{grid-template-columns:1fr 1fr;justify-content:start}
   .about-imgs{max-width:520px}
