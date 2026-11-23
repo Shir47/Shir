@@ -10,3 +10,7 @@ For any website, landing page, UI, or frontend design work in this repo, use thi
 4. **Playwright** (pre-installed with Chromium): run the site, screenshot it at desktop, tablet and mobile widths, inspect the screenshots, test interactions, and iterate until it looks right. Never call a page done without looking at it rendered.
 
 Skills live in `.claude/skills/`. Third-party skills keep their original licenses (see each folder).
+
+## Answer style
+
+When the user asks a question, give a short answer.
