@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maktab Alzahra SA</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@700&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+:root{--bg:#f4f8f7;--ink:#0e2a44;--muted:#4b6075;--green:#0f5a33;--green-2:#0b4526;--green-l:#e3f1e8;--turq:#0b7f86;--turq-l:#d9f0ec;--gold:#c9a24b;--gold-l:#fbf0d2;--line:#e1eaea;--navy:#0e2a44}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+.wrap{max-width:1260px;margin:0 auto;padding:0 40px}
+h1,h2,h3,h4{font-family:Vazirmatn,sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:58px}
+h3{font-size:30px}
+.ar{font-family:Amiri,serif;direction:rtl}
+.fa{font-family:Vazirmatn,sans-serif;direction:rtl}
+.pill{display:inline-block;background:var(--turq-l);color:var(--turq);font-weight:600;font-size:15.5px;padding:8px 16px;border-radius:999px}
+.pill.g{background:var(--gold-l);color:#7a5a12}
+.pill.gr{background:var(--green-l);color:var(--green)}
+.lead{font-size:20px;color:var(--muted);max-width:560px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 30px;border-radius:999px;font-weight:600;font-size:17px;white-space:nowrap}
+.b1{background:var(--green);color:#fff;box-shadow:0 14px 26px -14px rgba(15,90,51,.8)}
+.b2{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px #c5d3d8}
+.b3{background:var(--gold-l);color:#5d430a}
+.card{background:#fff;border-radius:28px;box-shadow:0 30px 60px -40px rgba(14,42,68,.45)}
+.sec{padding:110px 0}
+.small{font-size:14.5px;color:var(--muted)}
+
+/* nav */
+.navwrap{position:sticky;top:0;z-index:20;padding-top:26px}
+nav{height:78px;background:#fff;border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 14px;box-shadow:0 14px 40px -18px rgba(14,42,68,.35)}
+nav .l{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px;white-space:nowrap}
+nav .l img{width:54px;height:54px}
+nav .m{display:flex;gap:30px;font-weight:500;font-size:16px;color:#3d5268;white-space:nowrap}
+nav .m .on{color:var(--green);font-weight:700}
+nav .r{display:flex;align-items:center;gap:10px}
+.lang{display:flex;background:var(--bg);border-radius:999px;padding:4px;font-size:14px;font-weight:600}
+.lang span{padding:7px 13px;border-radius:999px}
+.lang .on{background:#fff;box-shadow:0 2px 8px rgba(14,42,68,.15)}
+nav .btn{padding:14px 24px;font-size:16px}
+.burger{display:none}
+
+/* hero */
+.hero{position:relative;padding:64px 0 90px;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-180px;top:-260px;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,#d9f0ec,rgba(217,240,236,0))}
+.hero-g{position:relative;display:grid;grid-template-columns:1fr 580px;gap:70px;align-items:center}
+h1{font-size:80px;margin:22px 0 22px;white-space:nowrap}
+.hero p.lead{font-size:21.5px}
+.cta{display:flex;gap:14px;margin-top:34px}
+.trust{display:flex;gap:30px;margin-top:44px;font-size:15.5px;color:var(--muted)}
+.trust b{display:block;font-family:Vazirmatn,sans-serif;font-weight:700;font-size:30px;color:var(--ink);line-height:1.1}
+.trust div+div{padding-left:30px;border-left:1px solid #cfdcdc}
+.art{position:relative;height:700px}
+.art .ph{position:absolute;inset:0;border-radius:290px 290px 32px 32px;overflow:hidden;box-shadow:0 50px 80px -40px rgba(14,42,68,.6)}
+.art .ph img{width:100%;height:100%;object-fit:cover;object-position:39% 50%}
+.art .ring{position:absolute;inset:-14px;border-radius:304px 304px 44px 44px;border:1.5px solid rgba(201,162,75,.65)}
+.art .fl{position:absolute;left:-70px;bottom:46px;width:330px;padding:24px 26px}
+.art .fl h4{font-size:25px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--muted)}
+.row b{color:var(--ink);text-align:right}
+.row:last-child{border:0;padding-bottom:0}
+.art .nx{position:absolute;right:-26px;top:150px;padding:16px 20px;display:flex;gap:14px;align-items:center;border-radius:22px}
+.art .nx i{width:44px;height:44px;border-radius:50%;background:linear-gradient(180deg,#2a3f7a,#c98ba0 60%,#f6c79b)}
+.art .nx span{display:block;font-size:14px;color:var(--muted);line-height:1.2}
+.art .nx b{font-family:Vazirmatn,sans-serif;font-weight:700;font-size:26px;line-height:1.1}
+.art .cap{position:absolute;right:22px;bottom:16px;font-size:12px;color:rgba(255,255,255,.75)}
+
+/* prayer strip */
+.pray{padding:26px 34px;display:grid;grid-template-columns:230px repeat(5,1fr) 220px;align-items:center}
+.pray .t0 b{display:block;font-family:Vazirmatn,sans-serif;font-weight:700;font-size:25px;line-height:1.1}
+.pray .t0 span,.pray .hij span{font-size:14.5px;color:var(--muted)}
+.pt{display:flex;gap:12px;align-items:center;justify-content:center;border-left:1px solid var(--line);padding:6px 0}
+.pt i{width:38px;height:38px;border-radius:50%;flex:none}
+.pt span{display:block;font-size:14.5px;color:var(--muted);line-height:1.2}
+.pt b{font-family:Vazirmatn,sans-serif;font-weight:700;font-size:27px;line-height:1.1}
+.pt.next{background:var(--green-l);border-radius:20px;border-left:0;padding:12px 0}
+.pt.next span{color:var(--green);font-weight:600}
+.pt.next + .pt{border-left:0}
+.pray .hij{text-align:right;border-left:1px solid var(--line);padding-left:20px}
+.pray .hij .ar{font-size:24px;color:var(--turq);line-height:1.3}
+
+/* classes */
+.cls{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.cls .ph{border-radius:32px;overflow:hidden;height:620px;position:relative}
+.cls .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.cls .ph .tag{position:absolute;left:22px;top:22px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.fact{background:#fff;border-radius:22px;padding:20px 24px}
+.fact span{font-size:15px;color:var(--muted)}
+.fact b{display:block;font-family:Vazirmatn,sans-serif;font-weight:700;font-size:31px;line-height:1.15;margin-top:2px}
+.fact small{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.fact.w b{font-size:27px}
+.fact.w{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.fact a{color:var(--green);font-weight:600;font-size:16px;white-space:nowrap}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;margin-top:70px}
+.steps{padding:38px 40px}
+.step{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.step:last-child{border:0;padding-bottom:0}
+.step i{width:54px;height:54px;border-radius:50%;background:var(--green-l);color:var(--green);display:grid;place-items:center;font:700 26px Vazirmatn,sans-serif;font-style:normal}
+.step h4{font-size:24px}
+.step p{font-size:16.5px;color:var(--muted);margin-top:4px}
+.bring{background:var(--green);color:#fff;border-radius:28px;padding:38px 40px}
+.bring ul{list-style:none;margin-top:16px}
+.bring li{display:flex;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:17.5px}
+.bring li:before{content:"";width:22px;height:22px;border-radius:50%;background:#e9c765 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6 11.5l3.2 3.2L16 8' fill='none' stroke='%230b4526' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");flex:none}
+.bring p{font-size:15px;color:#cfe3d6;margin-top:18px}
+
+/* hadith */
+.had{background:var(--navy);color:#fff;border-radius:36px;padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+.had:before,.had:after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(233,199,101,.28)}
+.had:before{left:-200px;top:-200px}.had:after{right:-200px;bottom:-200px}
+.had .q{font-size:58px;line-height:1.75;color:#f3dc98;position:relative}
+.had .en{font-family:Vazirmatn,sans-serif;font-size:31px;line-height:1.3;max-width:800px;margin:18px auto 0;position:relative}
+.had .src{color:#9fd8d2;margin-top:18px;font-size:16.5px;position:relative}
+
+/* about */
+.about{display:grid;grid-template-columns:500px 1fr;gap:80px;align-items:center}
+.about .ph{height:560px;border-radius:32px 32px 250px 250px;overflow:hidden}
+.about .ph img{width:100%;height:100%;object-fit:cover}
+.about ul{list-style:none;margin-top:26px}
+.about li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #d5e1e1;font-size:17.5px;color:var(--muted)}
+.about li b{color:var(--ink)}
+.about li:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none;margin-top:9px}
+
+/* days */
+.days{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;margin-top:46px}
+.occs{padding:14px 36px}
+.occ{display:grid;grid-template-columns:86px 1fr auto;gap:22px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.occ:last-child{border:0}
+.occ .d{background:var(--bg);border-radius:18px;text-align:center;padding:10px 0}
+.occ .d b{display:block;font:700 34px/1 Vazirmatn,sans-serif}
+.occ .d span{font-size:13.5px;color:var(--muted)}
+.occ h4{font-size:24px}
+.occ p{font-size:15.5px;color:var(--muted);margin-top:3px}
+.cd{text-align:center;background:var(--gold-l);border-radius:18px;padding:10px 18px;white-space:nowrap}
+.cd b{display:block;font:700 34px/1 Vazirmatn,sans-serif;color:#5d430a}
+.cd span{font-size:13.5px;color:#7a5a12}
+.occ.n .cd{background:var(--turq-l)}.occ.n .cd b{color:var(--turq)}.occ.n .cd span{color:var(--turq)}
+.ayah{background:var(--turq-l);border-radius:28px;padding:36px 38px}
+.ayah .ar{font-size:42px;line-height:1.7;color:var(--ink);text-align:left;margin-top:8px}
+.ayah .en{font-family:Vazirmatn,sans-serif;font-size:27px;line-height:1.25;margin-top:6px}
+.ayah .fa{font-size:16px;color:var(--muted);margin-top:8px;text-align:left}
+.ayah hr{border:0;border-top:1px solid rgba(11,127,134,.25);margin:26px 0}
+
+/* moments */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.moments{display:grid;grid-template-columns:431fr 431fr 242fr;gap:26px;margin-top:46px}
+.mo .im{border-radius:26px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 30px 50px -34px rgba(14,42,68,.6)}
+.mo.reel .im{aspect-ratio:242/431}
+.mo img{width:100%;height:100%;object-fit:cover}
+.mo .c{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:14px}
+.mo h4{font-size:22px}
+.mo span{color:var(--green);font-weight:600;font-size:15px;white-space:nowrap}
+
+/* support */
+.sup-g{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:46px}
+.sup{overflow:hidden;display:flex;flex-direction:column}
+.sup .im{height:210px}
+.sup .im img{width:100%;height:100%;object-fit:cover}
+.sup .in{padding:28px 30px 30px;display:flex;flex-direction:column;flex:1;align-items:flex-start}
+.sup p{color:var(--muted);font-size:16.5px;margin-top:8px}
+.bank{width:100%;margin-top:16px;background:var(--bg);border-radius:18px;padding:4px 18px;font-size:15.5px}
+.bank div{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bank div:last-child{border:0}
+.bank{font-size:14.5px}.bank span{color:var(--muted);white-space:nowrap}.bank b{white-space:nowrap}
+.sup .sp{flex:1;min-height:22px}
+.sup .small{margin-top:12px}
+
+/* contact */
+.contact{background:var(--green);color:#fff;border-radius:36px;padding:64px;display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:center;position:relative;overflow:hidden}
+.contact:before{content:"";position:absolute;right:-160px;top:-160px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(233,199,101,.35)}
+.contact .pill{background:rgba(255,255,255,.14);color:#f3dc98}
+.phone{font:700 98px/1 Vazirmatn,sans-serif;color:#f3dc98;margin-top:10px}
+.contact .hrs{font-size:19px;color:#cfe3d6;margin-top:8px}
+.ci{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.ci div{background:rgba(255,255,255,.1);border-radius:22px;padding:20px 22px}
+.ci span{font-size:14.5px;color:#bfe0cb}
+.ci b{display:block;font:700 23px/1.25 Vazirmatn,sans-serif;margin-top:4px}
+.ci small{display:block;font-size:14px;color:#cfe3d6;margin-top:6px}
+.soc{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.soc span{background:#fff;color:var(--green);font-weight:600;font-size:15.5px;padding:10px 18px;border-radius:999px}
+.contact .ph{position:relative;height:470px;border-radius:190px 190px 28px 28px;overflow:hidden}
+.contact .ph img{width:100%;height:100%;object-fit:cover}
+.contact .small{color:#cfe3d6;margin-top:16px}
+
+footer{padding:70px 0 34px}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+.foot .l{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px}
+.foot .l img{width:60px;height:60px}
+.foot p{font-size:15.5px;color:var(--muted);margin-top:14px;max-width:320px}
+.foot h5{font:700 21px Vazirmatn,sans-serif;margin-bottom:10px}
+.foot li{list-style:none;font-size:15.5px;color:var(--muted);margin:7px 0}
+.fb{display:flex;justify-content:space-between;border-top:1px solid #d5e1e1;margin-top:44px;padding-top:20px;font-size:14px;color:var(--muted)}
+
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .sec{padding:68px 0}
+  h2{font-size:38px}
+  .navwrap{padding-top:14px}
+  nav{height:64px}
+  nav .m,nav .r .btn,.lang{display:none}
+  nav .l{font-size:17px}nav .l img{width:44px;height:44px}
+  .burger{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green)}
+  .hero{padding:36px 0 56px}
+  .hero-g,.cls,.two,.about,.days,.contact{grid-template-columns:1fr;gap:34px}
+  h1{font-size:54px;margin:16px 0 14px;white-space:normal}
+  .hero p.lead{font-size:18px}
+  .cta{flex-direction:column}
+  .trust{gap:16px;margin-top:28px;font-size:14px}.trust b{font-size:23px}.trust div+div{padding-left:16px}
+  .art{height:470px;margin-top:6px}
+  .art .ph{border-radius:180px 180px 26px 26px}
+  .art .ring{display:none}
+  .art .fl{left:12px;right:12px;width:auto;bottom:12px;padding:18px 20px}
+  .art .nx{right:8px;top:18px;padding:10px 14px}
+  .art .nx i{width:34px;height:34px}.art .nx b{font-size:21px}
+  .art .cap{display:none}
+  .pray{grid-template-columns:repeat(5,1fr);padding:20px 12px;row-gap:14px}
+  .pray .t0{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;padding:0 6px}
+  .pray .t0 b{font-size:21px}.pray .t0 br{display:none}
+  .pt{flex-direction:column;gap:6px;border:0;text-align:center}
+  .pt i{width:28px;height:28px}
+  .pt span{font-size:11.5px}.pt b{font-size:19px}
+  .pt.next{border-radius:14px;padding:8px 0}
+  .pray .hij{grid-column:1/-1;border:0;border-top:1px solid var(--line);padding:12px 6px 0;display:flex;justify-content:space-between;align-items:baseline}
+  .cls .ph{height:360px;order:-1}
+  .facts{grid-template-columns:1fr 1fr;gap:10px}
+  .fact{padding:16px 18px}.fact b{font-size:24px}
+  .fact.w{flex-direction:column;align-items:flex-start;gap:6px}
+  .two{margin-top:40px}
+  .steps,.bring{padding:28px 22px}
+  .step{grid-template-columns:44px 1fr;gap:14px}.step i{width:44px;height:44px;font-size:21px}
+  .step h4{font-size:21px}
+  .had{padding:54px 22px;border-radius:28px}
+  .had .q{font-size:32px}.had .en{font-size:22px}
+  .about .ph{height:380px}
+  .occs{padding:8px 20px}
+  .occ{grid-template-columns:64px 1fr;gap:14px}
+  .occ .cd{grid-column:1/-1;display:flex;gap:8px;justify-content:center;align-items:baseline}
+  .occ h4{font-size:21px}
+  .ayah{padding:28px 22px}.ayah .ar{font-size:32px}.ayah .en{font-size:22px}
+  .head{flex-direction:column;align-items:flex-start}
+  .moments,.sup-g{grid-template-columns:1fr}
+  .mo.reel .im{aspect-ratio:9/16}
+  .contact{padding:36px 22px;border-radius:28px}
+  .phone{font-size:52px}
+  .ci{grid-template-columns:1fr}
+  .contact .ph{height:340px}
+  .foot{grid-template-columns:1fr 1fr;gap:28px}
+  .foot > div:first-child{grid-column:1/-1}
+  .fb{flex-direction:column;gap:6px}
+}
+
+/* ---------- Dari, right to left ---------- */
+body{font-family:Vazirmatn,sans-serif;font-size:17px;line-height:1.85}
+h1,h2{font-family:'Noto Nastaliq Urdu',serif;font-weight:700;letter-spacing:0}
+h1{font-size:76px;line-height:1.95;margin:6px 0 0;white-space:nowrap}
+h2{font-size:46px;line-height:2.1;margin-bottom:-8px}
+h3,h4,h5{font-weight:700;letter-spacing:0;line-height:1.5}
+h3{font-size:25px}
+.btn,.pill{font-family:Vazirmatn}
+nav{padding:0 14px 0 12px}
+.hero:before{right:auto;left:-180px}
+.trust div+div{padding-left:0;border-left:0;padding-right:30px;border-right:1px solid #cfdcdc}
+.trust b{font-size:24px;line-height:1.5}
+.art .fl{left:auto;right:-70px}
+.art .fl h4{font-size:20px}
+.art .nx{right:auto;left:-26px}
+.art .nx b{font-size:22px;line-height:1.3}
+.art .cap{right:auto;left:22px}
+.row b{text-align:left}
+.pray .t0 b{font-size:21px;line-height:1.5}
+.pt{border-left:0;border-right:1px solid var(--line)}
+.pt.next,.pt.next + .pt{border-right:0}
+.pt b{font-size:23px;line-height:1.3}
+.pray .hij{text-align:left;border-left:0;padding-left:0;border-right:1px solid var(--line);padding-right:20px}
+.cls .ph .tag{left:auto;right:22px}
+.fact b{font-size:25px;line-height:1.5}.fact.w b{font-size:22px}
+.step i{font-size:22px}
+.step h4{font-size:20px}
+.had .en{font-size:25px;line-height:1.9;font-weight:500}
+.occ .d b,.cd b{font-size:28px;line-height:1.2}
+.occ h4{font-size:20px}
+.ayah .ar,.ayah .fa{text-align:right}
+.ayah .en{font-size:22px;line-height:1.8;font-weight:600}
+.ayah .lat{font-family:Figtree;text-align:right}
+.mo h4{font-size:18px}
+.contact:before{right:auto;left:-160px}
+.phone{font-size:82px;line-height:1.2}
+.ci b{font-size:19px;line-height:1.6}
+.foot h5{font-size:17px}
+@media (max-width:760px){
+  h1{font-size:46px;white-space:normal}
+  h2{font-size:32px}
+  .trust div+div{padding-right:16px}
+  .trust b{font-size:19px}
+  .art .fl{left:12px;right:12px}
+  .art .nx{left:8px;right:auto}
+  .pt{border:0}
+  .pt b{font-size:17px}
+  .pray .hij{border:0;border-top:1px solid var(--line);padding:12px 6px 0}
+  .fact b{font-size:20px}
+  .had .en{font-size:20px}
+  .ayah .en{font-size:19px}
+  .phone{font-size:46px}
+}
+</style>
+</head>
+<body>
+
+<div class="navwrap"><div class="wrap">
+  <nav>
+    <a class="l"><img src="assets/logo-288.png" alt="Maktab Al-Zahra">مکتب الزهرا</a>
+    <div class="m"><a class="on">خانه</a><a>درباره ما</a><a>کلاس‌های قرآن</a><a>اوقات نماز</a><a>تقویم</a><a>تماس</a></div>
+    <div class="r"><div class="lang"><span>EN</span><span class="on fa">دری</span></div><a class="btn b1">تماس&nbsp;&nbsp;<bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></a>
+      <div class="burger"><svg width="18" height="12" viewBox="0 0 18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg></div></div>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap"><div class="hero-g">
+  <div>
+    <span class="pill">آموزش اسلامی شیعی در ادلاید</span>
+    <h1>جایی که ایمان<br>نور می‌شود</h1>
+    <p class="lead">کلاس‌های رایگان قرآن برای همه سنین، در پرتو قرآن و اهل بیت (ع).</p>
+    <div class="cta"><a class="btn b1">جزئیات کلاس‌ها</a><a class="btn b2">داستان ما</a></div>
+    <div class="trust"><div><b>رایگان</b>برای هر خانواده</div><div><b>همه سنین</b>از کودک تا بزرگسال</div><div><b>شنبه و یکشنبه</b>هر آخر هفته</div></div>
+  </div>
+  <div class="art">
+    <div class="ring"></div>
+    <div class="ph"><img id="heroImg" src="assets/cinematic-shrine.webp" alt=""></div>
+    <div class="cap" id="heroCap">معماری تزئینی خیالی</div>
+    <div class="card nx"><i></i><div><span>نماز بعدی، صبح</span><b>۰۴:۳۰</b></div></div>
+    <div class="card fl"><h4>کلاس‌های قرآن آخر هفته</h4>
+      <div class="row" style="margin-top:6px"><span>زمان حضور</span><b>۹:۴۰ صبح</b></div><div class="row"><span>بسته شدن دروازه</span><b>۱۰:۰۰ صبح</b></div><div class="row"><span>مکان</span><b>اینگل فارم</b></div></div>
+  </div>
+</div></div></header>
+
+<div class="wrap"><div class="card pray">
+  <div class="t0"><b>اوقات نماز <br>در ادلاید</b><span>دوشنبه ۲۳ نوامبر</span></div>
+  <div class="pt next"><i style="background:linear-gradient(180deg,#2a3f7a,#c98ba0 60%,#f6c79b)"></i><div><span>صبح، بعدی</span><b>۰۴:۳۰</b></div></div>
+  <div class="pt"><i style="background:linear-gradient(180deg,#4fa7e0,#cfeefa)"></i><div><span>ظهر</span><b>۱۳:۰۲</b></div></div>
+  <div class="pt"><i style="background:linear-gradient(180deg,#5a9bd0,#f2d49a 70%,#f6b96b)"></i><div><span>عصر</span><b>۱۶:۴۸</b></div></div>
+  <div class="pt"><i style="background:linear-gradient(180deg,#22306b,#b0497a 60%,#f39c55)"></i><div><span>مغرب</span><b>۲۰:۲۴</b></div></div>
+  <div class="pt"><i style="background:linear-gradient(180deg,#040f2a,#1d55ad)"></i><div><span>عشا</span><b>۲۱:۲۲</b></div></div>
+  <div class="hij"><div class="ar">١٢ جمادى الثانية ١٤٤٨</div><span>۱۲ جمادی‌الثانی ۱۴۴۸ هجری قمری</span></div>
+</div></div>
+
+<section class="sec"><div class="wrap">
+  <div class="cls">
+    <div class="ph"><img src="assets/premium-quran.webp" alt=""><span class="pill g tag">تصویر تزئینی</span></div>
+    <div>
+      <span class="pill gr">کلاس‌های قرآن آخر هفته</span>
+      <h2 style="margin-top:18px">هر شنبه و یکشنبه صبح</h2>
+      <p class="lead">کودکان، نوجوانان و بزرگسالان در مکان ما در اینگل فارم با هم قرآن می‌آموزند.</p>
+      <div class="facts">
+        <div class="fact"><span>زمان حضور</span><b>۹:۴۰ صبح</b></div>
+        <div class="fact"><span>بسته شدن دروازه</span><b>۱۰:۰۰ صبح</b></div>
+        <div class="fact"><span>هزینه</span><b>رایگان</b></div>
+        <div class="fact"><span>سن</span><b>همه سنین</b></div>
+        <div class="fact w"><div><span>مکان</span><b><bdi dir="ltr">20 Kylie Crescent, Ingle Farm</bdi></b></div><a>دیدن روی نقشه</a></div>
+      </div>
+      <div class="cta"><a class="btn b1">معلومات ثبت نام</a><a class="btn b2">تماس درباره کلاس‌ها</a></div>
+      <p class="small" style="margin-top:16px">ثبت نام آنلاین هنوز فعال نیست. ثبت نام نیاز به تأیید کارمندان مکتب دارد. زمان پایان کلاس هنوز تأیید نشده است.</p>
+    </div>
+  </div>
+  <div class="two">
+    <div class="card steps"><h3>مسیر شما به کلاس‌های قرآن</h3>
+      <div class="step" style="margin-top:8px"><i>۱</i><div><h4>معلومات کلاس را بخوانید</h4><p>پیش از آمدن، اطلاعیه کلاس و فهرست لوازم را ببینید.</p></div></div>
+      <div class="step"><i>۲</i><div><h4>سؤال‌های خود را بپرسید</h4><p>هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید: <bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></p></div></div>
+      <div class="step"><i>۳</i><div><h4>رهنمایی کارمندان را دنبال کنید</h4><p>همه ثبت نام‌ها نیاز به تأیید کارمندان مکتب دارد.</p></div></div>
+    </div>
+    <div class="bring"><h3>چه چیزهایی با خود بیاورید</h3>
+      <ul><li>تخته سفید</li><li>مارکر</li><li>کتابچه و پنسل</li><li>بکس</li><li>برگه‌های کار خانگی تکمیل‌شده</li></ul>
+      <p>شاگردان باید لوازم لازم را با خود بیاورند. شاگردانی که لوازم نداشته باشند اجازه شرکت در کلاس را ندارند.</p></div>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="had">
+  <div class="q ar">إِنِّي تَارِكٌ فِيكُمُ الثَّقَلَيْنِ<br>كِتَابَ اللَّهِ وَعِتْرَتِي أَهْلَ بَيْتِي</div>
+  <div class="en">«من در میان شما دو چیز گران‌بها می‌گذارم: کتاب خدا و عترتم، اهل بیتم.»</div>
+  <div class="src">حدیث ثقلین، پیامبر اکرم (ص)</div>
+</div></div>
+
+<section class="sec"><div class="wrap about">
+  <div><div class="ph"><img src="assets/madinah-arch-736.webp" alt=""></div><p class="small" style="text-align:center;margin-top:10px">مدینه. عکس الهام‌بخش، نه ساختمان مکتب</p></div>
+  <div>
+    <span class="pill">مکتب ما در ادلاید</span>
+    <h2 style="margin-top:18px">آموزش اسلامی و پیوند با جامعه</h2>
+    <p class="lead">مکتب الزهرا یک نهاد آموزشی و اجتماعی اسلامی در ادلاید، آسترالیای جنوبی است.</p>
+    <ul>
+      <li><span><b>آموزش قرآن.</b> کلاس‌های رایگان برای کودکان، نوجوانان و بزرگسالان.</span></li>
+      <li><span><b>جامعه ما در ادلاید.</b> جایی برای گرامی‌داشت مناسبت‌های اسلامی شیعی در کنار هم.</span></li>
+      <li><span><b>راه‌های همکاری.</b> وقت بگذارید، مهارت‌تان را شریک کنید یا کمک مالی کنید.</span></li>
+    </ul>
+    <a class="btn b1" style="margin-top:30px">درباره مکتب</a>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <span class="pill g">تقویم اسلامی شیعی</span>
+  <h2 style="margin-top:18px">روزهای یادبود</h2>
+  <p class="lead">امروز ۱۲ جمادی‌الثانی ۱۴۴۸ است.</p>
+  <div class="days">
+    <div class="card occs">
+      <div class="occ"><div class="d"><b>۱</b><span>دسامبر</span></div><div><h4>ولادت حضرت فاطمه زهرا (س)</h4><p>۲۰ جمادی‌الثانی ۱۴۴۸، بانویی که مکتب ما به نام اوست</p></div><div class="cd"><b>۸</b><span>روز مانده</span></div></div>
+      <div class="occ n"><div class="d"><b>۲۳</b><span>دسامبر</span></div><div><h4>ولادت امام علی (ع)</h4><p>۱۳ رجب ۱۴۴۸</p></div><div class="cd"><b>۳۰</b><span>روز مانده</span></div></div>
+      <div class="occ" style="display:block"><p class="small">تاریخ‌های هجری محاسبه‌شده موقتی‌اند و ممکن است با رؤیت هلال تغییر کنند. <a style="color:var(--green);font-weight:600">دیدن تقویم کامل</a></p></div>
+    </div>
+    <div class="ayah">
+      <span class="pill" style="background:#fff">آیه روز</span>
+      <div class="ar">رَّبِّ زِدْنِي عِلْمًا</div>
+      <div class="en">«پروردگارا، بر دانشم بیفزا.»</div>
+      <div class="fa lat" dir="ltr">“My Lord, increase me in knowledge.”</div>
+      <p class="small" style="margin-top:10px">سوره طه، آیه ۱۱۴</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="head"><div><span class="pill gr">از اینستاگرام مکتب</span><h2 style="margin-top:18px">لحظه‌هایی از مکتب ما</h2></div><a class="btn b2">دنبال کنید&nbsp;<bdi dir="ltr">@maktab.alzahra.sa</bdi></a></div>
+  <div class="moments">
+    <div class="mo"><div class="im"><img src="assets/quran-photo-report-1.webp" alt=""></div><div class="c"><h4>گزارش تصویری کلاس‌های قرآن</h4><span>دیدن پست</span></div></div>
+    <div class="mo"><div class="im"><img src="assets/quran-photo-report-2.webp" alt=""></div><div class="c"><h4>گزارش تصویری، بخش دوم</h4><span>دیدن پست</span></div></div>
+    <div class="mo reel"><div class="im"><img src="assets/quran-reel-cover.webp" alt=""></div><div class="c"><h4>گزارش ویدیویی</h4><span>تماشا</span></div></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <span class="pill">از کار ما حمایت کنید</span>
+  <h2 style="margin-top:18px;max-width:800px">به ما کمک کنید آموزش اسلامی را برای جامعه‌مان ادامه دهیم</h2>
+  <div class="sup-g">
+    <div class="card sup"><div class="im"><img src="assets/premium-giving.webp" alt=""></div><div class="in"><h3>کمک مالی</h3><p>از طریق انتقال بانکی از مکتب حمایت کنید.</p>
+      <div class="bank"><div><span>نام حساب</span><b dir="ltr">Australian Youths Alliance inco</b></div><div><span dir="ltr">BSB</span><b dir="ltr">065-167</b></div><div><span>شماره حساب</span><b dir="ltr">10581185</b></div></div>
+      <div class="sp"></div><a class="btn b1">معلومات کمک مالی</a><p class="small">پرداخت ماهانه خودکار به‌زودی فعال می‌شود.</p></div></div>
+    <div class="card sup"><div class="im"><img src="assets/premium-volunteer.webp" alt=""></div><div class="in"><h3>داوطلب شوید</h3><p>یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید: فعالیت‌های اجتماعی، کمک‌های عملی، یا مهارت‌های هنری و دیجیتال.</p>
+      <div class="sp"></div><a class="btn b2">راه‌های کمک</a><p class="small">درخواست داوطلبی هنوز باز نشده است.</p></div></div>
+    <div class="card sup"><div class="im"><img src="assets/sanctuary-courtyard.webp" alt=""></div><div class="in"><h3>پرسش‌های دینی</h3><p>جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند. این وب‌سایت حکم دینی صادر نمی‌کند.</p>
+      <div class="sp"></div><a class="btn b2">روند پرسش‌ها</a><p class="small">ارسال پرسش هنوز فعال نیست.</p></div></div>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="contact">
+  <div>
+    <span class="pill">پرسش درباره کلاس‌های قرآن</span>
+    <div class="phone"><bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></div>
+    <div class="hrs">هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید</div>
+    <div class="ci"><div><span>مکان کلاس</span><b><bdi dir="ltr">20 Kylie Crescent,</bdi><br><bdi dir="ltr">Ingle Farm, SA</bdi></b><small>دیدن آدرس روی نقشه</small></div><div><span>زمان کلاس</span><b>شنبه و یکشنبه،<br>حضور تا ۹:۴۰ صبح</b><small>پیش از حرکت، زمان کلاس را تأیید کنید.</small></div></div>
+    <div class="soc"><span>اینستاگرام</span><span>یوتیوب</span><span>کانال واتساپ</span></div>
+    <p class="small">ایمیل هنوز منتشر نشده و فورم تماس آنلاین فعال نیست.</p>
+  </div>
+  <div><div class="ph"><img src="assets/madinah-green-dome-736.webp" alt=""></div><p class="small" style="text-align:center;margin-top:10px">مدینه. عکس الهام‌بخش، نه ساختمان مکتب</p></div>
+</div></div>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div><div class="l"><img src="assets/logo-288.png" alt="">مکتب الزهرا</div><p>یک نهاد آموزشی و اجتماعی اسلامی در ادلاید. <bdi dir="ltr">Australian Youths Alliance Incorporation</bdi></p></div>
+    <div><h5>آدرس</h5><ul><li><bdi dir="ltr">20 Kylie Crescent</bdi></li><li><bdi dir="ltr">Ingle Farm, SA</bdi></li><li>شنبه و یکشنبه، ۹:۴۰ صبح</li></ul></div>
+    <div><h5>بخش‌ها</h5><ul><li>کلاس‌های قرآن</li><li>اوقات نماز</li><li>تقویم اسلامی</li><li>کمک مالی</li><li>داوطلبی</li></ul></div>
+    <div><h5>تماس</h5><ul><li><bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></li><li>هر روز، ۸ صبح تا ۸ شب</li><li>اینستاگرام، یوتیوب، واتساپ</li></ul></div>
+  </div>
+  <div class="fb"><span>© ۲۰۲۶ مکتب الزهرا، ادلاید، آسترالیای جنوبی</span><span>English | <span class="fa">دری</span></span></div>
+</div></footer>
+
+<script>
+if(location.search.indexOf('static')>-1)document.querySelector('.navwrap').style.position='relative';
+</script>
+</body>
+</html>
