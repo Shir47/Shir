@@ -83,6 +83,39 @@ h1 em{font-style:italic;background:linear-gradient(180deg,#fff2c4,#e2b457 70%,#b
 .hero-art{position:relative;align-self:end}
 .kashi-band{height:46px;position:relative}
 
+.hero:before{content:"";position:absolute;inset:0;background:url(assets/cinematic-shrine.webp) 30% center/cover;opacity:.2;filter:blur(5px) saturate(1.15)}
+.brand img{width:66px;height:66px;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.photo-cap{font-size:12.5px;color:#8fa3c4;margin-top:10px;text-align:center;letter-spacing:.02em}
+/* ---------- about ---------- */
+.about{background:linear-gradient(180deg,var(--glaze),#eef4f1)}
+.about-grid{display:grid;grid-template-columns:480px 1fr;gap:80px;align-items:center}
+.about h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:58px;line-height:1.05;color:var(--lapis-800);margin:16px 0 18px}
+.about h2 em{color:var(--cobalt);font-style:italic}
+.about .lead{font-size:18.5px;color:var(--muted);max-width:560px}
+.arow{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:22px 0;border-top:1px solid #dccfaa}
+.arow:first-of-type{margin-top:30px}
+.arow .n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--firuzeh);line-height:1}
+.arow h4{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--lapis-800);line-height:1.1}
+.arow p{font-size:15.5px;color:var(--muted);margin-top:4px}
+.about .photo-cap{color:var(--muted)}
+/* ---------- contact ---------- */
+.contact{background:radial-gradient(120% 100% at 20% 0%,#123a85,#0a2353 50%,#06173a);color:#fff;overflow:hidden}
+.contact .tilebg{position:absolute;inset:0;opacity:.12}
+.contact-grid{position:relative;display:grid;grid-template-columns:1fr 420px;gap:90px;align-items:center}
+.contact h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;margin:16px 0 10px}
+.contact h2 em{font-style:italic;color:var(--gold-2)}
+.bigphone{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:84px;line-height:1;color:#fff;margin-top:22px;letter-spacing:.01em}
+.hours{color:var(--firuzeh-2);margin-top:10px}
+.cinfo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.cbox{border:1px solid rgba(95,208,207,.35);background:rgba(255,255,255,.05);padding:22px 24px;border-radius:4px}
+.cbox .k{font-family:Marcellus;font-size:12px;letter-spacing:.2em;color:var(--firuzeh-2);text-transform:uppercase}
+.cbox .v{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;line-height:1.2;margin-top:8px}
+.cbox .s{font-size:14px;color:#a9bddc;margin-top:6px}
+.cbox a{color:var(--gold-2);font-weight:600;font-size:14.5px;display:inline-block;margin-top:10px}
+.socials{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.socials span{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(191,233,230,.5);border-radius:999px;padding:10px 18px;font-size:14.5px;font-weight:600}
+.socials span:before{content:"";width:8px;height:8px;background:var(--firuzeh-2);transform:rotate(45deg)}
+.contact .small{font-size:13.5px;color:#8fa3c4;margin-top:18px}
 /* ---------- info strip ---------- */
 .strip{background:var(--glaze);position:relative}
 .strip-card{position:relative;margin-top:40px;background:#fffaf0;border-radius:6px;box-shadow:0 30px 60px -30px rgba(6,23,58,.45);display:grid;grid-template-columns:repeat(5,1fr);padding:8px;z-index:4}
@@ -122,7 +155,7 @@ section{position:relative}
 .classes{background:var(--glaze)}
 .cls-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:stretch}
 .mihrab-card{position:relative;color:#fff}
-.mihrab-card .body{position:absolute;inset:0;padding:190px 64px 56px;display:flex;flex-direction:column}
+.mihrab-card .body{position:absolute;inset:0;padding:412px 64px 56px;display:flex;flex-direction:column}
 .mihrab-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:46px;line-height:1.05}
 .mihrab-card p{color:#cfdcf0;margin-top:12px;font-size:17px}
 .times{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
@@ -136,6 +169,7 @@ section{position:relative}
 .step p{font-size:15.5px;color:var(--muted);margin-top:4px}
 .bring{background:linear-gradient(180deg,#e2f4f2,#d3eeeb);border:1px solid #a9dcd8;padding:28px 30px;border-radius:4px}
 .bring h4{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:26px;color:var(--lapis-800)}
+.bring .must{font-size:14px;color:#1f4a52;margin-top:14px;padding-top:12px;border-top:1px dashed #9fd0cb}
 .bring ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:14px;font-size:15.5px}
 .bring li{display:flex;gap:10px;align-items:center}
 .bring li:before{content:"";width:9px;height:9px;transform:rotate(45deg);background:var(--firuzeh);flex:none}
@@ -190,7 +224,11 @@ section{position:relative}
 
 /* ---------- community ---------- */
 .community{background:var(--glaze)}
-.moments{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px}
+.moments{display:grid;grid-template-columns:431fr 431fr 242fr;gap:28px}
+.tframe{position:relative;padding:12px;aspect-ratio:1/1;box-shadow:0 30px 50px -30px rgba(6,23,58,.5)}
+.tframe.reel{aspect-ratio:242/431}
+.tframe svg.tb{position:absolute;inset:0;width:100%;height:100%}
+.tframe img{position:relative;display:block;width:100%;height:100%;object-fit:cover;border:3px solid var(--glaze);outline:1.5px solid var(--gold)}
 .moment{position:relative}
 .moment .frame{position:relative;aspect-ratio:4/5;border-radius:180px 180px 4px 4px;overflow:hidden;padding:10px;background:linear-gradient(180deg,#1b4fa3,#0a2353)}
 .moment .frame .img{position:absolute;inset:10px;border-radius:170px 170px 2px 2px;overflow:hidden}
@@ -205,13 +243,22 @@ section{position:relative}
 /* ---------- support ---------- */
 .support{background:linear-gradient(180deg,var(--glaze),#e4f1f0)}
 .sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.sup{background:#fffaf0;border:1px solid var(--glaze-2);padding:0 0 34px;border-radius:4px;text-align:center;position:relative;overflow:hidden}
-.sup .cap{height:150px;position:relative;display:grid;place-items:center;background:var(--lapis-800);overflow:hidden}
+.sup{display:flex;flex-direction:column;align-items:center;background:#fffaf0;border:1px solid var(--glaze-2);padding:0 0 34px;border-radius:4px;text-align:center;position:relative;overflow:hidden}
+.sup .cap{width:100%;flex:none;height:210px;position:relative;background:var(--lapis-800);overflow:hidden;border-bottom:5px solid var(--firuzeh)}
+.sup .cap img{width:100%;height:100%;object-fit:cover;display:block}
+.sup .cap:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gold)}
+.bank{margin:16px 26px 0;border:1px solid var(--glaze-2);background:#f8f1de;border-radius:4px;text-align:left;font-size:14px}
+.bank b{white-space:nowrap}
+.bank div{display:flex;justify-content:space-between;gap:12px;padding:9px 16px}
+.bank div+div{border-top:1px dashed #d8cba8}
+.bank span{color:var(--muted)}.bank b{color:var(--lapis-800);font-weight:600}
 .sup .cap .tilebg{position:absolute;inset:0;opacity:.35}
 .sup h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:var(--lapis-800);margin-top:28px}
 .sup .ar-t{font-size:20px;color:var(--firuzeh);margin-top:2px}
 .sup p{color:var(--muted);font-size:16px;padding:0 36px;margin-top:10px}
-.sup .btn{margin-top:22px}
+.sup .btn{margin-top:auto}
+.sup .bank{align-self:stretch;margin-bottom:22px}
+.sup p:last-of-type{margin-bottom:22px}
 .sup .soon{font-size:13px;color:var(--muted);margin-top:14px}
 
 /* ---------- footer ---------- */
@@ -237,7 +284,14 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
   .nav .wrap{height:74px}
   .menu,.nav .btn{display:none}
   .burger{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(191,233,230,.4);border-radius:50%}
-  .brand svg{width:50px;height:50px}
+  .brand svg,.brand img{width:50px;height:50px}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .about-art svg,.contact-art svg{width:100%;height:auto}
+  .about h2,.contact h2{font-size:40px}
+  .bigphone{font-size:52px}
+  .cinfo{grid-template-columns:1fr}
+  .contact-art{max-width:300px;margin:0 auto}
+  .tframe.reel{aspect-ratio:9/16}
   .brand-t1{font-size:21px}
   .brand-t2{font-size:9.5px}
   .hero-inner{grid-template-columns:1fr;padding-top:40px;gap:0}
@@ -269,7 +323,7 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
   .thaq-split .r{justify-content:flex-start;text-align:left;flex-direction:row-reverse}
   .cls-grid{grid-template-columns:1fr;gap:28px}
   .mihrab-card svg.shape{width:100%;height:auto}
-  .mihrab-card .body{padding:130px 44px 30px}
+  .mihrab-card .body{padding:236px 44px 30px}
   .mihrab-card h3{font-size:34px}
   .times{gap:10px}
   .time .v{font-size:24px}
@@ -340,7 +394,7 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
 <nav class="nav">
   <div class="wrap">
     <a class="brand" href="#">
-      <svg width="62" height="62" viewBox="0 0 100 100" data-medallion="logo"></svg>
+      <img src="assets/logo-288.png" alt="Maktab Al-Zahra logo">
       <div>
         <div class="brand-t1">MAKTAB ALZAHRA</div>
         <div class="brand-t2">SOUTH AUSTRALIA</div>
@@ -382,7 +436,7 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
       <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Class days</div><div class="v">Sat &amp; Sun</div><div class="s">Every weekend</div></div>
       <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Arrive by</div><div class="v">9:40 am</div><div class="s">Please be on time</div></div>
       <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Doors close</div><div class="v">10:00 am</div><div class="s">Classes begin</div></div>
-      <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Cost &amp; ages</div><div class="v">Free · All ages</div><div class="s">Children &amp; adults</div></div>
+      <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Cost &amp; ages</div><div class="v">Free · All ages</div><div class="s">Children, youth &amp; adults</div></div>
       <div class="si"><svg width="34" height="34" data-star="34"></svg><div class="k">Venue</div><div class="v">Ingle Farm</div><div class="s">20 Kylie Crescent, SA</div></div>
     </div>
   </div>
@@ -407,6 +461,21 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
   </div>
 </section>
 
+<section class="sec about">
+  <div class="wrap about-grid">
+    <div><div class="about-art" id="aboutArt"></div><div class="photo-cap">Madinah · Inspirational photograph, not Maktab premises</div></div>
+    <div>
+      <div class="label" style="color:var(--firuzeh)">Our Maktab in Adelaide</div>
+      <h2>Islamic education.<br><em>Community connection.</em></h2>
+      <p class="lead">Maktab Alzahra SA is an Islamic educational and community organisation in Adelaide, South Australia. We offer free Quran classes for all ages.</p>
+      <div class="arow"><div class="n">01</div><div><h4>Quran education</h4><p>Free classes every Saturday and Sunday, for children, young people and adults.</p></div></div>
+      <div class="arow"><div class="n">02</div><div><h4>Our Adelaide community</h4><p>A place to learn, remember Shia Islamic occasions and connect with one another.</p></div></div>
+      <div class="arow"><div class="n">03</div><div><h4>Ways to get involved</h4><p>Support the Maktab with your time, your skills or a donation.</p></div></div>
+      <a class="btn btn-blue" style="margin-top:26px">Learn more about us →</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec classes">
   <div class="wrap">
     <div class="sec-head">
@@ -420,28 +489,28 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
         <div class="body">
           <div class="label" style="color:var(--gold-2)">Saturday &amp; Sunday</div>
           <h3 style="margin-top:10px">Quran Classes</h3>
-          <p>Free Islamic education for children and adults, in a warm and welcoming Maktab.</p>
           <div class="times">
             <div class="time"><div class="k">Arrive by</div><div class="v">9:40 am</div></div>
             <div class="time"><div class="k">Doors close</div><div class="v">10:00 am</div></div>
             <div class="time"><div class="k">Cost</div><div class="v">Free</div></div>
             <div class="time"><div class="k">Ages</div><div class="v">All ages</div></div>
           </div>
-          <div class="actions" style="margin-top:34px">
+          <div class="actions" style="margin-top:30px">
             <a class="btn btn-gold">Registration info →</a>
             <a class="btn btn-ghost">View venue on map</a>
           </div>
         </div>
       </div>
       <div class="cls-side">
-        <div class="step"><svg width="84" height="84" data-num="١"></svg><div><h4>Call the Maktab</h4><p>Speak with our staff on <b>0414 012 964</b> about a place in class.</p></div></div>
-        <div class="step"><svg width="84" height="84" data-num="٢"></svg><div><h4>Staff approval</h4><p>Every registration is reviewed and approved by Maktab staff.</p></div></div>
-        <div class="step"><svg width="84" height="84" data-num="٣"></svg><div><h4>Join us on the weekend</h4><p>Arrive by 9:40 am at 20 Kylie Crescent, Ingle Farm.</p></div></div>
+        <div class="step"><svg width="84" height="84" data-num="١"></svg><div><h4>Explore the class information</h4><p>Review the class notice and the materials list before planning your visit.</p></div></div>
+        <div class="step"><svg width="84" height="84" data-num="٢"></svg><div><h4>Ask your questions</h4><p>Call the Maktab on <b>041 401 2964</b> — every day, 8 am–8 pm.</p></div></div>
+        <div class="step"><svg width="84" height="84" data-num="٣"></svg><div><h4>Follow staff guidance</h4><p>All registrations are subject to approval by Maktab staff.</p></div></div>
         <div class="bring">
-          <h4>Parent notice · bring to every class</h4>
-          <ul><li>Holy Quran or Juz Amma</li><li>Notebook and pencil</li><li>Modest, clean clothing</li><li>Water bottle</li></ul>
+          <h4>Parent notice · what to bring</h4>
+          <ul><li>Whiteboard</li><li>Markers</li><li>Notebooks and pencils</li><li>Bag</li><li>Completed homework sheets</li></ul>
+          <div class="must"><b>Please note:</b> students must bring the required materials to attend class.</div>
         </div>
-        <div class="approval">Online registration is not yet available. Registration requires Maktab staff approval.</div>
+        <div class="approval">Online registration is not yet available. Finishing times are awaiting confirmation.</div>
       </div>
     </div>
   </div>
@@ -494,13 +563,13 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
     <div class="sec-head">
       <div class="label">From our Instagram · @maktab.alzahra.sa</div>
       <h2>Moments from <em>our Maktab.</em></h2>
-      <p>Islamic education and community connection, here in Adelaide.</p>
+      <p>From our official Instagram account · 20 September 2026.</p>
       <div class="orn" data-orn></div>
     </div>
     <div class="moments">
-      <div class="moment mom-col"><div class="frame"><div class="img" data-scene="class"></div></div><div class="cap"><h4>Quran classes · Photo report</h4><span>View post →</span></div></div>
-      <div class="moment"><div class="frame"><div class="img" data-scene="quran"></div></div><div class="cap"><h4>Photo report · Part 2</h4><span>View →</span></div></div>
-      <div class="moment"><div class="frame"><div class="img" data-scene="lantern"></div><div class="play"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="#1b4fa3"/></svg></div></div><div class="cap"><h4>Video report</h4><span>Watch reel →</span></div></div>
+      <div class="moment"><div class="tframe"><svg class="tb"><rect width="100%" height="100%" fill="url(#khatamSmall)"/></svg><img src="assets/quran-photo-report-1.webp" alt=""></div><div class="cap"><h4>Quran classes · Photo report</h4><span>View post →</span></div></div>
+      <div class="moment"><div class="tframe"><svg class="tb"><rect width="100%" height="100%" fill="url(#khatamSmall)"/></svg><img src="assets/quran-photo-report-2.webp" alt=""></div><div class="cap"><h4>Photo report · Part 2</h4><span>View post →</span></div></div>
+      <div class="moment"><div class="tframe reel"><svg class="tb"><rect width="100%" height="100%" fill="url(#khatamSmall)"/></svg><img src="assets/quran-reel-cover.webp" alt=""></div><div class="cap"><h4>Video report</h4><span>Watch →</span></div></div>
     </div>
   </div>
 </section>
@@ -514,10 +583,31 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
       <div class="orn" data-orn></div>
     </div>
     <div class="sup-grid">
-      <div class="sup"><div class="cap"><svg class="tilebg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#khatam)"/></svg><svg width="96" height="96" data-medallion="s1" style="position:relative"></svg></div><h3>Donate</h3><div class="ar ar-t">صدقة جارية</div><p>Help keep Islamic education and services open to our community.</p><a class="btn btn-blue">Donation information →</a><div class="soon">Online donations are not yet open.</div></div>
-      <div class="sup"><div class="cap"><svg class="tilebg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#khatam)"/></svg><svg width="96" height="96" data-medallion="s2" style="position:relative"></svg></div><h3>Volunteer</h3><div class="ar ar-t">خدمة</div><p>Share your time and skills to support Maktab Alzahra SA.</p><a class="btn btn-blue">Volunteer your time →</a><div class="soon">Applications are not yet open.</div></div>
-      <div class="sup"><div class="cap"><svg class="tilebg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#khatam)"/></svg><svg width="96" height="96" data-medallion="s3" style="position:relative"></svg></div><h3>Islamic Questions</h3><div class="ar ar-t">مسائل شرعية</div><p>A space for Islamic religious enquiries. How to ask will be shared here.</p><a class="btn btn-line">Find out more →</a><div class="soon">Question submissions are not yet open.</div></div>
+      <div class="sup"><div class="cap"><img src="assets/premium-giving.webp" alt=""></div><h3>Donate</h3><div class="ar ar-t">صدقة</div><p>Support the Maktab by bank transfer.</p>
+        <div class="bank"><div><span>Account name</span><b>Australian Youths Alliance inco</b></div><div><span>BSB</span><b>065-167</b></div><div><span>Account number</span><b>10581185</b></div></div>
+        <a class="btn btn-blue">Donation information →</a><div class="soon">Monthly direct debit is coming soon.</div></div>
+      <div class="sup"><div class="cap"><img src="assets/premium-volunteer.webp" alt=""></div><h3>Volunteer</h3><div class="ar ar-t">خدمة</div><p>Dedicate a day of your time, or contribute useful skills to the Maktab.</p><p style="font-size:14.5px;margin-top:14px">Community activities · Practical support · Creative and digital skills</p><a class="btn btn-blue">Ways to help →</a><div class="soon">Volunteer applications are not yet open.</div></div>
+      <div class="sup"><div class="cap"><img src="assets/sanctuary-courtyard.webp" alt=""></div><h3>Islamic Questions</h3><div class="ar ar-t">مسائل شرعية</div><p>A space for Islamic religious enquiries, reviewed by an authorised religious representative.</p><p style="font-size:14.5px;margin-top:14px">Human guidance — this website does not generate religious rulings.</p><a class="btn btn-line">Find out more →</a><div class="soon">Question submissions are not yet open.</div></div>
     </div>
+  </div>
+</section>
+
+<section class="sec contact">
+  <svg class="tilebg" width="100%" height="100%"><rect width="100%" height="100%" fill="url(#khatamLine)"/></svg>
+  <div class="wrap contact-grid">
+    <div>
+      <div class="label" style="color:var(--firuzeh-2)">Get in touch · Quran class enquiries</div>
+      <h2>Call the <em>Maktab.</em></h2>
+      <div class="bigphone">041 401 2964</div>
+      <div class="hours label">Every day · 8 am – 8 pm</div>
+      <div class="cinfo">
+        <div class="cbox"><div class="k">Class venue</div><div class="v">20 Kylie Crescent,<br>Ingle Farm, SA</div><a>View address on map →</a></div>
+        <div class="cbox"><div class="k">Class times</div><div class="v">Saturday &amp; Sunday<br>Arrive by 9:40 am</div><div class="s">Doors close at 10:00 am. Confirm the class time before travelling.</div></div>
+      </div>
+      <div class="socials"><span>Instagram</span><span>YouTube</span><span>WhatsApp channel</span></div>
+      <div class="small">Email is not yet published. No online contact form is active.</div>
+    </div>
+    <div class="contact-art"><div id="contactArt"></div><div class="photo-cap">Madinah · Inspirational photograph, not Maktab premises</div></div>
   </div>
 </section>
 
@@ -531,12 +621,12 @@ footer .tilebg{position:absolute;inset:0;opacity:.08}
     </div>
     <div class="foot-grid">
       <div>
-        <a class="brand"><svg width="62" height="62" viewBox="0 0 100 100" data-medallion="logo"></svg><div><div class="brand-t1" style="color:#fff">MAKTAB ALZAHRA</div><div class="brand-t2">SOUTH AUSTRALIA</div></div></a>
+        <a class="brand"><img src="assets/logo-288.png" alt="Maktab Al-Zahra logo"><div><div class="brand-t1" style="color:#fff">MAKTAB ALZAHRA</div><div class="brand-t2">SOUTH AUSTRALIA</div></div></a>
         <p style="margin-top:20px;font-size:15px;max-width:340px">An Islamic educational and community organisation in Adelaide. Australian Youths Alliance Incorporation.</p>
       </div>
       <div><h5>Visit</h5><ul><li>20 Kylie Crescent</li><li>Ingle Farm, SA</li><li>Sat &amp; Sun · from 9:40 am</li></ul></div>
-      <div><h5>Explore</h5><ul><li>Quran Classes</li><li>Prayer Times</li><li>Islamic Calendar</li><li>About us</li></ul></div>
-      <div><h5>Call us</h5><div class="foot-phone">0414 012 964</div><ul><li style="color:var(--firuzeh-2)">Instagram · @maktab.alzahra.sa</li></ul></div>
+      <div><h5>Explore</h5><ul><li>Quran Classes</li><li>Prayer Times</li><li>Islamic Calendar</li><li>Donations</li><li>Volunteer</li></ul></div>
+      <div><h5>Call us</h5><div class="foot-phone">041 401 2964</div><ul><li>Every day, 8 am–8 pm</li><li style="color:var(--firuzeh-2)">Instagram · YouTube · WhatsApp</li></ul></div>
     </div>
   </div>
   <div class="wrap"><div class="foot-bottom"><span>© 2026 Maktab Alzahra SA · Adelaide, South Australia</span><span>English · <span class="fa">دری</span></span></div></div>
@@ -710,55 +800,40 @@ function archPath(x,y,w,h,spring){ // x,y top-left of bounding box; spring = y w
   const cp=el('clipPath',{id:'archClip'},d);el('path',{d:archPath(ax,ay,aw,ah,spring)},cp);
   const g=el('g',{'clip-path':'url(#archClip)'},s);
   el('rect',{x:ax,y:ay,width:aw,height:ah,fill:'url(#heroSky)'},g);
-  // stars
-  let seed=7;const rnd=()=>((seed=seed*16807%2147483647)/2147483647);
-  for(let i=0;i<70;i++){el('circle',{cx:ax+rnd()*aw,cy:ay+rnd()*260,r:rnd()*1.4+.3,fill:'#fff',opacity:rnd()*.7+.3},g)}
-  // crescent
-  el('path',{d:`M${ax+aw-92} ${ay+92}a26 26 0 1 0 0 46 21 21 0 1 1 0-46z`,fill:C.go2},g);
-  // muqarnas hint at crown (rows of tiny arches)
-  for(let row=0;row<3;row++){const n=3+row*2, ww=34-row*4, yy=ay+40+row*26;
-    for(let i=0;i<n;i++){const xx=W/2-(n*ww)/2+i*ww; el('path',{d:archPath(xx,yy,ww,22,yy+10),fill:'none',stroke:'rgba(191,233,230,.25)','stroke-width':1},g)}}
-  // glow behind dome
-  el('circle',{cx:W/2,cy:ay+360,r:220,fill:'url(#glow)'},g);
-  // minarets
-  [[W/2-170],[W/2+150]].forEach(([mx])=>{
-    el('rect',{x:mx,y:ay+250,width:20,height:400,fill:'#0b2a63'},g);
-    el('rect',{x:mx,y:ay+250,width:20,height:400,fill:'url(#domeTile)',opacity:.45},g);
-    el('rect',{x:mx-6,y:ay+300,width:32,height:12,fill:C.go},g);
-    el('rect',{x:mx-4,y:ay+312,width:28,height:5,fill:C.fi},g);
-    el('path',{d:`M${mx-2} ${ay+252} L${mx+10} ${ay+212} L${mx+22} ${ay+252} Z`,fill:C.go},g);
-    el('rect',{x:mx+9,y:ay+196,width:2,height:18,fill:C.go2},g);
-    el('rect',{x:mx,y:ay+360,width:20,height:6,fill:C.fi2},g);
-  });
-  // dome
-  const dcx=W/2, dbase=ay+420;
-  const domeD=`M${dcx-118} ${dbase} C${dcx-130} ${dbase-110} ${dcx-70} ${dbase-180} ${dcx} ${dbase-232} C${dcx+70} ${dbase-180} ${dcx+130} ${dbase-110} ${dcx+118} ${dbase} Z`;
-  el('path',{d:domeD,fill:'url(#domeG)'},g);
-  el('path',{d:domeD,fill:'url(#domeTile)',opacity:.55},g);
-  // ribs
-  for(let i=-3;i<=3;i++){el('path',{d:`M${dcx+i*34} ${dbase} Q ${dcx+i*30} ${dbase-150} ${dcx} ${dbase-230}`,fill:'none',stroke:'rgba(246,240,225,.25)','stroke-width':1},g)}
-  // finial
-  el('rect',{x:dcx-2,y:dbase-290,width:4,height:60,fill:C.go2},g);
-  el('circle',{cx:dcx,cy:dbase-250,r:6,fill:C.go2},g);el('circle',{cx:dcx,cy:dbase-268,r:4.5,fill:C.go2},g);
-  el('path',{d:`M${dcx+2} ${dbase-300}a8 8 0 1 0 0 12 6 6 0 1 1 0-12z`,fill:C.go2},g);
-  // drum with calligraphy band
-  el('rect',{x:dcx-126,y:dbase,width:252,height:58,fill:C.co},g);
-  el('rect',{x:dcx-126,y:dbase,width:252,height:5,fill:C.go},g);
-  el('rect',{x:dcx-126,y:dbase+53,width:252,height:5,fill:C.go},g);
-  const dt=el('text',{x:dcx,y:dbase+40,'text-anchor':'middle','font-family':'Amiri','font-size':24,'font-weight':700,fill:C.gl,direction:'rtl'},g);dt.textContent='يَا فَاطِمَةُ الزَّهْرَاءُ';
-  // lower building with small arches
-  el('rect',{x:ax,y:dbase+58,width:aw,height:200,fill:'#0b2a63'},g);
-  el('rect',{x:ax,y:dbase+58,width:aw,height:200,fill:'url(#khatamDark)',opacity:.55},g);
-  el('rect',{x:ax,y:dbase+58,width:aw,height:4,fill:C.go},g);
-  for(let i=0;i<5;i++){const bw=56,bx=W/2-(5*bw+4*14)/2+i*(bw+14);
-    el('path',{d:archPath(bx,dbase+84,bw,140,dbase+110),fill:C.fi,stroke:C.gl,'stroke-width':2},g);
-    el('path',{d:archPath(bx+7,dbase+92,bw-14,140,dbase+116),fill:i===2?'#f5c86a':'#0a2353'},g);
-    if(i===2){el('path',{d:archPath(bx+7,dbase+92,bw-14,140,dbase+116),fill:'url(#glow)'},g)}
-  }
+  el('image',{href:'assets/cinematic-shrine.webp',x:ax-262,y:ay,width:928,height:ah,preserveAspectRatio:'xMidYMid slice'},g);
+  const sh=el('linearGradient',{id:'heroShade',x1:0,y1:0,x2:0,y2:1},d);
+  [['0','rgba(6,23,58,.55)'],['.3','rgba(6,23,58,0)'],['.8','rgba(6,23,58,0)'],['1','rgba(6,23,58,.6)']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},sh));
+  el('rect',{x:ax,y:ay,width:aw,height:ah,fill:'url(#heroShade)'},g);
+  el('path',{d:archPath(ax,ay,aw,ah,spring),fill:'none',stroke:C.go2,'stroke-width':2},s);
   // spandrels medallions
   const sl=el('svg',{x:px+22,y:py+92,width:62,height:62},s);medallion(sl,{});
   const sr=el('svg',{x:px+pw-84,y:py+92,width:62,height:62},s);medallion(sr,{p1:C.fi,p2:C.co2});
 })();
+
+/* ---- tiled arch photo frames ---- */
+function photoArch(hostId,src,W,H,spring,pattern){
+  const host=document.getElementById(hostId);if(!host)return;
+  const s=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H},host);
+  el('path',{d:archPath(0,0,W,H,spring),fill:C.fi},s);
+  el('path',{d:archPath(0,0,W,H,spring),fill:`url(#${pattern||'khatamSmall'})`},s);
+  el('path',{d:archPath(20,22,W-40,H-22,spring+8),fill:C.gl},s);
+  el('path',{d:archPath(25,28,W-50,H-28,spring+10),fill:C.go},s);
+  const id=hostId+'Clip';const cp=el('clipPath',{id},defs);el('path',{d:archPath(29,33,W-58,H-33-29,spring+12)},cp);
+  el('path',{d:archPath(29,33,W-58,H-33,spring+12),fill:C.l8},s);
+  const cp2=el('clipPath',{id:id+'2'},defs);el('path',{d:archPath(29,33,W-58,H-33-29,spring+12)},cp2);
+  el('image',{href:src,x:29,y:33,width:W-58,height:H-62,preserveAspectRatio:'xMidYMid slice','clip-path':`url(#${id})`},s);
+  el('rect',{x:0,y:H-29,width:W,height:29,fill:'url(#arabesqueS)'},s);
+}
+(function(){ // small arabesque for frame base
+  const w=58,hh=29,p=el('pattern',{id:'arabesqueS',width:w,height:hh,patternUnits:'userSpaceOnUse'},defs);
+  el('rect',{width:w,height:hh,fill:C.l8},p);el('rect',{width:w,height:3,fill:C.go},p);el('rect',{y:hh-3,width:w,height:3,fill:C.go},p);
+  const m=hh/2;
+  el('path',{d:`M0 ${m} C ${w*.25} ${m-10}, ${w*.25} ${m-10}, ${w/2} ${m} S ${w*.75} ${m+10}, ${w} ${m}`,fill:'none',stroke:C.fi2,'stroke-width':1.6},p);
+  el('path',{d:`M0 ${m} C ${w*.25} ${m+10}, ${w*.25} ${m+10}, ${w/2} ${m} S ${w*.75} ${m-10}, ${w} ${m}`,fill:'none',stroke:C.fi2,'stroke-width':1.6},p);
+  [0,w/2,w].forEach(x=>{el('polygon',{points:starPts(x,m,6,2.8,8,0),fill:C.gl},p)});
+})();
+photoArch('aboutArt','assets/madinah-arch-736.webp',480,640,190);
+photoArch('contactArt','assets/madinah-green-dome-736.webp',420,620,170);
 
 /* ---- Thaqalayn panel corners ---- */
 (function(){
@@ -775,7 +850,7 @@ function archPath(x,y,w,h,spring){ // x,y top-left of bounding box; spring = y w
 (function(){
   const host=document.getElementById('mihrab');
   const mobile=window.innerWidth<760;
-  const W=mobile?350:600,H=mobile?840:760;
+  const W=mobile?350:600,H=mobile?800:830;
   const s=el('svg',{class:'shape',viewBox:`0 0 ${W} ${H}`,width:W,height:H},host);host.insertBefore(s,host.firstChild);
   const spring=mobile?120:180;
   el('path',{d:archPath(0,0,W,H,spring),fill:C.fi},s);
@@ -786,13 +861,12 @@ function archPath(x,y,w,h,spring){ // x,y top-left of bounding box; spring = y w
   const cp=el('clipPath',{id:'mihClip'},defs);el('path',{d:archPath(26,26,W-52,H-26,spring+10)},cp);
   const g=el('g',{'clip-path':'url(#mihClip)'},s);
   el('rect',{width:W,height:H,fill:'url(#khatamLine)',opacity:.18},g);
-  // hanging lamp
-  const lx=W/2;
-  el('path',{d:`M${lx} 26 V${mobile?60:86}`,stroke:C.go,'stroke-width':1.5},g);
-  el('path',{d:`M${lx-16} ${mobile?62:88} h32 l-6 26 h-20z`,fill:C.go},g);
-  el('circle',{cx:lx,cy:mobile?100:126,r:12,fill:'#ffd98a',opacity:.9},g);
-  el('circle',{cx:lx,cy:mobile?100:126,r:40,fill:'url(#glowM)'},g);
-  const gm=el('radialGradient',{id:'glowM'},defs);el('stop',{offset:0,'stop-color':'rgba(255,217,138,.6)'},gm);el('stop',{offset:1,'stop-color':'rgba(255,217,138,0)'},gm);
+  const ih=mobile?210:390;
+  el('image',{href:'assets/quran-crop.jpg',x:26,y:26,width:W-52,height:ih,preserveAspectRatio:'xMidYMid slice'},g);
+  const mg=el('linearGradient',{id:'mihFade',x1:0,y1:0,x2:0,y2:1},defs);
+  [['0','rgba(10,35,83,.15)'],['.6','rgba(10,35,83,.25)'],['1','rgba(10,35,83,1)']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},mg));
+  el('rect',{x:26,y:26,width:W-52,height:ih+1,fill:'url(#mihFade)'},g);
+  el('rect',{x:26,y:26+ih,width:W-52,height:3,fill:C.go,opacity:.0},g);
 })();
 
 /* ---- Moments: illustrated scenes ---- */
