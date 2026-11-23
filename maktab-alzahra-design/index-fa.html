@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maktab Alzahra SA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@700&family=Noto+Nastaliq+Urdu:wght@500;700&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600&family=Figtree:wght@400;500;600;700&display=block" rel="stylesheet">
+<script>if(location.search.indexOf("static")>-1)document.documentElement.classList.add("static")</script>
+<style>
+:root{
+  --night:#061534;
+  --lapis:#0d2a5e;
+  --lapis-2:#143a7c;
+  --cobalt:#1d55ad;
+  --firuzeh:#1a9ea5;
+  --firuzeh-2:#62d2cf;
+  --firuzeh-pale:#dff0ee;
+  --tile:#f6faf8;
+  --tile-2:#eaf3f1;
+  --ink:#0c1d3f;
+  --muted:#4d5b78;
+  --gold:#c9a24b;
+  --gold-2:#efd28a;
+  --line:#cfdcdc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tile);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+svg,img{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.d{font-family:Vazirmatn,sans-serif}
+.ar{font-family:Amiri,serif;direction:rtl}
+.ruq{font-family:'Aref Ruqaa',serif;direction:rtl}
+.fa{font-family:Vazirmatn,sans-serif;direction:rtl}
+.nast{font-family:'Noto Nastaliq Urdu',serif;direction:rtl}
+h1,h2,h3,h4{font-family:Vazirmatn,sans-serif;font-weight:600;line-height:1.08;letter-spacing:-.005em}
+h2{font-size:68px;color:var(--lapis);line-height:.98}
+.kicker{display:flex;align-items:center;gap:12px;font-family:Vazirmatn,sans-serif;font-weight:600;font-size:24px;color:var(--firuzeh);margin-bottom:10px}
+.kicker svg{flex:none}
+.lead{font-size:19.5px;color:var(--muted);max-width:600px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16.5px;padding:15px 28px;border-radius:3px;white-space:nowrap}
+.btn-gold{background:linear-gradient(180deg,#f2d78f,#c9a24b);color:#231800;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 24px -10px rgba(201,162,75,.8)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn-blue{background:var(--lapis);color:#fff}
+.btn-line{border:1.5px solid var(--lapis);color:var(--lapis)}
+.textlink{font-weight:600;color:var(--cobalt);border-bottom:1.5px solid var(--firuzeh);padding-bottom:2px}
+.sec{padding:120px 0}
+.tilebg{position:absolute;inset:0;width:100%;height:100%}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:900px;color:#fff;overflow:hidden;background:var(--night)}
+.hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.hero .shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(6,21,52,.82) 0%,rgba(6,21,52,.15) 24%,rgba(6,21,52,0) 42%,rgba(6,21,52,.55) 70%,rgba(6,21,52,.96) 100%),
+  linear-gradient(90deg,rgba(6,21,52,.7) 0%,rgba(6,21,52,0) 55%)}
+.nav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;height:112px}
+.brand{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.brand img{width:72px;height:72px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.brand b{display:block;font-family:Vazirmatn,sans-serif;font-weight:700;font-size:30px;line-height:1}
+.brand span{display:block;font-size:14px;color:var(--firuzeh-2);margin-top:3px}
+.menu{display:flex;gap:26px;font-size:15.5px;font-weight:500;white-space:nowrap}
+.menu a{opacity:.92}
+.menu a.on{opacity:1;border-bottom:2px solid var(--gold-2);padding-bottom:4px}
+.nav-r{display:flex;align-items:center;gap:16px}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:3px;overflow:hidden;font-size:14px}
+.lang span,.lang a{padding:7px 13px}
+.lang .on{background:#fff;color:var(--lapis);font-weight:700}
+.burger{display:none}
+.hero-body{position:absolute;left:0;right:0;bottom:70px;z-index:2}
+.hero-body .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.bism{font-size:30px;color:var(--gold-2);margin-bottom:10px;text-align:left}
+h1{font-size:140px;font-weight:700;line-height:.86;letter-spacing:-.015em;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero-sub{font-size:21px;max-width:560px;margin-top:22px;color:#e6edf8}
+.hero-cta{display:flex;gap:14px;margin-top:32px}
+.hero-fa{text-align:right;padding-bottom:6px}
+.hero-fa .nast{font-size:66px;color:var(--gold-2);line-height:1.9;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.hero-fa .fa{font-size:20px;color:#e6edf8;margin-top:4px}
+.hero-fa small{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:16px}
+
+/* ---------- the opening gate ---------- */
+.gate{position:relative;height:320vh}
+.pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--night)}
+.pin .hero{height:100vh}
+.pin .hero > img{transform:scale(var(--z,1.16));transform-origin:50% 60%}
+.pin .nav,.pin .hero-body{opacity:var(--o,0)}
+.facade{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.enter{position:absolute;z-index:6;left:50%;bottom:30px;transform:translateX(-50%);background:var(--lapis);color:#fff;border:1px solid var(--gold-2);padding:11px 22px;font-size:15.5px;font-weight:600;border-radius:3px;display:flex;gap:10px;align-items:center;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.static .gate{height:auto}
+.static .pin{position:relative;height:auto}
+.static .pin .hero{height:900px}
+.static .pin .hero > img{transform:none}
+.static .pin .nav,.static .pin .hero-body{opacity:1}
+.static .facade,.static .enter{display:none}
+@media (max-width:760px){.static .pin .hero{height:760px}}
+@media (prefers-reduced-motion:reduce){.gate{height:auto}.pin{position:relative}.pin .nav,.pin .hero-body{opacity:1}.facade,.enter{display:none}}
+
+/* ---------- katiba band (prayer times) ---------- */
+.katiba{background:var(--lapis);color:#fff;position:relative}
+.katiba .strip{height:26px;width:100%}
+.katiba .in{display:grid;grid-template-columns:210px repeat(5,1fr) 230px;align-items:center;min-height:124px}
+.katiba .where b{display:block;font-family:Vazirmatn,sans-serif;font-size:28px;font-weight:600;line-height:1}
+.katiba .where span{font-size:14px;color:#a9c0e4}
+.pt{display:flex;align-items:center;gap:11px;justify-content:center;position:relative;padding:14px 0}
+.pt + .pt:before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:1px;background:rgba(255,255,255,.16)}
+.pt .n{font-size:14.5px;color:#a9c0e4;line-height:1.1}
+.pt .t{font-family:Vazirmatn,sans-serif;font-size:36px;font-weight:600;line-height:1}
+.pt.next .t{color:var(--gold-2)}
+.pt.next .n{color:var(--gold-2)}
+.katiba .hij{text-align:right}
+.katiba .hij .ar{font-size:26px;color:var(--gold-2);line-height:1.3}
+.katiba .hij span{font-size:14px;color:#a9c0e4}
+
+/* ---------- classes ---------- */
+.classes{position:relative}
+.cls{display:grid;grid-template-columns:1fr 470px;gap:90px;align-items:start}
+.facts{margin-top:40px;border-top:2px solid var(--lapis)}
+.fact{display:grid;grid-template-columns:190px 1fr;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+.fact dt{font-size:16px;color:var(--muted)}
+.fact dd{font-family:Vazirmatn,sans-serif;font-size:38px;font-weight:600;color:var(--lapis);line-height:1.15}
+.fact dd small{display:block;font-family:Figtree;font-size:15.5px;font-weight:400;color:var(--muted);margin-top:4px}
+.cls-cta{display:flex;gap:14px;margin-top:34px;align-items:center}
+.notice{font-size:15px;color:var(--muted);margin-top:18px}
+.cap{font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
+
+.join{display:grid;grid-template-columns:1fr 470px;gap:90px;margin-top:100px;align-items:start}
+.join h3{font-size:44px;color:var(--lapis)}
+.steps{margin-top:26px;list-style:none}
+.steps li{display:grid;grid-template-columns:70px 1fr;gap:22px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps h4{font-size:30px;line-height:1;color:var(--lapis)}
+.steps p{font-size:16px;color:var(--muted);margin-top:2px}
+.bring{background:var(--lapis);color:#fff;padding:38px 40px 36px;position:relative;overflow:hidden}
+.bring .edge{position:absolute;left:0;top:0;width:100%;height:14px}
+.bring h3{color:#fff;font-size:40px;margin-top:8px}
+.bring ul{list-style:none;margin-top:18px}
+.bring li{display:flex;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:17.5px}
+.bring li svg{flex:none}
+.bring p{font-size:15px;color:#c2d3ee;margin-top:18px}
+
+/* ---------- thaqalayn ---------- */
+.thaq{background:var(--night);color:#fff;position:relative;overflow:hidden;padding:130px 0}
+.thaq .side{position:absolute;top:0;height:100%;width:15%;opacity:.95}
+.thaq .side.l{left:0;-webkit-mask-image:linear-gradient(90deg,#000 30%,transparent);mask-image:linear-gradient(90deg,#000 30%,transparent)}
+.thaq .side.r{right:0;-webkit-mask-image:linear-gradient(270deg,#000 30%,transparent);mask-image:linear-gradient(270deg,#000 30%,transparent)}
+.thaq .in{position:relative;text-align:center;max-width:900px;margin:0 auto}
+.thaq .q{font-size:64px;line-height:1.75;color:var(--gold-2)}
+.thaq .en{font-family:Vazirmatn,sans-serif;font-size:38px;line-height:1.2;margin-top:22px;color:#eef3fb}
+.thaq .src{color:var(--firuzeh-2);margin-top:20px;font-size:16.5px}
+
+/* ---------- about ---------- */
+.about{background:var(--tile-2)}
+.about-grid{display:grid;grid-template-columns:440px 1fr;gap:100px;align-items:center}
+.about ul{list-style:none;margin-top:28px;max-width:600px}
+.about li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:17.5px}
+.about li svg{flex:none;margin-top:5px}
+.about li b{color:var(--lapis)}
+
+/* ---------- days ---------- */
+.days-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:90px;align-items:start}
+.today{display:flex;align-items:baseline;gap:18px;margin-top:34px;padding-bottom:22px;border-bottom:2px solid var(--lapis)}
+.today b{font-family:Vazirmatn,sans-serif;font-size:40px;color:var(--lapis);font-weight:600}
+.today .ar{font-size:27px;color:var(--firuzeh)}
+.occ{display:grid;grid-template-columns:96px 1fr auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.occ .date b{display:block;font-family:Vazirmatn,sans-serif;font-size:58px;font-weight:600;line-height:1;color:var(--lapis)}
+.occ .date span{font-size:14.5px;color:var(--muted)}
+.occ h4{font-size:32px;line-height:1;color:var(--lapis)}
+.occ p{font-size:15.5px;color:var(--muted);margin-top:2px}
+.cd{text-align:right;white-space:nowrap}
+.cd b{font-family:Vazirmatn,sans-serif;font-size:58px;font-weight:700;color:var(--firuzeh);line-height:1}
+.cd span{display:block;font-size:14px;color:var(--muted)}
+.occ.feat .cd b{color:var(--gold)}
+.small{font-size:14px;color:var(--muted);margin-top:18px}
+.verses{background:var(--lapis);color:#fff;position:relative;overflow:hidden}
+.verses .edge{height:14px;width:100%}
+.verse{padding:36px 44px}
+.verse + .verse{border-top:1px solid rgba(255,255,255,.16)}
+.verse .k{font-family:Vazirmatn,sans-serif;font-size:22px;color:var(--firuzeh-2);font-weight:600}
+.verse .ar{text-align:left;font-size:40px;color:var(--gold-2);line-height:1.7;margin-top:6px}
+.verse .en{font-family:Vazirmatn,sans-serif;font-size:30px;line-height:1.15;margin-top:4px}
+.verse .fa{text-align:left;font-size:16px;color:#c2d3ee;margin-top:8px}
+.verse .src{font-size:14.5px;color:#a9c0e4;margin-top:12px}
+
+/* ---------- moments ---------- */
+.moments-sec{background:var(--tile-2)}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:50px}
+.moments{display:grid;grid-template-columns:431fr 431fr 242fr;gap:28px}
+.tframe{position:relative;padding:9px;aspect-ratio:1/1;box-shadow:0 34px 50px -34px rgba(6,21,52,.6)}
+.tframe.reel{aspect-ratio:242/431}
+.tframe img{position:relative;width:100%;height:100%;object-fit:cover;border:2px solid #fff}
+.mcap{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;gap:10px}
+.mcap h4{font-size:27px;color:var(--lapis)}
+.mcap span{font-size:14.5px;color:var(--cobalt);font-weight:600;white-space:nowrap}
+
+/* ---------- support ---------- */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:54px}
+.sup{display:flex;flex-direction:column;align-items:flex-start}
+.sup .ph{width:100%;height:230px;position:relative;overflow:hidden;border-radius:150px 150px 0 0}
+.sup .ph img{width:100%;height:100%;object-fit:cover}
+.sup .edge{width:100%;height:14px}
+.sup h3{font-size:42px;color:var(--lapis);margin-top:26px}
+.sup p{color:var(--muted);font-size:16.5px;margin-top:8px}
+.bank{width:100%;margin-top:18px;border-top:2px solid var(--lapis);font-size:15.5px}
+.bank div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.bank span{color:var(--muted)}.bank b{color:var(--lapis);font-weight:600;white-space:nowrap}
+.sup .btn{margin-top:auto}
+.sup .sp{height:26px;flex:none}
+.sup .soon{font-size:14px;color:var(--muted);margin-top:12px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--lapis);color:#fff;position:relative;overflow:hidden}
+.contact .tilebg{opacity:.1}
+.contact-grid{position:relative;display:grid;grid-template-columns:1fr 400px;gap:100px;align-items:center}
+.contact h2{color:#fff}
+.bigphone{font-family:Vazirmatn,sans-serif;font-weight:700;font-size:132px;line-height:1;margin-top:18px;color:var(--gold-2);letter-spacing:-.01em}
+.hours{font-size:19px;color:#c2d3ee;margin-top:10px}
+.cinfo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:40px;border-top:1px solid rgba(255,255,255,.22)}
+.cbox{padding:24px 28px 6px 0}
+.cbox + .cbox{padding-left:28px;border-left:1px solid rgba(255,255,255,.22)}
+.cbox .k{font-size:15px;color:var(--firuzeh-2)}
+.cbox .v{font-family:Vazirmatn,sans-serif;font-size:31px;font-weight:600;line-height:1.1;margin-top:6px}
+.cbox .s{font-size:14.5px;color:#a9c0e4;margin-top:8px}
+.cbox a{color:var(--gold-2);font-weight:600;font-size:15.5px;display:inline-block;margin-top:10px;border-bottom:1px solid var(--gold)}
+.socials{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.socials span{border:1px solid rgba(255,255,255,.5);border-radius:3px;padding:10px 18px;font-size:15.5px;font-weight:600}
+.contact .cap{color:#8fa6cc}
+.contact .small{color:#a9c0e4}
+
+/* ---------- footer ---------- */
+footer{background:var(--night);color:#c2d3ee;position:relative}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding:64px 0 54px}
+.foot h5{font-family:Vazirmatn,sans-serif;font-size:23px;color:#fff;font-weight:600;margin-bottom:12px}
+.foot li{list-style:none;margin:7px 0;font-size:15.5px}
+.foot .brand b{color:#fff}
+.foot .nast{font-size:34px;color:var(--gold-2);line-height:2;margin-top:8px;text-align:left}
+.foot-b{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;font-size:13.5px;color:#8fa6cc;display:flex;justify-content:space-between}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  body{font-size:16.5px}
+  .wrap{padding:0 20px}
+  .sec{padding:72px 0}
+  h2{font-size:46px}
+  .lead{font-size:17.5px}
+  .hero{height:760px}
+  .hero > img{object-position:36% 30%}
+  .nav{height:84px}
+  .menu,.nav-r .btn,.lang{display:none}
+  .burger{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(255,255,255,.5);border-radius:3px}
+  .brand img{width:52px;height:52px}
+  .brand b{font-size:24px}.brand span{font-size:12.5px}
+  .hero-body{bottom:34px}
+  .hero-body .wrap{flex-direction:column;align-items:stretch;gap:0}
+  .hero-fa{display:none}
+  .hero-fa .nast{font-size:38px;text-align:left}
+  .hero-fa .fa,.hero-fa small{display:none}
+  .bism{display:none}
+  h1{font-size:78px}
+  .hero-sub{font-size:17.5px;margin-top:14px}
+  .hero-cta{flex-direction:column;margin-top:22px}
+  .hero-cta .btn{justify-content:center}
+  .katiba .in{grid-template-columns:repeat(5,1fr);padding:18px 0 14px}
+  .katiba .where{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .katiba .where b{font-size:23px}
+  .katiba .where br{display:none}
+  .pt{flex-direction:column;gap:6px;padding:8px 0}
+  .pt + .pt:before{top:12px;bottom:12px}
+  .pt svg{width:34px;height:44px}
+  .pt .n{font-size:12px;text-align:center}
+  .pt .t{font-size:24px;text-align:center}
+  .katiba .hij{grid-column:1/-1;text-align:left;display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;border-top:1px solid rgba(255,255,255,.16);padding-top:10px}
+  .katiba .hij .ar{font-size:20px}
+  .cls,.join,.about-grid,.days-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .join{margin-top:60px}
+  .fact{grid-template-columns:118px 1fr}
+  .fact dd{font-size:29px}
+  .cls-cta{flex-direction:column;align-items:stretch}
+  .cls-cta .btn{justify-content:center}
+  .arch-host svg{width:100%;height:auto}
+  .arch-host{max-width:330px;margin:0 auto}
+  .steps li{grid-template-columns:56px 1fr;gap:16px}
+  .steps svg{width:56px;height:56px}
+  .steps h4{font-size:26px}
+  .bring{padding:30px 24px 28px}
+  .thaq{padding:84px 0}
+  .thaq .side{display:none}
+  .thaq .q{font-size:36px}
+  .thaq .en{font-size:27px}
+  .today{flex-direction:column;gap:2px}
+  .today b{font-size:32px}
+  .occ{grid-template-columns:66px 1fr;gap:16px}
+  .occ .date b{font-size:44px}
+  .occ h4{font-size:27px}
+  .cd{grid-column:2;text-align:left;display:flex;gap:8px;align-items:baseline}
+  .cd b{font-size:38px}
+  .verse{padding:28px 24px}
+  .verse .ar{font-size:32px}
+  .verse .en{font-size:25px}
+  .head-row{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:34px}
+  .moments{grid-template-columns:1fr}
+  .tframe.reel{aspect-ratio:9/16}
+  .sup-grid{grid-template-columns:1fr;gap:54px;margin-top:40px}
+  .bigphone{font-size:68px}
+  .cinfo{grid-template-columns:1fr}
+  .cbox + .cbox{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.22)}
+  .foot{grid-template-columns:1fr 1fr;gap:30px;padding:48px 0 40px}
+  .foot > div:first-child{grid-column:1/-1}
+  .foot-b{flex-direction:column;gap:6px}
+}
+
+/* ---------- Dari, right to left ---------- */
+body{font-family:Vazirmatn,sans-serif;font-size:17px;line-height:1.85}
+h1,h2{font-family:'Noto Nastaliq Urdu',serif;font-weight:700;letter-spacing:0}
+h1{font-size:104px;line-height:1.75;margin-bottom:4px}
+h2{font-size:50px;line-height:2.05;margin:0 0 -6px}
+h3,h4{line-height:1.5;font-weight:700;letter-spacing:0}
+.kicker{font-size:19px;margin-bottom:0}
+.btn{font-family:Vazirmatn}
+.hero .shade{background:linear-gradient(180deg,rgba(6,21,52,.82) 0%,rgba(6,21,52,.15) 24%,rgba(6,21,52,0) 42%,rgba(6,21,52,.55) 70%,rgba(6,21,52,.96) 100%),linear-gradient(270deg,rgba(6,21,52,.75) 0%,rgba(6,21,52,0) 55%)}
+.hero > img{object-position:50% 38%;}
+.bism{text-align:right}
+.brand b{font-size:25px;line-height:1.4}
+.hero-fa{text-align:left}
+.hero-fa .lat{font-family:'Markazi Text',serif;font-weight:700;font-size:50px;line-height:1;color:var(--gold-2)}
+.hero-fa .lat2{font-family:Figtree;font-size:19px;color:#e6edf8;margin-top:8px}
+.katiba .where b{font-size:22px;line-height:1.5}
+.katiba .hij{text-align:left}
+.pt .t{font-size:29px;font-weight:700;line-height:1.3}
+.fact dd{font-size:29px;font-weight:700;line-height:1.5}
+.join h3{font-size:34px}.bring h3{font-size:30px}
+.steps h4{font-size:23px;line-height:1.5}
+.thaq .en{font-size:28px;line-height:1.9;font-weight:500}
+.today b{font-size:28px}
+.occ .date b{font-size:46px;line-height:1.2}.cd b{font-size:46px;line-height:1.2}
+.occ h4{font-size:24px;line-height:1.5}
+.cd{text-align:left}
+.verse .k{font-size:17px}
+.verse .ar{text-align:right}
+.verse .en{font-size:22px;line-height:1.7;font-weight:500}
+.verse .fa{text-align:right;direction:ltr;font-family:Figtree}
+.mcap h4{font-size:20px}
+.sup h3{font-size:31px}
+.bigphone{font-size:100px;line-height:1.2}
+.cbox{padding:24px 0 6px 28px}
+.cbox + .cbox{padding-left:0;padding-right:28px;border-left:0;border-right:1px solid rgba(255,255,255,.22)}
+.cbox .v{font-size:23px;line-height:1.6}
+.foot h5{font-size:18px}
+.foot .nast{text-align:right}
+@media (max-width:760px){
+  h1{font-size:58px}
+  h2{font-size:34px;margin:0 0 -4px}
+  .brand b{font-size:21px}
+  .hero-fa{display:none}
+  .katiba .where b{font-size:19px}
+  .pt .t{font-size:20px}
+  .fact dd{font-size:22px}
+  .steps h4{font-size:20px}
+  .thaq .en{font-size:21px}
+  .today b{font-size:23px}
+  .occ .date b{font-size:36px}.cd b{font-size:32px}.cd{text-align:right}
+  .occ h4{font-size:21px}
+  .verse .en{font-size:19px}
+  .bigphone{font-size:54px}
+  .cbox + .cbox{padding-right:0;border-right:0}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs id="defs"></defs></svg>
+
+<div class="gate" id="gate"><div class="pin" id="pin">
+<header class="hero">
+  <img src="assets/cinematic-shrine.webp" alt="">
+  <div class="shade"></div>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand"><img src="assets/logo-288.png" alt="Maktab Al-Zahra"><div><b>مکتب الزهرا</b><span>ادلاید، آسترالیای جنوبی</span></div></a>
+      <div class="menu"><a>درباره ما</a><a>کلاس‌های قرآن</a><a>اوقات نماز</a><a>تقویم</a><a>پرسش‌ها</a><a>تماس</a></div>
+      <div class="nav-r">
+        <div class="lang"><a href="index.html">EN</a><a class="on fa" href="index-fa.html">دری</a></div>
+        <a class="btn btn-gold">تماس <bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></a>
+        <div class="burger"><svg width="20" height="14" viewBox="0 0 20 14" stroke="#fff" stroke-width="2"><path d="M0 1h20M0 7h20M0 13h20"/></svg></div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="wrap">
+      <div>
+        <div class="bism ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <h1>جایی که ایمان<br>نور می‌شود</h1>
+        <p class="hero-sub">کلاس‌های رایگان قرآن برای همه سنین در ادلاید، در پرتو قرآن و اهل بیت (ع).</p>
+        <div class="hero-cta"><a class="btn btn-gold">جزئیات کلاس‌ها</a><a class="btn btn-ghost">داستان ما</a></div>
+      </div>
+      <div class="hero-fa">
+        <div class="lat">Maktab Alzahra SA</div>
+        <div class="lat2">Free Quran classes for all ages</div>
+        <small>معماری تزئینی خیالی</small>
+      </div>
+    </div>
+  </div>
+</header>
+<svg class="facade" id="facade"></svg>
+<div class="enter" id="enter"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="#efd28a" stroke-width="2"><path d="M6 1v13M1 9l5 5 5-5"/></svg><span>برای ورود پایین بروید</span></div>
+</div></div>
+
+<div class="katiba">
+  <svg class="strip"><rect width="100%" height="26" fill="url(#stripT)"/></svg>
+  <div class="wrap"><div class="in">
+    <div class="where"><b>اوقات نماز <br>در ادلاید</b><span>دوشنبه ۲۳ نوامبر</span></div>
+    <div class="pt next"><svg width="38" height="48" data-arch="fajr"></svg><div><div class="n">صبح، بعدی</div><div class="t">۰۴:۳۰</div></div></div>
+    <div class="pt"><svg width="38" height="48" data-arch="dhuhr"></svg><div><div class="n">ظهر</div><div class="t">۱۳:۰۲</div></div></div>
+    <div class="pt"><svg width="38" height="48" data-arch="asr"></svg><div><div class="n">عصر</div><div class="t">۱۶:۴۸</div></div></div>
+    <div class="pt"><svg width="38" height="48" data-arch="maghrib"></svg><div><div class="n">مغرب</div><div class="t">۲۰:۲۴</div></div></div>
+    <div class="pt"><svg width="38" height="48" data-arch="isha"></svg><div><div class="n">عشا</div><div class="t">۲۱:۲۲</div></div></div>
+    <div class="hij"><div class="ar">١٢ جمادى الثانية ١٤٤٨</div><span>۱۲ جمادی‌الثانی ۱۴۴۸ هجری قمری</span></div>
+  </div></div>
+  <svg class="strip"><rect width="100%" height="26" fill="url(#stripT)"/></svg>
+</div>
+
+<section class="sec classes">
+  <div class="wrap">
+    <div class="cls">
+      <div>
+        <div class="kicker"><svg width="18" height="18" data-star></svg>کلاس‌های قرآن آخر هفته</div>
+        <h2>هر شنبه و یکشنبه صبح، رایگان برای همه سنین</h2>
+        <p class="lead">کودکان، نوجوانان و بزرگسالان در مکان ما در اینگل فارم با هم قرآن می‌آموزند.</p>
+        <dl class="facts">
+          <div class="fact"><dt>زمان حضور</dt><dd>۹:۴۰ صبح</dd></div>
+          <div class="fact"><dt>بسته شدن دروازه</dt><dd>۱۰:۰۰ صبح<small>زمان پایان کلاس هنوز تأیید نشده است.</small></dd></div>
+          <div class="fact"><dt>هزینه</dt><dd>رایگان</dd></div>
+          <div class="fact"><dt>مکان</dt><dd><bdi dir="ltr">20 Kylie Crescent, Ingle Farm</bdi><small><a class="textlink">دیدن مکان روی نقشه</a></small></dd></div>
+        </dl>
+        <div class="cls-cta"><a class="btn btn-blue">معلومات ثبت نام</a><a class="btn btn-line">تماس درباره کلاس‌ها</a></div>
+        <div class="notice">ثبت نام آنلاین هنوز فعال نیست. ثبت نام نیاز به تأیید کارمندان مکتب دارد.</div>
+      </div>
+      <div><div class="arch-host" id="quranArt"></div><div class="cap">تصویر تزئینی</div></div>
+    </div>
+
+    <div class="join">
+      <div>
+        <h3>مسیر شما به کلاس‌های قرآن</h3>
+        <ol class="steps">
+          <li><svg width="70" height="70" data-num="١"></svg><div><h4>معلومات کلاس را بخوانید</h4><p>پیش از آمدن، اطلاعیه کلاس و فهرست لوازم را ببینید.</p></div></li>
+          <li><svg width="70" height="70" data-num="٢"></svg><div><h4>سؤال‌های خود را بپرسید</h4><p>هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید: <bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></p></div></li>
+          <li><svg width="70" height="70" data-num="٣"></svg><div><h4>رهنمایی کارمندان را دنبال کنید</h4><p>همه ثبت نام‌ها نیاز به تأیید کارمندان مکتب دارد.</p></div></li>
+        </ol>
+      </div>
+      <div class="bring">
+        <svg class="edge"><rect width="100%" height="14" fill="url(#stripS)"/></svg>
+        <h3>چه چیزهایی با خود بیاورید</h3>
+        <ul>
+          <li><svg width="14" height="14" data-star="g"></svg>تخته سفید</li>
+          <li><svg width="14" height="14" data-star="g"></svg>مارکر</li>
+          <li><svg width="14" height="14" data-star="g"></svg>کتابچه و پنسل</li>
+          <li><svg width="14" height="14" data-star="g"></svg>بکس</li>
+          <li><svg width="14" height="14" data-star="g"></svg>برگه‌های کار خانگی تکمیل‌شده</li>
+        </ul>
+        <p>شاگردان باید لوازم لازم را با خود بیاورند. شاگردانی که لوازم نداشته باشند اجازه شرکت در کلاس را ندارند.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="thaq">
+  <svg class="side l"><rect width="100%" height="100%" fill="url(#khatam)"/></svg>
+  <svg class="side r"><rect width="100%" height="100%" fill="url(#khatam)"/></svg>
+  <div class="wrap"><div class="in">
+    <div class="q ar">إِنِّي تَارِكٌ فِيكُمُ الثَّقَلَيْنِ<br>كِتَابَ اللَّهِ وَعِتْرَتِي أَهْلَ بَيْتِي</div>
+    <div class="en">«من در میان شما دو چیز گران‌بها می‌گذارم: کتاب خدا و عترتم، اهل بیتم.»</div>
+    <div class="src">حدیث ثقلین، پیامبر اکرم (ص)</div>
+  </div></div>
+</section>
+
+<section class="sec about">
+  <div class="wrap about-grid">
+    <div><div class="arch-host" id="aboutArt"></div><div class="cap">مدینه. عکس الهام‌بخش، نه ساختمان مکتب</div></div>
+    <div>
+      <div class="kicker"><svg width="18" height="18" data-star></svg>مکتب ما در ادلاید</div>
+      <h2>آموزش اسلامی و پیوند با جامعه</h2>
+      <p class="lead">مکتب الزهرا یک نهاد آموزشی و اجتماعی اسلامی در ادلاید، آسترالیای جنوبی است.</p>
+      <ul>
+        <li><svg width="14" height="14" data-star></svg><span><b>آموزش قرآن.</b> کلاس‌های رایگان برای کودکان، نوجوانان و بزرگسالان.</span></li>
+        <li><svg width="14" height="14" data-star></svg><span><b>جامعه ما در ادلاید.</b> جایی برای گرامی‌داشت مناسبت‌های اسلامی شیعی در کنار هم.</span></li>
+        <li><svg width="14" height="14" data-star></svg><span><b>راه‌های همکاری.</b> وقت بگذارید، مهارت‌تان را شریک کنید یا کمک مالی کنید.</span></li>
+      </ul>
+      <a class="btn btn-blue" style="margin-top:32px">درباره مکتب</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec days">
+  <div class="wrap days-grid">
+    <div>
+      <div class="kicker"><svg width="18" height="18" data-star></svg>تقویم اسلامی شیعی</div>
+      <h2>روزهای یادبود</h2>
+      <div class="today"><b>امروز ۱۲ جمادی‌الثانی ۱۴۴۸ است</b></div>
+      <div class="occ feat"><div class="date"><b>۱</b><span>دسامبر</span></div><div><h4>ولادت حضرت فاطمه زهرا (س)</h4><p>۲۰ جمادی‌الثانی ۱۴۴۸، بانویی که مکتب ما به نام اوست</p></div><div class="cd"><b>۸</b><span>روز مانده</span></div></div>
+      <div class="occ"><div class="date"><b>۲۳</b><span>دسامبر</span></div><div><h4>ولادت امام علی (ع)</h4><p>۱۳ رجب ۱۴۴۸</p></div><div class="cd"><b>۳۰</b><span>روز مانده</span></div></div>
+      <div class="small">تاریخ‌های هجری محاسبه‌شده موقتی‌اند و ممکن است با رؤیت هلال تغییر کنند. <a class="textlink">دیدن تقویم کامل</a></div>
+    </div>
+    <div class="verses">
+      <svg class="edge"><rect width="100%" height="14" fill="url(#stripS)"/></svg>
+      <div class="verse"><div class="k">آیه روز</div><div class="ar">رَّبِّ زِدْنِي عِلْمًا</div><div class="en">«پروردگارا، بر دانشم بیفزا.»</div><div class="fa" dir="ltr">“My Lord, increase me in knowledge.”</div><div class="src">سوره طه، آیه ۱۱۴</div></div>
+      <div class="verse"><div class="k">حدیث روز</div><div class="ar">قِيمَةُ كُلِّ امْرِئٍ مَا يُحْسِنُهُ</div><div class="en">«ارزش هر کس به کاری است که نیکو انجام می‌دهد.»</div><div class="fa" dir="ltr">“The worth of every person is in what they do well.”</div><div class="src">امام علی (ع)، نهج‌البلاغه</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec moments-sec">
+  <div class="wrap">
+    <div class="head-row">
+      <div><div class="kicker"><svg width="18" height="18" data-star></svg>از اینستاگرام مکتب</div><h2>لحظه‌هایی از مکتب ما</h2></div>
+      <a class="btn btn-line">دنبال کنید <bdi dir="ltr">@maktab.alzahra.sa</bdi></a>
+    </div>
+    <div class="moments">
+      <div><div class="tframe"><svg class="tilebg"><rect width="100%" height="100%" fill="url(#khatamS)"/></svg><img src="assets/quran-photo-report-1.webp" alt=""></div><div class="mcap"><h4>گزارش تصویری کلاس‌های قرآن</h4><span>دیدن پست</span></div></div>
+      <div><div class="tframe"><svg class="tilebg"><rect width="100%" height="100%" fill="url(#khatamS)"/></svg><img src="assets/quran-photo-report-2.webp" alt=""></div><div class="mcap"><h4>گزارش تصویری، بخش دوم</h4><span>دیدن پست</span></div></div>
+      <div><div class="tframe reel"><svg class="tilebg"><rect width="100%" height="100%" fill="url(#khatamS)"/></svg><img src="assets/quran-reel-cover.webp" alt=""></div><div class="mcap"><h4>گزارش ویدیویی</h4><span>تماشا</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec support">
+  <div class="wrap">
+    <div class="kicker"><svg width="18" height="18" data-star></svg>از کار ما حمایت کنید</div>
+    <h2 style="max-width:820px">به ما کمک کنید آموزش اسلامی را برای جامعه‌مان ادامه دهیم</h2>
+    <div class="sup-grid">
+      <div class="sup"><div class="ph"><img src="assets/premium-giving.webp" alt=""></div><svg class="edge"><rect width="100%" height="14" fill="url(#stripS)"/></svg>
+        <h3>کمک مالی</h3><p>از طریق انتقال بانکی از مکتب حمایت کنید.</p>
+        <div class="bank"><div><span>نام حساب</span><b dir="ltr">Australian Youths Alliance inco</b></div><div><span dir="ltr">BSB</span><b dir="ltr">065-167</b></div><div><span>شماره حساب</span><b dir="ltr">10581185</b></div></div>
+        <div class="sp"></div><a class="btn btn-blue">معلومات کمک مالی</a><div class="soon">پرداخت ماهانه خودکار به‌زودی فعال می‌شود.</div></div>
+      <div class="sup"><div class="ph"><img src="assets/premium-volunteer.webp" alt=""></div><svg class="edge"><rect width="100%" height="14" fill="url(#stripS)"/></svg>
+        <h3>داوطلب شوید</h3><p>یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید: فعالیت‌های اجتماعی، کمک‌های عملی، یا مهارت‌های هنری و دیجیتال.</p>
+        <div class="sp"></div><a class="btn btn-line">راه‌های کمک</a><div class="soon">درخواست داوطلبی هنوز باز نشده است.</div></div>
+      <div class="sup"><div class="ph"><img src="assets/sanctuary-courtyard.webp" alt=""></div><svg class="edge"><rect width="100%" height="14" fill="url(#stripS)"/></svg>
+        <h3>پرسش‌های دینی</h3><p>جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند. این وب‌سایت حکم دینی صادر نمی‌کند.</p>
+        <div class="sp"></div><a class="btn btn-line">روند پرسش‌ها</a><div class="soon">ارسال پرسش هنوز فعال نیست.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact">
+  <svg class="tilebg"><rect width="100%" height="100%" fill="url(#khatamLine)"/></svg>
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker" style="color:var(--firuzeh-2)"><svg width="18" height="18" data-star="g"></svg>پرسش درباره کلاس‌های قرآن</div>
+      <h2>با مکتب تماس بگیرید</h2>
+      <div class="bigphone"><bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></div>
+      <div class="hours">هر روز، ۸ صبح تا ۸ شب</div>
+      <div class="cinfo">
+        <div class="cbox"><div class="k">مکان کلاس</div><div class="v"><bdi dir="ltr">20 Kylie Crescent,</bdi><br><bdi dir="ltr">Ingle Farm, SA</bdi></div><a>دیدن آدرس روی نقشه</a></div>
+        <div class="cbox"><div class="k">زمان کلاس</div><div class="v">شنبه و یکشنبه،<br>حضور تا ۹:۴۰ صبح</div><div class="s">پیش از حرکت، زمان کلاس را تأیید کنید.</div></div>
+      </div>
+      <div class="socials"><span>اینستاگرام</span><span>یوتیوب</span><span>کانال واتساپ</span></div>
+      <div class="small">ایمیل هنوز منتشر نشده و فورم تماس آنلاین فعال نیست.</div>
+    </div>
+    <div><div class="arch-host" id="contactArt"></div><div class="cap">مدینه. عکس الهام‌بخش، نه ساختمان مکتب</div></div>
+  </div>
+</section>
+
+<footer>
+  <svg width="100%" height="26"><rect width="100%" height="26" fill="url(#stripT)"/></svg>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand"><img src="assets/logo-288.png" alt=""><div><b>مکتب الزهرا</b><span dir="ltr">Australian Youths Alliance Incorporation</span></div></a><div class="nast">ایمان، دانش، مهربانی</div></div>
+      <div><h5>آدرس</h5><ul><li><bdi dir="ltr">20 Kylie Crescent</bdi></li><li><bdi dir="ltr">Ingle Farm, SA</bdi></li><li>شنبه و یکشنبه، ۹:۴۰ صبح</li></ul></div>
+      <div><h5>بخش‌ها</h5><ul><li>کلاس‌های قرآن</li><li>اوقات نماز</li><li>تقویم اسلامی</li><li>کمک مالی</li><li>داوطلبی</li></ul></div>
+      <div><h5>تماس</h5><ul><li><bdi dir="ltr">۰۴۱ ۴۰۱ ۲۹۶۴</bdi></li><li>هر روز، ۸ صبح تا ۸ شب</li><li>اینستاگرام، یوتیوب، واتساپ</li></ul></div>
+    </div>
+    <div class="foot-b"><span>© ۲۰۲۶ مکتب الزهرا، ادلاید، آسترالیای جنوبی</span><span>English | <span class="fa">دری</span></span></div>
+  </div>
+</footer>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const C={night:'#061534',lapis:'#0d2a5e',lapis2:'#143a7c',co:'#1d55ad',fi:'#1a9ea5',fi2:'#62d2cf',wh:'#f6faf8',go:'#c9a24b',go2:'#efd28a'};
+const P=(cx,cy,r,a)=>[cx+r*Math.cos(a),cy+r*Math.sin(a)];
+function starPts(cx,cy,R,r,n,rot=0){let s=[];for(let i=0;i<2*n;i++){const rr=i%2?r:R;const a=rot+i*Math.PI/n;s.push(P(cx,cy,rr,a).map(v=>v.toFixed(2)).join(','))}return s.join(' ')}
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+const defs=document.getElementById('defs');
+const K=0.38268/0.5; // inner/outer ratio of the true 8-point khatam star
+
+/* true star-and-cross (khatam) tiling: stars on the lattice, crosses between */
+function khatam(id,L,o){
+  const p=el('pattern',{id,width:L,height:L,patternUnits:'userSpaceOnUse'},defs);
+  if(o.cross) el('rect',{width:L,height:L,fill:o.cross},p);
+  const R=L/2;
+  [[0,0],[L,0],[0,L],[L,L]].forEach(([x,y])=>{
+    el('polygon',{points:starPts(x,y,R,R*K,8,0),fill:o.star||'none',stroke:o.grout,'stroke-width':o.gw||L*0.04,'stroke-linejoin':'miter'},p);
+    if(o.inner){el('polygon',{points:starPts(x,y,R*0.5,R*0.5*K,8,Math.PI/8),fill:o.inner},p);el('circle',{cx:x,cy:y,r:R*0.12,fill:o.dot||o.grout},p)}
+  });
+  if(o.crossIn){el('polygon',{points:starPts(L/2,L/2,L*0.2,L*0.075,4,0),fill:o.crossIn},p);el('circle',{cx:L/2,cy:L/2,r:L*0.045,fill:o.dot||o.grout},p)}
+}
+khatam('khatam',112,{cross:C.lapis,star:C.fi,grout:C.wh,inner:C.lapis2,dot:C.go2,crossIn:C.co});
+khatam('khatamS',44,{cross:C.lapis,star:C.fi,grout:C.wh,inner:C.lapis2,dot:C.go2,crossIn:C.co,gw:1.6});
+khatam('khatamLine',120,{grout:C.fi2,gw:1.2});
+
+/* tile strips: a row of half-stars between gold fillets */
+function strip(id,h,sw){
+  const p=el('pattern',{id,width:sw,height:h,patternUnits:'userSpaceOnUse'},defs);
+  el('rect',{width:sw,height:h,fill:C.co},p);
+  const m=h/2,R=sw/2;
+  [0,sw].forEach(x=>el('polygon',{points:starPts(x,m,R,R*K,8,0),fill:C.fi,stroke:C.wh,'stroke-width':h>20?1.4:1},p));
+  [0,sw].forEach(x=>el('circle',{cx:x,cy:m,r:h>20?2.2:1.5,fill:C.go2},p));
+  el('polygon',{points:starPts(sw/2,m,h*0.2,h*0.08,4,0),fill:C.wh},p);
+  const f=h>20?3:2;el('rect',{width:sw,height:f,fill:C.go},p);el('rect',{y:h-f,width:sw,height:f,fill:C.go},p);
+}
+strip('stripT',26,26);strip('stripS',14,14);
+
+/* small star bullets */
+document.querySelectorAll('[data-star]').forEach(s=>{
+  const g=s.dataset.star==='g';s.setAttribute('viewBox','0 0 20 20');
+  el('polygon',{points:starPts(10,10,10,10*K,8,0),fill:g?C.go2:C.fi},s);
+  el('polygon',{points:starPts(10,10,4.4,4.4*K,8,Math.PI/8),fill:g?C.lapis:C.wh},s);
+});
+
+/* numbered stars for the real sequence */
+document.querySelectorAll('[data-num]').forEach(s=>{
+  s.setAttribute('viewBox','0 0 70 70');
+  el('polygon',{points:starPts(35,35,34,34*K,8,0),fill:C.lapis},s);
+  el('polygon',{points:starPts(35,35,28,28*K,8,0),fill:'none',stroke:C.fi2,'stroke-width':1},s);
+  const t=el('text',{x:35,y:45,'text-anchor':'middle','font-family':'Amiri','font-size':28,'font-weight':700,fill:C.go2},s);t.textContent=s.dataset.num;
+});
+
+/* prayer arches: the sky at each prayer */
+const skies={fajr:['#2a3f7a','#c98ba0','#f6c79b'],dhuhr:['#4fa7e0','#9fd6f0','#e6f6fb'],asr:['#5a9bd0','#f2d49a','#f6b96b'],maghrib:['#22306b','#b0497a','#f39c55'],isha:['#040f2a','#0d2a5e','#1d55ad']};
+document.querySelectorAll('[data-arch]').forEach(s=>{
+  const k=s.dataset.arch,sk=skies[k];s.setAttribute('viewBox','0 0 46 58');
+  const id='sky'+k;const lg=el('linearGradient',{id,x1:0,y1:0,x2:0,y2:1},defs);
+  sk.forEach((c,i)=>el('stop',{offset:i/2,'stop-color':c},lg));
+  const next=s.parentNode.classList.contains('next');
+  el('path',{d:'M2 57 V26 C2 14 14 7 23 2 C32 7 44 14 44 26 V57 Z',fill:`url(#${id})`,stroke:next?C.go2:'rgba(255,255,255,.75)','stroke-width':next?2:1.2},s);
+  if(k==='isha'){[[14,22],[30,18],[19,34],[34,36]].forEach(([x,y])=>el('circle',{cx:x,cy:y,r:.8,fill:'#fff'},s));el('path',{d:'M27 20a5.5 5.5 0 1 0 0 10 4.4 4.4 0 1 1 0-10z',fill:C.go2},s)}
+  else{const sy={fajr:48,dhuhr:21,asr:33,maghrib:47}[k];el('circle',{cx:23,cy:sy,r:5.5,fill:k==='dhuhr'?'#fff7d6':'#ffd98a'},s)}
+  el('path',{d:'M3 57 V51 H14 C14 46 18 43 23 41 C28 43 32 46 32 51 H43 V57 Z',fill:k==='dhuhr'?C.co:'#071737',opacity:.95},s);
+});
+
+function archPath(x,y,w,h,spring){const xc=x+w/2;
+  return `M${x} ${y+h} V${spring} C${x} ${spring-(spring-y)*0.55} ${xc-w*0.16} ${y+(spring-y)*0.18} ${xc} ${y} C${xc+w*0.16} ${y+(spring-y)*0.18} ${x+w} ${spring-(spring-y)*0.55} ${x+w} ${spring} V${y+h} Z`}
+
+/* tiled arch photo frames */
+function photoArch(hostId,src,W,H,spring,pos){
+  const host=document.getElementById(hostId);if(!host)return;
+  const s=el('svg',{viewBox:`0 0 ${W} ${H}`,width:W,height:H},host);
+  el('path',{d:archPath(0,0,W,H,spring),fill:`url(#khatamS)`},s);
+  el('path',{d:archPath(0,0,W,H,spring),fill:'none',stroke:C.go,'stroke-width':2},s);
+  el('path',{d:archPath(22,24,W-44,H-24,spring+9),fill:C.go2},s);
+  const id=hostId+'Clip';const cp=el('clipPath',{id},defs);el('path',{d:archPath(25,28,W-50,H-28,spring+10)},cp);
+  el('image',{href:src,x:25,y:28,width:W-50,height:H-28,preserveAspectRatio:(pos||'xMidYMid')+' slice','clip-path':`url(#${id})`},s);
+}
+photoArch('quranArt','assets/premium-quran.webp',470,650,185,'xMidYMax');
+photoArch('aboutArt','assets/madinah-arch-736.webp',440,600,175);
+photoArch('contactArt','assets/madinah-green-dome-736.webp',400,600,160);
+
+/* ---------- the opening gate: doors open, then we pass through the arch ---------- */
+(function(){
+  const svg=document.getElementById('facade'),pin=document.getElementById('pin'),gate=document.getElementById('gate'),hint=document.getElementById('enter');
+  if(document.documentElement.classList.contains('static')||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const W=window.innerWidth,H=window.innerHeight,m=W<760;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('preserveAspectRatio','none');
+  const aw=m?236:430,ah=m?Math.min(470,H*0.56):Math.min(600,H*0.67),ax=(W-aw)/2,ay=H-ah,spring=ay+ah*0.3;
+  const fm=m?34:74,bandH=m?58:84,fTop=ay-(m?96:146),fx=ax-fm,fw=aw+fm*2;
+  khatam('khatamW',m?64:88,{cross:C.lapis,star:C.fi,grout:C.wh,inner:C.lapis2,dot:C.go2,crossIn:C.co});
+  khatam('khatamF',m?30:44,{cross:C.night,star:C.co,grout:C.fi2,inner:C.fi,dot:C.go2,crossIn:C.lapis2,gw:1.2});
+  const dg=el('linearGradient',{id:'doorG',x1:0,y1:0,x2:1,y2:0},defs);
+  [['0','#8d6a22'],['.18','#e7c56f'],['.5','#b98d38'],['.82','#f1d48a'],['1','#93702a']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},dg));
+  const wg=el('linearGradient',{id:'wallShade',x1:0,y1:0,x2:0,y2:1},defs);
+  [['0','rgba(6,21,52,.8)'],['.35','rgba(6,21,52,.38)'],['1','rgba(6,21,52,.62)']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},wg));
+  const z=el('g',{id:'fz'},svg);
+  const hole=archPath(ax,ay,aw,ah+4,spring);
+  const wall=`M0 0H${W}V${H+4}H0Z `+hole;
+  el('path',{d:wall,fill:'url(#khatamW)','fill-rule':'evenodd'},z);
+  el('path',{d:wall,fill:'url(#wallShade)','fill-rule':'evenodd'},z);
+  // pishtaq: rectangular frame with a finer tile field and the inscription band
+  const frame=`M${fx} ${fTop}H${fx+fw}V${H+4}H${fx}Z `+hole;
+  el('path',{d:frame,fill:C.night,'fill-rule':'evenodd'},z);
+  el('path',{d:frame,fill:'url(#khatamF)','fill-rule':'evenodd'},z);
+  el('rect',{x:fx,y:fTop,width:fw,height:H-fTop+4,fill:'none',stroke:C.go2,'stroke-width':m?2:3},z);
+  el('rect',{x:fx+(m?6:10),y:fTop+(m?6:10),width:fw-(m?12:20),height:H,fill:'none',stroke:C.wh,'stroke-width':m?1.5:2.5},z);
+  el('rect',{x:fx+(m?12:20),y:fTop+(m?12:20),width:fw-(m?24:40),height:bandH,fill:C.lapis,stroke:C.go2,'stroke-width':1.5},z);
+  const t=el('text',{x:W/2,y:fTop+(m?12:20)+bandH*0.68,'text-anchor':'middle','font-family':'Amiri','font-weight':700,'font-size':m?25:42,fill:C.go2,direction:'rtl'},z);
+  t.textContent='السَّلَامُ عَلَيْكِ يَا فَاطِمَةُ الزَّهْرَاءُ';
+  // arch surround
+  const ring=(o,fill,st,sw)=>el('path',{d:archPath(ax-o,ay-o,aw+2*o,ah+o+4,spring)+' '+hole,fill,'fill-rule':'evenodd',stroke:st||'none','stroke-width':sw||0},z);
+  ring(m?18:28,C.lapis,C.go2,m?1.5:2.5);ring(m?8:12,C.fi,C.wh,m?1.5:2);
+  el('path',{d:hole,fill:'none',stroke:C.go2,'stroke-width':m?2:3},z);
+  // logo above the portal
+  const ls=m?74:92;el('image',{href:'assets/logo-288.png',x:W/2-ls/2,y:Math.max(14,(fTop-ls)/2),width:ls,height:ls},z);
+  // golden doors
+  el('clipPath',{id:'doorClip'},defs).appendChild(el('path',{d:hole}));
+  const dgp=el('g',{'clip-path':'url(#doorClip)'},z);
+  function leaf(x0,x1,hinge){
+    const g=el('g',{},dgp),w=x1-x0,top=ay,h=ah+4;
+    el('rect',{x:x0,y:top,width:w,height:h,fill:'url(#doorG)'},g);
+    const pad=m?10:18,n=3,ph=(h-ah*0.24-pad*(n+1))/n,y0=top+ah*0.24;
+    el('rect',{x:x0+pad,y:top+pad*2,width:w-pad*2,height:ah*0.24-pad*2,fill:'none',stroke:'#6b4c12','stroke-width':1.5,opacity:.7},g);
+    for(let i=0;i<n;i++){const py=y0+pad+i*(ph+pad),cx=x0+w/2,cy=py+ph/2,r=Math.min(w/2-pad*1.6,ph/2-pad*.6);
+      el('rect',{x:x0+pad,y:py,width:w-pad*2,height:ph,fill:'rgba(90,60,10,.16)',stroke:'#6b4c12','stroke-width':1.5},g);
+      el('polygon',{points:starPts(cx,cy,r,r*K,8,0),fill:'rgba(255,240,190,.28)',stroke:'#6b4c12','stroke-width':1.5},g);
+      el('polygon',{points:starPts(cx,cy,r*.52,r*.52*K,8,Math.PI/8),fill:'none',stroke:'#6b4c12','stroke-width':1.2},g);
+      el('circle',{cx,cy,r:r*.13,fill:'#6b4c12'},g);
+      [[x0+pad*1.8,py+pad*.8],[x1-pad*1.8,py+pad*.8],[x0+pad*1.8,py+ph-pad*.8],[x1-pad*1.8,py+ph-pad*.8]].forEach(([sx,sy])=>el('circle',{cx:sx,cy:sy,r:m?2.2:3.4,fill:'#fff3c9',stroke:'#6b4c12','stroke-width':.8},g));
+    }
+    const kx=hinge===x0?x1-pad*1.5:x0+pad*1.5,ky=top+h*0.6;
+    el('circle',{cx:kx,cy:ky,r:m?7:11,fill:'none',stroke:'#5a3f0d','stroke-width':m?2.5:3.5},g);el('circle',{cx:kx,cy:ky-(m?7:11),r:m?2.5:4,fill:'#5a3f0d'},g);
+    const sh=el('rect',{x:x0,y:top,width:w,height:h,fill:'#020a1c',opacity:0},g);
+    return {g,sh,hinge};
+  }
+  const L=leaf(ax,W/2,ax),R=leaf(W/2,ax+aw,ax+aw);
+  el('rect',{x:W/2-1,y:ay,width:2,height:ah+4,fill:'#5a3f0d'},dgp).id='seam';
+  const seam=document.getElementById('seam');
+  const cl=v=>Math.max(0,Math.min(1,v)),ease=v=>v*v*(3-2*v);
+  function tick(){
+    const p=cl(window.scrollY/(gate.offsetHeight-window.innerHeight));
+    const d=ease(cl((p-0.04)/0.4)),sx=1-0.94*d;
+    [L,R].forEach(o=>{o.g.setAttribute('transform',`translate(${o.hinge} 0) scale(${sx} 1) translate(${-o.hinge} 0)`);o.sh.setAttribute('opacity',0.6*d)});
+    seam.setAttribute('opacity',d>0.02?0:1);
+    const q=ease(cl((p-0.42)/0.5)),s=1+q*q*(m?9:6.5);
+    z.setAttribute('transform',`translate(${W/2} ${H}) scale(${s}) translate(${-W/2} ${-H})`);
+    svg.style.opacity=1-cl((p-0.86)/0.12);
+    pin.style.setProperty('--o',cl((p-0.72)/0.26));
+    pin.style.setProperty('--z',1.16-0.16*q);
+    hint.style.opacity=1-cl(p/0.08);
+  }
+  tick();window.addEventListener('scroll',tick,{passive:true});
+})();
+</script>
+</body>
+</html>

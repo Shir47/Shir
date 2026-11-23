@@ -6,6 +6,7 @@
 <title>Maktab Alzahra SA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@500;700&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@400;500;600&family=Figtree:wght@400;500;600;700&display=block" rel="stylesheet">
+<script>if(location.search.indexOf("static")>-1)document.documentElement.classList.add("static")</script>
 <style>
 :root{
   --night:#061534;
@@ -63,7 +64,7 @@ h2{font-size:68px;color:var(--lapis);line-height:.98}
 .menu a.on{opacity:1;border-bottom:2px solid var(--gold-2);padding-bottom:4px}
 .nav-r{display:flex;align-items:center;gap:16px}
 .lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:3px;overflow:hidden;font-size:14px}
-.lang span{padding:7px 13px}
+.lang span,.lang a{padding:7px 13px}
 .lang .on{background:#fff;color:var(--lapis);font-weight:700}
 .burger{display:none}
 .hero-body{position:absolute;left:0;right:0;bottom:70px;z-index:2}
@@ -76,6 +77,23 @@ h1{font-size:140px;font-weight:700;line-height:.86;letter-spacing:-.015em;text-s
 .hero-fa .nast{font-size:66px;color:var(--gold-2);line-height:1.9;text-shadow:0 4px 24px rgba(0,0,0,.5)}
 .hero-fa .fa{font-size:20px;color:#e6edf8;margin-top:4px}
 .hero-fa small{display:block;font-size:12px;color:rgba(255,255,255,.55);margin-top:16px}
+
+/* ---------- the opening gate ---------- */
+.gate{position:relative;height:320vh}
+.pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--night)}
+.pin .hero{height:100vh}
+.pin .hero > img{transform:scale(var(--z,1.16));transform-origin:50% 60%}
+.pin .nav,.pin .hero-body{opacity:var(--o,0)}
+.facade{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none}
+.enter{position:absolute;z-index:6;left:50%;bottom:30px;transform:translateX(-50%);background:var(--lapis);color:#fff;border:1px solid var(--gold-2);padding:11px 22px;font-size:15.5px;font-weight:600;border-radius:3px;display:flex;gap:10px;align-items:center;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.static .gate{height:auto}
+.static .pin{position:relative;height:auto}
+.static .pin .hero{height:900px}
+.static .pin .hero > img{transform:none}
+.static .pin .nav,.static .pin .hero-body{opacity:1}
+.static .facade,.static .enter{display:none}
+@media (max-width:760px){.static .pin .hero{height:760px}}
+@media (prefers-reduced-motion:reduce){.gate{height:auto}.pin{position:relative}.pin .nav,.pin .hero-body{opacity:1}.facade,.enter{display:none}}
 
 /* ---------- katiba band (prayer times) ---------- */
 .katiba{background:var(--lapis);color:#fff;position:relative}
@@ -293,6 +311,7 @@ footer{background:var(--night);color:#c2d3ee;position:relative}
 <body>
 <svg width="0" height="0" style="position:absolute"><defs id="defs"></defs></svg>
 
+<div class="gate" id="gate"><div class="pin" id="pin">
 <header class="hero">
   <img src="assets/cinematic-shrine.webp" alt="">
   <div class="shade"></div>
@@ -301,7 +320,7 @@ footer{background:var(--night);color:#c2d3ee;position:relative}
       <a class="brand"><img src="assets/logo-288.png" alt="Maktab Al-Zahra"><div><b>Maktab Alzahra SA</b><span>Adelaide, South Australia</span></div></a>
       <div class="menu"><a>About</a><a>Quran classes</a><a>Prayer times</a><a>Calendar</a><a>Questions</a><a>Contact</a></div>
       <div class="nav-r">
-        <div class="lang"><span class="on">EN</span><span class="fa">دری</span></div>
+        <div class="lang"><a class="on" href="index.html">EN</a><a class="fa" href="index-fa.html">دری</a></div>
         <a class="btn btn-gold">Call 041 401 2964</a>
         <div class="burger"><svg width="20" height="14" viewBox="0 0 20 14" stroke="#fff" stroke-width="2"><path d="M0 1h20M0 7h20M0 13h20"/></svg></div>
       </div>
@@ -323,6 +342,9 @@ footer{background:var(--night);color:#c2d3ee;position:relative}
     </div>
   </div>
 </header>
+<svg class="facade" id="facade"></svg>
+<div class="enter" id="enter"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="#efd28a" stroke-width="2"><path d="M6 1v13M1 9l5 5 5-5"/></svg><span>Scroll to enter</span></div>
+</div></div>
 
 <div class="katiba">
   <svg class="strip"><rect width="100%" height="26" fill="url(#stripT)"/></svg>
@@ -572,6 +594,79 @@ function photoArch(hostId,src,W,H,spring,pos){
 photoArch('quranArt','assets/premium-quran.webp',470,650,185,'xMidYMax');
 photoArch('aboutArt','assets/madinah-arch-736.webp',440,600,175);
 photoArch('contactArt','assets/madinah-green-dome-736.webp',400,600,160);
+
+/* ---------- the opening gate: doors open, then we pass through the arch ---------- */
+(function(){
+  const svg=document.getElementById('facade'),pin=document.getElementById('pin'),gate=document.getElementById('gate'),hint=document.getElementById('enter');
+  if(document.documentElement.classList.contains('static')||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const W=window.innerWidth,H=window.innerHeight,m=W<760;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('preserveAspectRatio','none');
+  const aw=m?236:430,ah=m?Math.min(470,H*0.56):Math.min(600,H*0.67),ax=(W-aw)/2,ay=H-ah,spring=ay+ah*0.3;
+  const fm=m?34:74,bandH=m?58:84,fTop=ay-(m?96:146),fx=ax-fm,fw=aw+fm*2;
+  khatam('khatamW',m?64:88,{cross:C.lapis,star:C.fi,grout:C.wh,inner:C.lapis2,dot:C.go2,crossIn:C.co});
+  khatam('khatamF',m?30:44,{cross:C.night,star:C.co,grout:C.fi2,inner:C.fi,dot:C.go2,crossIn:C.lapis2,gw:1.2});
+  const dg=el('linearGradient',{id:'doorG',x1:0,y1:0,x2:1,y2:0},defs);
+  [['0','#8d6a22'],['.18','#e7c56f'],['.5','#b98d38'],['.82','#f1d48a'],['1','#93702a']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},dg));
+  const wg=el('linearGradient',{id:'wallShade',x1:0,y1:0,x2:0,y2:1},defs);
+  [['0','rgba(6,21,52,.8)'],['.35','rgba(6,21,52,.38)'],['1','rgba(6,21,52,.62)']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},wg));
+  const z=el('g',{id:'fz'},svg);
+  const hole=archPath(ax,ay,aw,ah+4,spring);
+  const wall=`M0 0H${W}V${H+4}H0Z `+hole;
+  el('path',{d:wall,fill:'url(#khatamW)','fill-rule':'evenodd'},z);
+  el('path',{d:wall,fill:'url(#wallShade)','fill-rule':'evenodd'},z);
+  // pishtaq: rectangular frame with a finer tile field and the inscription band
+  const frame=`M${fx} ${fTop}H${fx+fw}V${H+4}H${fx}Z `+hole;
+  el('path',{d:frame,fill:C.night,'fill-rule':'evenodd'},z);
+  el('path',{d:frame,fill:'url(#khatamF)','fill-rule':'evenodd'},z);
+  el('rect',{x:fx,y:fTop,width:fw,height:H-fTop+4,fill:'none',stroke:C.go2,'stroke-width':m?2:3},z);
+  el('rect',{x:fx+(m?6:10),y:fTop+(m?6:10),width:fw-(m?12:20),height:H,fill:'none',stroke:C.wh,'stroke-width':m?1.5:2.5},z);
+  el('rect',{x:fx+(m?12:20),y:fTop+(m?12:20),width:fw-(m?24:40),height:bandH,fill:C.lapis,stroke:C.go2,'stroke-width':1.5},z);
+  const t=el('text',{x:W/2,y:fTop+(m?12:20)+bandH*0.68,'text-anchor':'middle','font-family':'Amiri','font-weight':700,'font-size':m?25:42,fill:C.go2,direction:'rtl'},z);
+  t.textContent='السَّلَامُ عَلَيْكِ يَا فَاطِمَةُ الزَّهْرَاءُ';
+  // arch surround
+  const ring=(o,fill,st,sw)=>el('path',{d:archPath(ax-o,ay-o,aw+2*o,ah+o+4,spring)+' '+hole,fill,'fill-rule':'evenodd',stroke:st||'none','stroke-width':sw||0},z);
+  ring(m?18:28,C.lapis,C.go2,m?1.5:2.5);ring(m?8:12,C.fi,C.wh,m?1.5:2);
+  el('path',{d:hole,fill:'none',stroke:C.go2,'stroke-width':m?2:3},z);
+  // logo above the portal
+  const ls=m?74:92;el('image',{href:'assets/logo-288.png',x:W/2-ls/2,y:Math.max(14,(fTop-ls)/2),width:ls,height:ls},z);
+  // golden doors
+  el('clipPath',{id:'doorClip'},defs).appendChild(el('path',{d:hole}));
+  const dgp=el('g',{'clip-path':'url(#doorClip)'},z);
+  function leaf(x0,x1,hinge){
+    const g=el('g',{},dgp),w=x1-x0,top=ay,h=ah+4;
+    el('rect',{x:x0,y:top,width:w,height:h,fill:'url(#doorG)'},g);
+    const pad=m?10:18,n=3,ph=(h-ah*0.24-pad*(n+1))/n,y0=top+ah*0.24;
+    el('rect',{x:x0+pad,y:top+pad*2,width:w-pad*2,height:ah*0.24-pad*2,fill:'none',stroke:'#6b4c12','stroke-width':1.5,opacity:.7},g);
+    for(let i=0;i<n;i++){const py=y0+pad+i*(ph+pad),cx=x0+w/2,cy=py+ph/2,r=Math.min(w/2-pad*1.6,ph/2-pad*.6);
+      el('rect',{x:x0+pad,y:py,width:w-pad*2,height:ph,fill:'rgba(90,60,10,.16)',stroke:'#6b4c12','stroke-width':1.5},g);
+      el('polygon',{points:starPts(cx,cy,r,r*K,8,0),fill:'rgba(255,240,190,.28)',stroke:'#6b4c12','stroke-width':1.5},g);
+      el('polygon',{points:starPts(cx,cy,r*.52,r*.52*K,8,Math.PI/8),fill:'none',stroke:'#6b4c12','stroke-width':1.2},g);
+      el('circle',{cx,cy,r:r*.13,fill:'#6b4c12'},g);
+      [[x0+pad*1.8,py+pad*.8],[x1-pad*1.8,py+pad*.8],[x0+pad*1.8,py+ph-pad*.8],[x1-pad*1.8,py+ph-pad*.8]].forEach(([sx,sy])=>el('circle',{cx:sx,cy:sy,r:m?2.2:3.4,fill:'#fff3c9',stroke:'#6b4c12','stroke-width':.8},g));
+    }
+    const kx=hinge===x0?x1-pad*1.5:x0+pad*1.5,ky=top+h*0.6;
+    el('circle',{cx:kx,cy:ky,r:m?7:11,fill:'none',stroke:'#5a3f0d','stroke-width':m?2.5:3.5},g);el('circle',{cx:kx,cy:ky-(m?7:11),r:m?2.5:4,fill:'#5a3f0d'},g);
+    const sh=el('rect',{x:x0,y:top,width:w,height:h,fill:'#020a1c',opacity:0},g);
+    return {g,sh,hinge};
+  }
+  const L=leaf(ax,W/2,ax),R=leaf(W/2,ax+aw,ax+aw);
+  el('rect',{x:W/2-1,y:ay,width:2,height:ah+4,fill:'#5a3f0d'},dgp).id='seam';
+  const seam=document.getElementById('seam');
+  const cl=v=>Math.max(0,Math.min(1,v)),ease=v=>v*v*(3-2*v);
+  function tick(){
+    const p=cl(window.scrollY/(gate.offsetHeight-window.innerHeight));
+    const d=ease(cl((p-0.04)/0.4)),sx=1-0.94*d;
+    [L,R].forEach(o=>{o.g.setAttribute('transform',`translate(${o.hinge} 0) scale(${sx} 1) translate(${-o.hinge} 0)`);o.sh.setAttribute('opacity',0.6*d)});
+    seam.setAttribute('opacity',d>0.02?0:1);
+    const q=ease(cl((p-0.42)/0.5)),s=1+q*q*(m?9:6.5);
+    z.setAttribute('transform',`translate(${W/2} ${H}) scale(${s}) translate(${-W/2} ${-H})`);
+    svg.style.opacity=1-cl((p-0.86)/0.12);
+    pin.style.setProperty('--o',cl((p-0.72)/0.26));
+    pin.style.setProperty('--z',1.16-0.16*q);
+    hint.style.opacity=1-cl(p/0.08);
+  }
+  tick();window.addEventListener('scroll',tick,{passive:true});
+})();
 </script>
 </body>
 </html>
