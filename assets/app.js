@@ -96,4 +96,5 @@
     var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){if(e.getBoundingClientRect().top>window.innerHeight*0.9){e.classList.add('rv');io.observe(e)}});
     document.documentElement.classList.add('anim')}
+  window.MZA={EV:EV,now:now,addDays:addDays,fa:fa,fd:fd};
 })();
