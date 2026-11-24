@@ -35,6 +35,18 @@
   bar.innerHTML=(joy?star:'')+'<span>'+nightTxt+'<b>'+name+'</b>, '+when+'. '+(joy?title+'.':line)+'</span>'+(joy?star:'');
   document.body.insertBefore(bar,document.body.firstChild);
 
+  /* in mourning, an embroidered banner band like the ones hung in a hussainiya: black cloth, crimson and green panels, gold thread */
+  function band(){
+    var w=440,h=58,s='<svg class="katibeh" width="100%" height="'+h+'" aria-hidden="true"><defs><pattern id="mzk" width="'+w+'" height="'+h+'" patternUnits="userSpaceOnUse">'
+      +'<rect width="'+w+'" height="'+h+'" fill="#0b0607"/><path d="M0 4H'+w+'M0 '+(h-4)+'H'+w+'" stroke="#c9a24b" stroke-width="1.2" stroke-dasharray="1 5" stroke-linecap="round"/>';
+    function cart(x,fill){return '<path d="M'+(x+22)+' 10h126q14 0 22 19q-8 19-22 19h-126q-14 0-22-19q8-19 22-19z" fill="'+fill+'" stroke="#c9a24b" stroke-width="1.4"/>'
+      +'<text x="'+(x+85)+'" y="38" text-anchor="middle" font-family="Aref Ruqaa,Amiri,serif" font-size="25" fill="#fbf1dc" direction="rtl">'+big+'</text>'}
+    function star(x){var pts='',i,a,r;for(i=0;i<16;i++){a=i*Math.PI/8;r=i%2?5.5:12;pts+=(x+r*Math.cos(a)).toFixed(1)+','+(29+r*Math.sin(a)).toFixed(1)+' '}
+      return '<polygon points="'+pts+'" fill="none" stroke="#c9a24b" stroke-width="1.3"/><circle cx="'+x+'" cy="29" r="2.4" fill="#c9a24b"/>'}
+    s+=cart(4,'var(--k1,#7d0f15)')+star(197)+cart(224,'var(--k2,#0d4a2c)')+star(417);
+    return s+'</pattern></defs><rect width="100%" height="'+h+'" fill="url(#mzk)"/></svg>'}
+  if(!joy){var kb=document.createElement('div');kb.className='katibehwrap';kb.innerHTML=band();bar.parentNode.insertBefore(kb,bar.nextSibling)}
+
   /* 2. the home page hero speaks about the occasion */
   var pill=document.querySelector('.hero .pill');
   if(pill){pill.textContent=(joy?title+': ':'')+name;pill.classList.add('moodpill')}
