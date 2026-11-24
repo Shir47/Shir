@@ -403,19 +403,19 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=2">
+<link rel="stylesheet" href="{{A}}/style.css?v=3">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
   <nav>
-    <a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="Maktab Al-Zahra">{name}</a>
+    <a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="Maktab Al-Zahra"><span class="bn"><b>{name}</b><small dir="ltr">Australian Youths Alliance inco</small></span></a>
     <div class="m">{links}</div>
     <div class="r"><div class="lang"><a class="{en_cls}" href="/en/{slug}">EN</a><a class="{fa_cls}" href="/fa/{slug}">دری</a></div><a class="btn b1" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
       <button class="burger" data-menu aria-label="{L("Menu", "منو")}"><svg width="18" height="12" viewBox="0 0 18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg></button></div>
   </nav>
 </div></div>
 <div class="mmenu" aria-hidden="true">
-  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="">{name}</a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
+  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">Australian Youths Alliance inco</small></span></a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
   <div class="mm-links">{mlinks}</div>
   <div class="mm-foot">
     <a class="btn mm-call" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>

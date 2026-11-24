@@ -518,3 +518,10 @@ nav .m a:hover:after,nav .m a.on:after{transform:scaleX(1)}
   .anim .art .ph{animation-name:rise}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* legal name under the brand */
+.bn{display:flex;flex-direction:column;line-height:1.15}
+.bn b{font-weight:700}
+.bn small{font:500 12px/1.3 Figtree,sans-serif;color:var(--muted);letter-spacing:.01em;margin-top:2px}
+[dir=rtl] .bn small{text-align:right}
+@media (max-width:760px){.bn small{font-size:11px}.mm-top .bn small{color:#cfe3d6}}
