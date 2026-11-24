@@ -388,7 +388,7 @@ def layout(slug, title, body):
            ("prayer-times/", L("Prayer times", "اوقات نماز")), ("calendar/", L("Calendar", "تقویم")), ("contact/", L("Contact", "تماس"))]
     more = [("donations/", L("Donations", "کمک مالی")), ("volunteer/", L("Volunteer", "داوطلبی")), ("questions/", L("Questions", "پرسش‌ها"))]
     links = "".join(f'<a href="{url(s)}"{" class=on" if s == slug else ""}>{t}</a>' for s, t in nav)
-    mlinks = "".join(f'<a href="{url(s)}">{t}</a>' for s, t in nav + more)
+    mlinks = "".join(f'<a href="{url(s)}"{" class=on" if s == slug else ""}><span>{t}</span><i></i></a>' for s, t in nav + more)
     en_cls, fa_cls = ("on", "fa") if LANG == "en" else ("", "on fa")
     desc = L("Free Quran classes for all ages in Adelaide. Maktab Alzahra SA is a place for Islamic education and community.", "کلاس‌های رایگان قرآن برای همه سنین در ادلاید. مکتب الزهرا جایی برای آموزش اسلامی و جامعه است.")
     html = f'''<!doctype html>
@@ -403,7 +403,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css">
+<link rel="stylesheet" href="{{A}}/style.css?v=2">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
@@ -414,7 +414,15 @@ def layout(slug, title, body):
       <button class="burger" data-menu aria-label="{L("Menu", "منو")}"><svg width="18" height="12" viewBox="0 0 18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg></button></div>
   </nav>
 </div></div>
-<div class="mmenu"><button class="x" data-menu aria-label="{L("Close", "بستن")}">✕</button>{mlinks}<div class="lg"><a href="/en/{slug}">English</a><a href="/fa/{slug}">دری</a><a href="{TEL}">{phone()}</a></div></div>
+<div class="mmenu" aria-hidden="true">
+  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="">{name}</a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
+  <div class="mm-links">{mlinks}</div>
+  <div class="mm-foot">
+    <a class="btn mm-call" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
+    <div class="mm-row"><div class="lang"><a class="{en_cls}" href="/en/{slug}">English</a><a class="{fa_cls}" href="/fa/{slug}">دری</a></div>
+    <div class="mm-soc"><a href="{IG}">{L("Instagram", "اینستاگرام")}</a><a href="{YT}">{L("YouTube", "یوتیوب")}</a><a href="{WA}">{L("WhatsApp", "واتساپ")}</a></div></div>
+  </div>
+</div>
 <main>{body}</main>
 <footer><div class="wrap">
   <div class="foot">
@@ -425,8 +433,8 @@ def layout(slug, title, body):
   </div>
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA, Adelaide, South Australia", "© ۲۰۲۶ مکتب الزهرا، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
-<script src="{{A}}/calc.js"></script>
-<script src="{{A}}/app.js"></script>
+<script src="{{A}}/calc.js?v=2"></script>
+<script src="{{A}}/app.js?v=2"></script>
 </body>
 </html>
 '''
