@@ -18,6 +18,7 @@ var MZ=(function(){
     var t={fajr:5,sunrise:6,dhuhr:12,asr:13,sunset:18,maghrib:18,isha:18};
     for(var i=0;i<2;i++){t={fajr:ang(16,t.fajr/24,1),sunrise:ang(0.833,t.sunrise/24,1),dhuhr:mid(t.dhuhr/24),asr:asr(1,t.asr/24),sunset:ang(0.833,t.sunset/24),maghrib:ang(4,t.maghrib/24),isha:ang(14,t.isha/24)}}
     var o={};for(var k in t){var v=fix(t[k]+tz-LNG/15,24),mins=Math.round(v*60);o[k]={min:mins,text:('0'+Math.floor(mins/60)%24).slice(-2)+':'+('0'+mins%60).slice(-2)}}
+    var im=(o.fajr.min-10+1440)%1440;o.imsak={min:im,text:('0'+Math.floor(im/60)).slice(-2)+':'+('0'+im%60).slice(-2)};
     return o}
   function hijri(y,m,d){var f=new Intl.DateTimeFormat('en-u-ca-'+HCAL+'-nu-latn',{timeZone:'UTC',day:'numeric',month:'numeric',year:'numeric'}).formatToParts(new Date(Date.UTC(y,m-1,d,12))),o={};
     f.forEach(function(x){o[x.type]=x.value});return {d:+o.day,m:+o.month,y:parseInt(o.year,10)}}

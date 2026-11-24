@@ -59,12 +59,19 @@ def moments():
   </div>'''
 
 
+SKY = {"imsak": "linear-gradient(180deg,#040f2a,#1d3f8a)", "fajr": "linear-gradient(180deg,#2a3f7a,#c98ba0 60%,#f6c79b)",
+       "sunrise": "linear-gradient(180deg,#8cc3ea,#ffe2a8)", "dhuhr": "linear-gradient(180deg,#4fa7e0,#cfeefa)",
+       "sunset": "linear-gradient(180deg,#5a7fc0,#f39c55)", "maghrib": "linear-gradient(180deg,#22306b,#b0497a 60%,#f39c55)"}
+
+
+def pnames():
+    return {"imsak": L("Imsak", "امساک"), "fajr": L("Fajr", "صبح"), "sunrise": L("Sunrise", "طلوع آفتاب"),
+            "dhuhr": L("Dhuhr", "ظهر"), "sunset": L("Sunset", "غروب آفتاب"), "maghrib": L("Maghrib", "مغرب")}
+
+
 def prayer_strip():
-    sky = {"fajr": "linear-gradient(180deg,#2a3f7a,#c98ba0 60%,#f6c79b)", "dhuhr": "linear-gradient(180deg,#4fa7e0,#cfeefa)",
-           "asr": "linear-gradient(180deg,#5a9bd0,#f2d49a 70%,#f6b96b)", "maghrib": "linear-gradient(180deg,#22306b,#b0497a 60%,#f39c55)",
-           "isha": "linear-gradient(180deg,#040f2a,#1d55ad)"}
-    names = {"fajr": L("Fajr", "صبح"), "dhuhr": L("Dhuhr", "ظهر"), "asr": L("Asr", "عصر"), "maghrib": L("Maghrib", "مغرب"), "isha": L("Isha", "عشا")}
-    cells = "".join(f'<div class="pt"><i style="background:{sky[k]}"></i><div><span data-label>{names[k]}</span><b data-pray="{k}">--:--</b></div></div>' for k in sky)
+    names = pnames()
+    cells = "".join(f'<div class="pt"><span><i style="background:{SKY[k]}"></i>{names[k]}</span><b data-pray="{k}">--:--</b></div>' for k in SKY)
     return f'''<div class="wrap"><div class="card pray">
   <div class="t0"><b>{L("Prayer times <br>in Adelaide", "اوقات نماز <br>در ادلاید")}</b><span data-today></span></div>
   {cells}
@@ -253,20 +260,19 @@ def registration():
 
 
 def prayer_times():
-    sky = {"fajr": "linear-gradient(180deg,#2a3f7a,#c98ba0 60%,#f6c79b)", "dhuhr": "linear-gradient(180deg,#4fa7e0,#cfeefa)",
-           "asr": "linear-gradient(180deg,#5a9bd0,#f2d49a 70%,#f6b96b)", "maghrib": "linear-gradient(180deg,#22306b,#b0497a 60%,#f39c55)",
-           "isha": "linear-gradient(180deg,#040f2a,#1d55ad)"}
-    cells = "".join(f'<div class="p"><i style="background:{v}"></i><span data-label></span><b data-pray="{k}">--:--</b></div>' for k, v in sky.items())
-    return phead(L("Adelaide, Ja‘fari method", "ادلاید، روش جعفری"), L("Prayer times", "اوقات نماز"),
+    names = pnames()
+    rows = "".join(f'<tr><th><i style="background:{SKY[k]}"></i>{names[k]}</th><td><b data-pray="{k}">--:--</b></td><td data-pray-tom="{k}">--:--</td></tr>' for k in SKY)
+    return phead(L("Adelaide, Shia Ja‘fari method", "ادلاید، روش شیعه جعفری"), L("Prayer times", "اوقات نماز"),
                  L("A moment to pause. A day guided by prayer.", "لحظه‌ای برای درنگ. روزی در پرتو نماز."),
                  "cinematic-shrine.webp", L("Decorative imagined architecture", "معماری تزئینی خیالی")) + f'''
 <section class="secs"><div class="wrap">
   <div class="head" style="align-items:center"><h2 class="stitle" style="margin:0"><span data-today></span></h2><span class="pill g" data-hijri></span></div>
-  <div class="big5">{cells}</div>
-  <p class="small">{L("Sunrise", "طلوع آفتاب")}: <b data-pray="sunrise"></b> &nbsp; {L("Sunset", "غروب آفتاب")}: <b data-pray="sunset"></b></p>
+  <div class="card ptwrap"><table class="pt2">
+    <thead><tr><th></th><th>{L("Today", "امروز")}</th><th>{L("Tomorrow", "فردا")}</th></tr></thead>
+    <tbody>{rows}</tbody></table></div>
   <h2 class="stitle">{L("Monthly timetable", "جدول ماهانه")}</h2>
   <div class="card ttwrap" data-timetable></div>
-  {notice(L("Calculated times, please confirm locally", "اوقات محاسبه‌شده، لطفاً محلی تأیید کنید"), L("Ja‘fari (Shia Ithna-Ashari) method, Leva Institute, Qum: Fajr 16°, Maghrib 4°, Isha 14°. These are not Maktab-approved prayer or congregation times. Sunset is distinct from Maghrib. All times are Adelaide local time, including daylight saving. Follow your authority’s guidance on combining prayers.", "روش جعفری (شیعه اثنی‌عشری)، مؤسسه لواء، قم: صبح ۱۶ درجه، مغرب ۴ درجه، عشا ۱۴ درجه. این‌ها اوقات تأییدشده مکتب یا نماز جماعت نیستند. غروب آفتاب با مغرب فرق دارد. همه اوقات به وقت محلی ادلاید است. درباره جمع خواندن نمازها از مرجع خود پیروی کنید."))}
+  {notice(L("Calculated times, please confirm locally", "اوقات محاسبه‌شده، لطفاً محلی تأیید کنید"), L("Shia Ja‘fari (Ithna-Ashari) method, Leva Institute, Qum: Fajr at 16°, Maghrib at 4° after sunset. Imsak is shown 10 minutes before Fajr as a precaution. Asr follows Dhuhr and Isha follows Maghrib; follow your marja‘s guidance on combining prayers. These are not Maktab-approved congregation times. All times are Adelaide local time, including daylight saving.", "روش شیعه جعفری (اثنی‌عشری)، مؤسسه لواء، قم: صبح ۱۶ درجه، مغرب ۴ درجه پس از غروب. امساک برای احتیاط ۱۰ دقیقه پیش از اذان صبح نشان داده شده است. نماز عصر پس از ظهر و نماز عشا پس از مغرب خوانده می‌شود؛ درباره جمع خواندن نمازها از مرجع خود پیروی کنید. این‌ها اوقات تأییدشده نماز جماعت مکتب نیستند. همه اوقات به وقت محلی ادلاید است."))}
 </div></section>'''
 
 
@@ -407,7 +413,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=4">
+<link rel="stylesheet" href="{{A}}/style.css?v=5">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
@@ -437,8 +443,8 @@ def layout(slug, title, body):
   </div>
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
-<script src="{{A}}/calc.js?v=2"></script>
-<script src="{{A}}/app.js?v=2"></script>
+<script src="{{A}}/calc.js?v=3"></script>
+<script src="{{A}}/app.js?v=3"></script>
 </body>
 </html>
 '''
