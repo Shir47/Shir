@@ -93,7 +93,7 @@
         var row='<div class="mzr '+(b?'b':'m')+'"><span>'+(b?(fa?'ولادت':'Birth'):(i===0?(fa?'رحلت':'Passing'):(fa?'شهادت':'Martyrdom')))+'</span><b>'+fd(e[1])+' '+HM[e[0]-1]+'</b><small>'+(n?fd(n.g.d)+' '+MO[n.g.m-1]+' '+fd(n.g.y):'')+'</small></div>';if(b)rb+=row;else rm+=row}});
       rows=rb+rm;
       if(i===13)rows+='<div class="mzr b"><span>'+(fa?'غیبت':'Occultation')+'</span><b>'+(fa?'امام زنده و غایب':'The living Imam')+'</b><small></small></div>';
-      out+='<div class="card mzc"><div class="mzn">'+fd(i+1)+'</div><div class="mza">'+P[4].replace('يا ','')+'</div><h3>'+(fa?P[1]:P[0])+'</h3><p>'+(fa?P[3]:P[2])+'</p>'+rows+'</div>'});
+      out+='<div class="card mzc"><div class="mzn">'+fd(i+1)+'</div><div class="mza">'+P[4].replace('يَا ','')+'</div><h3>'+(fa?P[1]:P[0])+'</h3><p>'+(fa?P[3]:P[2])+'</p>'+rows+'</div>'});
     mz.innerHTML=out}
   window.MZA={EV:EV,now:now,addDays:addDays,fa:fa,fd:fd};
 })();

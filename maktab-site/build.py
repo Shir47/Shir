@@ -425,8 +425,8 @@ def layout(slug, title, body):
 <link rel="alternate" hreflang="fa" href="/fa/{slug}">
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Aref+Ruqaa:wght@700&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{A}}/style.css?v=9">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
@@ -457,9 +457,9 @@ def layout(slug, title, body):
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
 <script src="{{A}}/calc.js?v=3"></script>
-<script src="{{A}}/people.js?v=1"></script>
-<script src="{{A}}/app.js?v=5"></script>
-<script src="{{A}}/mood.js?v=3"></script>
+<script src="{{A}}/people.js?v=2"></script>
+<script src="{{A}}/app.js?v=6"></script>
+<script src="{{A}}/mood.js?v=4"></script>
 </body>
 </html>
 '''
