@@ -9,7 +9,7 @@
   var MO=fa?['جنوری','فبروری','مارچ','اپریل','می','جون','جولای','اگست','سپتمبر','اکتوبر','نومبر','دسمبر']:['January','February','March','April','May','June','July','August','September','October','November','December'];
   var HM=fa?['محرم','صفر','ربیع‌الاول','ربیع‌الثانی','جمادی‌الاول','جمادی‌الثانی','رجب','شعبان','رمضان','شوال','ذی‌القعده','ذی‌الحجه']:['Muharram','Safar','Rabi I','Rabi II','Jumada I','Jumada II','Rajab','Sha‘ban','Ramadan','Shawwal','Dhu al-Qa‘dah','Dhu al-Hijjah'];
   var HMA=['محرم','صفر','ربيع الأول','ربيع الثاني','جمادى الأولى','جمادى الثانية','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'];
-  var PN=fa?{fajr:'صبح',sunrise:'طلوع',dhuhr:'ظهر',asr:'عصر',sunset:'غروب',maghrib:'مغرب',isha:'عشا'}:{fajr:'Fajr',sunrise:'Sunrise',dhuhr:'Dhuhr',asr:'Asr',sunset:'Sunset',maghrib:'Maghrib',isha:'Isha'};
+  var PN=fa?{imsak:'امساک',fajr:'صبح',sunrise:'طلوع',dhuhr:'ظهر',asr:'عصر',sunset:'غروب',maghrib:'مغرب',isha:'عشا'}:{imsak:'Imsak',fajr:'Fajr',sunrise:'Sunrise',dhuhr:'Dhuhr',asr:'Asr',sunset:'Sunset',maghrib:'Maghrib',isha:'Isha'};
   var TX=fa?{next:'بعدی',nextPrayer:'نماز بعدی',tomorrow:'فردا',days:'روز مانده',today:'امروز',date:'تاریخ',copied:'کپی شد',ah:'هجری قمری',none:'در این ماه مناسبتی در این فهرست نیست.',prev:'ماه قبل',nextM:'ماه بعد'}
               :{next:'next',nextPrayer:'Next prayer',tomorrow:'tomorrow',days:'days to go',today:'Today',date:'Date',copied:'Copied',ah:'AH',none:'No observances from this selection fall in this month.',prev:'Previous',nextM:'Next'};
   /* Selected Shia observances by Hijri month and day. Dates are calculated and provisional. */
@@ -30,15 +30,18 @@
   var hText=function(h){return fd(h.d)+' '+HM[h.m-1]+' '+fd(h.y)};
 
   var now=MZ.now(),T=MZ.times(now.y,now.m,now.d),nowMin=now.h*60+now.mi,H=MZ.hijri(now.y,now.m,now.d);
-  var order=['fajr','dhuhr','asr','maghrib','isha'],nextKey=null;
+  var order=['fajr','dhuhr','maghrib'],nextKey=null;
+  var tf=function(t){if(fa)return fd(t);var h=+t.slice(0,2),m=t.slice(3);return ((h+11)%12+1)+':'+m+(h<12?' am':' pm')};
+  var tmr=addDays(now.y,now.m,now.d,1),T2=MZ.times(tmr.y,tmr.m,tmr.d);
   for(var i=0;i<order.length;i++)if(T[order[i]].min>nowMin){nextKey=order[i];break}
   var tomorrow=!nextKey,nextTime;
   if(tomorrow){var tm=addDays(now.y,now.m,now.d,1);nextKey='fajr';nextTime=MZ.times(tm.y,tm.m,tm.d).fajr.text}else nextTime=T[nextKey].text;
 
-  $$('[data-pray]').forEach(function(e){var k=e.getAttribute('data-pray');e.textContent=fd(k===nextKey&&tomorrow?nextTime:T[k].text);
-    var box=e.closest('.pt,.p');if(box){box.classList.toggle('next',k===nextKey);var lab=$('[data-label]',box);if(lab)lab.textContent=PN[k]+(k===nextKey?(fa?'، ':', ')+(tomorrow?TX.tomorrow:TX.next):'')}});
-  $$('[data-next-name]').forEach(function(e){e.textContent=TX.nextPrayer+(fa?'، ':', ')+PN[nextKey]});
-  $$('[data-next-time]').forEach(function(e){e.textContent=fd(nextTime)});
+  $$('[data-pray]').forEach(function(e){var k=e.getAttribute('data-pray');e.textContent=tf(T[k].text);
+    var box=e.closest('.pt,.p,tr');if(box){box.classList.toggle('next',k===nextKey);var lab=$('[data-label]',box);if(lab)lab.textContent=PN[k]}});
+  $$('[data-pray-tom]').forEach(function(e){e.textContent=tf(T2[e.getAttribute('data-pray-tom')].text)});
+  $$('[data-next-name]').forEach(function(e){e.textContent=TX.nextPrayer+(fa?'، ':', ')+PN[nextKey]+(tomorrow?(fa?'، ':', ')+TX.tomorrow:'')});
+  $$('[data-next-time]').forEach(function(e){e.textContent=tf(nextTime)});
   $$('[data-today]').forEach(function(e){e.textContent=WD[now.wd]+(fa?' ':' ')+fd(now.d)+' '+MO[now.m-1]});
   $$('[data-hijri]').forEach(function(e){e.textContent=hText(H)+' '+TX.ah});
   $$('[data-hijri-ar]').forEach(function(e){e.textContent=ad(H.d)+' '+HMA[H.m-1]+' '+ad(H.y)});
@@ -63,10 +66,10 @@
 
   /* monthly timetable */
   var tt=$('[data-timetable]');
-  if(tt){var xc=function(c){return (c==='sunrise'||c==='sunset')?' class="x"':''};var cols=['fajr','sunrise','dhuhr','asr','sunset','maghrib','isha'],dim=new Date(Date.UTC(now.y,now.m,0)).getUTCDate();
+  if(tt){var xc=function(c){return ''};var cols=['imsak','fajr','sunrise','dhuhr','sunset','maghrib'],dim=new Date(Date.UTC(now.y,now.m,0)).getUTCDate();
     var h='<table class="tt"><thead><tr><th>'+MO[now.m-1]+' '+fd(now.y)+'</th>'+cols.map(function(c){return '<th'+xc(c)+'>'+PN[c]+'</th>'}).join('')+'</tr></thead><tbody>';
     for(var d=1;d<=dim;d++){var t=MZ.times(now.y,now.m,d),w=new Date(Date.UTC(now.y,now.m-1,d,12)).getUTCDay();
-      h+='<tr'+(d===now.d?' class="today"':'')+'><td>'+fd(d)+' <span class="wdn" style="font-weight:400;opacity:.7">'+WD[w]+'</span></td>'+cols.map(function(c){return '<td'+xc(c)+'>'+fd(t[c].text)+'</td>'}).join('')+'</tr>'}
+      h+='<tr'+(d===now.d?' class="today"':'')+'><td>'+fd(d)+' <span class="wdn" style="font-weight:400;opacity:.7">'+WD[w]+'</span></td>'+cols.map(function(c){return '<td'+xc(c)+'>'+tf(t[c].text).replace(/ (am|pm)/,'')+'</td>'}).join('')+'</tr>'}
     tt.innerHTML=h+'</tbody></table>'}
 
   /* month calendar with Hijri dates and observances */

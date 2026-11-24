@@ -531,3 +531,46 @@ nav .m a:hover:after,nav .m a.on:after{transform:scaleX(1)}
 [dir=rtl] .legal h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:28px;text-align:right}
 .foot .bn small{color:var(--muted)}
 @media (max-width:760px){.legal{grid-template-columns:1fr;gap:12px}.legal h3{white-space:normal;font-size:24px}}
+
+/* ================= Shia prayer timetable: Imsak, Fajr, Sunrise, Dhuhr, Sunset, Maghrib ================= */
+.pray{grid-template-columns:200px repeat(6,1fr) 200px;padding:24px 30px}
+.pray .pt{flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0 6px 18px;justify-content:flex-start}
+.pray .pt span{display:flex;align-items:center;gap:8px;font-size:14.5px}
+.pray .pt span i{width:14px;height:14px}
+.pray .pt b{font-size:23px;white-space:nowrap}
+.pray .pt.next{padding:12px 0 12px 18px}
+[dir=rtl] .pray .pt{padding:6px 18px 6px 0}
+[dir=rtl] .pray .pt.next{padding:12px 18px 12px 0}
+[dir=rtl] .pray .pt b{font-size:21px}
+.ptwrap{padding:14px 36px 20px}
+table.pt2{width:100%;border-collapse:collapse}
+table.pt2 thead th{font:600 15px Figtree,Vazirmatn,sans-serif;color:var(--muted);padding:14px 16px;text-align:center;border-bottom:2px solid var(--line)}
+table.pt2 tbody th{text-align:start;font:600 18px Figtree,Vazirmatn,sans-serif;padding:18px 16px;display:flex;align-items:center;gap:14px}
+table.pt2 tbody th i{width:30px;height:30px;border-radius:50%;flex:none}
+table.pt2 td{text-align:center;padding:18px 16px;font-size:19px;color:var(--muted)}
+table.pt2 td b{font-family:var(--display);font-weight:var(--dw);font-size:32px;color:var(--ink);line-height:1.1}
+table.pt2 tbody tr + tr{border-top:1px solid var(--line)}
+table.pt2 tr.next{background:var(--green-l)}
+table.pt2 tr.next th,table.pt2 tr.next td b{color:var(--green)}
+table.pt2 tr.next th:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+[dir=rtl] table.pt2 td b{font-size:26px}
+@media (max-width:760px){
+  .pray{grid-template-columns:repeat(3,1fr);padding:18px 14px;row-gap:10px}
+  .pray .pt{align-items:center;padding:8px 0;text-align:center}
+  .pray .pt.next{padding:8px 0}
+  .pray .pt span{font-size:12.5px;gap:6px}
+  .pray .pt span i{width:11px;height:11px}
+  .pray .pt b{font-size:19px}
+  [dir=rtl] .pray .pt,[dir=rtl] .pray .pt.next{padding:8px 0}
+  [dir=rtl] .pray .pt b{font-size:18px}
+  .ptwrap{padding:6px 12px 12px}
+  table.pt2 thead th{padding:10px 6px;font-size:13px}
+  table.pt2 tbody th{padding:14px 6px;font-size:15.5px;gap:10px}
+  table.pt2 tbody th i{width:22px;height:22px}
+  table.pt2 td{padding:14px 6px;font-size:14.5px}
+  table.pt2 td b{font-size:22px}
+  [dir=rtl] table.pt2 td b{font-size:19px}
+  table.tt{font-size:12.5px}
+  table.tt th{font-size:11px;padding:8px 2px}
+  table.tt td{padding:9px 2px}
+}
