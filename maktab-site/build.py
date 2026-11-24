@@ -9,6 +9,7 @@ import os, shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 LANG = "en"
+LEGAL = "Australian Youths Alliance inco"
 TEL = "tel:+61414012964"
 MAP = "https://www.google.com/maps/search/?api=1&query=20%20Kylie%20Crescent%2C%20Ingle%20Farm%2C%20SA"
 IG = "https://www.instagram.com/maktab.alzahra.sa/"
@@ -197,7 +198,7 @@ def home():
   <h2 style="margin-top:18px;max-width:800px">{L("Help us keep providing Islamic education to our community.", "به ما کمک کنید آموزش اسلامی را برای جامعه‌مان ادامه دهیم")}</h2>
   <div class="sup-g">
     <div class="card sup"><div class="im"><img src="{{A}}/premium-giving.webp" alt=""></div><div class="in"><h3>{L("Donate", "کمک مالی")}</h3><p>{L("Support the Maktab by bank transfer.", "از طریق انتقال بانکی از مکتب حمایت کنید.")}</p>
-      <div class="bank"><div><span>{L("Account name", "نام حساب")}</span><b dir="ltr">Australian Youths Alliance inco</b></div><div><span dir="ltr">BSB</span><b dir="ltr">065-167</b></div><div><span>{L("Account number", "شماره حساب")}</span><b dir="ltr">10581185</b></div></div>
+      <div class="bank"><div><span>{L("Account name", "نام حساب")}</span><b dir="ltr">{LEGAL}</b></div><div><span dir="ltr">BSB</span><b dir="ltr">065-167</b></div><div><span>{L("Account number", "شماره حساب")}</span><b dir="ltr">10581185</b></div></div>
       <div class="sp"></div><a class="btn b1" href="{url("donations/")}">{L("Donation information", "معلومات کمک مالی")}</a><p class="small">{L("Monthly direct debit is coming soon.", "پرداخت ماهانه خودکار به‌زودی فعال می‌شود.")}</p></div></div>
     <div class="card sup"><div class="im"><img src="{{A}}/premium-volunteer.webp" alt=""></div><div class="in"><h3>{L("Volunteer", "داوطلب شوید")}</h3><p>{L("Dedicate a day of your time, or contribute useful skills to the Maktab: community activities, practical support, or creative and digital skills.", "یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید: فعالیت‌های اجتماعی، کمک‌های عملی، یا مهارت‌های هنری و دیجیتال.")}</p>
       <div class="sp"></div><a class="btn b2" href="{url("volunteer/")}">{L("Ways to help", "راه‌های کمک")}</a><p class="small">{L("Volunteer applications are not yet open.", "درخواست داوطلبی هنوز باز نشده است.")}</p></div></div>
@@ -221,6 +222,7 @@ def about():
     <div class="card pad"><h3>{L("Our Adelaide community", "جامعه ما در ادلاید")}</h3><p>{L("Maktab Alzahra SA is based in Adelaide, South Australia. This website brings together information about Quran education and ways to support the Maktab.", "مکتب الزهرا در ادلاید، آسترالیای جنوبی فعالیت می‌کند. این وب‌سایت معلومات درباره آموزش قرآن و راه‌های حمایت از مکتب را یکجا فراهم می‌کند.")}</p></div>
     <div class="card pad"><h3>{L("Ways to get involved", "راه‌های همکاری")}</h3><p>{L("You can read about volunteering and financial support on this website. Volunteer applications are not currently open; donations are accepted by bank transfer.", "در این وب‌سایت می‌توانید درباره داوطلبی و حمایت مالی بخوانید. درخواست داوطلبی فعلاً باز نیست؛ کمک مالی از طریق انتقال بانکی پذیرفته می‌شود.")}</p></div>
   </div>
+  <div class="card pad legal"><div><span class="pill gr">{L("Legal name", "نام قانونی")}</span><h3 style="margin-top:12px" dir="ltr">{LEGAL}</h3></div><p>{L("Maktab Alzahra SA is the name our community knows us by. Our legal name, which you will see on bank transfers and official documents, is", "مکتب الزهرا نامی است که جامعه ما را با آن می‌شناسد. نام قانونی ما که در انتقال‌های بانکی و اسناد رسمی می‌بینید این است:")} {ltr(LEGAL)}.</p></div>
   {notice(L("Further details awaiting confirmation", "جزئیات بیشتر در انتظار تأیید"), L("More information about the Maktab’s history, team and programmes will be published after confirmation.", "معلومات بیشتر درباره تاریخچه، تیم و برنامه‌های مکتب پس از تأیید منتشر خواهد شد."))}
   <div class="cta"><a class="btn b1" href="{url("registration/")}">{L("Quran class registration", "ثبت نام کلاس قرآن")}</a><a class="btn b2" href="{url("volunteer/")}">{L("Explore volunteering", "درباره داوطلبی")}</a></div>
 </div></section>
@@ -293,7 +295,8 @@ def donations():
 <section class="secs"><div class="wrap">
   <h2 class="stitle" style="margin-top:0">{L("Donate by bank transfer", "کمک از طریق انتقال بانکی")}</h2>
   <p class="lead" style="max-width:760px">{L("Copy the details below. In your banking app, start a bank transfer, enter your donation amount and check the recipient before confirming.", "معلومات زیر را کپی کنید. در اپلیکیشن بانک خود انتقال بانکی را آغاز کنید، مبلغ کمک را وارد کنید و پیش از تأیید، گیرنده را بررسی کنید.")}</p>
-  <div class="bank big card">{row(L("Account name", "نام حساب"), "Australian Youths Alliance inco")}{row("BSB", "065-167", True)}{row(L("Account number", "شماره حساب"), "10581185")}</div>
+  <div class="bank big card">{row(L("Account name", "نام حساب"), LEGAL)}{row("BSB", "065-167", True)}{row(L("Account number", "شماره حساب"), "10581185")}</div>
+  <p class="small">{L("The account is in the Maktab’s legal name,", "حساب به نام قانونی مکتب است:")} <b>{ltr(LEGAL)}</b>{L(". Your bank will show this name as the recipient.", ". بانک شما این نام را به عنوان گیرنده نشان می‌دهد.")}</p>
   <div class="grid2">
     <div class="card pad"><h3>{L("One-off giving", "کمک یک‌باره")}</h3><p>{L("A single contribution made on one occasion, without an ongoing payment commitment.", "کمکی که یک بار پرداخت می‌شود، بدون تعهد پرداخت دوامدار.")}</p></div>
     <div class="card pad"><h3>{L("Donate monthly", "کمک ماهانه")}</h3><p>{L("Monthly direct debit is coming soon. Monthly giving options in Australian dollars:", "پرداخت ماهانه خودکار به‌زودی فعال می‌شود. گزینه‌های کمک ماهانه به دالر آسترالیا:")}</p><div class="amts">{amts}</div></div>
@@ -363,6 +366,7 @@ def contact():
   </div>
   <div class="card pad"><h3>{L("Social media", "شبکه‌های اجتماعی")}</h3><p>{L("Follow Maktab Alzahra SA on Instagram and YouTube, or join our WhatsApp channel for updates.", "مکتب الزهرا را در اینستاگرام و یوتیوب دنبال کنید، یا برای تازه‌ترین خبرها به کانال واتساپ ما بپیوندید.")}</p>
     <div class="cta" style="margin-top:18px"><a class="btn b2" href="{IG}">{L("Instagram", "اینستاگرام")}</a><a class="btn b2" href="{YT}">{L("YouTube", "یوتیوب")}</a><a class="btn b2" href="{WA}">{L("WhatsApp channel", "کانال واتساپ")}</a></div></div>
+  <div class="card pad legal"><div><span class="pill gr">{L("Legal name", "نام قانونی")}</span><h3 style="margin-top:12px" dir="ltr">{LEGAL}</h3></div><p>{L("Use this name for bank transfers and official correspondence with Maktab Alzahra SA.", "برای انتقال بانکی و مکاتبات رسمی با مکتب الزهرا از این نام استفاده کنید.")}</p></div>
   {notice(L("Email awaiting confirmation", "ایمیل در انتظار تأیید"), L("The phone number above is for Quran class enquiries. Email is not yet published, and no online contact form is active.", "شماره بالا برای پرسش درباره کلاس‌های قرآن است. ایمیل هنوز منتشر نشده و فورم تماس آنلاین فعال نیست."))}
 </div></section>'''
 
@@ -403,19 +407,19 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=3">
+<link rel="stylesheet" href="{{A}}/style.css?v=4">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
   <nav>
-    <a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="Maktab Al-Zahra"><span class="bn"><b>{name}</b><small dir="ltr">Australian Youths Alliance inco</small></span></a>
+    <a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="Maktab Al-Zahra"><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a>
     <div class="m">{links}</div>
     <div class="r"><div class="lang"><a class="{en_cls}" href="/en/{slug}">EN</a><a class="{fa_cls}" href="/fa/{slug}">دری</a></div><a class="btn b1" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
       <button class="burger" data-menu aria-label="{L("Menu", "منو")}"><svg width="18" height="12" viewBox="0 0 18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg></button></div>
   </nav>
 </div></div>
 <div class="mmenu" aria-hidden="true">
-  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">Australian Youths Alliance inco</small></span></a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
+  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
   <div class="mm-links">{mlinks}</div>
   <div class="mm-foot">
     <a class="btn mm-call" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
@@ -426,12 +430,12 @@ def layout(slug, title, body):
 <main>{body}</main>
 <footer><div class="wrap">
   <div class="foot">
-    <div><div class="l"><img src="{{A}}/logo-288.png" alt="">{name}</div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")} {ltr("Australian Youths Alliance Incorporation")}</p></div>
+    <div><div class="l"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")}</p></div>
     <div><h5>{L("Visit", "آدرس")}</h5><ul><li>{ltr("20 Kylie Crescent")}</li><li>{ltr("Ingle Farm, SA")}</li><li>{L("Saturday and Sunday, 9:40 am", "شنبه و یکشنبه، ۹:۴۰ صبح")}</li></ul></div>
     <div><h5>{L("Explore", "بخش‌ها")}</h5><ul>{"".join(f'<li><a href="{url(s)}">{t}</a></li>' for s, t in nav[2:5] + more)}</ul></div>
     <div><h5>{L("Contact", "تماس")}</h5><ul><li><a href="{TEL}">{phone()}</a></li><li>{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</li><li><a href="{IG}">{L("Instagram", "اینستاگرام")}</a>, <a href="{YT}">{L("YouTube", "یوتیوب")}</a>, <a href="{WA}">{L("WhatsApp", "واتساپ")}</a></li></ul></div>
   </div>
-  <div class="fb"><span>{L("© 2026 Maktab Alzahra SA, Adelaide, South Australia", "© ۲۰۲۶ مکتب الزهرا، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
+  <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
 <script src="{{A}}/calc.js?v=2"></script>
 <script src="{{A}}/app.js?v=2"></script>
