@@ -12,19 +12,8 @@
   var PN=fa?{imsak:'امساک',fajr:'صبح',sunrise:'طلوع',dhuhr:'ظهر',asr:'عصر',sunset:'غروب',maghrib:'مغرب',isha:'عشا'}:{imsak:'Imsak',fajr:'Fajr',sunrise:'Sunrise',dhuhr:'Dhuhr',asr:'Asr',sunset:'Sunset',maghrib:'Maghrib',isha:'Isha'};
   var TX=fa?{next:'بعدی',nextPrayer:'نماز بعدی',tomorrow:'فردا',days:'روز مانده',today:'امروز',date:'تاریخ',copied:'کپی شد',ah:'هجری قمری',none:'در این ماه مناسبتی در این فهرست نیست.',prev:'ماه قبل',nextM:'ماه بعد'}
               :{next:'next',nextPrayer:'Next prayer',tomorrow:'tomorrow',days:'days to go',today:'Today',date:'Date',copied:'Copied',ah:'AH',none:'No observances from this selection fall in this month.',prev:'Previous',nextM:'Next'};
-  /* Selected Shia observances by Hijri month and day. Dates are calculated and provisional. */
-  var EV=[
-    [1,1,'Islamic New Year','آغاز سال نو هجری'],[1,10,'Ashura, martyrdom of Imam Husayn (AS)','عاشورا، شهادت امام حسین (ع)'],
-    [2,20,'Arbaeen of Imam Husayn (AS)','اربعین امام حسین (ع)'],[2,28,'Passing of Prophet Muhammad (S)','رحلت پیامبر اکرم (ص)'],
-    [3,17,'Birth of Prophet Muhammad (S) and Imam al-Sadiq (AS)','ولادت پیامبر اکرم (ص) و امام صادق (ع)'],
-    [5,13,'Martyrdom of Lady Fatimah (AS), first narration','شهادت حضرت فاطمه (س)، روایت اول'],
-    [6,3,'Martyrdom of Lady Fatimah (AS), second narration','شهادت حضرت فاطمه (س)، روایت دوم'],
-    [6,20,'Birth of Lady Fatimah al-Zahra (AS)','ولادت حضرت فاطمه زهرا (س)'],
-    [7,13,'Birth of Imam Ali (AS)','ولادت امام علی (ع)'],[7,27,'Mab‘ath of Prophet Muhammad (S)','مبعث پیامبر اکرم (ص)'],
-    [8,3,'Birth of Imam Husayn (AS)','ولادت امام حسین (ع)'],[8,15,'Birth of Imam al-Mahdi (AJ)','ولادت امام مهدی (عج)'],
-    [9,1,'First day of Ramadan','آغاز ماه رمضان'],[9,21,'Martyrdom of Imam Ali (AS)','شهادت امام علی (ع)'],
-    [10,1,'Eid al-Fitr','عید فطر'],[12,10,'Eid al-Adha','عید قربان'],[12,18,'Eid al-Ghadir','عید غدیر']
-  ];
+  /* Observances come from people.js */
+  var EV=window.MZP.EV,PPL=window.MZP.P;
   var evOn=function(h){for(var i=0;i<EV.length;i++)if(EV[i][0]===h.m&&EV[i][1]===h.d)return fa?EV[i][3]:EV[i][2];return null};
   var addDays=function(y,m,d,n){var t=new Date(Date.UTC(y,m-1,d+n,12));return {y:t.getUTCFullYear(),m:t.getUTCMonth()+1,d:t.getUTCDate(),wd:t.getUTCDay()}};
   var hText=function(h){return fd(h.d)+' '+HM[h.m-1]+' '+fd(h.y)};
@@ -96,5 +85,15 @@
     var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
     els.forEach(function(e){if(e.getBoundingClientRect().top>window.innerHeight*0.9){e.classList.add('rv');io.observe(e)}});
     document.documentElement.classList.add('anim')}
+  /* the Fourteen Masoomeen: each with their birth and martyrdom days, and the next date they fall on */
+  var mz=$('[data-masoomeen]');
+  if(mz){var nextOf=function(m,d){for(var k=0;k<380;k++){var g=addDays(now.y,now.m,now.d,k),h=MZ.hijri(g.y,g.m,g.d);if(h.m===m&&h.d===d)return {g:g,k:k}}return null};
+    var out='';PPL.forEach(function(P,i){var rows='',rb='',rm='';
+      EV.forEach(function(e){if(e[8]&&(e[5]===i||(i===7&&e[0]===3&&e[1]===17)||(i===3&&e[0]===2&&e[1]===28))){var n=nextOf(e[0],e[1]),b=e[8]==='b';
+        var row='<div class="mzr '+(b?'b':'m')+'"><span>'+(b?(fa?'ولادت':'Birth'):(i===0?(fa?'رحلت':'Passing'):(fa?'شهادت':'Martyrdom')))+'</span><b>'+fd(e[1])+' '+HM[e[0]-1]+'</b><small>'+(n?fd(n.g.d)+' '+MO[n.g.m-1]+' '+fd(n.g.y):'')+'</small></div>';if(b)rb+=row;else rm+=row}});
+      rows=rb+rm;
+      if(i===13)rows+='<div class="mzr b"><span>'+(fa?'غیبت':'Occultation')+'</span><b>'+(fa?'امام زنده و غایب':'The living Imam')+'</b><small></small></div>';
+      out+='<div class="card mzc"><div class="mzn">'+fd(i+1)+'</div><div class="mza">'+P[4].replace('يا ','')+'</div><h3>'+(fa?P[1]:P[0])+'</h3><p>'+(fa?P[3]:P[2])+'</p>'+rows+'</div>'});
+    mz.innerHTML=out}
   window.MZA={EV:EV,now:now,addDays:addDays,fa:fa,fd:fd};
 })();
