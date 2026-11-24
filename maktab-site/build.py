@@ -413,7 +413,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=5">
+<link rel="stylesheet" href="{{A}}/style.css?v=6">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
@@ -444,7 +444,8 @@ def layout(slug, title, body):
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
 <script src="{{A}}/calc.js?v=3"></script>
-<script src="{{A}}/app.js?v=3"></script>
+<script src="{{A}}/app.js?v=4"></script>
+<script src="{{A}}/mood.js?v=1"></script>
 </body>
 </html>
 '''
@@ -455,7 +456,7 @@ def build():
     global LANG
     assets = os.path.join(OUT, "assets")
     os.makedirs(assets, exist_ok=True)
-    for f in ("style.css", "app.js", "calc.js"):
+    for f in ("style.css", "app.js", "calc.js", "mood.js"):
         shutil.copy(os.path.join(ROOT, "src", f), assets)
     for f in os.listdir(os.path.join(ROOT, "src", "images")):
         shutil.copy(os.path.join(ROOT, "src", "images", f), assets)
