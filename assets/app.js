@@ -84,5 +84,13 @@
 
   /* copy buttons and the mobile menu */
   $$('[data-copy]').forEach(function(b){b.onclick=function(){var v=b.getAttribute('data-copy'),o=b.textContent;if(navigator.clipboard)navigator.clipboard.writeText(v);b.textContent=TX.copied;setTimeout(function(){b.textContent=o},1500)}});
-  var mm=$('.mmenu');if(mm){$$('[data-menu]').forEach(function(b){b.onclick=function(){mm.classList.toggle('open')}})}
+  var mm=$('.mmenu');if(mm){$$('[data-menu]').forEach(function(b){b.onclick=function(){var o=mm.classList.toggle('open');document.documentElement.classList.toggle('menu-open',o);mm.setAttribute('aria-hidden',o?'false':'true')}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mm.classList.contains('open')){mm.classList.remove('open');document.documentElement.classList.remove('menu-open')}})}
+  /* header shadow once the page scrolls, and a gentle reveal as sections enter */
+  var nw=$('.navwrap'),onS=function(){if(nw)nw.classList.toggle('scrolled',window.scrollY>20)};onS();window.addEventListener('scroll',onS,{passive:true});
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&location.search.indexOf('static')<0){
+    var els=$$('main section > .wrap > *, main > .wrap > *, .sup-g > *, .moments > *, .grid2 > *, .grid3 > *, .facts > *');
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){if(e.getBoundingClientRect().top>window.innerHeight*0.9){e.classList.add('rv');io.observe(e)}});
+    document.documentElement.classList.add('anim')}
 })();
