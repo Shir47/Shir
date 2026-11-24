@@ -10,6 +10,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 LANG = "en"
 LEGAL = "Australian Youths Alliance inco"
+BASE = "https://darkslategrey-alpaca-935829.hostingersite.com"  # change this when the Maktab has its own domain
 TEL = "tel:+61414012964"
 MAP = "https://www.google.com/maps/search/?api=1&query=20%20Kylie%20Crescent%2C%20Ingle%20Farm%2C%20SA"
 IG = "https://www.instagram.com/maktab.alzahra.sa/"
@@ -132,7 +133,7 @@ def home():
   </div>
   <div class="art">
     <div class="ring"></div>
-    <div class="ph"><img src="{{A}}/cinematic-shrine.webp" alt=""></div>
+    <div class="ph"><img src="{{A}}/shrine-1200.webp" alt=""></div>
     <div class="cap">{L("Decorative imagined architecture", "معماری تزئینی خیالی")}</div>
     <div class="card nx"><i></i><div><span data-next-name>{L("Next prayer", "نماز بعدی")}</span><b data-next-time>--:--</b></div></div>
     <div class="card fl"><h4>{L("Weekend Quran classes", "کلاس‌های قرآن آخر هفته")}</h4>
@@ -209,7 +210,7 @@ def home():
       <div class="sp"></div><a class="btn b1" href="{url("donations/")}">{L("Donation information", "معلومات کمک مالی")}</a><p class="small">{L("Monthly direct debit is coming soon.", "پرداخت ماهانه خودکار به‌زودی فعال می‌شود.")}</p></div></div>
     <div class="card sup"><div class="im"><img src="{{A}}/premium-volunteer.webp" alt=""></div><div class="in"><h3>{L("Volunteer", "داوطلب شوید")}</h3><p>{L("Dedicate a day of your time, or contribute useful skills to the Maktab: community activities, practical support, or creative and digital skills.", "یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید: فعالیت‌های اجتماعی، کمک‌های عملی، یا مهارت‌های هنری و دیجیتال.")}</p>
       <div class="sp"></div><a class="btn b2" href="{url("volunteer/")}">{L("Ways to help", "راه‌های کمک")}</a><p class="small">{L("Volunteer applications are not yet open.", "درخواست داوطلبی هنوز باز نشده است.")}</p></div></div>
-    <div class="card sup"><div class="im"><img src="{{A}}/sanctuary-courtyard.webp" alt=""></div><div class="in"><h3>{L("Islamic questions", "پرسش‌های دینی")}</h3><p>{L("A space for Islamic religious enquiries, reviewed by an authorised religious representative. This website does not generate religious rulings.", "جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند. این وب‌سایت حکم دینی صادر نمی‌کند.")}</p>
+    <div class="card sup"><div class="im"><img src="{{A}}/courtyard-800.webp" alt=""></div><div class="in"><h3>{L("Islamic questions", "پرسش‌های دینی")}</h3><p>{L("A space for Islamic religious enquiries, reviewed by an authorised religious representative. This website does not generate religious rulings.", "جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند. این وب‌سایت حکم دینی صادر نمی‌کند.")}</p>
       <div class="sp"></div><a class="btn b2" href="{url("questions/")}">{L("How enquiries work", "روند پرسش‌ها")}</a><p class="small">{L("Question submissions are not yet open.", "ارسال پرسش هنوز فعال نیست.")}</p></div></div>
   </div>
 </div></section>
@@ -264,7 +265,7 @@ def prayer_times():
     rows = "".join(f'<tr><th><i style="background:{SKY[k]}"></i>{names[k]}</th><td><b data-pray="{k}">--:--</b></td><td data-pray-tom="{k}">--:--</td></tr>' for k in SKY)
     return phead(L("Adelaide, Shia Ja‘fari method", "ادلاید، روش شیعه جعفری"), L("Prayer times", "اوقات نماز"),
                  L("A moment to pause. A day guided by prayer.", "لحظه‌ای برای درنگ. روزی در پرتو نماز."),
-                 "cinematic-shrine.webp", L("Decorative imagined architecture", "معماری تزئینی خیالی")) + f'''
+                 "shrine-1200.webp", L("Decorative imagined architecture", "معماری تزئینی خیالی")) + f'''
 <section class="secs"><div class="wrap">
   <div class="head" style="align-items:center"><h2 class="stitle" style="margin:0"><span data-today></span></h2><span class="pill g" data-hijri></span></div>
   <div class="card ptwrap"><table class="pt2">
@@ -279,7 +280,7 @@ def prayer_times():
 def calendar():
     return phead(L("A rhythm of remembrance", "آهنگ یادآوری"), L("Shia Islamic calendar", "تقویم اسلامی شیعی"),
                  L("Explore selected Shia Islamic observances and calculated Hijri dates.", "مناسبت‌های منتخب اسلامی شیعی و تاریخ‌های هجری محاسبه‌شده را ببینید."),
-                 "sanctuary-courtyard.webp", DECOR(),
+                 "courtyard-800.webp", DECOR(),
                  f'<p class="lead" style="margin-top:10px"><b>{L("Today:", "امروز:")}</b> <span data-today></span>, <span data-hijri></span></p>') + f'''
 <section class="secs"><div class="wrap">
   <h2 class="stitle" style="margin-top:0">{L("Coming up", "مناسبت‌های پیش رو")}</h2>
@@ -343,7 +344,7 @@ def questions():
         return f'<div class="card pad"><div class="num">{n}</div><h3>{title}</h3><p>{text}</p></div>'
     return phead(L("Faith, learning, community", "ایمان، دانش، جامعه"), L("Islamic religious questions", "پرسش‌های دینی اسلامی"),
                  L("The enquiry process and responsible religious representative are awaiting confirmation.", "روند پرسش و نماینده دینی مسئول در انتظار تأیید است."),
-                 "sanctuary-courtyard.webp", DECOR()) + f'''
+                 "courtyard-800.webp", DECOR()) + f'''
 <section class="secs"><div class="wrap">
   {notice(L("Question submissions are not yet available", "ارسال پرسش هنوز فعال نیست"), L("Questions cannot currently be submitted through this website. The submission process and religious representative will be published once confirmed.", "در حال حاضر نمی‌توان از طریق این وب‌سایت پرسش فرستاد. روند ارسال و نماینده دینی پس از تأیید منتشر می‌شود."))}
   <h2 class="stitle">{L("Future enquiry process", "روند آینده پرسش‌ها")}</h2>
@@ -414,6 +415,16 @@ def layout(slug, title, body):
     mlinks = "".join(f'<a href="{url(s)}"{" class=on" if s == slug else ""}><span>{t}</span><i></i></a>' for s, t in nav + more)
     en_cls, fa_cls = ("on", "fa") if LANG == "en" else ("", "on fa")
     desc = L("Free Quran classes for all ages in Adelaide. Maktab Alzahra SA is a place for Islamic education and community.", "کلاس‌های رایگان قرآن برای همه سنین در ادلاید. مکتب الزهرا جایی برای آموزش اسلامی و جامعه است.")
+    ld = ""
+    if not slug:
+        import json
+        ld = '<script type="application/ld+json">' + json.dumps({
+            "@context": "https://schema.org", "@type": "EducationalOrganization", "name": "Maktab Alzahra SA", "legalName": LEGAL,
+            "url": BASE + "/" + LANG + "/", "logo": BASE + "/assets/logo-288.png", "image": BASE + "/assets/share.jpg",
+            "description": desc, "telephone": "+61414012964",
+            "address": {"@type": "PostalAddress", "streetAddress": "20 Kylie Crescent", "addressLocality": "Ingle Farm", "addressRegion": "SA", "addressCountry": "AU"},
+            "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "09:40"}],
+            "sameAs": [IG, YT, WA]}, ensure_ascii=False) + "</script>"
     html = f'''<!doctype html>
 <html lang="{LANG}" dir="{L("ltr", "rtl")}">
 <head>
@@ -421,24 +432,38 @@ def layout(slug, title, body):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} | {name}</title>
 <meta name="description" content="{desc}">
-<link rel="alternate" hreflang="en" href="/en/{slug}">
-<link rel="alternate" hreflang="fa" href="/fa/{slug}">
+<link rel="canonical" href="{BASE}/{LANG}/{slug}">
+<link rel="alternate" hreflang="en" href="{BASE}/en/{slug}">
+<link rel="alternate" hreflang="fa" href="{BASE}/fa/{slug}">
+<link rel="alternate" hreflang="x-default" href="{BASE}/en/{slug}">
+<meta name="theme-color" content="#0f5a33">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maktab Alzahra SA">
+<meta property="og:title" content="{title} | {name}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{BASE}/{LANG}/{slug}">
+<meta property="og:image" content="{BASE}/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="{L("en_AU", "fa_AF")}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{{A}}/logo-288.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=9">
+<link rel="apple-touch-icon" href="{{A}}/logo-288.png">
+{ld}
+<link rel="stylesheet" href="{{A}}/style.css?v=10">
 </head>
 <body>
+<a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
 <div class="navwrap"><div class="wrap">
   <nav>
-    <a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt="Maktab Al-Zahra"><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a>
+    <a class="l" href="{url()}"><img src="{{A}}/logo-160.webp" alt="Maktab Al-Zahra"><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a>
     <div class="m">{links}</div>
     <div class="r"><div class="lang"><a class="{en_cls}" href="/en/{slug}">EN</a><a class="{fa_cls}" href="/fa/{slug}">دری</a></div><a class="btn b1" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
       <button class="burger" data-menu aria-label="{L("Menu", "منو")}"><svg width="18" height="12" viewBox="0 0 18 12" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M1 1h16M1 6h16M1 11h16"/></svg></button></div>
   </nav>
 </div></div>
-<div class="mmenu" aria-hidden="true">
-  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
+<div class="mmenu" aria-hidden="true" role="dialog" aria-label="{L("Menu", "منو")}">
+  <div class="mm-top"><a class="l" href="{url()}"><img src="{{A}}/logo-160.webp" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></a><button class="x" data-menu aria-label="{L("Close", "بستن")}"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></button></div>
   <div class="mm-links">{mlinks}</div>
   <div class="mm-foot">
     <a class="btn mm-call" href="{TEL}">{L("Call", "تماس")}&nbsp;&nbsp;{phone()}</a>
@@ -446,10 +471,10 @@ def layout(slug, title, body):
     <div class="mm-soc"><a href="{IG}">{L("Instagram", "اینستاگرام")}</a><a href="{YT}">{L("YouTube", "یوتیوب")}</a><a href="{WA}">{L("WhatsApp", "واتساپ")}</a></div></div>
   </div>
 </div>
-<main>{body}</main>
+<main id="main">{body}</main>
 <footer><div class="wrap">
   <div class="foot">
-    <div><div class="l"><img src="{{A}}/logo-288.png" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")}</p></div>
+    <div><div class="l"><img src="{{A}}/logo-160.webp" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")}</p></div>
     <div><h5>{L("Visit", "آدرس")}</h5><ul><li>{ltr("20 Kylie Crescent")}</li><li>{ltr("Ingle Farm, SA")}</li><li>{L("Saturday and Sunday, 9:40 am", "شنبه و یکشنبه، ۹:۴۰ صبح")}</li></ul></div>
     <div><h5>{L("Explore", "بخش‌ها")}</h5><ul>{"".join(f'<li><a href="{url(s)}">{t}</a></li>' for s, t in nav[2:5] + more)}</ul></div>
     <div><h5>{L("Contact", "تماس")}</h5><ul><li><a href="{TEL}">{phone()}</a></li><li>{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</li><li><a href="{IG}">{L("Instagram", "اینستاگرام")}</a>, <a href="{YT}">{L("YouTube", "یوتیوب")}</a>, <a href="{WA}">{L("WhatsApp", "واتساپ")}</a></li></ul></div>
@@ -459,29 +484,61 @@ def layout(slug, title, body):
 <script src="{{A}}/calc.js?v=3"></script>
 <script src="{{A}}/people.js?v=2"></script>
 <script src="{{A}}/app.js?v=6"></script>
-<script src="{{A}}/mood.js?v=4"></script>
+<script src="{{A}}/mood.js?v=5"></script>
 </body>
 </html>
 '''
-    return html.replace("{A}", A)
+    html = html.replace(' class=on>', ' class=on aria-current="page">')
+    html = html.replace(' ar"', ' ar" lang="ar"').replace('class="ar"', 'class="ar" lang="ar"')
+    head, sep, rest = html.partition('<main id="main">')
+    rest = rest.replace('<img src=', '<img loading="lazy" decoding="async" src=')
+    rest = rest.replace('<img loading="lazy" decoding="async" src=', '<img fetchpriority="high" decoding="async" src=', 1)
+    return (head + sep + rest).replace("{A}", A)
+
+
+def notfound():
+    return f'''<header class="phead"><div class="wrap"><div class="phead-g">
+  <div><span class="pill">{L("Page not found", "صفحه پیدا نشد")}</span><h1>{L("This page isn’t here.", "این صفحه اینجا نیست")}</h1>
+    <p class="lead">{L("The link may be old, or the address may have a typo. These pages can help you find what you need.", "ممکن است لینک قدیمی باشد یا آدرس اشتباه نوشته شده باشد. این صفحه‌ها می‌توانند کمک کنند.")}</p>
+    <div class="cta"><a class="btn b1" href="{url()}">{L("Go to the home page", "رفتن به صفحه اصلی")}</a><a class="btn b2" href="{url("registration/")}">{L("Quran classes", "کلاس‌های قرآن")}</a><a class="btn b2" href="{url("contact/")}">{L("Contact us", "تماس با ما")}</a></div></div>
+  <div><div class="ph"><img src="{{A}}/madinah-arch-736.webp" alt=""></div></div>
+</div></div></header>'''
 
 
 def build():
     global LANG
     assets = os.path.join(OUT, "assets")
-    os.makedirs(assets, exist_ok=True)
-    for f in ("style.css", "app.js", "calc.js", "mood.js", "people.js"):
+    os.makedirs(os.path.join(assets, "fonts"), exist_ok=True)
+    for f in ("app.js", "calc.js", "mood.js", "people.js"):
         shutil.copy(os.path.join(ROOT, "src", f), assets)
+    fonts = os.path.join(ROOT, "src", "fonts")
+    for f in os.listdir(fonts):
+        if f.endswith(".woff2"):
+            shutil.copy(os.path.join(fonts, f), os.path.join(assets, "fonts"))
+    with open(os.path.join(assets, "style.css"), "w", encoding="utf-8") as fh:  # the fonts and the design in one file
+        fh.write(open(os.path.join(fonts, "fonts.css"), encoding="utf-8").read() + open(os.path.join(ROOT, "src", "style.css"), encoding="utf-8").read())
     for f in os.listdir(os.path.join(ROOT, "src", "images")):
         shutil.copy(os.path.join(ROOT, "src", "images", f), assets)
+    urls = []
     for LANG in ("en", "fa"):
         for slug, fn, titles in PAGES:
             d = os.path.join(OUT, LANG, slug)
             os.makedirs(d, exist_ok=True)
             with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as fh:
                 fh.write(layout(slug, L(*titles), fn()))
+            urls.append(f"{BASE}/{LANG}/{slug}")
+    LANG = "en"
+    page = layout("404/", "Page not found", notfound()).replace("../../assets", "/assets").replace('<link rel="canonical" href="' + BASE + '/en/404/">', '<meta name="robots" content="noindex">')
+    with open(os.path.join(OUT, "404.html"), "w", encoding="utf-8") as fh:
+        fh.write(page)
     with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
-        fh.write('<!doctype html><meta charset="utf-8"><title>Maktab Alzahra SA</title><meta http-equiv="refresh" content="0; url=/en/"><link rel="canonical" href="/en/"><a href="/en/">Maktab Alzahra SA</a>\n')
+        fh.write('<!doctype html><meta charset="utf-8"><title>Maktab Alzahra SA</title><meta http-equiv="refresh" content="0; url=/en/"><link rel="canonical" href="' + BASE + '/en/"><a href="/en/">Maktab Alzahra SA</a>\n')
+    with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as fh:
+        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    with open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8") as fh:
+        fh.write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+    with open(os.path.join(OUT, ".htaccess"), "w", encoding="utf-8") as fh:
+        fh.write("ErrorDocument 404 /404.html\n<IfModule mod_expires.c>\nExpiresActive On\nExpiresByType font/woff2 \"access plus 1 year\"\nExpiresByType image/webp \"access plus 1 month\"\nExpiresByType image/png \"access plus 1 month\"\nExpiresByType image/jpeg \"access plus 1 month\"\n</IfModule>\n")
     print("built", len(PAGES) * 2, "pages into", OUT)
 
 

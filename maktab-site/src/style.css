@@ -640,3 +640,7 @@ table.pt2 tr.next th:after{content:"";width:8px;height:8px;border-radius:50%;bac
   [dir=rtl] .mi-n{font-size:22px}
 }
 @media (prefers-reduced-motion:reduce){.mi-bg{transition:none;transform:none}}
+
+/* skip link for keyboard and screen reader users */
+.skip{position:absolute;left:16px;top:-80px;z-index:200;background:var(--green);color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;transition:top .2s}
+.skip:focus{top:12px}

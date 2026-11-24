@@ -24,7 +24,7 @@
   var title=joy?(fa?(eid?'عید مبارک':'میلاد مبارک'):(eid?'Eid Mubarak':'Wiladat Mubarak')):(fa?'تسلیت':'With sorrow we remember');
   var line=joy?(fa?'این روز خجسته بر شما و خانواده‌تان مبارک باد.':'Blessings to you and your family on this joyful occasion.')
               :(fa?'این مصیبت را به شما تسلیت می‌گوییم.':'Our condolences to you and your family.');
-  var base=(document.querySelector('nav .l img')||{}).src||'';base=base.replace(/logo-288\.png.*$/,'');
+  var base=(document.querySelector('nav .l img')||{}).src||'';base=base.replace(/logo-160\.webp.*$/,'');
   var cls=joy?'joy':'mourn';
 
   /* 1. a slim bar at the top of every page */
@@ -40,11 +40,11 @@
   if(location.search.indexOf('static')>-1)seen=true;else if(q)seen=false;
   if(seen)return;
   try{sessionStorage.setItem('mz-mood',key)}catch(x){}
-  var o=document.createElement('div');o.className='moodintro '+cls;
-  o.innerHTML='<div class="mi-bg" style="background-image:url('+base+'cinematic-shrine.webp)"></div><div class="mi-sh"></div>'
-    +'<div class="mi-in"><img src="'+base+'logo-288.png" alt=""><div class="mi-k">'+title+'</div><div class="mi-big">'+big+'</div><i class="mi-rule"></i>'
+  var o=document.createElement('div');o.className='moodintro '+cls;o.setAttribute('role','dialog');o.setAttribute('aria-label',name);
+  o.innerHTML='<div class="mi-bg" style="background-image:url('+base+'shrine-1200.webp)"></div><div class="mi-sh"></div>'
+    +'<div class="mi-in"><img src="'+base+'logo-160.webp" alt=""><div class="mi-k">'+title+'</div><div class="mi-big" lang="ar">'+big+'</div><i class="mi-rule"></i>'
     +'<div class="mi-n">'+name+'</div>'+(p?'<div class="mi-s">'+(fa?p[3]:p[2])+'</div>':'')
-    +'<div class="mi-ar">'+salam+'</div><p>'+line+'</p><button>'+(fa?'ورود به وب‌سایت':'Enter the website')+'</button><div class="mi-w">'+when+'</div></div>';
+    +'<div class="mi-ar" lang="ar">'+salam+'</div><p>'+line+'</p><button>'+(fa?'ورود به وب‌سایت':'Enter the website')+'</button><div class="mi-w">'+when+'</div></div>';
   document.body.appendChild(o);
   var html=document.documentElement;html.classList.add('menu-open');
   var done=false,close=function(){if(done)return;done=true;o.classList.add('out');html.classList.remove('menu-open');setTimeout(function(){o.remove()},800)};
