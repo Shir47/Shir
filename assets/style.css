@@ -575,232 +575,68 @@ table.pt2 tr.next th:after{content:"";width:8px;height:8px;border-radius:50%;bac
   table.tt td{padding:9px 2px}
 }
 
-/* ================= seasons of the calendar ================= */
-.moodbar{display:flex;align-items:center;justify-content:center;gap:12px;padding:11px 18px;font-size:15px;text-align:center;line-height:1.35}
-.moodbar b{font-weight:700}
-.moodbar svg{flex:none}
-.moodpill{font-weight:700}
-.moodintro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;text-align:center;color:#fff;opacity:0;transition:opacity .6s;cursor:pointer;overflow:hidden}
-.moodintro.on{opacity:1}.moodintro.out{opacity:0;pointer-events:none}
-.mi-in{position:relative;z-index:2;max-width:640px;transform:translateY(16px);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.moodintro.on .mi-in{transform:none}
-.mi-in img{width:92px;height:92px;margin:0 auto 18px}
-.mi-ar{font-family:Amiri,serif;direction:rtl;font-size:44px;line-height:1.7}
-.mi-t{font-family:var(--display);font-weight:var(--dw);font-size:72px;line-height:1.05;margin-top:6px}
-.mi-n{font-size:22px;margin-top:14px;font-weight:600}
-.mi-w{display:inline-block;margin-top:14px;padding:7px 18px;border-radius:999px;font-weight:700;font-size:15px}
-.mi-in p{margin-top:16px;font-size:17px;opacity:.9}
-.mi-in button{margin-top:26px;border:0;border-radius:999px;padding:15px 30px;font:600 16.5px Figtree,Vazirmatn,sans-serif;cursor:pointer}
-[dir=rtl] .mi-t{font-family:'Noto Nastaliq Urdu',serif;font-size:58px;line-height:2}
-.petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90}
-.moodintro .petals{position:absolute;z-index:1}
-
-/* ---- celebration ---- */
-.mood-joy{--bg:#fbf8ec;--turq-l:#fbefc9;--turq:#8a6410;--line:#ece3c8}
-.mood-joy .moodbar{background:linear-gradient(90deg,#b98a2c,#f3dc98 30%,#e9c765 50%,#f3dc98 70%,#b98a2c);background-size:200% 100%;color:#2a1d02;animation:shimmer 8s linear infinite}
-@keyframes shimmer{to{background-position:200% 0}}
-.mood-joy .moodintro{background:radial-gradient(120% 90% at 50% 0%,#1c8050 0%,#0f5a33 45%,#073a20 100%)}
-.mood-joy .mi-ar,.mood-joy .mi-t{color:#f3dc98}
-.mood-joy .mi-w{background:rgba(243,220,152,.18);color:#f3dc98;border:1px solid rgba(243,220,152,.5)}
-.mood-joy .mi-in button{background:linear-gradient(180deg,#f3dc98,#c9a24b);color:#1c2a10}
-.mood-joy .moodpill{background:linear-gradient(90deg,#f3dc98,#e9c765);color:#3f2c05}
-.mood-joy .hero:before,.mood-joy .phead:before{background:radial-gradient(closest-side,#fbe7a8,rgba(251,231,168,0))}
-.mood-joy .art .ring{border-color:#e9c765;box-shadow:0 0 0 6px rgba(233,199,101,.18),0 0 60px rgba(233,199,101,.5)}
-.mood-joy h1{background:linear-gradient(100deg,#0e2a44 0%,#0e2a44 40%,#b98a2c 50%,#0e2a44 60%,#0e2a44 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
-.mood-joy .had{background:linear-gradient(135deg,#0f5a33,#0b4526)}
-.mood-joy .occ:first-child .cd{background:linear-gradient(180deg,#f3dc98,#e9c765)}
-.garland{position:absolute;left:6%;right:6%;top:-34px;display:flex;justify-content:space-between;pointer-events:none}
-.garland i{width:12px;height:12px;border-radius:50%;background:#f3dc98;box-shadow:0 0 14px 4px rgba(243,220,152,.9);animation:twinkle 2.4s ease-in-out infinite}
-.garland i:nth-child(3n+1){background:#fff3c9;animation-delay:.5s;transform:translateY(8px)}
-.garland i:nth-child(3n+2){background:#e9c765;animation-delay:1.1s;transform:translateY(14px)}
-.mood-rose .garland i:nth-child(3n+1){background:#f7c6d4;box-shadow:0 0 14px 4px rgba(247,198,212,.9)}
-.mood-rose .moodpill{background:linear-gradient(90deg,#f7c6d4,#f3dc98)}
-@keyframes twinkle{50%{opacity:.35}}
-
-/* ---- mourning ---- */
-.mood-mourn{--bg:#f1f0ee;--ink:#141414;--muted:#55565a;--green:#1a1a1a;--green-2:#000;--green-l:#e4e3e1;--turq:#7a1616;--turq-l:#ece4e3;--gold:#7a1616;--gold-l:#ebe6e5;--line:#dedcd9;--navy:#111}
-.mood-mourn .moodbar{background:#0b0b0b;color:#e9e6e2;border-bottom:2px solid #7a1616}
-.mood-mourn .moodbar b{color:#fff}
-.mood-mourn .moodintro{background:radial-gradient(100% 80% at 50% 0%,#2a0c0c 0%,#0b0b0b 55%,#000 100%)}
-.mood-mourn .mi-ar{color:#d9c9c9}.mood-mourn .mi-t{color:#fff}
-.mood-mourn .mi-in img{filter:grayscale(1) brightness(.9)}
-.mood-mourn .mi-w{background:rgba(255,255,255,.08);color:#e9e6e2;border:1px solid rgba(255,255,255,.25)}
-.mood-mourn .mi-in button{background:#fff;color:#111}
-.mood-mourn .moodpill{background:#141414;color:#fff}
-.mood-mourn img{filter:grayscale(.75) brightness(.92) contrast(1.02)}
-.mood-mourn nav .l img,.mood-mourn .foot .l img{filter:grayscale(1)}
-.mood-mourn .hero:before,.mood-mourn .phead:before{background:radial-gradient(closest-side,#dcd8d5,rgba(220,216,213,0))}
-.mood-mourn .art .ring{border-color:rgba(122,22,22,.6)}
-.mood-mourn .b1{box-shadow:0 14px 26px -14px rgba(0,0,0,.7)}
-.mood-mourn .had .q,.mood-mourn .phone{color:#e9e6e2}
-.mood-mourn .had .src{color:#c9a3a3}
-.mood-mourn .had:before,.mood-mourn .had:after,.mood-mourn .contact:before{border-color:rgba(255,255,255,.14)}
-.mood-mourn .contact .pill{color:#e9e6e2}
-.mood-mourn .ci span,.mood-mourn .ci small,.mood-mourn .contact .hrs,.mood-mourn .contact .small,.mood-mourn .bring p{color:#c9c6c2}
-.mood-mourn .ci a{color:#e9e6e2;border-color:rgba(255,255,255,.4)}
-.mood-mourn .bring li:before{background-color:#e9e6e2}
-.mood-mourn .pt i,.mood-mourn .art .nx i,.mood-mourn table.pt2 tbody th i{filter:grayscale(1)}
-.mood-mourn nav .m a:after{background:#7a1616}
-.mood-mourn ::selection{background:#7a1616}
-.mood-mourn .anim *,.mood-mourn .rv{animation:none!important}
-@media (max-width:760px){
-  .moodbar{font-size:13.5px;padding:10px 14px;gap:8px}
-  .mi-ar{font-size:30px}.mi-t{font-size:46px}.mi-n{font-size:19px}
-  [dir=rtl] .mi-t{font-size:40px}
-  .garland{top:-22px}.garland i{width:9px;height:9px}
-  .mood-mourn .mmenu{background:radial-gradient(120% 70% at 100% 0%,#2a0c0c 0%,#0b0b0b 50%,#000 100%)}
-  .mood-mourn .mm-call{background:#fff;color:#111}
-  .mood-mourn .mm-links a.on{color:#e0b4b4}.mood-mourn .mm-links a.on i{border-color:#e0b4b4}
-  .mood-mourn .mmenu .lang a.on{color:#111}
-}
-
-/* ================= the Fourteen Masoomeen and the cinematic arrival ================= */
+/* ================= the Fourteen Masoomeen page ================= */
 .mzgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .mzc{padding:26px 28px 20px;position:relative;overflow:hidden}
-.mzn{position:absolute;inset-inline-end:22px;top:18px;width:40px;height:40px;border-radius:50%;background:var(--green-l);color:var(--green);display:grid;place-items:center;font:var(--dw) 20px var(--display)}
-.mza{font-family:'Aref Ruqaa',serif;direction:rtl;font-size:40px;line-height:1.5;color:var(--gold)}
+.mzn{position:absolute;inset-inline-end:22px;top:20px;width:40px;height:40px;border-radius:50%;background:var(--green-l);color:var(--green);display:grid;place-items:center;font:var(--dw) 20px var(--display)}
+.mza{font-family:Amiri,serif;direction:rtl;font-size:40px;line-height:1.7;color:var(--green)}
 [dir=ltr] .mza{text-align:left}
-.mzc h3{font-size:24px;margin-top:2px}
+.mzc h3{font-size:24px;margin-top:0}
 .mzc p{font-size:14.5px;color:var(--muted);margin:2px 0 14px}
 .mzr{display:grid;grid-template-columns:90px 1fr auto;gap:10px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
 .mzr span{font-weight:600;font-size:13.5px}
 .mzr.b span{color:#8a6410}.mzr.m span{color:#7a1616}
 .mzr small{color:var(--muted);font-size:13.5px;white-space:nowrap}
-.artname{position:absolute;left:0;right:0;top:34px;text-align:center;font-family:'Aref Ruqaa',serif;direction:rtl;font-size:58px;line-height:1.3;color:#f3dc98;text-shadow:0 4px 30px rgba(0,0,0,.7);z-index:2;pointer-events:none}
-.mood-mourn .artname{color:#fff}
-.moodintro{background:#000!important}
-.mi-bg{position:absolute;inset:0;background-size:cover;background-position:50% 35%;transform:scale(1.08);transition:transform 7s ease-out}
+
+/* ================= special days: a slim bar and a greeting. The site's own colours never change. ================= */
+.moodbar{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 18px;font-size:14.5px;text-align:center;line-height:1.4;letter-spacing:.01em}
+.moodbar b{font-weight:700}
+.moodbar i{width:6px;height:6px;transform:rotate(45deg);flex:none}
+.moodbar.joy{background:var(--green);color:#e9f3ec}
+.moodbar.joy b{color:#f3dc98}.moodbar.joy i{background:#e9c765}
+.moodbar.mourn{background:#0e2a44;color:#dbe4ee}
+.moodbar.mourn b{color:#fff}.moodbar.mourn i{background:#9fb1c4}
+
+.moodintro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:28px;text-align:center;color:#fff;background:#06121f;opacity:0;transition:opacity .7s;cursor:pointer;overflow:hidden}
+.moodintro.on{opacity:1}.moodintro.out{opacity:0;pointer-events:none}
+.mi-bg{position:absolute;inset:0;background-size:cover;background-position:50% 35%;transform:scale(1.07);transition:transform 8s ease-out}
 .moodintro.on .mi-bg{transform:scale(1)}
 .mi-sh{position:absolute;inset:0}
-.mi-in{max-width:900px}
-.mi-in img{width:76px;height:76px;margin-bottom:6px}
-.mi-big{font-family:'Aref Ruqaa',serif;direction:rtl;font-size:138px;line-height:1.25;text-shadow:0 6px 60px rgba(0,0,0,.85)}
-.mi-rule{display:block;width:120px;height:2px;margin:6px auto 16px}
-.mi-t{font-size:46px}
-.mi-n{font-size:20px;margin-top:10px}
-.mi-s{font-size:15.5px;opacity:.75;margin-top:2px}
-.mi-ar{font-size:28px;margin-top:10px;opacity:.95}
-.mi-in p{font-size:16px;margin-top:12px}
-.mi-in button{margin-top:20px}
-.candles{position:absolute;left:0;right:0;bottom:0;width:100%;height:230px;z-index:1}
-.candles .fl{animation:flick 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
-@keyframes flick{50%{transform:scaleY(.86) scaleX(1.06)}}
-.mood-joy .mi-bg{filter:saturate(1.15) brightness(.8)}
-.mood-joy .mi-sh{background:radial-gradient(65% 60% at 50% 50%,rgba(6,40,22,.45),rgba(4,26,14,.93))}
-.mood-joy .mi-big{color:#f3dc98}
-.mood-joy .mi-rule{background:#e9c765}
-.mood-mourn .mi-bg{filter:grayscale(1) brightness(.5) contrast(1.15)}
-.mood-mourn .mi-sh{background:radial-gradient(60% 55% at 50% 45%,rgba(0,0,0,.4),rgba(0,0,0,.94)),linear-gradient(0deg,rgba(120,10,16,.5),rgba(120,10,16,0) 40%)}
-.mood-mourn .mi-big{color:#fff}
-.mood-mourn .mi-rule{background:#c1272d}
-.mood-mourn .mi-in{margin-bottom:120px}
-.mood-muharram .mi-big{color:#d7333a}
-.mood-muharram{--turq:#a01219;--gold:#a01219}
-.mood-muharram .moodbar{border-bottom-color:#c1272d}
-.tone-green.mood-joy .moodpill{background:linear-gradient(90deg,#bfe0cb,#f3dc98)}
-.tone-rose.mood-joy .moodpill{background:linear-gradient(90deg,#f7c6d4,#f3dc98)}
-.tone-rose .garland i:nth-child(3n+1){background:#f7c6d4;box-shadow:0 0 14px 4px rgba(247,198,212,.9)}
-.tone-green .garland i:nth-child(3n+1){background:#bfe0cb;box-shadow:0 0 14px 4px rgba(191,224,203,.9)}
+.mi-in{position:relative;z-index:2;max-width:860px;opacity:0;transform:translateY(14px);transition:opacity .9s .25s,transform 1.1s .25s cubic-bezier(.2,.8,.2,1)}
+.moodintro.on .mi-in{opacity:1;transform:none}
+.mi-in img{width:64px;height:64px;margin:0 auto 26px}
+.mi-k{font:600 14px Figtree,Vazirmatn,sans-serif;letter-spacing:.24em;text-transform:uppercase;margin-bottom:26px}
+[dir=rtl] .mi-k{letter-spacing:0;font-size:17px}
+.mi-big{font-family:Amiri,serif;font-weight:400;direction:rtl;font-size:124px;line-height:1.6;margin-top:0;white-space:nowrap;text-shadow:0 4px 50px rgba(0,0,0,.6)}
+.mi-rule{display:block;width:72px;height:1px;margin:2px auto 22px}
+.mi-n{font-family:var(--display);font-weight:var(--dw);font-size:34px;line-height:1.2}
+.mi-s{font-size:15.5px;margin-top:8px;opacity:.72}
+.mi-ar{font-family:Amiri,serif;direction:rtl;font-size:26px;line-height:1.8;margin-top:14px;opacity:.9}
+.mi-in p{font-size:16px;margin-top:10px;opacity:.82}
+.mi-in button{margin-top:28px;border:0;border-radius:999px;padding:15px 34px;font:600 16px Figtree,Vazirmatn,sans-serif;cursor:pointer;transition:transform .25s}
+.mi-in button:hover{transform:translateY(-2px)}
+.mi-w{font-size:13.5px;margin-top:18px;opacity:.6;letter-spacing:.06em}
+.moodintro.joy .mi-bg{filter:saturate(1.1) brightness(.72)}
+.moodintro.joy .mi-sh{background:radial-gradient(70% 62% at 50% 46%,rgba(8,46,26,.5),rgba(5,30,17,.94))}
+.moodintro.joy .mi-k,.moodintro.joy .mi-big{color:#f3dc98}
+.moodintro.joy .mi-rule{background:#e9c765}
+.moodintro.joy .mi-in button{background:#f3dc98;color:#10321f}
+.moodintro.mourn .mi-bg{filter:saturate(.35) brightness(.5)}
+.moodintro.mourn .mi-sh{background:radial-gradient(70% 62% at 50% 46%,rgba(6,18,31,.55),rgba(4,11,20,.95))}
+.moodintro.mourn .mi-k{color:#9fb1c4}
+.moodintro.mourn .mi-big{color:#fff}
+.moodintro.mourn .mi-rule{background:#9fb1c4}
+.moodintro.mourn .mi-in button{background:#fff;color:#0e2a44}
 @media (max-width:760px){
   .mzgrid{grid-template-columns:1fr;gap:16px}
   .mzr{grid-template-columns:80px 1fr auto}
-  .artname{font-size:40px;top:20px}
-  .mi-big{font-size:74px}
-  .mi-t{font-size:32px}.mi-n{font-size:17px}.mi-ar{font-size:21px}
-  [dir=rtl] .mi-t{font-size:34px}
-  .mi-in img{width:62px;height:62px}
-  .candles{height:150px}
-  .mood-mourn .mi-in{margin-bottom:90px}
+  .moodbar{font-size:13px;padding:9px 14px;gap:10px}
+  .mi-in img{width:54px;height:54px;margin-bottom:20px}
+  .mi-k{font-size:12px}
+  .mi-big{font-size:13.6vw}
+  .mi-k{margin-bottom:16px}
+  .mi-n{font-size:25px}
+  .mi-ar{font-size:21px}
+  [dir=rtl] .mi-n{font-size:22px}
 }
-
-/* ================= mourning, second design: black cloth with crimson, emerald and gold thread ================= */
-.mood-mourn{--bg:#0f090a;--ink:#f4ebde;--muted:#b9aa9c;--green:#8e1219;--green-2:#6d0c12;--green-l:#2b1417;--turq:#dcb96c;--turq-l:#23181a;--gold:#dcb96c;--gold-l:#2a1f12;--line:#34272a;--navy:#170c0e;--surf:#1a1113}
-.mood-mourn body{background:radial-gradient(120% 60% at 50% 0%,#2a0d10 0%,#0f090a 55%) fixed,#0f090a}
-.mood-mourn .moodbar{background:#050303;color:#e9dcc6;border-bottom:0}
-.mood-mourn .moodbar b{color:#dcb96c}
-.katibehwrap{line-height:0;border-top:1px solid #c9a24b;border-bottom:1px solid #c9a24b;box-shadow:0 14px 30px -14px rgba(0,0,0,.8)}
-.mood-mourn.tone-green{--k1:#0d4a2c;--k2:#7d0f15}
-.mood-mourn.tone-rose{--k1:#5a1a3a;--k2:#0d4a2c}
-.mood-muharram{--k1:#9a1118;--k2:#1a1113}
-/* dark surfaces in place of white */
-.mood-mourn .card,.mood-mourn nav,.mood-mourn .fact,.mood-mourn .bank.big,.mood-mourn .big5 .p,.mood-mourn .cls-side .step{background:var(--surf);box-shadow:inset 0 0 0 1px rgba(220,185,108,.16),0 30px 60px -40px rgba(0,0,0,.9)}
-.mood-mourn .b2,.mood-mourn .copy{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(220,185,108,.55)}
-.mood-mourn .b2:hover{box-shadow:inset 0 0 0 1.5px #dcb96c}
-.mood-mourn .b1{background:linear-gradient(180deg,#a5161e,#7d0f15);color:#fff;box-shadow:inset 0 0 0 1px rgba(220,185,108,.45),0 14px 26px -14px rgba(0,0,0,.9)}
-.mood-mourn .b1:hover{background:linear-gradient(180deg,#b81a23,#8e1219)}
-.mood-mourn .lang{background:#0f090a}
-.mood-mourn .lang .on,.mood-mourn .lang a.on{background:#2b1417;color:#dcb96c;box-shadow:none}
-.mood-mourn nav .m{color:#cdbfb0}
-.mood-mourn nav .m .on,.mood-mourn nav .m a:hover{color:#dcb96c}
-.mood-mourn nav .m a:after{background:#dcb96c}
-.mood-mourn .bn small{color:#a89a8c}
-.mood-mourn .burger{background:#8e1219}
-.mood-mourn .navwrap{background:none}
-.mood-mourn .navwrap.scrolled nav{box-shadow:inset 0 0 0 1px rgba(220,185,108,.3),0 18px 44px -18px #000}
-/* pictures keep their colour, dimmed and warmed, never grey */
-.mood-mourn img{filter:saturate(.62) brightness(.8) sepia(.14) contrast(1.04)}
-.mood-mourn nav .l img,.mood-mourn .foot .l img,.mood-mourn .mm-top img,.mood-mourn .mi-in img{filter:none}
-.mood-mourn .pt i,.mood-mourn .art .nx i,.mood-mourn table.pt2 tbody th i{filter:saturate(.7) brightness(.9)}
-.mood-mourn .hero:before,.mood-mourn .phead:before{background:radial-gradient(closest-side,rgba(142,18,25,.5),rgba(142,18,25,0))}
-.mood-mourn .art .ring{border-color:#c9a24b;box-shadow:0 0 0 6px rgba(142,18,25,.35),0 0 70px rgba(142,18,25,.6)}
-.mood-mourn .art .ph{box-shadow:0 50px 80px -40px #000}
-.mood-mourn .artname{color:#f1dca6}
-.mood-mourn .moodpill{background:#2b1417;color:#f1dca6;box-shadow:inset 0 0 0 1px rgba(220,185,108,.5)}
-.mood-mourn .pill{background:#23181a;color:#dcb96c}
-.mood-mourn .pill.g{background:#2a1f12;color:#e8cc8c}
-.mood-mourn .pill.gr{background:#2b1417;color:#f0b9bd}
-.mood-mourn .step i,.mood-mourn .num,.mood-mourn .mzn{background:#2b1417;color:#f1dca6;box-shadow:inset 0 0 0 1px rgba(220,185,108,.35)}
-.mood-mourn .textlink,.mood-mourn .fact a,.mood-mourn .mo span,.mood-mourn .foot a:hover{color:#e9a3a8}
-.mood-mourn .trust div+div{border-color:#34272a}
-.mood-mourn .pt.next,.mood-mourn table.pt2 tr.next{background:#2b1417}
-.mood-mourn .pt.next span,.mood-mourn table.pt2 tr.next th,.mood-mourn table.pt2 tr.next td b{color:#f1dca6}
-.mood-mourn table.pt2 tr.next th:after{background:#dcb96c}
-.mood-mourn table.tt tr.today td{background:#2b1417;color:#f1dca6}
-.mood-mourn .had{background:linear-gradient(135deg,#1c0b0d,#0a0506);box-shadow:inset 0 0 0 1px rgba(220,185,108,.35)}
-.mood-mourn .had .q{color:#f1dca6}
-.mood-mourn .had .src{color:#dcb96c}
-.mood-mourn .had:before,.mood-mourn .had:after{border-color:rgba(220,185,108,.25)}
-.mood-mourn .bring{background:linear-gradient(160deg,#8e1219,#5c090e);box-shadow:inset 0 0 0 1px rgba(220,185,108,.4)}
-.mood-mourn .bring p{color:#f0cfcf}
-.mood-mourn .bring li:before{background-color:#dcb96c}
-.mood-mourn .contact{background:linear-gradient(150deg,#0f3d26,#07130d);box-shadow:inset 0 0 0 1px rgba(220,185,108,.4)}
-.mood-mourn .contact:before{border-color:rgba(220,185,108,.3)}
-.mood-mourn .phone{color:#f1dca6}
-.mood-mourn .contact .pill{background:rgba(255,255,255,.08);color:#f1dca6}
-.mood-mourn .ci span,.mood-mourn .ci small,.mood-mourn .contact .hrs,.mood-mourn .contact .small{color:#bfd0c4}
-.mood-mourn .ci a{color:#f1dca6;border-color:rgba(220,185,108,.5)}
-.mood-mourn .soc span{background:transparent;color:#f1dca6;box-shadow:inset 0 0 0 1px rgba(220,185,108,.6)}
-.mood-mourn .notice{background:#2a1f12;color:#e8d3a3;box-shadow:inset 0 0 0 1px rgba(220,185,108,.25)}
-.mood-mourn .notice b{color:#f1dca6}
-.mood-mourn .cd{background:#2a1f12}.mood-mourn .cd b,.mood-mourn .cd span{color:#e8cc8c}
-.mood-mourn .occ.n .cd{background:#23181a}.mood-mourn .occ.n .cd b,.mood-mourn .occ.n .cd span{color:#dcb96c}
-.mood-mourn .occ .d,.mood-mourn .bank,.mood-mourn .cal .c,.mood-mourn .calhead button,.mood-mourn .amts span{background:#0f090a;color:var(--muted)}
-.mood-mourn .calhead button{color:var(--ink)}
-.mood-mourn .cal .c.off{background:transparent}
-.mood-mourn .cal .c.ev{background:#2a1f12;color:#e8cc8c}.mood-mourn .cal .c.ev em{color:#f1dca6}
-.mood-mourn .cal .c.today{background:#8e1219;color:#f0cfcf}
-.mood-mourn .ayah{background:#1a1113;box-shadow:inset 0 0 0 1px rgba(220,185,108,.2)}
-.mood-mourn .ayah .pill{background:#2b1417!important}
-.mood-mourn .mzr.b span{color:#e8cc8c}.mood-mourn .mzr.m span{color:#e9a3a8}
-.mood-mourn .sup:hover,.mood-mourn .grid3 > .card:hover,.mood-mourn .grid2 > .card:hover{box-shadow:inset 0 0 0 1px rgba(220,185,108,.4),0 40px 70px -40px #000}
-.mood-mourn .fb{border-color:#34272a}
-.mood-mourn .about li,.mood-mourn .arow{border-color:#34272a}
-.mood-mourn ::selection{background:#8e1219;color:#fff}
-/* the arrival screen: the shrine in dim colour, crimson below, gold lettering */
-.mood-mourn .mi-bg{filter:saturate(.8) brightness(.4) sepia(.2)}
-.mood-mourn .mi-sh{background:radial-gradient(60% 55% at 50% 42%,rgba(15,5,6,.35),rgba(8,3,4,.93)),linear-gradient(0deg,rgba(142,18,25,.7),rgba(142,18,25,0) 45%)}
-.mood-mourn .mi-big,.mood-muharram .mi-big{background:linear-gradient(180deg,#fff7e2 10%,#e9c873 55%,#b98a2c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 6px 30px rgba(0,0,0,.9))}
-.mood-muharram .mi-big{background:linear-gradient(180deg,#ff5a61 0%,#c1272d 60%,#7d0f15 100%);-webkit-background-clip:text;background-clip:text}
-.mood-mourn .mi-rule{background:linear-gradient(90deg,transparent,#dcb96c,transparent);width:240px}
-.mood-mourn .mi-t{color:#f4ebde}.mood-mourn .mi-ar{color:#e8cc8c}
-.mood-mourn .mi-w{background:rgba(142,18,25,.45);color:#f4ebde;border:1px solid rgba(220,185,108,.55)}
-.mood-mourn .mi-in button{background:linear-gradient(180deg,#a5161e,#7d0f15);color:#fff;box-shadow:inset 0 0 0 1px rgba(220,185,108,.6)}
-.moodintro .katibehwrap{position:absolute;left:0;right:0;top:0;z-index:2}
-@media (max-width:760px){
-  .mood-mourn .navwrap{background:linear-gradient(180deg,#0f090a 70%,rgba(15,9,10,0))}
-  .mood-mourn .mmenu{background:radial-gradient(120% 70% at 100% 0%,#3a0c10 0%,#150809 50%,#070304 100%)}
-  .mood-mourn .mm-call{background:linear-gradient(180deg,#a5161e,#7d0f15);color:#fff;box-shadow:inset 0 0 0 1px rgba(220,185,108,.6)}
-  .mood-mourn .mm-links a.on{color:#f1dca6}.mood-mourn .mm-links a.on i{border-color:#f1dca6}
-  .mood-mourn .mmenu .lang a.on{background:#fff;color:#111}
-  .katibehwrap svg{height:46px}
-}
+@media (prefers-reduced-motion:reduce){.mi-bg{transition:none;transform:none}}

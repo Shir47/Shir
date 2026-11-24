@@ -4,20 +4,20 @@ var MZP=(function(){
   var S='السَّلَامُ عَلَيْكَ ';
   /* [English name, Dari name, title, Dari title, short calligraphy, salutation, petal colours] */
   var P=[
-    ['Prophet Muhammad (S)','حضرت محمد (ص)','The Messenger of Allah','پیامبر خدا','يا رسول الله',S+'يَا رَسُولَ اللَّه','green'],
-    ['Lady Fatimah al-Zahra (AS)','حضرت فاطمه زهرا (س)','Daughter of the Prophet (S)','دختر پیامبر (ص)','يا فاطمة الزهراء','السَّلَامُ عَلَيْكِ يَا فَاطِمَةُ الزَّهْرَاء','rose'],
-    ['Imam Ali (AS)','امام علی (ع)','Amir al-Mu’minin, the 1st Imam','امیرالمؤمنین، امام اول','يا علي',S+'يَا أَمِيرَ الْمُؤْمِنِين','gold'],
-    ['Imam Hasan (AS)','امام حسن مجتبی (ع)','Al-Mujtaba, the 2nd Imam','مجتبی، امام دوم','يا حسن',S+'يَا حَسَنَ بْنَ عَلِيٍّ الْمُجْتَبَى','green'],
-    ['Imam Husayn (AS)','امام حسین (ع)','Sayyid al-Shuhada, the 3rd Imam','سیدالشهدا، امام سوم','يا حسين',S+'يَا أَبَا عَبْدِ اللَّهِ الْحُسَيْن','gold'],
-    ['Imam Ali Zayn al-Abidin (AS)','امام سجاد (ع)','Al-Sajjad, the 4th Imam','زین‌العابدین، امام چهارم','يا سجاد',S+'يَا عَلِيَّ بْنَ الْحُسَيْنِ زَيْنَ الْعَابِدِين','green'],
-    ['Imam Muhammad al-Baqir (AS)','امام محمد باقر (ع)','Al-Baqir, the 5th Imam','باقرالعلوم، امام پنجم','يا باقر',S+'يَا مُحَمَّدَ بْنَ عَلِيٍّ الْبَاقِر','gold'],
-    ['Imam Ja‘far al-Sadiq (AS)','امام جعفر صادق (ع)','Al-Sadiq, the 6th Imam','صادق، امام ششم','يا صادق',S+'يَا جَعْفَرَ بْنَ مُحَمَّدٍ الصَّادِق','green'],
-    ['Imam Musa al-Kazim (AS)','امام موسی کاظم (ع)','Al-Kazim, the 7th Imam','کاظم، امام هفتم','يا كاظم',S+'يَا مُوسَى بْنَ جَعْفَرٍ الْكَاظِم','gold'],
-    ['Imam Ali al-Rida (AS)','امام رضا (ع)','Al-Rida, the 8th Imam','رضا، امام هشتم','يا رضا',S+'يَا عَلِيَّ بْنَ مُوسَى الرِّضَا','gold'],
-    ['Imam Muhammad al-Jawad (AS)','امام جواد (ع)','Al-Jawad, the 9th Imam','جواد، امام نهم','يا جواد',S+'يَا مُحَمَّدَ بْنَ عَلِيٍّ الْجَوَاد','green'],
-    ['Imam Ali al-Hadi (AS)','امام هادی (ع)','Al-Hadi, the 10th Imam','هادی، امام دهم','يا هادي',S+'يَا عَلِيَّ بْنَ مُحَمَّدٍ الْهَادِي','gold'],
-    ['Imam Hasan al-Askari (AS)','امام حسن عسکری (ع)','Al-Askari, the 11th Imam','عسکری، امام یازدهم','يا عسكري',S+'يَا حَسَنَ بْنَ عَلِيٍّ الْعَسْكَرِي','green'],
-    ['Imam al-Mahdi (AJ)','امام مهدی (عج)','Sahib al-Zaman, the 12th Imam','صاحب‌الزمان، امام دوازدهم','يا مهدي',S+'يَا صَاحِبَ الزَّمَان','green']
+    ['Prophet Muhammad (S)','حضرت محمد (ص)','The Messenger of Allah','پیامبر خدا','يَا رَسُولَ اللَّه',S+'يَا رَسُولَ اللَّه','green'],
+    ['Lady Fatimah al-Zahra (AS)','حضرت فاطمه زهرا (س)','Daughter of the Prophet (S)','دختر پیامبر (ص)','يَا فَاطِمَةُ الزَّهْرَاء','السَّلَامُ عَلَيْكِ يَا فَاطِمَةُ الزَّهْرَاء','rose'],
+    ['Imam Ali (AS)','امام علی (ع)','Amir al-Mu’minin, the 1st Imam','امیرالمؤمنین، امام اول','يَا عَلِيّ',S+'يَا أَمِيرَ الْمُؤْمِنِين','gold'],
+    ['Imam Hasan (AS)','امام حسن مجتبی (ع)','Al-Mujtaba, the 2nd Imam','مجتبی، امام دوم','يَا حَسَن',S+'يَا حَسَنَ بْنَ عَلِيٍّ الْمُجْتَبَى','green'],
+    ['Imam Husayn (AS)','امام حسین (ع)','Sayyid al-Shuhada, the 3rd Imam','سیدالشهدا، امام سوم','يَا حُسَيْن',S+'يَا أَبَا عَبْدِ اللَّهِ الْحُسَيْن','gold'],
+    ['Imam Ali Zayn al-Abidin (AS)','امام سجاد (ع)','Al-Sajjad, the 4th Imam','زین‌العابدین، امام چهارم','يَا سَجَّاد',S+'يَا عَلِيَّ بْنَ الْحُسَيْنِ زَيْنَ الْعَابِدِين','green'],
+    ['Imam Muhammad al-Baqir (AS)','امام محمد باقر (ع)','Al-Baqir, the 5th Imam','باقرالعلوم، امام پنجم','يَا بَاقِر',S+'يَا مُحَمَّدَ بْنَ عَلِيٍّ الْبَاقِر','gold'],
+    ['Imam Ja‘far al-Sadiq (AS)','امام جعفر صادق (ع)','Al-Sadiq, the 6th Imam','صادق، امام ششم','يَا صَادِق',S+'يَا جَعْفَرَ بْنَ مُحَمَّدٍ الصَّادِق','green'],
+    ['Imam Musa al-Kazim (AS)','امام موسی کاظم (ع)','Al-Kazim, the 7th Imam','کاظم، امام هفتم','يَا كَاظِم',S+'يَا مُوسَى بْنَ جَعْفَرٍ الْكَاظِم','gold'],
+    ['Imam Ali al-Rida (AS)','امام رضا (ع)','Al-Rida, the 8th Imam','رضا، امام هشتم','يَا رِضَا',S+'يَا عَلِيَّ بْنَ مُوسَى الرِّضَا','gold'],
+    ['Imam Muhammad al-Jawad (AS)','امام جواد (ع)','Al-Jawad, the 9th Imam','جواد، امام نهم','يَا جَوَاد',S+'يَا مُحَمَّدَ بْنَ عَلِيٍّ الْجَوَاد','green'],
+    ['Imam Ali al-Hadi (AS)','امام هادی (ع)','Al-Hadi, the 10th Imam','هادی، امام دهم','يَا هَادِي',S+'يَا عَلِيَّ بْنَ مُحَمَّدٍ الْهَادِي','gold'],
+    ['Imam Hasan al-Askari (AS)','امام حسن عسکری (ع)','Al-Askari, the 11th Imam','عسکری، امام یازدهم','يَا عَسْكَرِيّ',S+'يَا حَسَنَ بْنَ عَلِيٍّ الْعَسْكَرِي','green'],
+    ['Imam al-Mahdi (AJ)','امام مهدی (عج)','Sahib al-Zaman, the 12th Imam','صاحب‌الزمان، امام دوازدهم','يَا مَهْدِيّ',S+'يَا صَاحِبَ الزَّمَان','green']
   ];
   /* [Hijri month, day, English, Dari, mood ('j' joy, 'm' mourning, '' none), person index, days before, days after, kind ('b' birth, 'm' martyrdom)] */
   var EV=[
