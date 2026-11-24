@@ -284,6 +284,7 @@ def calendar():
 <section class="secs"><div class="wrap">
   <h2 class="stitle" style="margin-top:0">{L("Coming up", "مناسبت‌های پیش رو")}</h2>
   <div class="card occs"><div data-upcoming="4"></div></div>
+  <p class="small"><a class="textlink" href="{url("masoomeen/")}">{L("See all Fourteen Masoomeen and their days", "دیدن چهارده معصوم و روزهای ایشان")}</a></p>
   <h2 class="stitle">{L("Month by month", "ماه به ماه")}</h2>
   <div class="card" data-calendar></div>
   {notice(L("Provisional dates", "تاریخ‌های موقتی"), L("Calculated Hijri dates are provisional. Confirm religious observances with your local Shia authority; dates may vary with moon sightings. Dates refer to the daytime; Islamic nights begin at the preceding sunset. These are selected observances, not Maktab event announcements.", "تاریخ‌های هجری محاسبه‌شده موقتی‌اند. مناسبت‌های دینی را با مرجع شیعی محلی خود تأیید کنید؛ تاریخ‌ها ممکن است با رؤیت هلال تغییر کنند. تاریخ‌ها به روز اشاره دارند؛ شب‌های اسلامی از غروب روز قبل آغاز می‌شوند. این‌ها مناسبت‌های منتخب‌اند، نه اعلان برنامه‌های مکتب."))}
@@ -377,6 +378,17 @@ def contact():
 </div></section>'''
 
 
+def masoomeen():
+    return phead(L("The Ahl al-Bayt (AS)", "اهل بیت (ع)"), L("The Fourteen Masoomeen", "چهارده معصوم"),
+                 L("The Prophet (S), his daughter and the twelve Imams (AS). This website celebrates each of their births and mourns each of their martyrdoms, following the Shia calendar.", "پیامبر اکرم (ص)، دختر گرامی‌اش و دوازده امام (ع). این وب‌سایت طبق تقویم شیعی، ولادت هر یک را جشن می‌گیرد و در شهادت هر یک عزادار می‌شود."),
+                 "madinah-green-dome-736.webp", NOT_PREMISES()) + f'''
+<section class="secs"><div class="wrap">
+  <div class="mzgrid" data-masoomeen></div>
+  {notice(L("Dates to be confirmed by Maktab staff", "تاریخ‌ها نیاز به تأیید کارمندان مکتب دارد"), L("These are commonly cited Shia dates, and some differ between narrations. The Gregorian dates are calculated and may vary by a day with the moon sighting.", "این‌ها تاریخ‌های مشهور شیعی‌اند و برخی در روایات مختلف فرق دارند. تاریخ‌های میلادی محاسبه‌شده‌اند و ممکن است با رؤیت هلال یک روز تفاوت کنند."))}
+  <div class="cta"><a class="btn b1" href="{url("calendar/")}">{L("View the calendar", "دیدن تقویم")}</a></div>
+</div></section>'''
+
+
 PAGES = [  # slug, builder, (title en, title fa)
     ("", home, ("Quran classes in Adelaide", "کلاس‌های قرآن در ادلاید")),
     ("about/", about, ("About us", "درباره ما")),
@@ -387,6 +399,7 @@ PAGES = [  # slug, builder, (title en, title fa)
     ("volunteer/", volunteer, ("Volunteer opportunities", "فرصت‌های داوطلبی")),
     ("questions/", questions, ("Islamic religious questions", "پرسش‌های دینی اسلامی")),
     ("contact/", contact, ("Contact us", "تماس با ما")),
+    ("masoomeen/", masoomeen, ("The Fourteen Masoomeen", "چهارده معصوم")),
 ]
 
 
@@ -396,7 +409,7 @@ def layout(slug, title, body):
     name = L("Maktab Alzahra SA", "مکتب الزهرا")
     nav = [("", L("Home", "خانه")), ("about/", L("About", "درباره ما")), ("registration/", L("Quran classes", "کلاس‌های قرآن")),
            ("prayer-times/", L("Prayer times", "اوقات نماز")), ("calendar/", L("Calendar", "تقویم")), ("contact/", L("Contact", "تماس"))]
-    more = [("donations/", L("Donations", "کمک مالی")), ("volunteer/", L("Volunteer", "داوطلبی")), ("questions/", L("Questions", "پرسش‌ها"))]
+    more = [("masoomeen/", L("14 Masoomeen", "چهارده معصوم")), ("donations/", L("Donations", "کمک مالی")), ("volunteer/", L("Volunteer", "داوطلبی")), ("questions/", L("Questions", "پرسش‌ها"))]
     links = "".join(f'<a href="{url(s)}"{" class=on" if s == slug else ""}>{t}</a>' for s, t in nav)
     mlinks = "".join(f'<a href="{url(s)}"{" class=on" if s == slug else ""}><span>{t}</span><i></i></a>' for s, t in nav + more)
     en_cls, fa_cls = ("on", "fa") if LANG == "en" else ("", "on fa")
@@ -412,8 +425,8 @@ def layout(slug, title, body):
 <link rel="alternate" hreflang="fa" href="/fa/{slug}">
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{A}}/style.css?v=6">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Aref+Ruqaa:wght@700&family=Figtree:wght@400;500;600;700&family=Amiri:wght@400;700&family=Vazirmatn:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{A}}/style.css?v=7">
 </head>
 <body>
 <div class="navwrap"><div class="wrap">
@@ -444,8 +457,9 @@ def layout(slug, title, body):
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
 <script src="{{A}}/calc.js?v=3"></script>
-<script src="{{A}}/app.js?v=4"></script>
-<script src="{{A}}/mood.js?v=1"></script>
+<script src="{{A}}/people.js?v=1"></script>
+<script src="{{A}}/app.js?v=5"></script>
+<script src="{{A}}/mood.js?v=2"></script>
 </body>
 </html>
 '''
@@ -456,7 +470,7 @@ def build():
     global LANG
     assets = os.path.join(OUT, "assets")
     os.makedirs(assets, exist_ok=True)
-    for f in ("style.css", "app.js", "calc.js", "mood.js"):
+    for f in ("style.css", "app.js", "calc.js", "mood.js", "people.js"):
         shutil.copy(os.path.join(ROOT, "src", f), assets)
     for f in os.listdir(os.path.join(ROOT, "src", "images")):
         shutil.copy(os.path.join(ROOT, "src", "images", f), assets)
