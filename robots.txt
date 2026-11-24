@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darkslategrey-alpaca-935829.hostingersite.com/sitemap.xml
