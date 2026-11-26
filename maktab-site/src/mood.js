@@ -33,6 +33,7 @@
   if(!joy&&e[0]===1&&e[1]===10&&k>0){var n=10-k;nightTxt=fa?('شب '+fd(n)+' محرم. '):('Night '+n+' of Muharram. ')}
   bar.innerHTML='<i></i><span>'+nightTxt+'<b>'+name+'</b>, '+when+'. '+(joy?title+'.':line)+'</span><i></i>';
   document.body.insertBefore(bar,document.body.firstChild);
+  var setMb=function(){document.documentElement.style.setProperty('--mb',bar.offsetHeight+'px')};setMb();addEventListener('resize',setMb);
 
   /* 2a. celebration days: fireworks in the background of every page, no greeting screen */
   if(joy){
