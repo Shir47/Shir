@@ -451,7 +451,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="apple-touch-icon" href="{{A}}/logo-288.png">
 {ld}
-<link rel="stylesheet" href="{{A}}/style.css?v=13">
+<link rel="stylesheet" href="{{A}}/style.css?v=14">
 </head>
 <body>
 <a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
@@ -485,7 +485,7 @@ def layout(slug, title, body):
     <div><div class="l"><img src="{{A}}/logo-160.webp" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")}</p></div>
     <div><h5>{L("Learn", "آموزش")}</h5><ul>{"".join(f'<li><a href="{url(s2)}">{t}</a></li>' for s2, t in [("registration/", L("Quran classes", "کلاس‌های قرآن")), ("prayer-times/", L("Prayer times", "اوقات نماز")), ("calendar/", L("Islamic calendar", "تقویم اسلامی")), ("masoomeen/", L("14 Masoomeen", "چهارده معصوم"))])}</ul></div>
     <div><h5>{L("Support", "حمایت")}</h5><ul>{"".join(f'<li><a href="{url(s2)}">{t}</a></li>' for s2, t in [("donations/", L("Donations", "کمک مالی")), ("volunteer/", L("Volunteer", "داوطلبی")), ("questions/", L("Islamic questions", "پرسش‌های دینی")), ("about/", L("About us", "درباره ما"))])}</ul></div>
-    <div><h5>{L("Contact", "تماس")}</h5><ul><li><a href="{TEL}">{phone()}</a></li><li>{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</li><li><a href="{IG}">{L("Instagram", "اینستاگرام")}</a>, <a href="{YT}">{L("YouTube", "یوتیوب")}</a>, <a href="{WA}">{L("WhatsApp", "واتساپ")}</a></li></ul></div>
+    <div class="fcon"><h5>{L("Contact", "تماس")}</h5><a class="fcall" href="{TEL}">{phone()}</a><p class="fhrs">{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</p><div class="fsoc"><a href="{IG}">{L("Instagram", "اینستاگرام")}</a><a href="{YT}">{L("YouTube", "یوتیوب")}</a><a href="{WA}">{L("WhatsApp", "واتساپ")}</a></div></div>
   </div>
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
 </div></footer>
