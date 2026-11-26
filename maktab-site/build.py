@@ -107,16 +107,22 @@ def facts():
 
 
 def contact_panel():
-    return f'''<div class="wrap"><div class="contact">
-  <div>
-    <span class="pill">{L("Quran class enquiries", "پرسش درباره کلاس‌های قرآن")}</span>
-    <a class="phone" href="{TEL}" style="display:block">{phone()}</a>
-    <div class="hrs">{L("Call the Maktab every day, 8 am to 8 pm", "هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید")}</div>
-    <div class="ci"><div><span>{L("Class venue", "مکان کلاس")}</span><b>{ltr("20 Kylie Crescent,")}<br>{ltr("Ingle Farm, SA")}</b><small><a href="{MAP}">{L("View address on map", "دیدن آدرس روی نقشه")}</a></small></div><div><span>{L("Class times", "زمان کلاس")}</span><b>{L("Saturday and Sunday,<br>arrive by 9:40 am", "شنبه و یکشنبه،<br>حضور تا ۹:۴۰ صبح")}</b><small>{L("Confirm the class time before travelling.", "پیش از حرکت، زمان کلاس را تأیید کنید.")}</small></div></div>
-    <div class="soc"><a href="{IG}"><span>{L("Instagram", "اینستاگرام")}</span></a><a href="{YT}"><span>{L("YouTube", "یوتیوب")}</span></a><a href="{WA}"><span>{L("WhatsApp channel", "کانال واتساپ")}</span></a></div>
-    
+    pin = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>'
+    clk = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
+    return f'''<div class="wrap"><div class="cpanel">
+  <div class="cp-ph" style="background-image:url({{A}}/madinah-green-dome-736.webp)" role="img" aria-label="{L("Madinah al-Munawwarah", "مدینه منوره")}"></div>
+  <div class="cp-in">
+    <span class="cp-k">{L("Quran class enquiries", "پرسش درباره کلاس‌های قرآن")}</span>
+    <h2>{L("Questions? Give us a call.", "سؤالی دارید؟ زنگ بزنید.")}</h2>
+    <a class="cp-tel" href="{TEL}">{phone()}</a>
+    <p class="cp-h">{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</p>
+    <div class="cp-btns"><a class="cp-b1" href="{TEL}">{L("Call now", "تماس بگیرید")}</a><a class="cp-b2" href="{WA}">{L("WhatsApp channel", "کانال واتساپ")}</a></div>
+    <div class="cp-rows">
+      <a class="cp-r" href="{MAP}"><i>{pin}</i><span><small>{L("Class venue", "مکان کلاس")}</small><b>{ltr("20 Kylie Crescent, Ingle Farm, SA")}</b></span><em>{L("Map", "نقشه")}</em></a>
+      <div class="cp-r"><i>{clk}</i><span><small>{L("Class times", "زمان کلاس")}</small><b>{L("Saturday and Sunday, arrive by 9:40 am", "شنبه و یکشنبه، حضور تا ۹:۴۰ صبح")}</b></span></div>
+    </div>
+    <div class="cp-soc"><a href="{IG}">{L("Instagram", "اینستاگرام")}</a><span></span><a href="{YT}">{L("YouTube", "یوتیوب")}</a></div>
   </div>
-  <div><div class="ph"><img src="{{A}}/madinah-green-dome-736.webp" alt=""></div><p class="small" style="text-align:center;margin-top:10px">{NOT_PREMISES()}</p></div>
 </div></div>'''
 
 
@@ -419,7 +425,7 @@ def layout(slug, title, body):
         import json
         ld = '<script type="application/ld+json">' + json.dumps({
             "@context": "https://schema.org", "@type": "EducationalOrganization", "name": "Maktab Alzahra SA", "legalName": LEGAL,
-            "url": BASE + "/" + LANG + "/", "logo": BASE + "/assets/logo-288.png", "image": BASE + "/assets/share.jpg",
+            "url": BASE + "/" + LANG + "/", "logo": BASE + "/assets/logo-288.png", "image": BASE + "/assets/share-" + LANG + ".jpg",
             "description": desc, "telephone": "+61414012964",
             "address": {"@type": "PostalAddress", "streetAddress": "20 Kylie Crescent", "addressLocality": "Ingle Farm", "addressRegion": "SA", "addressCountry": "AU"},
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "09:40"}],
@@ -441,7 +447,7 @@ def layout(slug, title, body):
 <meta property="og:title" content="{title} | {name}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{BASE}/{LANG}/{slug}">
-<meta property="og:image" content="{BASE}/assets/share.jpg">
+<meta property="og:image" content="{BASE}/assets/share-{LANG}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="{L("en_AU", "fa_AF")}">
@@ -449,7 +455,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="apple-touch-icon" href="{{A}}/logo-288.png">
 {ld}
-<link rel="stylesheet" href="{{A}}/style.css?v=15">
+<link rel="stylesheet" href="{{A}}/style.css?v=16">
 </head>
 <body>
 <a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
@@ -538,7 +544,7 @@ def build():
     with open(os.path.join(OUT, "404.html"), "w", encoding="utf-8") as fh:
         fh.write(page)
     with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
-        fh.write('<!doctype html><meta charset="utf-8"><title>Maktab Alzahra SA</title><meta http-equiv="refresh" content="0; url=/en/"><link rel="canonical" href="' + BASE + '/en/"><a href="/en/">Maktab Alzahra SA</a>\n')
+        fh.write('<!doctype html><meta charset="utf-8"><title>Free Quran classes in Adelaide | Maktab Alzahra SA</title><meta name="description" content="Free Quran classes for all ages, every Saturday and Sunday in Ingle Farm, Adelaide."><meta property="og:type" content="website"><meta property="og:site_name" content="Maktab Alzahra SA"><meta property="og:title" content="Free Quran classes in Adelaide | Maktab Alzahra SA"><meta property="og:description" content="Free Quran classes for all ages, every Saturday and Sunday in Ingle Farm, Adelaide."><meta property="og:url" content="' + BASE + '/"><meta property="og:image" content="' + BASE + '/assets/share-en.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/assets/logo-288.png"><meta http-equiv="refresh" content="0; url=/en/"><link rel="canonical" href="' + BASE + '/en/"><a href="/en/">Maktab Alzahra SA</a>\n')
     with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as fh:
         fh.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
     with open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8") as fh:
