@@ -686,3 +686,8 @@ table.pt2 tr.next th:after{content:"";width:8px;height:8px;border-radius:50%;bac
   [dir=rtl] .prc .p b{font-size:17px}
   .prc .sal{font-size:22px}
 }
+
+/* celebration days: fireworks behind the content of every page */
+.fireworks{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+body > *:not(.fireworks):not(.mmenu):not(.skip){position:relative;z-index:1}
+.navwrap{z-index:20}

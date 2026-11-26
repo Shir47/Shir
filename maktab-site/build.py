@@ -451,7 +451,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="apple-touch-icon" href="{{A}}/logo-288.png">
 {ld}
-<link rel="stylesheet" href="{{A}}/style.css?v=11">
+<link rel="stylesheet" href="{{A}}/style.css?v=12">
 </head>
 <body>
 <a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
@@ -492,7 +492,7 @@ def layout(slug, title, body):
 <script src="{{A}}/calc.js?v=3"></script>
 <script src="{{A}}/people.js?v=2"></script>
 <script src="{{A}}/app.js?v=6"></script>
-<script src="{{A}}/mood.js?v=5"></script>
+<script src="{{A}}/mood.js?v=8"></script>
 </body>
 </html>
 '''
