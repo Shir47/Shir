@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "public")
 LANG = "en"
 LEGAL = "Australian Youths Alliance inco"
-BASE = "https://darkslategrey-alpaca-935829.hostingersite.com"  # change this when the Maktab has its own domain
+BASE = "https://maktabalzahra.org.au"
 MAPSVG = '<svg viewBox="0 0 700 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="700" height="330" fill="#e3ece9"/><g fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"><path d="M-20 90 L720 140"/><path d="M180 -20 L250 350"/><path d="M460 -20 Q420 160 520 350"/><path d="M-20 250 Q300 200 720 270"/></g><g fill="none" stroke="#f6f9f8" stroke-width="7"><path d="M60 -20 L90 350"/><path d="M-20 180 L720 200"/><path d="M600 -20 L640 350"/><path d="M330 -20 L340 350"/></g><rect x="380" y="20" width="120" height="70" rx="10" fill="#cfe5d6"/><rect x="40" y="210" width="110" height="80" rx="10" fill="#cfe5d6"/><circle cx="350" cy="152" r="34" fill="#0f5a33" opacity=".12"/></svg>'
 TEL = "tel:+61414012964"
 MAP = "https://www.google.com/maps/search/?api=1&query=20%20Kylie%20Crescent%2C%20Ingle%20Farm%2C%20SA"
