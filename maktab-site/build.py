@@ -11,6 +11,7 @@ OUT = os.path.join(ROOT, "public")
 LANG = "en"
 LEGAL = "Australian Youths Alliance inco"
 BASE = "https://darkslategrey-alpaca-935829.hostingersite.com"  # change this when the Maktab has its own domain
+MAPSVG = '<svg viewBox="0 0 700 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="700" height="330" fill="#e3ece9"/><g fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"><path d="M-20 90 L720 140"/><path d="M180 -20 L250 350"/><path d="M460 -20 Q420 160 520 350"/><path d="M-20 250 Q300 200 720 270"/></g><g fill="none" stroke="#f6f9f8" stroke-width="7"><path d="M60 -20 L90 350"/><path d="M-20 180 L720 200"/><path d="M600 -20 L640 350"/><path d="M330 -20 L340 350"/></g><rect x="380" y="20" width="120" height="70" rx="10" fill="#cfe5d6"/><rect x="40" y="210" width="110" height="80" rx="10" fill="#cfe5d6"/><circle cx="350" cy="152" r="34" fill="#0f5a33" opacity=".12"/></svg>'
 TEL = "tel:+61414012964"
 MAP = "https://www.google.com/maps/search/?api=1&query=20%20Kylie%20Crescent%2C%20Ingle%20Farm%2C%20SA"
 IG = "https://www.instagram.com/maktab.alzahra.sa/"
@@ -450,7 +451,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="apple-touch-icon" href="{{A}}/logo-288.png">
 {ld}
-<link rel="stylesheet" href="{{A}}/style.css?v=10">
+<link rel="stylesheet" href="{{A}}/style.css?v=11">
 </head>
 <body>
 <a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
@@ -473,10 +474,17 @@ def layout(slug, title, body):
 </div>
 <main id="main">{body}</main>
 <footer><div class="wrap">
+  <div class="ftop">
+    <a class="mapc" href="{MAP}" aria-label="{L("Directions to 20 Kylie Crescent, Ingle Farm", "مسیریابی به آدرس مکتب")}">{MAPSVG}<span class="pin">{name}</span>
+      <span class="addr"><span><b>{ltr("20 Kylie Crescent, Ingle Farm")}</b><small>{L("Saturday and Sunday, arrive by 9:40 am", "شنبه و یکشنبه، حضور تا ۹:۴۰ صبح")}</small></span><span class="btn b1">{L("Directions", "مسیریابی")}</span></span></a>
+    <div class="prc"><div class="h"><b>{L("Today in Adelaide", "امروز در ادلاید")}</b><span data-hijri></span></div>
+      <div class="g">{"".join(f'<div class="p"><span data-label>{v}</span><b data-pray="{k}">--:--</b></div>' for k, v in pnames().items())}</div>
+      <div class="sal" lang="ar">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّد</div></div>
+  </div>
   <div class="foot">
     <div><div class="l"><img src="{{A}}/logo-160.webp" alt=""><span class="bn"><b>{name}</b><small dir="ltr">{LEGAL}</small></span></div><p>{L("An Islamic educational and community organisation in Adelaide.", "یک نهاد آموزشی و اجتماعی اسلامی در ادلاید.")}</p></div>
-    <div><h5>{L("Visit", "آدرس")}</h5><ul><li>{ltr("20 Kylie Crescent")}</li><li>{ltr("Ingle Farm, SA")}</li><li>{L("Saturday and Sunday, 9:40 am", "شنبه و یکشنبه، ۹:۴۰ صبح")}</li></ul></div>
-    <div><h5>{L("Explore", "بخش‌ها")}</h5><ul>{"".join(f'<li><a href="{url(s)}">{t}</a></li>' for s, t in nav[2:5] + more)}</ul></div>
+    <div><h5>{L("Learn", "آموزش")}</h5><ul>{"".join(f'<li><a href="{url(s2)}">{t}</a></li>' for s2, t in [("registration/", L("Quran classes", "کلاس‌های قرآن")), ("prayer-times/", L("Prayer times", "اوقات نماز")), ("calendar/", L("Islamic calendar", "تقویم اسلامی")), ("masoomeen/", L("14 Masoomeen", "چهارده معصوم"))])}</ul></div>
+    <div><h5>{L("Support", "حمایت")}</h5><ul>{"".join(f'<li><a href="{url(s2)}">{t}</a></li>' for s2, t in [("donations/", L("Donations", "کمک مالی")), ("volunteer/", L("Volunteer", "داوطلبی")), ("questions/", L("Islamic questions", "پرسش‌های دینی")), ("about/", L("About us", "درباره ما"))])}</ul></div>
     <div><h5>{L("Contact", "تماس")}</h5><ul><li><a href="{TEL}">{phone()}</a></li><li>{L("Every day, 8 am to 8 pm", "هر روز، ۸ صبح تا ۸ شب")}</li><li><a href="{IG}">{L("Instagram", "اینستاگرام")}</a>, <a href="{YT}">{L("YouTube", "یوتیوب")}</a>, <a href="{WA}">{L("WhatsApp", "واتساپ")}</a></li></ul></div>
   </div>
   <div class="fb"><span>{L("© 2026 Maktab Alzahra SA", "© ۲۰۲۶ مکتب الزهرا")} ({ltr(LEGAL)}){L(", Adelaide, South Australia", "، ادلاید، آسترالیای جنوبی")}</span><span><a href="/en/{slug}">English</a> | <a class="fa" href="/fa/{slug}">دری</a></span></div>
