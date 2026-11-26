@@ -724,3 +724,11 @@ footer{background:#fff;border-radius:40px 40px 0 0;margin-top:30px;padding:56px 
   .fsoc a{background:#fff;text-align:center;padding:10px 4px;font-size:13px}
   .fb{flex-direction:column;align-items:center;text-align:center;gap:8px;margin-top:22px;padding-top:16px;font-size:12.5px}
 }
+
+/* ================= audit fixes ================= */
+.pray .hij .ar{white-space:nowrap;direction:rtl}
+@media (max-width:760px){.pray .hij{align-items:center;gap:12px}.pray .hij .ar{font-size:20px}.pray .hij span{text-align:end}}
+@media (max-width:760px){
+  .bank.big .v{width:100%;justify-content:space-between;gap:12px}
+  .bank.big .v .copy{flex:none}
+}

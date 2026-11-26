@@ -42,14 +42,14 @@ def notice(title, text):
     return f'<div class="notice"><div><b>{title}</b><p>{text}</p></div></div>'
 
 
-NOT_PREMISES = lambda: L("Madinah. Inspirational photograph, not Maktab premises", "مدینه. عکس الهام‌بخش، نه ساختمان مکتب")
-DECOR = lambda: L("Decorative artwork", "تصویر تزئینی")
+NOT_PREMISES = lambda: L("Madinah al-Munawwarah", "مدینه منوره")
+DECOR = lambda: ""
 
 
 def phead(pill, h1, lead, img, cap, extra=""):
     return f'''<header class="phead"><div class="wrap"><div class="phead-g">
   <div><span class="pill">{pill}</span><h1>{h1}</h1><p class="lead">{lead}</p>{extra}</div>
-  <div><div class="ph"><img src="{{A}}/{img}" alt=""></div><p class="small" style="text-align:center;margin-top:10px">{cap}</p></div>
+  <div><div class="ph"><img src="{{A}}/{img}" alt=""></div>{f'<p class="small" style="text-align:center;margin-top:10px">{cap}</p>' if cap else ''}</div>
 </div></div></header>'''
 
 
@@ -114,7 +114,7 @@ def contact_panel():
     <div class="hrs">{L("Call the Maktab every day, 8 am to 8 pm", "هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید")}</div>
     <div class="ci"><div><span>{L("Class venue", "مکان کلاس")}</span><b>{ltr("20 Kylie Crescent,")}<br>{ltr("Ingle Farm, SA")}</b><small><a href="{MAP}">{L("View address on map", "دیدن آدرس روی نقشه")}</a></small></div><div><span>{L("Class times", "زمان کلاس")}</span><b>{L("Saturday and Sunday,<br>arrive by 9:40 am", "شنبه و یکشنبه،<br>حضور تا ۹:۴۰ صبح")}</b><small>{L("Confirm the class time before travelling.", "پیش از حرکت، زمان کلاس را تأیید کنید.")}</small></div></div>
     <div class="soc"><a href="{IG}"><span>{L("Instagram", "اینستاگرام")}</span></a><a href="{YT}"><span>{L("YouTube", "یوتیوب")}</span></a><a href="{WA}"><span>{L("WhatsApp channel", "کانال واتساپ")}</span></a></div>
-    <p class="small">{L("Email is not yet published. No online contact form is active.", "ایمیل هنوز منتشر نشده و فورم تماس آنلاین فعال نیست.")}</p>
+    
   </div>
   <div><div class="ph"><img src="{{A}}/madinah-green-dome-736.webp" alt=""></div><p class="small" style="text-align:center;margin-top:10px">{NOT_PREMISES()}</p></div>
 </div></div>'''
@@ -135,7 +135,6 @@ def home():
   <div class="art">
     <div class="ring"></div>
     <div class="ph"><img src="{{A}}/shrine-1200.webp" alt=""></div>
-    <div class="cap">{L("Decorative imagined architecture", "معماری تزئینی خیالی")}</div>
     <div class="card nx"><i></i><div><span data-next-name>{L("Next prayer", "نماز بعدی")}</span><b data-next-time>--:--</b></div></div>
     <div class="card fl"><h4>{L("Weekend Quran classes", "کلاس‌های قرآن آخر هفته")}</h4>
       <div class="row" style="margin-top:6px"><span>{L("Arrive by", "زمان حضور")}</span><b>{L("9:40 am", "۹:۴۰ صبح")}</b></div><div class="row"><span>{L("Doors close", "بسته شدن دروازه")}</span><b>{L("10:00 am", "۱۰:۰۰ صبح")}</b></div><div class="row"><span>{L("Venue", "مکان")}</span><b>{L("Ingle Farm", "اینگل فارم")}</b></div></div>
@@ -146,14 +145,14 @@ def home():
 
 <section class="sec"><div class="wrap">
   <div class="cls">
-    <div class="ph"><img src="{{A}}/premium-quran.webp" alt=""><span class="pill g tag">{DECOR()}</span></div>
+    <div class="ph"><img src="{{A}}/premium-quran.webp" alt=""></div>
     <div>
       <span class="pill gr">{L("Weekend Quran classes", "کلاس‌های قرآن آخر هفته")}</span>
       <h2 style="margin-top:18px">{L("Every Saturday and Sunday morning.", "هر شنبه و یکشنبه صبح")}</h2>
       <p class="lead">{L("Children, young people and adults learn the Quran together at our venue in Ingle Farm.", "کودکان، نوجوانان و بزرگسالان در مکان ما در اینگل فارم با هم قرآن می‌آموزند.")}</p>
       {facts()}
       <div class="cta"><a class="btn b1" href="{url("registration/")}">{L("Registration information", "معلومات ثبت نام")}</a><a class="btn b2" href="{TEL}">{L("Call about classes", "تماس درباره کلاس‌ها")}</a></div>
-      <p class="small" style="margin-top:16px">{L("Online registration is not yet available. Registration requires Maktab staff approval. Finishing times are awaiting confirmation.", "ثبت نام آنلاین هنوز فعال نیست. ثبت نام نیاز به تأیید کارمندان مکتب دارد. زمان پایان کلاس هنوز تأیید نشده است.")}</p>
+      <p class="small" style="margin-top:16px">{L("Register by phone. Every place is confirmed by Maktab staff.", "ثبت نام از طریق تلفن انجام می‌شود. هر ثبت نام توسط کارمندان مکتب تأیید می‌شود.")}</p>
     </div>
   </div>
   <div class="two">{steps_card()}{bring_card()}</div>
@@ -208,11 +207,11 @@ def home():
   <div class="sup-g">
     <div class="card sup"><div class="im"><img src="{{A}}/premium-giving.webp" alt=""></div><div class="in"><h3>{L("Donate", "کمک مالی")}</h3><p>{L("Support the Maktab by bank transfer.", "از طریق انتقال بانکی از مکتب حمایت کنید.")}</p>
       <div class="bank"><div><span>{L("Account name", "نام حساب")}</span><b dir="ltr">{LEGAL}</b></div><div><span dir="ltr">BSB</span><b dir="ltr">065-167</b></div><div><span>{L("Account number", "شماره حساب")}</span><b dir="ltr">10581185</b></div></div>
-      <div class="sp"></div><a class="btn b1" href="{url("donations/")}">{L("Donation information", "معلومات کمک مالی")}</a><p class="small">{L("Monthly direct debit is coming soon.", "پرداخت ماهانه خودکار به‌زودی فعال می‌شود.")}</p></div></div>
+      <div class="sp"></div><a class="btn b1" href="{url("donations/")}">{L("Donation information", "معلومات کمک مالی")}</a><p class="small">{L("Any amount, by bank transfer.", "هر مبلغ، از طریق انتقال بانکی.")}</p></div></div>
     <div class="card sup"><div class="im"><img src="{{A}}/premium-volunteer.webp" alt=""></div><div class="in"><h3>{L("Volunteer", "داوطلب شوید")}</h3><p>{L("Dedicate a day of your time, or contribute useful skills to the Maktab: community activities, practical support, or creative and digital skills.", "یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید: فعالیت‌های اجتماعی، کمک‌های عملی، یا مهارت‌های هنری و دیجیتال.")}</p>
-      <div class="sp"></div><a class="btn b2" href="{url("volunteer/")}">{L("Ways to help", "راه‌های کمک")}</a><p class="small">{L("Volunteer applications are not yet open.", "درخواست داوطلبی هنوز باز نشده است.")}</p></div></div>
+      <div class="sp"></div><a class="btn b2" href="{url("volunteer/")}">{L("Ways to help", "راه‌های کمک")}</a><p class="small">{L("Give a day, or share a skill.", "یک روز وقت بدهید یا مهارتی شریک کنید.")}</p></div></div>
     <div class="card sup"><div class="im"><img src="{{A}}/courtyard-800.webp" alt=""></div><div class="in"><h3>{L("Islamic questions", "پرسش‌های دینی")}</h3><p>{L("A space for Islamic religious enquiries, reviewed by an authorised religious representative. This website does not generate religious rulings.", "جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند. این وب‌سایت حکم دینی صادر نمی‌کند.")}</p>
-      <div class="sp"></div><a class="btn b2" href="{url("questions/")}">{L("How enquiries work", "روند پرسش‌ها")}</a><p class="small">{L("Question submissions are not yet open.", "ارسال پرسش هنوز فعال نیست.")}</p></div></div>
+      <div class="sp"></div><a class="btn b2" href="{url("questions/")}">{L("How enquiries work", "روند پرسش‌ها")}</a><p class="small">{L("Answered by an authorised representative.", "پاسخ توسط نماینده مجاز دینی.")}</p></div></div>
   </div>
 </div></section>
 
@@ -232,14 +231,14 @@ def about():
     <div class="card pad"><h3>{L("Ways to get involved", "راه‌های همکاری")}</h3><p>{L("You can read about volunteering and financial support on this website. Volunteer applications are not currently open; donations are accepted by bank transfer.", "در این وب‌سایت می‌توانید درباره داوطلبی و حمایت مالی بخوانید. درخواست داوطلبی فعلاً باز نیست؛ کمک مالی از طریق انتقال بانکی پذیرفته می‌شود.")}</p></div>
   </div>
   <div class="card pad legal"><div><span class="pill gr">{L("Legal name", "نام قانونی")}</span><h3 style="margin-top:12px" dir="ltr">{LEGAL}</h3></div><p>{L("Maktab Alzahra SA is the name our community knows us by. Our legal name, which you will see on bank transfers and official documents, is", "مکتب الزهرا نامی است که جامعه ما را با آن می‌شناسد. نام قانونی ما که در انتقال‌های بانکی و اسناد رسمی می‌بینید این است:")} {ltr(LEGAL)}.</p></div>
-  {notice(L("Further details awaiting confirmation", "جزئیات بیشتر در انتظار تأیید"), L("More information about the Maktab’s history, team and programmes will be published after confirmation.", "معلومات بیشتر درباره تاریخچه، تیم و برنامه‌های مکتب پس از تأیید منتشر خواهد شد."))}
+  
   <div class="cta"><a class="btn b1" href="{url("registration/")}">{L("Quran class registration", "ثبت نام کلاس قرآن")}</a><a class="btn b2" href="{url("volunteer/")}">{L("Explore volunteering", "درباره داوطلبی")}</a></div>
 </div></section>
 {contact_panel()}'''
 
 
 def registration():
-    prev = [L("Student’s name", "نام شاگرد"), L("Student’s age or date of birth (exact requirement awaiting confirmation)", "سن یا تاریخ تولد شاگرد (شرط دقیق در انتظار تأیید)"),
+    prev = [L("Student’s name", "نام شاگرد"), L("Student’s age or date of birth", "سن یا تاریخ تولد شاگرد"),
             L("School year level, for example Year 4", "صنف مکتب، مثلاً صنف ۴"), L("Address", "آدرس"),
             L("Parent or guardian’s name (for children)", "نام والدین یا سرپرست (برای کودکان)"), L("Parent or guardian’s contact details (for children)", "شماره تماس والدین یا سرپرست (برای کودکان)")]
     return phead(L("Weekend Quran classes", "کلاس‌های قرآن آخر هفته"), L("Quran class registration", "ثبت نام کلاس قرآن"),
@@ -247,10 +246,10 @@ def registration():
                  "premium-quran.webp", DECOR(),
                  f'<div class="cta"><a class="btn b1" href="{TEL}">{L("Call about classes", "تماس درباره کلاس‌ها")}</a><a class="btn b2" href="{MAP}">{L("View venue on map", "دیدن مکان روی نقشه")}</a></div>') + f'''
 <section class="secs"><div class="wrap">
-  {notice(L("Website registration is not yet open", "ثبت نام از طریق وب‌سایت هنوز باز نیست"), L("Online registration is not yet available. This page provides information only and does not collect registration or personal details. Registration requires Maktab staff approval.", "ثبت نام آنلاین هنوز فعال نیست. این صفحه فقط معلومات می‌دهد و هیچ مشخصات شخصی جمع‌آوری نمی‌کند. ثبت نام نیاز به تأیید کارمندان مکتب دارد."))}
+  {notice(L("Register by phone", "ثبت نام از طریق تلفن"), L("Call the Maktab every day, 8 am to 8 pm, to register. Every place is confirmed by Maktab staff.", "برای ثبت نام هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید. هر ثبت نام توسط کارمندان مکتب تأیید می‌شود."))}
   <h2 class="stitle">{L("Before you visit", "پیش از آمدن")}</h2>
   {facts()}
-  <p class="small">{L("Finishing times are awaiting confirmation. Call the Maktab every day, 8 am to 8 pm:", "زمان پایان کلاس هنوز تأیید نشده است. هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید:")} <a class="textlink" href="{TEL}">{phone()}</a></p>
+  <p class="small">{L("Questions about classes? Call the Maktab every day, 8 am to 8 pm:", "سؤالی درباره کلاس‌ها دارید؟ هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید:")} <a class="textlink" href="{TEL}">{phone()}</a></p>
   <div class="two" style="margin-top:26px">{steps_card()}{bring_card()}</div>
   <h2 class="stitle">{L("Registration information preview", "پیش‌نمایش معلومات ثبت نام")}</h2>
   <div class="card pad"><p>{L("The Maktab has confirmed that future registration will include school year level, address and parent or guardian information. The list below is a proposed preview, not a final list of required fields.", "مکتب تأیید کرده است که ثبت نام آینده شامل صنف مکتب، آدرس و معلومات والدین یا سرپرست خواهد بود. فهرست زیر یک پیش‌نمایش پیشنهادی است، نه فهرست نهایی.")}</p>
@@ -266,7 +265,7 @@ def prayer_times():
     rows = "".join(f'<tr><th><i style="background:{SKY[k]}"></i>{names[k]}</th><td><b data-pray="{k}">--:--</b></td><td data-pray-tom="{k}">--:--</td></tr>' for k in SKY)
     return phead(L("Adelaide, Shia Ja‘fari method", "ادلاید، روش شیعه جعفری"), L("Prayer times", "اوقات نماز"),
                  L("A moment to pause. A day guided by prayer.", "لحظه‌ای برای درنگ. روزی در پرتو نماز."),
-                 "shrine-1200.webp", L("Decorative imagined architecture", "معماری تزئینی خیالی")) + f'''
+                 "shrine-1200.webp", "") + f'''
 <section class="secs"><div class="wrap">
   <div class="head" style="align-items:center"><h2 class="stitle" style="margin:0"><span data-today></span></h2><span class="pill g" data-hijri></span></div>
   <div class="card ptwrap"><table class="pt2">
@@ -274,7 +273,7 @@ def prayer_times():
     <tbody>{rows}</tbody></table></div>
   <h2 class="stitle">{L("Monthly timetable", "جدول ماهانه")}</h2>
   <div class="card ttwrap" data-timetable></div>
-  {notice(L("Calculated times, please confirm locally", "اوقات محاسبه‌شده، لطفاً محلی تأیید کنید"), L("Shia Ja‘fari (Ithna-Ashari) method, Leva Institute, Qum: Fajr at 16°, Maghrib at 4° after sunset. Imsak is shown 10 minutes before Fajr as a precaution. Asr follows Dhuhr and Isha follows Maghrib; follow your marja‘s guidance on combining prayers. These are not Maktab-approved congregation times. All times are Adelaide local time, including daylight saving.", "روش شیعه جعفری (اثنی‌عشری)، مؤسسه لواء، قم: صبح ۱۶ درجه، مغرب ۴ درجه پس از غروب. امساک برای احتیاط ۱۰ دقیقه پیش از اذان صبح نشان داده شده است. نماز عصر پس از ظهر و نماز عشا پس از مغرب خوانده می‌شود؛ درباره جمع خواندن نمازها از مرجع خود پیروی کنید. این‌ها اوقات تأییدشده نماز جماعت مکتب نیستند. همه اوقات به وقت محلی ادلاید است."))}
+  {notice(L("How these times are calculated", "این اوقات چگونه محاسبه شده‌اند"), L("Shia Ja‘fari (Ithna-Ashari) method, Leva Institute, Qum: Fajr at 16°, Maghrib at 4° after sunset. Imsak is shown 10 minutes before Fajr as a precaution. Asr follows Dhuhr and Isha follows Maghrib; follow your marja‘s guidance on combining prayers. All times are Adelaide local time, including daylight saving.", "روش شیعه جعفری (اثنی‌عشری)، مؤسسه لواء، قم: صبح ۱۶ درجه، مغرب ۴ درجه پس از غروب. امساک برای احتیاط ۱۰ دقیقه پیش از اذان صبح نشان داده شده است. نماز عصر پس از ظهر و نماز عشا پس از مغرب خوانده می‌شود؛ درباره جمع خواندن نمازها از مرجع خود پیروی کنید. همه اوقات به وقت محلی ادلاید است."))}
 </div></section>'''
 
 
@@ -289,7 +288,7 @@ def calendar():
   <p class="small"><a class="textlink" href="{url("masoomeen/")}">{L("See all Fourteen Masoomeen and their days", "دیدن چهارده معصوم و روزهای ایشان")}</a></p>
   <h2 class="stitle">{L("Month by month", "ماه به ماه")}</h2>
   <div class="card" data-calendar></div>
-  {notice(L("Provisional dates", "تاریخ‌های موقتی"), L("Calculated Hijri dates are provisional. Confirm religious observances with your local Shia authority; dates may vary with moon sightings. Dates refer to the daytime; Islamic nights begin at the preceding sunset. These are selected observances, not Maktab event announcements.", "تاریخ‌های هجری محاسبه‌شده موقتی‌اند. مناسبت‌های دینی را با مرجع شیعی محلی خود تأیید کنید؛ تاریخ‌ها ممکن است با رؤیت هلال تغییر کنند. تاریخ‌ها به روز اشاره دارند؛ شب‌های اسلامی از غروب روز قبل آغاز می‌شوند. این‌ها مناسبت‌های منتخب‌اند، نه اعلان برنامه‌های مکتب."))}
+  {notice(L("About these dates", "درباره این تاریخ‌ها"), L("Calculated Hijri dates are provisional. Confirm religious observances with your local Shia authority; dates may vary with moon sightings. Dates refer to the daytime; Islamic nights begin at the preceding sunset.", "تاریخ‌های هجری محاسبه‌شده موقتی‌اند. مناسبت‌های دینی را با مرجع شیعی محلی خود تأیید کنید؛ تاریخ‌ها ممکن است با رؤیت هلال تغییر کنند. تاریخ‌ها به روز اشاره دارند؛ شب‌های اسلامی از غروب روز قبل آغاز می‌شوند."))}
 </div></section>'''
 
 
@@ -308,7 +307,7 @@ def donations():
   <p class="small">{L("The account is in the Maktab’s legal name,", "حساب به نام قانونی مکتب است:")} <b>{ltr(LEGAL)}</b>{L(". Your bank will show this name as the recipient.", ". بانک شما این نام را به عنوان گیرنده نشان می‌دهد.")}</p>
   <div class="grid2">
     <div class="card pad"><h3>{L("One-off giving", "کمک یک‌باره")}</h3><p>{L("A single contribution made on one occasion, without an ongoing payment commitment.", "کمکی که یک بار پرداخت می‌شود، بدون تعهد پرداخت دوامدار.")}</p></div>
-    <div class="card pad"><h3>{L("Donate monthly", "کمک ماهانه")}</h3><p>{L("Monthly direct debit is coming soon. Monthly giving options in Australian dollars:", "پرداخت ماهانه خودکار به‌زودی فعال می‌شود. گزینه‌های کمک ماهانه به دالر آسترالیا:")}</p><div class="amts">{amts}</div></div>
+    <div class="card pad"><h3>{L("Donate monthly", "کمک ماهانه")}</h3><p>{L("Set up a recurring transfer in your banking app with the details above, for example:", "با همین معلومات در اپ بانکی خود یک انتقال ماهانه تنظیم کنید، برای مثال:")}</p><div class="amts">{amts}</div></div>
   </div>
   {notice(L("Questions about donating?", "سؤالی درباره کمک مالی دارید؟"), L("Contact the Maktab if you have a question about your transfer:", "اگر درباره انتقال خود سؤالی دارید با مکتب تماس بگیرید:") + f' <a class="textlink" href="{TEL}">{phone()}</a>')}
   <div class="cta"><a class="btn b2" href="{url("volunteer/")}">{L("Give your time or skills", "وقت یا مهارت خود را بدهید")}</a></div>
@@ -319,23 +318,23 @@ def volunteer():
     asks = [L("Your name and preferred contact method", "نام شما و روش تماس دلخواه"), L("Whether you would like to offer a day of your time or share skills", "اینکه می‌خواهید یک روز وقت بگذارید یا مهارت‌تان را شریک کنید"),
             L("Activities that interest you and skills you would like to contribute", "فعالیت‌هایی که به آن علاقه دارید و مهارت‌هایی که می‌خواهید ارائه کنید"), L("Your general availability", "زمان‌هایی که معمولاً وقت دارید")]
     return phead(L("Give time, share skills", "وقت بگذارید، مهارت شریک کنید"), L("Volunteer opportunities", "فرصت‌های داوطلبی"),
-                 L("You could dedicate a day of your time or contribute useful skills to the Maktab. Explore possible ways to help while volunteer arrangements are being prepared.", "می‌توانید یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید. تا زمانی که برنامه داوطلبی آماده می‌شود، راه‌های ممکن کمک را ببینید."),
+                 L("Dedicate a day of your time or contribute useful skills to the Maktab.", "یک روز از وقت خود را بدهید یا مهارت‌های مفیدتان را در اختیار مکتب بگذارید."),
                  "premium-volunteer.webp", DECOR()) + f'''
 <section class="secs"><div class="wrap">
-  {notice(L("Volunteer applications are not yet open", "درخواست داوطلبی هنوز باز نشده است"), L("This page is a preview only. No personal information or expressions of interest are collected, saved or submitted here.", "این صفحه فقط پیش‌نمایش است. هیچ معلومات شخصی یا درخواستی در اینجا جمع‌آوری، ذخیره یا ارسال نمی‌شود."))}
+  {notice(L("Want to help?", "می‌خواهید کمک کنید؟"), L("Call the Maktab every day, 8 am to 8 pm, and tell us how you would like to help.", "هر روز از ۸ صبح تا ۸ شب با مکتب تماس بگیرید و بگویید چگونه می‌خواهید کمک کنید."))}
   <div class="grid2">
-    <div class="card pad"><h3>{L("Dedicate a day", "یک روز وقت بگذارید")}</h3><p>{L("Offer a day of your time to help with an agreed activity. Dates, responsibilities and availability would be discussed once opportunities are confirmed.", "یک روز از وقت خود را برای کمک در یک فعالیت توافق‌شده بدهید. تاریخ‌ها و مسئولیت‌ها پس از تأیید فرصت‌ها هماهنگ می‌شود.")}</p></div>
-    <div class="card pad"><h3>{L("Contribute your skills", "مهارت خود را ارائه کنید")}</h3><p>{L("Share useful practical, organisational or creative skills. Future roles would be matched to the Maktab’s confirmed needs.", "مهارت‌های عملی، سازماندهی یا هنری خود را شریک کنید. نقش‌های آینده با نیازهای تأییدشده مکتب هماهنگ می‌شود.")}</p></div>
+    <div class="card pad"><h3>{L("Dedicate a day", "یک روز وقت بگذارید")}</h3><p>{L("Offer a day of your time to help with an agreed activity. We agree the date and the task with you.", "یک روز از وقت خود را برای کمک در یک فعالیت توافق‌شده بدهید. تاریخ و کار با شما هماهنگ می‌شود.")}</p></div>
+    <div class="card pad"><h3>{L("Contribute your skills", "مهارت خود را ارائه کنید")}</h3><p>{L("Share useful practical, organisational or creative skills. We match you with what the Maktab needs.", "مهارت‌های عملی، سازماندهی یا هنری خود را شریک کنید. ما شما را با نیازهای مکتب هماهنگ می‌کنیم.")}</p></div>
   </div>
   <h2 class="stitle">{L("Ways you could help", "راه‌هایی که می‌توانید کمک کنید")}</h2>
-  <p class="small">{L("Examples only, subject to confirmation by the Maktab. These are not advertised vacancies.", "فقط نمونه است و نیاز به تأیید مکتب دارد. این‌ها اعلان کار نیستند.")}</p>
+  
   <div class="grid3">
     <div class="card pad"><h3>{L("Community activities", "فعالیت‌های اجتماعی")}</h3><p>{L("For example, helping prepare a space or organise materials for an activity.", "مثلاً کمک در آماده کردن مکان یا منظم کردن لوازم یک برنامه.")}</p></div>
     <div class="card pad"><h3>{L("Practical support", "کمک‌های عملی")}</h3><p>{L("For example, helping organise resources or contributing useful practical skills.", "مثلاً کمک در منظم کردن منابع یا ارائه مهارت‌های عملی مفید.")}</p></div>
     <div class="card pad"><h3>{L("Creative and digital skills", "مهارت‌های هنری و دیجیتال")}</h3><p>{L("For example, contributing design, translation or technology skills.", "مثلاً مهارت در دیزاین، ترجمه یا تکنالوژی.")}</p></div>
   </div>
-  <h2 class="stitle">{L("What we may ask later", "آنچه ممکن است بعداً بپرسیم")}</h2>
-  <div class="card pad"><p>{L("This is not an application form. Final questions are awaiting approval; do not provide personal details here.", "این فورم درخواست نیست. سؤال‌های نهایی در انتظار تأیید است؛ در اینجا مشخصات شخصی ندهید.")}</p><ul class="ticks">{"".join(f"<li>{i}</li>" for i in asks)}</ul></div>
+  <h2 class="stitle">{L("When you call, we may ask about", "وقتی تماس می‌گیرید، ممکن است بپرسیم")}</h2>
+  <div class="card pad"><ul class="ticks">{"".join(f"<li>{i}</li>" for i in asks)}</ul></div>
   <div class="cta"><a class="btn b1" href="{url("donations/")}">{L("Learn about donations", "درباره کمک مالی")}</a><a class="btn b2" href="{url("contact/")}">{L("Contact us", "تماس با ما")}</a></div>
 </div></section>'''
 
@@ -344,18 +343,18 @@ def questions():
     def st(n, title, text):
         return f'<div class="card pad"><div class="num">{n}</div><h3>{title}</h3><p>{text}</p></div>'
     return phead(L("Faith, learning, community", "ایمان، دانش، جامعه"), L("Islamic religious questions", "پرسش‌های دینی اسلامی"),
-                 L("The enquiry process and responsible religious representative are awaiting confirmation.", "روند پرسش و نماینده دینی مسئول در انتظار تأیید است."),
+                 L("A space for Islamic religious enquiries, reviewed by an authorised religious representative.", "جایی برای پرسش‌های دینی اسلامی که نماینده مجاز دینی آن‌ها را بررسی می‌کند."),
                  "courtyard-800.webp", DECOR()) + f'''
 <section class="secs"><div class="wrap">
-  {notice(L("Question submissions are not yet available", "ارسال پرسش هنوز فعال نیست"), L("Questions cannot currently be submitted through this website. The submission process and religious representative will be published once confirmed.", "در حال حاضر نمی‌توان از طریق این وب‌سایت پرسش فرستاد. روند ارسال و نماینده دینی پس از تأیید منتشر می‌شود."))}
-  <h2 class="stitle">{L("Future enquiry process", "روند آینده پرسش‌ها")}</h2>
-  <p class="small">{L("Proposed process only, subject to confirmation by the Maktab. No response times have been confirmed.", "فقط روند پیشنهادی است و نیاز به تأیید مکتب دارد. زمان پاسخ‌دهی تأیید نشده است.")}</p>
+  {notice(L("Coming soon", "به‌زودی"), L("A way to send your questions is being prepared. Until then, please contact the Maktab.", "راهی برای فرستادن پرسش‌ها در حال آماده شدن است. تا آن زمان لطفاً با مکتب تماس بگیرید."))}
+  <h2 class="stitle">{L("How it will work", "روند کار")}</h2>
+  
   <div class="grid3">
-    {st(L("1", "۱"), L("Read the service information", "معلومات خدمت را بخوانید"), L("Once approved, review the service scope, privacy information and instructions before deciding whether to send an enquiry.", "پس از تأیید، پیش از ارسال پرسش، محدوده خدمت، معلومات حریم خصوصی و رهنمودها را بخوانید."))}
-    {st(L("2", "۲"), L("Prepare your question", "پرسش خود را آماده کنید"), L("A future enquiry channel may request your question and a way to respond. The exact details are awaiting approval.", "در آینده ممکن است پرسش شما و راهی برای پاسخ خواسته شود. جزئیات دقیق در انتظار تأیید است."))}
+    {st(L("1", "۱"), L("Read the service information", "معلومات خدمت را بخوانید"), L("Review the service scope, privacy information and instructions before sending an enquiry.", "پیش از ارسال پرسش، محدوده خدمت، معلومات حریم خصوصی و رهنمودها را بخوانید."))}
+    {st(L("2", "۲"), L("Prepare your question", "پرسش خود را آماده کنید"), L("Write your question clearly and include a way for us to reply.", "پرسش خود را روشن بنویسید و راهی برای پاسخ دادن بگذارید."))}
     {st(L("3", "۳"), L("Review by an authorised representative", "بررسی توسط نماینده مجاز"), L("The authorised religious representative would review the enquiry and determine an appropriate response.", "نماینده مجاز دینی پرسش را بررسی کرده و پاسخ مناسب را تعیین می‌کند."))}
   </div>
-  <div class="card pad"><h3>{L("Human guidance", "رهنمایی انسانی")}</h3><p>{L("This website does not generate religious rulings or automatically answer religious questions. This page contains no religious answers and does not accept enquiries.", "این وب‌سایت حکم دینی صادر نمی‌کند و به پرسش‌های دینی به‌طور خودکار پاسخ نمی‌دهد. این صفحه پاسخ دینی ندارد و پرسش نمی‌پذیرد.")}</p></div>
+  <div class="card pad"><h3>{L("Human guidance", "رهنمایی انسانی")}</h3><p>{L("This website does not generate religious rulings or automatically answer religious questions.", "این وب‌سایت حکم دینی صادر نمی‌کند و به پرسش‌های دینی به‌طور خودکار پاسخ نمی‌دهد.")}</p></div>
 </div></section>'''
 
 
@@ -368,7 +367,7 @@ def contact():
   <div class="grid2">
     <div class="card pad"><span class="pill gr">{L("Quran class enquiries", "پرسش درباره کلاس‌های قرآن")}</span><h3 style="margin-top:14px">{L("Call the Maktab", "با مکتب تماس بگیرید")}</h3>
       <a href="{TEL}" style="display:block;font:var(--dw) 54px/1.2 var(--display);color:var(--green);margin:6px 0">{phone()}</a>
-      <p>{L("Every day, 8 am to 8 pm.", "هر روز، ۸ صبح تا ۸ شب.")}</p><p style="margin-top:10px">{L("Classes are on Saturday and Sunday. Please arrive by 9:40 am; classroom doors close at 10:00 am. Finishing times are awaiting confirmation.", "کلاس‌ها شنبه و یکشنبه است. لطفاً تا ۹:۴۰ صبح حاضر باشید؛ دروازه صنف ساعت ۱۰:۰۰ صبح بسته می‌شود. زمان پایان کلاس در انتظار تأیید است.")}</p></div>
+      <p>{L("Every day, 8 am to 8 pm.", "هر روز، ۸ صبح تا ۸ شب.")}</p><p style="margin-top:10px">{L("Classes are on Saturday and Sunday. Please arrive by 9:40 am; classroom doors close at 10:00 am.", "کلاس‌ها شنبه و یکشنبه است. لطفاً تا ۹:۴۰ صبح حاضر باشید؛ دروازه صنف ساعت ۱۰:۰۰ صبح بسته می‌شود.")}</p></div>
     <div class="card pad"><span class="pill">{L("Class venue", "مکان کلاس")}</span><h3 style="margin-top:14px">{L("Find us", "ما را پیدا کنید")}</h3>
       <p style="font:var(--dw) 30px/1.3 var(--display);color:var(--ink);margin:6px 0">{ltr("20 Kylie Crescent,")}<br>{ltr("Ingle Farm, SA")}</p>
       <p>{L("Confirm the class time before travelling.", "پیش از حرکت، زمان کلاس را تأیید کنید.")}</p><a class="btn b2" style="margin-top:18px" href="{MAP}">{L("View address on map", "دیدن آدرس روی نقشه")}</a></div>
@@ -376,7 +375,6 @@ def contact():
   <div class="card pad"><h3>{L("Social media", "شبکه‌های اجتماعی")}</h3><p>{L("Follow Maktab Alzahra SA on Instagram and YouTube, or join our WhatsApp channel for updates.", "مکتب الزهرا را در اینستاگرام و یوتیوب دنبال کنید، یا برای تازه‌ترین خبرها به کانال واتساپ ما بپیوندید.")}</p>
     <div class="cta" style="margin-top:18px"><a class="btn b2" href="{IG}">{L("Instagram", "اینستاگرام")}</a><a class="btn b2" href="{YT}">{L("YouTube", "یوتیوب")}</a><a class="btn b2" href="{WA}">{L("WhatsApp channel", "کانال واتساپ")}</a></div></div>
   <div class="card pad legal"><div><span class="pill gr">{L("Legal name", "نام قانونی")}</span><h3 style="margin-top:12px" dir="ltr">{LEGAL}</h3></div><p>{L("Use this name for bank transfers and official correspondence with Maktab Alzahra SA.", "برای انتقال بانکی و مکاتبات رسمی با مکتب الزهرا از این نام استفاده کنید.")}</p></div>
-  {notice(L("Email awaiting confirmation", "ایمیل در انتظار تأیید"), L("The phone number above is for Quran class enquiries. Email is not yet published, and no online contact form is active.", "شماره بالا برای پرسش درباره کلاس‌های قرآن است. ایمیل هنوز منتشر نشده و فورم تماس آنلاین فعال نیست."))}
 </div></section>'''
 
 
@@ -386,7 +384,7 @@ def masoomeen():
                  "madinah-green-dome-736.webp", NOT_PREMISES()) + f'''
 <section class="secs"><div class="wrap">
   <div class="mzgrid" data-masoomeen></div>
-  {notice(L("Dates to be confirmed by Maktab staff", "تاریخ‌ها نیاز به تأیید کارمندان مکتب دارد"), L("These are commonly cited Shia dates, and some differ between narrations. The Gregorian dates are calculated and may vary by a day with the moon sighting.", "این‌ها تاریخ‌های مشهور شیعی‌اند و برخی در روایات مختلف فرق دارند. تاریخ‌های میلادی محاسبه‌شده‌اند و ممکن است با رؤیت هلال یک روز تفاوت کنند."))}
+  {notice(L("About these dates", "درباره این تاریخ‌ها"), L("These are commonly cited Shia dates, and some differ between narrations. The Gregorian dates are calculated and may vary by a day with the moon sighting.", "این‌ها تاریخ‌های مشهور شیعی‌اند و برخی در روایات مختلف فرق دارند. تاریخ‌های میلادی محاسبه‌شده‌اند و ممکن است با رؤیت هلال یک روز تفاوت کنند."))}
   <div class="cta"><a class="btn b1" href="{url("calendar/")}">{L("View the calendar", "دیدن تقویم")}</a></div>
 </div></section>'''
 
@@ -451,7 +449,7 @@ def layout(slug, title, body):
 <link rel="icon" href="{{A}}/logo-288.png">
 <link rel="apple-touch-icon" href="{{A}}/logo-288.png">
 {ld}
-<link rel="stylesheet" href="{{A}}/style.css?v=14">
+<link rel="stylesheet" href="{{A}}/style.css?v=15">
 </head>
 <body>
 <a class="skip" href="#main">{L("Skip to content", "رفتن به محتوا")}</a>
